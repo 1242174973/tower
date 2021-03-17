@@ -71,6 +71,7 @@ public class AccountController {
         player.setSafeBox(BigDecimal.ZERO);
         player.setSpread(UuidUtil.getShortUuid(4));
         player.setSuperId(superId);
+        player.setPic("http://www.baidu.com");
         player.setSalt(UuidUtil.getShortUuid(8));
         player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(player.getPassword() + player.getSalt())));
         playerService.save(player);

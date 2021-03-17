@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tower.mapper.MonsterMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.tower.entity.Monster">
+        <id column="id" property="id" />
+        <result column="monster_name" property="monsterName" />
+        <result column="turret_name" property="turretName" />
+        <result column="multiple" property="multiple" />
+        <result column="max_bet" property="maxBet" />
+        <result column="rates" property="rates" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, monster_name, turret_name, multiple, max_bet, rates, create_time
+    </sql>
+
+</mapper>
