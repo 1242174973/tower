@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tower</groupId>
+    <artifactId>tower</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>tower-model</module>
+        <module>tower-service</module>
+        <module>tower-game</module>
+        <module>tower-common</module>
+    </modules>
+    <!-- 打包方式，必须要-->
+    <packaging>pom</packaging>
+    <!-- boot依赖，必须要-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.6.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <!-- 定义版本的地方-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.targer>8</maven.compiler.targer>
+        <spring-boot-version>2.1.4.RELEASE</spring-boot-version>
+        <mysql-connector-version>5.1.47</mysql-connector-version>
+        <druid-version>1.1.21</druid-version>
+        <mybatis-spring-boot-version>2.1.4</mybatis-spring-boot-version>
+        <lombok-version>1.18.8</lombok-version>
+        <junit-version>4.12</junit-version>
+        <log4j-version>1.2.17</log4j-version>
+        <mybatis-plus-version>3.3.1.tmp</mybatis-plus-version>
+    </properties>
+
+    <!--   dependencyManagement 是依赖管理，子项目可以从中获取需要的依赖 -->
+    <dependencyManagement>
+        <dependencies>
+            <!--  springboot启动器  -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-version}</version>
+            </dependency>
+            <!--   数据库依赖 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid-version}</version>
+            </dependency>
+            <!-- mybatis-plus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-version}</version>
+            </dependency>
+            <!--   单元测试 依赖 -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+            </dependency>
+            <!--getset -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok-version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!--  日志依赖  -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j-version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
