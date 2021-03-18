@@ -37,19 +37,19 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if (!(handler instanceof HandlerMethod)) {
             return true;
         }
-        if(!verify){
+        if (!verify) {
             return true;
         }
         // 从 http 请求头中取出 token
         String token = request.getHeader("token");
         LOG.info("游戏登录验证开始，token：{}", token);
         if (token == null || token.isEmpty()) {
-            LOG.info("token为空，请求被拦截---{}",request.getRequestURI());
+            LOG.info("token为空，请求被拦截---{}", request.getRequestURI());
             throw new BusinessException("请先登录");
         }
-        String object = redisOperator.hget(RedisVariable.USER_INFO , token);
+        String object = redisOperator.hget(RedisVariable.USER_INFO, token);
         if (object == null) {
-            LOG.warn("token无效，请求被拦截---{}",request.getRequestURI());
+            LOG.warn("token无效，请求被拦截---{}", request.getRequestURI());
             throw new BusinessException("请重新登录");
         } else {
             // 这边拿到的 用户信息 判断权限
