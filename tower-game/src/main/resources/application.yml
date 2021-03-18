@@ -17,4 +17,4 @@ spring:
 netty:
   port: 10101
 game:
-  verify: false
+  verify: true

@@ -65,6 +65,12 @@ public class Player implements Serializable {
     @ApiModelProperty(value = "保险柜密码")
     private String safeBoxPassword;
 
+    @ApiModelProperty(value = "签到天数")
+    private Integer signIn;
+
+    @ApiModelProperty(value = "总签到天数")
+    private Integer totalSignIn;
+
     @ApiModelProperty(value = "推广码")
     private String spread;
 
@@ -75,5 +81,12 @@ public class Player implements Serializable {
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
 
+
+    @ApiModelProperty(value = "vip升级经验")
+    private Integer experience;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @ApiModelProperty(value = "签到时间")
+    private LocalDateTime signInTime;
 
 }

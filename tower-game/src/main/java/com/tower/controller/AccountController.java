@@ -138,7 +138,8 @@ public class AccountController {
      * @param player 玩家
      * @return 返回体
      */
-    public ResponseDto<PlayerDto> getPlayerDtoResponseDto(Player player) {
+    public static ResponseDto<PlayerDto> getPlayerDtoResponseDto(Player player) {
+        RedisOperator redisOperator=MyApplicationContextUti.getBean(RedisOperator.class);
         PlayerDto userDto = CopyUtil.copy(player, PlayerDto.class);
         String token = getToken(player.getId());
         redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
@@ -154,7 +155,8 @@ public class AccountController {
      * @param userId userId
      * @return token
      */
-    private String getToken(int userId) {
+    private static String getToken(int userId) {
+        RedisOperator redisOperator=MyApplicationContextUti.getBean(RedisOperator.class);
         String token = redisOperator.hget(RedisVariable.USER_TOKEN, userId);
         if (token != null) {
             return token;

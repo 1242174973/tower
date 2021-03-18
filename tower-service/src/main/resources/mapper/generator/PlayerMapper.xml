@@ -14,6 +14,8 @@
         <result column="money" property="money" />
         <result column="safe_box" property="safeBox" />
         <result column="safe_box_password" property="safeBoxPassword" />
+        <result column="sign_in" property="signIn" />
+        <result column="total_sign_in" property="totalSignIn" />
         <result column="spread" property="spread" />
         <result column="super_id" property="superId" />
         <result column="create_time" property="createTime" />
@@ -21,7 +23,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, nick_name, password, salt, account, pic, vip, money, safe_box, safe_box_password, spread, super_id, create_time
+        id, nick_name, password, salt, account, pic, vip, money, safe_box, safe_box_password, sign_in, total_sign_in, spread, super_id, create_time
     </sql>
 
 </mapper>

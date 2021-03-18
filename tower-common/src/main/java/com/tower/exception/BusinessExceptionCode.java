@@ -16,6 +16,7 @@ public enum BusinessExceptionCode {
     OLD_PASSWORD("旧密码"),
     NEW_PASSWORD("新密码"),
     TOKEN("token"),
+    VIP_LEVEL("vip等级"),
     ;
     /**
      * 描述

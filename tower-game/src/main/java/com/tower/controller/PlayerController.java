@@ -49,7 +49,7 @@ public class PlayerController {
                 "旧密码不正确");
         player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(newPassword + player.getSalt())));
         playerService.updateById(player);
-        return getPlayerDtoResponseDto(player);
+        return AccountController.getPlayerDtoResponseDto(player);
     }
 
     @ApiOperation(value = "设置保险柜新密码", notes = "根据旧密码设置保险柜新密码 参数 旧密码 新密码")
@@ -70,7 +70,7 @@ public class PlayerController {
         }
         player.setSafeBoxPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(newPassword + player.getSalt())));
         playerService.updateById(player);
-        return getPlayerDtoResponseDto(player);
+        return AccountController.getPlayerDtoResponseDto(player);
     }
 
     @ApiOperation(value = "设置新昵称", notes = "设置新昵称 参数 新昵称")
@@ -91,40 +91,6 @@ public class PlayerController {
         BusinessUtil.length(nickName, BusinessExceptionCode.NICK_NAME, 6, 20);
         player.setNickName(nickName);
         playerService.updateById(player);
-        return getPlayerDtoResponseDto(player);
-    }
-
-
-    /**
-     * 根据player对象获得返回体
-     *
-     * @param player 玩家
-     * @return 返回体
-     */
-    public ResponseDto<PlayerDto> getPlayerDtoResponseDto(Player player) {
-        PlayerDto userDto = CopyUtil.copy(player, PlayerDto.class);
-        String token = getToken(player.getId());
-        redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
-        userDto.setToken(token);
-        ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
-        responseDto.setContent(userDto);
-        responseDto.setMessage("修改成功");
-        return responseDto;
-    }
-
-    /**
-     * 获得token
-     *
-     * @param userId userId
-     * @return token
-     */
-    private String getToken(int userId) {
-        String token = redisOperator.hget(RedisVariable.USER_TOKEN, userId);
-        if (token != null) {
-            return token;
-        }
-        token = UuidUtil.getShortUuid();
-        redisOperator.hset(RedisVariable.USER_TOKEN, userId, token);
-        return token;
+        return AccountController.getPlayerDtoResponseDto(player);
     }
 }
