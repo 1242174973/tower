@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tower.mapper.SignInMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.tower.entity.SignIn">
+        <id column="id" property="id" />
+        <result column="vip_level" property="vipLevel" />
+        <result column="day" property="day" />
+        <result column="award" property="award" />
+        <result column="award_type" property="awardType" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, vip_level, day, award, award_type, create_time
+    </sql>
+
+</mapper>

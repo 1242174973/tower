@@ -35,6 +35,7 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
     @Override
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest webRequest, WebDataBinderFactory webDataBinderFactory) {
         HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
+        assert request != null;
         String token = request.getHeader("token");
         // 然后根据token获取用户登录信息
         User user = null;

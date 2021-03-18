@@ -16,3 +16,5 @@ spring:
     password: jef5re4g6e4
 netty:
   port: 10101
+game:
+  verify: true

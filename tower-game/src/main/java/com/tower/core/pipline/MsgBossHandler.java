@@ -181,11 +181,9 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
         if (userId != null) {
             log.info("用户{}连接[{}]断开,清空channel的ATTR_USER_ID", userId, ctx.channel().id());
             userIdAttr.set(null);
-            executeLogin.execute(new Runnable() {
-                @Override
-                public void run() {
-//TODO 我自己注释                    hall.leaveUser(userId,false);
-                }
+            executeLogin.execute(()->{
+                //TODO 处理玩家断开连接
+                // hall.leaveUser(userId,false);
             });
 
         } else {
