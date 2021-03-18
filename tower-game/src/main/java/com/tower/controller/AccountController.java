@@ -74,7 +74,6 @@ public class AccountController {
         player.setPic("http://www.baidu.com");
         player.setSalt(UuidUtil.getShortUuid(8));
         player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(player.getPassword() + player.getSalt())));
-        playerService.save(player);
         return getPlayerDtoResponseDto(player);
     }
 
@@ -140,10 +139,12 @@ public class AccountController {
      */
     public static ResponseDto<PlayerDto> getPlayerDtoResponseDto(Player player) {
         RedisOperator redisOperator=MyApplicationContextUti.getBean(RedisOperator.class);
+        PlayerService playerService=MyApplicationContextUti.getBean(PlayerService.class);
         PlayerDto userDto = CopyUtil.copy(player, PlayerDto.class);
         String token = getToken(player.getId());
         redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
         userDto.setToken(token);
+        playerService.save(player);
         ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
         responseDto.setContent(userDto);
         return responseDto;
