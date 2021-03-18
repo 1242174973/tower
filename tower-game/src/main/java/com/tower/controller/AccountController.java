@@ -98,10 +98,22 @@ public class AccountController {
         return getPlayerDtoResponseDto(player);
     }
 
+    @PostMapping("/login/{token}")
+    @ApiOperation(value = "快速登录", notes = "需要参数 token ")
+    public ResponseDto<PlayerDto> login(@ApiParam(value = "密码", required = true)
+                                        @PathVariable String token) {
+        BusinessUtil.require(token, BusinessExceptionCode.TOKEN);
+        BusinessUtil.length(token, BusinessExceptionCode.TOKEN, 8);
+        // 这边拿到的 token  前往redis获得用户信息返回
+        Player player = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO, token), Player.class);
+        BusinessUtil.assertParam(player != null, "Token 已失效，请重新登录");
+        return getPlayerDtoResponseDto(player);
+    }
+
     @GetMapping("/randomName")
     @ApiOperation(value = "随机昵称", notes = "无需参数")
     public ResponseDto<String> randomName() {
-        ResponseDto<String> responseDto=new ResponseDto<>();
+        ResponseDto<String> responseDto = new ResponseDto<>();
         responseDto.setContent(NameRandomUtil.getRandomName());
         return responseDto;
     }
@@ -112,8 +124,8 @@ public class AccountController {
         LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Player::getNickName, nickName);
         int playerCount = playerService.count(lambdaQueryWrapper);
-        ResponseDto<String> responseDto=new ResponseDto<>();
-        if (playerCount>0) {
+        ResponseDto<String> responseDto = new ResponseDto<>();
+        if (playerCount > 0) {
             responseDto.setSuccess(false);
             responseDto.setMessage("昵称已经存在");
         }

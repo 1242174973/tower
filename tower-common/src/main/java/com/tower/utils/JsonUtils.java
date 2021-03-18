@@ -3,7 +3,12 @@ package com.tower.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -14,11 +19,16 @@ import java.util.List;
  * Copyright: Copyright (c)
  * Company: www.imooc.com
  */
+@Component
 public class JsonUtils {
 
-    // 定义jackson对象
-    private static final ObjectMapper MAPPER = new ObjectMapper();
-
+    private static   ObjectMapper MAPPER=new ObjectMapper();
+    static{
+        JavaTimeModule module=new JavaTimeModule();
+        module.addDeserializer(LocalDateTime.class,new LocalDateTimeDeserializer());
+        module.addSerializer(LocalDateTime.class,new LocalDateTimeSerializer());
+        MAPPER.registerModule(module);
+    }
     /**
      * 将对象转换成json字符串。
      *

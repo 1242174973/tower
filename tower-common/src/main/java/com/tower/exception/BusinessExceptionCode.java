@@ -15,6 +15,7 @@ public enum BusinessExceptionCode {
     SPREAD("推广码"),
     OLD_PASSWORD("旧密码"),
     NEW_PASSWORD("新密码"),
+    TOKEN("token"),
     ;
     /**
      * 描述
