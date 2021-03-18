@@ -12,6 +12,7 @@
         <module>tower-service</module>
         <module>tower-game</module>
         <module>tower-common</module>
+        <module>tower-admin</module>
     </modules>
     <!-- 打包方式，必须要-->
     <packaging>pom</packaging>
