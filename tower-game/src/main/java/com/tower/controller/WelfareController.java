@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 
 /**
@@ -60,31 +61,35 @@ public class WelfareController {
 
     @GetMapping("/signIn")
     @ApiOperation(value = "签到", notes = "无需参数")
-    @Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<PlayerDto> signIn(Player player) {
         int vipLevel = player.getVip();
         LambdaQueryWrapper<SignIn> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(SignIn::getVipLevel, vipLevel);
         int count = signInService.count(lambdaQueryWrapper);
+        BusinessUtil.assertParam(
+                !DateUtils.isBeforeDay(0, player.getSignInTime().toInstant(ZoneOffset.ofHours(8)).toEpochMilli()),
+                "今天已经签到过了");
         if (player.getSignIn() >= count) {
             player.setSignIn(1);
         } else {
             player.setSignIn(player.getSignIn() + 1);
         }
+        player.setSignInTime(LocalDateTime.now());
         lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(SignIn::getVipLevel, vipLevel).eq(SignIn::getDay, player.getSignIn());
         SignIn one = signInService.getOne(lambdaQueryWrapper);
         switch (one.getAwardType()) {
             //金额
             case 1:
-                player.setMoney( player.getMoney().add(one.getAward()));
+                player.setMoney(player.getMoney().add(one.getAward()));
                 break;
             //vip经验
             case 2:
             default:
                 break;
         }
-        WelfareLog welfareLog=new WelfareLog();
+        WelfareLog welfareLog = new WelfareLog();
         welfareLog.setMode(1);
         welfareLog.setWelfare(one.getAward());
         welfareLog.setWelfareType(one.getAwardType());
