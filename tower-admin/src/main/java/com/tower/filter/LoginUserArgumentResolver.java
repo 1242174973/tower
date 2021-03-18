@@ -1,6 +1,6 @@
 package com.tower.filter;
 
-import com.tower.entity.User;
+import com.tower.entity.Player;
 import com.tower.utils.JsonUtils;
 import com.tower.utils.RedisOperator;
 import com.tower.variable.RedisVariable;
@@ -29,7 +29,7 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         Class<?> clazz = parameter.getParameterType();
-        return clazz == User.class;
+        return clazz == Player.class;
     }
 
     @Override
@@ -37,10 +37,10 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
         HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
         String token = request.getHeader("token");
         // 然后根据token获取用户登录信息
-        User user = null;
+        Player user = null;
         if (token != null) {
             // 这边拿到的 token  前往redis获得用户信息返回
-            user = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO , token), User.class);
+            user = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO , token), Player.class);
         }
         return user;
     }
