@@ -144,7 +144,7 @@ public class AccountController {
         String token = getToken(player.getId());
         redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
         userDto.setToken(token);
-        playerService.save(player);
+        playerService.saveOrUpdate(player);
         ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
         responseDto.setContent(userDto);
         return responseDto;

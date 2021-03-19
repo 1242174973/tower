@@ -3,10 +3,13 @@ package com.tower.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.UserBankCardDto;
+import com.tower.dto.UserWithdrawConfigDto;
 import com.tower.entity.Player;
 import com.tower.entity.UserBankCard;
+import com.tower.entity.UserWithdrawConfig;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.UserBankCardService;
+import com.tower.service.UserWithdrawConfigService;
 import com.tower.utils.BusinessUtil;
 import com.tower.utils.CopyUtil;
 import io.swagger.annotations.Api;
@@ -31,6 +34,9 @@ public class UserBankCardController {
 
     @Resource
     private UserBankCardService userBankCardService;
+
+    @Resource
+    private UserWithdrawConfigService userWithdrawConfigService;
 
     @GetMapping("/bindBankCard")
     @ApiOperation(value = "绑定银行卡", notes = "参数 银行卡持卡人 银行卡号 银行 支行 省 市")
@@ -57,6 +63,18 @@ public class UserBankCardController {
         userBankCardService.saveOrUpdate(userBankCard, lambdaQueryWrapper);
         ResponseDto<UserBankCardDto> responseDto = new ResponseDto<>();
         responseDto.setContent(userBankCardDto);
+        return responseDto;
+    }
+
+    @GetMapping("/userWithdrawConfig")
+    @ApiOperation(value = "获得提现配置", notes = "无需参数")
+    public ResponseDto<UserWithdrawConfigDto> userWelfareConfig(Player player) {
+        LambdaQueryWrapper<UserWithdrawConfig> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(UserWithdrawConfig::getUserId, player.getId());
+        UserWithdrawConfig one = userWithdrawConfigService.getOne(lambdaQueryWrapper);
+        ResponseDto<UserWithdrawConfigDto> responseDto = new ResponseDto<>();
+        UserWithdrawConfigDto userWithdrawConfigDto=CopyUtil.copy(one,UserWithdrawConfigDto.class);
+        responseDto.setContent(userWithdrawConfigDto);
         return responseDto;
     }
 }
