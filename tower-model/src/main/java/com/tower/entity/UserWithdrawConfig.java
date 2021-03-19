@@ -49,5 +49,8 @@ public class UserWithdrawConfig implements Serializable {
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
 
+    @ApiModelProperty(value = "手续费")
+    private Integer serviceCharge;
+
 
 }

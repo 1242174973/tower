@@ -1,26 +1,24 @@
 package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.tower.dto.ResponseDto;
-import com.tower.dto.UserBankCardDto;
-import com.tower.dto.UserWithdrawConfigDto;
+import com.tower.dto.*;
 import com.tower.entity.Player;
 import com.tower.entity.UserBankCard;
 import com.tower.entity.UserWithdrawConfig;
+import com.tower.entity.WithdrawLog;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.UserBankCardService;
 import com.tower.service.UserWithdrawConfigService;
+import com.tower.service.WithdrawLogService;
 import com.tower.utils.BusinessUtil;
 import com.tower.utils.CopyUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -37,6 +35,9 @@ public class UserBankCardController {
 
     @Resource
     private UserWithdrawConfigService userWithdrawConfigService;
+
+    @Resource
+    private WithdrawLogService withdrawLogService;
 
     @GetMapping("/bindBankCard")
     @ApiOperation(value = "绑定银行卡", notes = "参数 银行卡持卡人 银行卡号 银行 支行 省 市")
@@ -73,7 +74,7 @@ public class UserBankCardController {
         lambdaQueryWrapper.eq(UserBankCard::getUserId, player.getId());
         UserBankCard one = userBankCardService.getOne(lambdaQueryWrapper);
         ResponseDto<UserBankCardDto> responseDto = new ResponseDto<>();
-        UserBankCardDto userWithdrawConfigDto=CopyUtil.copy(one,UserBankCardDto.class);
+        UserBankCardDto userWithdrawConfigDto = CopyUtil.copy(one, UserBankCardDto.class);
         responseDto.setContent(userWithdrawConfigDto);
         return responseDto;
     }
@@ -85,8 +86,28 @@ public class UserBankCardController {
         lambdaQueryWrapper.eq(UserWithdrawConfig::getUserId, player.getId());
         UserWithdrawConfig one = userWithdrawConfigService.getOne(lambdaQueryWrapper);
         ResponseDto<UserWithdrawConfigDto> responseDto = new ResponseDto<>();
-        UserWithdrawConfigDto userWithdrawConfigDto=CopyUtil.copy(one,UserWithdrawConfigDto.class);
+        UserWithdrawConfigDto userWithdrawConfigDto = CopyUtil.copy(one, UserWithdrawConfigDto.class);
         responseDto.setContent(userWithdrawConfigDto);
         return responseDto;
     }
+
+    @PostMapping("/userWithdrawConfig/{money}")
+    @ApiOperation(value = "提现", notes = "参数 提现金额")
+    public ResponseDto<PlayerDto> withdraw(Player player,
+                                           @ApiParam(value = "提现金额", required = true)
+                                           @PathVariable double money) {
+        BusinessUtil.assertParam(player.getMoney().doubleValue() > money, "玩家余额不足" + money);
+        player.setMoney(player.getMoney().subtract(BigDecimal.valueOf(money)));
+        LambdaQueryWrapper<UserWithdrawConfig> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(UserWithdrawConfig::getUserId, player.getId());
+        UserWithdrawConfig one = userWithdrawConfigService.getOne(lambdaQueryWrapper);
+        WithdrawLog withdrawLog = new WithdrawLog().
+                setUserId(player.getId()).
+                setCreateTime(LocalDateTime.now()).
+                setWithdrawMoney(BigDecimal.valueOf(money)).
+                setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()));
+        withdrawLogService.save(withdrawLog);
+        return AccountController.getPlayerDtoResponseDto(player);
+    }
+
 }

@@ -22,13 +22,13 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value = "UserWithdrawConfig对象", description = "")
+@ApiModel(value="UserWithdrawConfig对象", description="")
 public class UserWithdrawConfigDto implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "玩家提现配置")
-    @TableId(value = "id", type = IdType.AUTO)
+      @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     @ApiModelProperty(value = "玩家ID")
@@ -48,6 +48,9 @@ public class UserWithdrawConfigDto implements Serializable {
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
+
+    @ApiModelProperty(value = "手续费")
+    private Integer serviceCharge;
 
 
 }

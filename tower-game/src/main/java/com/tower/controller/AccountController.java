@@ -14,6 +14,8 @@ import com.tower.variable.RedisVariable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -44,6 +46,7 @@ public class AccountController {
 
     @PostMapping("/register")
     @ApiOperation(value = "用户注册", notes = "需要参数 昵称 图片验证码  图片验证码token  用户名  密码  推广码")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<PlayerDto> register(@ApiParam(value = "注册信息", required = true)
                                            @RequestBody PlayerDto playerDto) {
         BusinessUtil.require(playerDto.getAccount(), BusinessExceptionCode.ACCOUNT);
