@@ -128,8 +128,8 @@ public class WelfareController {
         lambdaQueryWrapper.ge(WelfareLog::getCreateTime, startTime);
         lambdaQueryWrapper.le(WelfareLog::getCreateTime, endTime);
         page = welfareLogService.page(page, lambdaQueryWrapper);
-        WelFareLogPageDto welfareLogDtoList = CopyUtil.copy(page, WelFareLogPageDto.class);
-        responseDto.setContent(welfareLogDtoList);
+        welFareLogPageDto = CopyUtil.copy(page, WelFareLogPageDto.class);
+        responseDto.setContent(welFareLogPageDto);
         return responseDto;
     }
 
