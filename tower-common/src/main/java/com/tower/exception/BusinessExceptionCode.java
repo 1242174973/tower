@@ -17,6 +17,12 @@ public enum BusinessExceptionCode {
     NEW_PASSWORD("新密码"),
     TOKEN("token"),
     VIP_LEVEL("vip等级"),
+    BANK_CARD_NAME("持卡人"),
+    BANK_CARD_NUM("银行卡号"),
+    BANK("银行"),
+    SUB_BRANCH("支行"),
+    PROVINCE("省"),
+    CITY("市"),
     ;
     /**
      * 描述
