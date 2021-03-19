@@ -66,6 +66,18 @@ public class UserBankCardController {
         return responseDto;
     }
 
+    @GetMapping("/userBankCard")
+    @ApiOperation(value = "获得银行卡信息", notes = "无需参数")
+    public ResponseDto<UserBankCardDto> userBankCard(Player player) {
+        LambdaQueryWrapper<UserBankCard> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(UserBankCard::getUserId, player.getId());
+        UserBankCard one = userBankCardService.getOne(lambdaQueryWrapper);
+        ResponseDto<UserBankCardDto> responseDto = new ResponseDto<>();
+        UserBankCardDto userWithdrawConfigDto=CopyUtil.copy(one,UserBankCardDto.class);
+        responseDto.setContent(userWithdrawConfigDto);
+        return responseDto;
+    }
+
     @GetMapping("/userWithdrawConfig")
     @ApiOperation(value = "获得提现配置", notes = "无需参数")
     public ResponseDto<UserWithdrawConfigDto> userWelfareConfig(Player player) {
