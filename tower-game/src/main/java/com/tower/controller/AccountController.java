@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
 import com.tower.entity.Player;
+import com.tower.entity.UserWithdrawConfig;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.PlayerService;
+import com.tower.service.UserWithdrawConfigService;
 import com.tower.utils.*;
 import com.tower.variable.RedisVariable;
 import io.swagger.annotations.Api;
@@ -33,6 +35,9 @@ public class AccountController {
 
     @Resource
     private RedisOperator redisOperator;
+
+    @Resource
+    private UserWithdrawConfigService userWithdrawConfigService;
 
     @Resource
     private PlayerService playerService;
@@ -73,8 +78,19 @@ public class AccountController {
         player.setSuperId(superId);
         player.setPic("http://www.baidu.com");
         player.setSalt(UuidUtil.getShortUuid(8));
+        player.setSignInTime(DateUtils.byDayLocalDateTime(-1));
         player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(player.getPassword() + player.getSalt())));
-        return getPlayerDtoResponseDto(player);
+        ResponseDto<PlayerDto> playerDtoResponseDto = getPlayerDtoResponseDto(player);
+        Integer userId = playerDtoResponseDto.getContent().getId();
+        UserWithdrawConfig userWithdrawConfig = new UserWithdrawConfig();
+        userWithdrawConfig.setUserId(userId).
+                setCreateTime(LocalDateTime.now()).
+                setTotalWithdrawMoney(100.00).
+                setTodayWithdrawMoney(100.00).
+                setTotalWithdrawSize(0).
+                setTodayWithdrawSize(0);
+        userWithdrawConfigService.save(userWithdrawConfig);
+        return playerDtoResponseDto;
     }
 
     @PostMapping("/login/{account}/{password}")
@@ -138,13 +154,13 @@ public class AccountController {
      * @return 返回体
      */
     public static ResponseDto<PlayerDto> getPlayerDtoResponseDto(Player player) {
-        RedisOperator redisOperator=MyApplicationContextUti.getBean(RedisOperator.class);
-        PlayerService playerService=MyApplicationContextUti.getBean(PlayerService.class);
+        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
+        PlayerService playerService = MyApplicationContextUti.getBean(PlayerService.class);
+        playerService.saveOrUpdate(player);
         PlayerDto userDto = CopyUtil.copy(player, PlayerDto.class);
         String token = getToken(player.getId());
         redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
         userDto.setToken(token);
-        playerService.saveOrUpdate(player);
         ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
         responseDto.setContent(userDto);
         return responseDto;
@@ -157,7 +173,7 @@ public class AccountController {
      * @return token
      */
     private static String getToken(int userId) {
-        RedisOperator redisOperator=MyApplicationContextUti.getBean(RedisOperator.class);
+        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
         String token = redisOperator.hget(RedisVariable.USER_TOKEN, userId);
         if (token != null) {
             return token;

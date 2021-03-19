@@ -26,6 +26,11 @@ public class DateUtils {
         LocalDateTime dateTime = LocalDateTime.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth(), 0, 0, 0);
         return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
+    public static LocalDateTime byDayLocalDateTime(int day){
+        LocalDate localDate = LocalDate.now();
+        localDate = localDate.plusDays(day);
+        return LocalDateTime.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth(), 0, 0, 0);
+    }
     public static boolean isBeforeDay(int day,long timestamp){
         return timestamp<byDayTime(day);
     }
