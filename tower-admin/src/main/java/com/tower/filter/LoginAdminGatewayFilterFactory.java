@@ -49,7 +49,7 @@ public class LoginAdminGatewayFilterFactory extends WebMvcConfigurationSupport {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns(
-                        "/account/**",
+                        "/login/**",
                         "/file/imageUpload",
                         "/kaptcha/image-code/**",
                         "/v2/api-docs");

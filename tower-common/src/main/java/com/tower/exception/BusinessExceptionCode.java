@@ -23,6 +23,8 @@ public enum BusinessExceptionCode {
     SUB_BRANCH("支行"),
     PROVINCE("省"),
     CITY("市"),
+    LOGIN_USER_ERROR("用户名错误"),
+    LOGIN_PASSWORD_ERROR("密码错误"),
     ;
     /**
      * 描述

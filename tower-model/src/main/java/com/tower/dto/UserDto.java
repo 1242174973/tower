@@ -41,5 +41,9 @@ public class UserDto implements Serializable {
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
 
+    @ApiModelProperty(value = "验证码")
+    private String imageCode;
 
+    @ApiModelProperty(value = "图片验证码token")
+    private String imageCodeToken;
 }
