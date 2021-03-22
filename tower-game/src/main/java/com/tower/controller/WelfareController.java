@@ -68,7 +68,7 @@ public class WelfareController {
         lambdaQueryWrapper.eq(SignIn::getVipLevel, vipLevel);
         int count = signInService.count(lambdaQueryWrapper);
         BusinessUtil.assertParam(
-                !DateUtils.isBeforeDay(0, player.getSignInTime().toInstant(ZoneOffset.ofHours(8)).toEpochMilli()),
+                DateUtils.isBeforeDay(0, player.getSignInTime().toInstant(ZoneOffset.ofHours(8)).toEpochMilli()),
                 "今天已经签到过了");
         if (player.getSignIn() >= count) {
             player.setSignIn(1);
@@ -128,7 +128,9 @@ public class WelfareController {
         lambdaQueryWrapper.ge(WelfareLog::getCreateTime, startTime);
         lambdaQueryWrapper.le(WelfareLog::getCreateTime, endTime);
         page = welfareLogService.page(page, lambdaQueryWrapper);
-        welFareLogPageDto = CopyUtil.copy(page, WelFareLogPageDto.class);
+        welFareLogPageDto.setTotal((int) page.getTotal());
+        List<WelfareLogDto> welfareLogDtoList = CopyUtil.copyList(page.getRecords(), WelfareLogDto.class);
+        welFareLogPageDto.setList(welfareLogDtoList);
         responseDto.setContent(welFareLogPageDto);
         return responseDto;
     }

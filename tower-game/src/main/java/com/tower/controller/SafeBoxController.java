@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
+import com.tower.dto.SafeBoxLogDto;
 import com.tower.dto.page.SafeBoxLogPageDto;
 import com.tower.entity.Player;
 import com.tower.entity.SafeBoxLog;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author 梦-屿-千-寻
@@ -69,9 +71,12 @@ public class SafeBoxController {
         ResponseDto<SafeBoxLogPageDto> responseDto = new ResponseDto<>();
         Page<SafeBoxLog> page=new Page<>(safeBoxLogPageDto.getPage(),safeBoxLogPageDto.getSize());
         LambdaQueryWrapper<SafeBoxLog> logLambdaQueryWrapper=new LambdaQueryWrapper<>();
+        logLambdaQueryWrapper.orderByDesc(SafeBoxLog::getCreateTime);
         logLambdaQueryWrapper.eq(SafeBoxLog::getUserId,player.getId());
         page=safeBoxLogService.page(page,logLambdaQueryWrapper);
-        safeBoxLogPageDto=CopyUtil.copy(page,SafeBoxLogPageDto.class);
+        List<SafeBoxLogDto> playerDtoList = CopyUtil.copyList(page.getRecords(), SafeBoxLogDto.class);
+        safeBoxLogPageDto.setList(playerDtoList);
+        safeBoxLogPageDto.setTotal((int) page.getTotal());
         responseDto.setContent(safeBoxLogPageDto);
         return responseDto;
     }

@@ -31,6 +31,11 @@ public enum BusinessExceptionCode {
     CITY("市"),
     LOGIN_USER_ERROR("用户名错误"),
     LOGIN_PASSWORD_ERROR("密码错误"),
+    TURRET_NAME("炮塔名字"),
+    MONSTER_NAME("怪物名字"),
+    MULTIPLE("倍数"),
+    MAX_BET("最大下注"),
+    RATES("出现概率"),
     ;
     /**
      * 描述
