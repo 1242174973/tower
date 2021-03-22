@@ -7,6 +7,8 @@ import com.tower.service.UserService;
 import com.tower.utils.JsonUtils;
 import com.tower.utils.RedisOperator;
 import com.tower.utils.UuidUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author 梦-屿-千-寻
@@ -25,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("/login")
 @Slf4j
+@Api(value = "登录", tags = "登录相关请求")
 public class LoginController {
 
     @Resource
@@ -34,6 +36,7 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/login")
+    @ApiOperation(value = "登录请求", notes = "登录请求")
     public ResponseDto<LoginUserDto> login(@RequestBody UserDto userDto){
         log.info("用户登录开始");
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));

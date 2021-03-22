@@ -7,6 +7,12 @@ package com.tower.exception;
  */
 public enum BusinessExceptionCode {
     //账号
+    ID("id"),
+    SIGN_IN("签到"),
+    TOTAL_SIGN_IN("总签到"),
+    MONEY("余额"),
+    SAFE_BOX("保险柜余额"),
+    EXPERIENCE("经验"),
     ACCOUNT("账号"),
     NICK_NAME("昵称"),
     PIC_CODE("图片验证码"),

@@ -4,12 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
-import com.tower.dto.SignInDto;
 import com.tower.dto.page.SafeBoxLogPageDto;
 import com.tower.entity.Player;
 import com.tower.entity.SafeBoxLog;
-import com.tower.entity.SignIn;
-import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.SafeBoxLogService;
 import com.tower.utils.BusinessUtil;
 import com.tower.utils.CopyUtil;
@@ -37,7 +34,7 @@ public class SafeBoxController {
     private SafeBoxLogService safeBoxLogService;
 
     @GetMapping("/withdraw/{coin}")
-    @ApiOperation(value = "保险柜存取分", notes = "参数 分数  大于0取反小于0存分")
+    @ApiOperation(value = "保险柜存取分", notes = "参数 分数  大于0存分 小于0取分")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<PlayerDto> withdraw(Player player,
                                            @ApiParam(value = "分数", required = true)
@@ -45,13 +42,14 @@ public class SafeBoxController {
         BusinessUtil.assertParam(coin != 0, "操作分数不能为零");
         //取分操作
         if (coin > 0) {
-            BusinessUtil.assertParam(player.getSafeBox().doubleValue() > coin, "保险柜分数不够，取反失败");
-            player.setMoney(player.getMoney().add(BigDecimal.valueOf(coin)));
-            player.setSafeBox(player.getMoney().subtract(BigDecimal.valueOf(coin)));
-        } else {
-            BusinessUtil.assertParam(player.getMoney().doubleValue() > coin, "玩家分数不够，存分失败");
+            BusinessUtil.assertParam(player.getMoney().doubleValue() >= coin, "玩家分数不够，存分失败");
             player.setMoney(player.getMoney().subtract(BigDecimal.valueOf(coin)));
-            player.setSafeBox(player.getMoney().add(BigDecimal.valueOf(coin)));
+            player.setSafeBox(player.getSafeBox().add(BigDecimal.valueOf(coin)));
+        } else {
+            coin=-coin;
+            BusinessUtil.assertParam(player.getSafeBox().doubleValue() >= coin, "保险柜分数不够，取反失败");
+            player.setMoney(player.getMoney().add(BigDecimal.valueOf(coin)));
+            player.setSafeBox(player.getSafeBox().subtract(BigDecimal.valueOf(coin)));
         }
         SafeBoxLog safeBoxLog = new SafeBoxLog();
         safeBoxLog.setUserId(player.getId());
@@ -61,11 +59,13 @@ public class SafeBoxController {
         return AccountController.getPlayerDtoResponseDto(player);
     }
 
-    @GetMapping("/withdrawList")
+    @PostMapping("/withdrawList")
     @ApiOperation(value = "保险柜存取分记录", notes = "参数 分页参数")
     public ResponseDto<SafeBoxLogPageDto> withdrawList(Player player,
                                                        @ApiParam(value = "获取信息", required = true)
                                                        @RequestBody SafeBoxLogPageDto safeBoxLogPageDto) {
+        BusinessUtil.assertParam(safeBoxLogPageDto.getPage() > 0, "页数必须大于0");
+        BusinessUtil.assertParam(safeBoxLogPageDto.getSize() > 0, "条数必须大于0");
         ResponseDto<SafeBoxLogPageDto> responseDto = new ResponseDto<>();
         Page<SafeBoxLog> page=new Page<>(safeBoxLogPageDto.getPage(),safeBoxLogPageDto.getSize());
         LambdaQueryWrapper<SafeBoxLog> logLambdaQueryWrapper=new LambdaQueryWrapper<>();

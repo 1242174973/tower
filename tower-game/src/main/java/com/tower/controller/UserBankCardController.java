@@ -39,7 +39,7 @@ public class UserBankCardController {
     @Resource
     private WithdrawLogService withdrawLogService;
 
-    @GetMapping("/bindBankCard")
+    @PostMapping("/bindBankCard")
     @ApiOperation(value = "绑定银行卡", notes = "参数 银行卡持卡人 银行卡号 银行 支行 省 市")
     public ResponseDto<UserBankCardDto> bindBankCard(Player player,
                                                      @ApiParam(value = "绑定银行卡信息", required = true)

@@ -10,7 +10,6 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @date2021/3/16 14:38
  */
 @SpringBootApplication
-@MapperScan("com.tower.mapper")
 public class TowerAdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(TowerAdminApplication.class, args);

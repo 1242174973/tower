@@ -40,7 +40,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             LOG.info("token为空，请求被拦截---{}",request.getRequestURI());
             throw new BusinessException("请先登录");
         }
-        String object = redisOperator.hget(RedisVariable.USER_INFO , token);
+        String object = redisOperator.get(token);
         if (object == null) {
             LOG.warn("token无效，请求被拦截---{}",request.getRequestURI());
             throw new BusinessException("请重新登录");
