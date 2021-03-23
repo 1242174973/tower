@@ -39,6 +39,8 @@ public enum BusinessExceptionCode {
     AWARD("奖励"),
     AWARD_TYPE("奖励类型"),
     DAY("第几天"),
+    LOGIN_NAME("登录名"),
+    NAME("名称"),
     ;
     /**
      * 描述

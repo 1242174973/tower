@@ -44,6 +44,9 @@ public class UserDto implements Serializable {
     @ApiModelProperty(value = "验证码")
     private String imageCode;
 
+    @ApiModelProperty(value = "登录凭证")
+    private String token;
+
     @ApiModelProperty(value = "图片验证码token")
     private String imageCodeToken;
 }

@@ -130,8 +130,8 @@
                         </a>
 
                         <ul class="submenu">
-                            <li class="" id="log-signIn-sidebar">
-                                <router-link to="/log/signIn">
+                            <li class="" id="welfare-signIn-sidebar">
+                                <router-link to="/welfare/signIn">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     签到福利
                                 </router-link>
@@ -172,6 +172,27 @@
 
                         </ul>
                     </li>
+                    <li class="" >
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-list"></i>
+                            <span class="menu-text"> 后台管理 </span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <ul class="submenu">
+                            <li class="" id="admin-user-sidebar">
+                                <router-link to="/admin/user">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    后台用户管理
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                        </ul>
+                    </li>
+
 
                 </ul><!-- /.nav-list -->
 
@@ -356,7 +377,7 @@
                     return;
                 }
                 Loading.show();
-                _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/user/updatePassword/'+hex_md5(_this.oldPassword+KEY)+"/"+hex_md5(_this.newPassword+KEY)).then((response) => {
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/login/updatePassword/'+hex_md5(_this.oldPassword+KEY)+"/"+hex_md5(_this.newPassword+KEY)).then((response) => {
                     Loading.hide();
                     let resp = response.data;
                     if (resp.success) {
@@ -390,7 +411,7 @@
             logout() {
                 let _this = this;
                 Loading.show();
-                _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/user/logout/' + _this.loginUser.token).then((response) => {
+                _this.$ajax.get(process.env.VUE_APP_SERVER + '/login/logout/' + _this.loginUser.token).then((response) => {
                     Loading.hide();
                     let resp = response.data;
                     if (resp.success) {

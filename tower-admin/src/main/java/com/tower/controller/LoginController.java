@@ -1,21 +1,19 @@
 package com.tower.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tower.dto.LoginUserDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.UserDto;
+import com.tower.entity.User;
+import com.tower.exception.BusinessException;
 import com.tower.service.UserService;
-import com.tower.utils.JsonUtils;
-import com.tower.utils.RedisOperator;
-import com.tower.utils.UuidUtil;
+import com.tower.utils.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -35,37 +33,64 @@ public class LoginController {
     @Resource
     private UserService userService;
 
+
+
     @PostMapping("/login")
     @ApiOperation(value = "登录请求", notes = "登录请求")
-    public ResponseDto<LoginUserDto> login(@RequestBody UserDto userDto){
+    public ResponseDto<UserDto> login(@RequestBody UserDto userDto){
         log.info("用户登录开始");
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
-        ResponseDto<LoginUserDto> responseDto = new ResponseDto<>();
+        assertCode(userDto);
 
+        LambdaQueryWrapper<User> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(User::getLoginName,userDto.getLoginName());
+        User mysqlUser = userService.getOne(lambdaQueryWrapper);
+
+        BusinessUtil.assertParam(mysqlUser!=null,"用户没找到");
+        BusinessUtil.assertParam(mysqlUser.getPassword().equals(userDto.getPassword()),"密码错误");
+        ResponseDto<UserDto> responseDto = new ResponseDto<>();
+        String token = UuidUtil.getShortUuid();
+        userDto.setToken(token);
+        userDto.setName(mysqlUser.getName());
+        redisOperator.set(token, JsonUtils.objectToJson(mysqlUser), 3600*24);
+        responseDto.setContent(userDto);
+        return responseDto;
+    }
+    public void assertCode(UserDto userDto){
         // 根据验证码token去获取缓存中的验证码，和用户输入的验证码是否一致
         String imageCode =  redisOperator.get(userDto.getImageCodeToken());
         log.info("从redis中获取到的验证码：{}", imageCode);
-        if (StringUtils.isEmpty(imageCode)) {
-            responseDto.setSuccess(false);
-            responseDto.setMessage("验证码已过期");
-            log.info("用户登录失败，验证码已过期");
-            return responseDto;
-        }
-        if (userDto.getImageCode()==null||!imageCode.toLowerCase().equals(userDto.getImageCode().toLowerCase())) {
-            responseDto.setSuccess(false);
-            responseDto.setMessage("验证码不对");
-            log.info("用户登录失败，验证码不对");
-            return responseDto;
-        } else {
-            // 验证通过后，移除验证码
-            redisOperator.del(userDto.getImageCodeToken());
-        }
+        BusinessUtil.assertParam(imageCode!=null,"验证码已过期");
+        BusinessUtil.assertParam(imageCode.toLowerCase().equals(userDto.getImageCode()),"验证码错误");
+        // 验证通过后，移除验证码
+        redisOperator.del(userDto.getImageCodeToken());
+    }
 
-        LoginUserDto loginUserDto = userService.login(userDto);
-        String token = UuidUtil.getShortUuid();
-        loginUserDto.setToken(token);
-        redisOperator.set(token, JsonUtils.objectToJson(loginUserDto), 3600*24);
-        responseDto.setContent(loginUserDto);
+    /**
+     * 退出登录
+     */
+    @GetMapping("/logout/{token}")
+    public ResponseDto logout(@PathVariable String token) {
+        ResponseDto responseDto = new ResponseDto();
+        redisOperator.del(token);
+        log.info("从redis中删除token:{}", token);
         return responseDto;
     }
+
+    /**
+     * 修改密码
+     */
+    @PostMapping("/updatePassword/{oldPassword}/{newPassword}")
+    public ResponseDto updatePassword(@PathVariable String oldPassword, @PathVariable String newPassword, User user) {
+        LambdaQueryWrapper<User> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(User::getLoginName,user.getLoginName());
+        User mysqlUser = userService.getOne(lambdaQueryWrapper);
+        if (mysqlUser == null || !mysqlUser.getPassword().equals(DigestUtils.md5DigestAsHex(oldPassword.getBytes()))) {
+            throw new BusinessException("旧密码错误");
+        }
+        mysqlUser.setPassword(DigestUtils.md5DigestAsHex(newPassword.getBytes()));
+        userService.saveOrUpdate(mysqlUser);
+        return new ResponseDto();
+    }
+
 }

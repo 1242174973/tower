@@ -8,6 +8,7 @@ import Monster from "./views/admin/Monster"
 import WelfareLog from "./views/admin/WelfareLog"
 import SafeBoxLog from "./views/admin/SafeBoxLog"
 import SignIn from "./views/admin/SignIn"
+import User from "./views/admin/User"
 
 Vue.use(Router);
 
@@ -51,9 +52,13 @@ export default new Router({
             name: "log/safeBoxLog",
             component: SafeBoxLog,
         }, {
-            path: "log/signIn",
-            name: "log/signIn",
+            path: "welfare/signIn",
+            name: "welfare/signIn",
             component: SignIn,
+        },{
+            path: "admin/user",
+            name: "admin/user",
+            component: User,
         },
 
         ]
