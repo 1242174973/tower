@@ -152,10 +152,18 @@
                         </a>
 
                         <ul class="submenu">
-                            <li class="" id="welfare-userWithdrawConfig-sidebar">
+                            <li class="" id="withdraw-userWithdrawConfig-sidebar">
                                 <router-link to="/withdraw/userWithdrawConfig">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     玩家提现配置
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="" id="withdraw-userBankCard-sidebar">
+                                <router-link to="/withdraw/userBankCard">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    玩家绑卡信息
                                 </router-link>
 
                                 <b class="arrow"></b>

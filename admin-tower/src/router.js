@@ -10,6 +10,7 @@ import SafeBoxLog from "./views/admin/SafeBoxLog"
 import SignIn from "./views/admin/SignIn"
 import User from "./views/admin/User"
 import UserWithdrawConfig from "./views/admin/UserWithdrawConfig"
+import UserBankCard from "./views/admin/UserBankCard"
 
 Vue.use(Router);
 
@@ -64,6 +65,10 @@ export default new Router({
             path: "withdraw/userWithdrawConfig",
             name: "withdraw/userWithdrawConfig",
             component: UserWithdrawConfig,
+        },{
+            path: "withdraw/userBankCard",
+            name: "withdraw/userBankCard",
+            component: UserBankCard,
         },
 
         ]
