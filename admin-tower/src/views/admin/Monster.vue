@@ -19,7 +19,7 @@
                 </label>
             </div>
             <div class="col-sm-2">
-                <button v-on:click="list(1)" class="form-control">搜索玩家</button>
+                <button v-on:click="list(1)" class="form-control">搜索</button>
             </div>
         </div>
         <br>
