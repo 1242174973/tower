@@ -105,13 +105,12 @@ public class UserBankCardController {
         lambdaQueryWrapper.eq(UserWithdrawConfig::getUserId, player.getId());
         UserWithdrawConfig one = userWithdrawConfigService.getOne(lambdaQueryWrapper);
 
-        WithdrawLog withdrawLog = new WithdrawLog().
-                setUserId(player.getId()).
-                setBankCardName(userBankCard.getBankCardName()).
-                setBankCardNum(userBankCard.getBankCardNum()).
-                setCreateTime(LocalDateTime.now()).
-                setWithdrawMoney(BigDecimal.valueOf(money)).
-                setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()));
+        WithdrawLog withdrawLog = new WithdrawLog().setUserId(player.getId())
+                .setBankCardName(userBankCard.getBankCardName())
+                .setBankCardNum(userBankCard.getBankCardNum())
+                .setCreateTime(LocalDateTime.now())
+                .setWithdrawMoney(BigDecimal.valueOf(money))
+                .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()));
         withdrawLogService.save(withdrawLog);
         return AccountController.getPlayerDtoResponseDto(player);
     }

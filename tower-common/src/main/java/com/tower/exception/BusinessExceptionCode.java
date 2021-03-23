@@ -41,6 +41,11 @@ public enum BusinessExceptionCode {
     DAY("第几天"),
     LOGIN_NAME("登录名"),
     NAME("名称"),
+    TODAY_WITHDRAW_MONEY("今日可提现金额"),
+    TOTAL_WITHDRAW_MONEY("每日可提现金额"),
+    TODAY_WITHDRAW_SIZE("今日可提现次数"),
+    TOTAL_WITHDRAW_SIZE("每日可提现次数"),
+    SERVICE_CHARGE("提现手续费"),
     ;
     /**
      * 描述

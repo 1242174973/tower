@@ -143,6 +143,28 @@
                     </li>
 
 
+                    <li class="" >
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-list"></i>
+                            <span class="menu-text"> 充值提现管理 </span>
+
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <ul class="submenu">
+                            <li class="" id="welfare-userWithdrawConfig-sidebar">
+                                <router-link to="/withdraw/userWithdrawConfig">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    玩家提现配置
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
 
                     <li class="" >
                         <a href="#" class="dropdown-toggle">
