@@ -168,6 +168,14 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="withdraw-withdrawLog-sidebar">
+                                <router-link to="/withdraw/withdrawLog">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    提现审核
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
                     </li>

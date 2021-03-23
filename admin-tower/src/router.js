@@ -11,6 +11,9 @@ import SignIn from "./views/admin/SignIn"
 import User from "./views/admin/User"
 import UserWithdrawConfig from "./views/admin/UserWithdrawConfig"
 import UserBankCard from "./views/admin/UserBankCard"
+import WithdrawLog from "./views/admin/WithdrawLog"
+
+
 
 Vue.use(Router);
 
@@ -69,6 +72,10 @@ export default new Router({
             path: "withdraw/userBankCard",
             name: "withdraw/userBankCard",
             component: UserBankCard,
+        },{
+            path: "withdraw/withdrawLog",
+            name: "withdraw/withdrawLog",
+            component: WithdrawLog,
         },
 
         ]
