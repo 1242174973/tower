@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
@@ -78,20 +79,22 @@ public class WelfareController {
         lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(SignIn::getVipLevel, vipLevel).eq(SignIn::getDay, player.getSignIn());
         SignIn one = signInService.getOne(lambdaQueryWrapper);
-        switch (one.getAwardType()) {
-            //金额
-            case 1:
-                player.setMoney(player.getMoney().add(one.getAward()));
-                break;
-            //vip经验
-            case 2:
-            default:
-                break;
+        if (one != null) {
+            switch (one.getAwardType()) {
+                //金额
+                case 1:
+                    player.setMoney(player.getMoney().add(one.getAward()));
+                    break;
+                //vip经验
+                case 2:
+                default:
+                    break;
+            }
         }
         WelfareLog welfareLog = new WelfareLog();
         welfareLog.setMode(1);
-        welfareLog.setWelfare(one.getAward());
-        welfareLog.setWelfareType(one.getAwardType());
+        welfareLog.setWelfare(one == null ? BigDecimal.ZERO : one.getAward());
+        welfareLog.setWelfareType(one == null ? 1 : one.getAwardType());
         welfareLog.setUserId(player.getId());
         welfareLog.setCreateTime(LocalDateTime.now());
         welfareLogService.save(welfareLog);
