@@ -6,6 +6,7 @@ import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.page.PlayerPageDto;
 import com.tower.entity.Player;
+import com.tower.entity.SignIn;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.PlayerService;
 import com.tower.utils.*;
@@ -43,6 +44,7 @@ public class PlayerController {
                     .or(queryWrapper -> queryWrapper.like(Player::getNickName, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(Player::getId, pageDto.getSearch()));
         }
+        lambdaQueryWrapper.orderByDesc(Player::getCreateTime);
         Page<Player> page = new Page<>(pageDto.getPage(), pageDto.getSize());
         page = playerService.page(page, lambdaQueryWrapper);
         List<PlayerDto> playerDtoList = CopyUtil.copyList(page.getRecords(), PlayerDto.class);

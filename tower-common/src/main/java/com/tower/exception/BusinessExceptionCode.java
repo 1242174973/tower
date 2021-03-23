@@ -36,6 +36,9 @@ public enum BusinessExceptionCode {
     MULTIPLE("倍数"),
     MAX_BET("最大下注"),
     RATES("出现概率"),
+    AWARD("奖励"),
+    AWARD_TYPE("奖励类型"),
+    DAY("第几天"),
     ;
     /**
      * 描述

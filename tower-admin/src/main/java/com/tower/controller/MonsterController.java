@@ -42,6 +42,7 @@ public class MonsterController {
                     .or(queryWrapper -> queryWrapper.like(Monster::getMonsterName, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(Monster::getTurretName, pageDto.getSearch()));
         }
+        lambdaQueryWrapper.orderByDesc(Monster::getCreateTime);
         Page<Monster> page = new Page<>(pageDto.getPage(), pageDto.getSize());
         page = monsterService.page(page, lambdaQueryWrapper);
         List<MonsterDto> monsterDtoList = CopyUtil.copyList(page.getRecords(), MonsterDto.class);

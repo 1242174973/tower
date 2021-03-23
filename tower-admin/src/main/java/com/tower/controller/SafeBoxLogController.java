@@ -42,6 +42,7 @@ public class SafeBoxLogController {
                 .or(queryWrapper -> queryWrapper.like(SafeBoxLog::getUserId, pageDto.getSearch()))
                 .or(queryWrapper -> queryWrapper.like(SafeBoxLog::getWithdraw, pageDto.getSearch()));
         }
+        lambdaQueryWrapper.orderByDesc(SafeBoxLog::getCreateTime);
         Page<SafeBoxLog> page = new Page<>(pageDto.getPage(), pageDto.getSize());
         page = safeBoxLogService.page(page, lambdaQueryWrapper);
         List<SafeBoxLogDto> safeBoxLogDtoList = CopyUtil.copyList(page.getRecords(), SafeBoxLogDto.class);

@@ -41,6 +41,7 @@ public class WelfareLogController {
                .or(queryWrapper -> queryWrapper.like(WelfareLog::getId, pageDto.getSearch()))
                .or(queryWrapper -> queryWrapper.like(WelfareLog::getUserId, pageDto.getSearch()));
         }
+        lambdaQueryWrapper.orderByDesc(WelfareLog::getCreateTime);
         Page<WelfareLog> page = new Page<>(pageDto.getPage(), pageDto.getSize());
         page = welfareLogService.page(page, lambdaQueryWrapper);
         List<WelfareLogDto> welfareLogDtoList = CopyUtil.copyList(page.getRecords(), WelfareLogDto.class);

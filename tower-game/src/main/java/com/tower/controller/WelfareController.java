@@ -4,7 +4,7 @@ package com.tower.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.dto.*;
-import com.tower.dto.page.WelFareLogPageDto;
+import com.tower.dto.page.game.WelFareLogPageDto;
 import com.tower.entity.Player;
 import com.tower.entity.SignIn;
 import com.tower.entity.WelfareLog;
@@ -66,11 +66,10 @@ public class WelfareController {
         int vipLevel = player.getVip();
         LambdaQueryWrapper<SignIn> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(SignIn::getVipLevel, vipLevel);
-        int count = signInService.count(lambdaQueryWrapper);
         BusinessUtil.assertParam(
                 DateUtils.isBeforeDay(0, player.getSignInTime().toInstant(ZoneOffset.ofHours(8)).toEpochMilli()),
                 "今天已经签到过了");
-        if (player.getSignIn() >= count) {
+        if (player.getSignIn() >= 15) {
             player.setSignIn(1);
         } else {
             player.setSignIn(player.getSignIn() + 1);
