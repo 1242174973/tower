@@ -37,8 +37,10 @@ public class MonsterController {
         BusinessUtil.assertParam(pageDto.getSize() > 0, "条数必须大于0");
         LambdaQueryWrapper<Monster> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         if (!StringUtils.isEmpty(pageDto.getSearch())) {
-            // lambdaQueryWrapper
-            //    .or(queryWrapper -> queryWrapper.like(Monster::getAccount, pageDto.getSearch()))
+            lambdaQueryWrapper
+                    .or(queryWrapper -> queryWrapper.like(Monster::getId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(Monster::getMonsterName, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(Monster::getTurretName, pageDto.getSearch()));
         }
         Page<Monster> page = new Page<>(pageDto.getPage(), pageDto.getSize());
         page = monsterService.page(page, lambdaQueryWrapper);
@@ -85,6 +87,17 @@ public class MonsterController {
         return responseDto;
     }
 
+
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation(value = "删除怪物", notes = "删除怪物请求")
+    public ResponseDto<String> delete(@ApiParam(value = "怪物ID", required = true)
+                                      @PathVariable int id) {
+        monsterService.removeById(id);
+        ResponseDto<String> responseDto = new ResponseDto<>();
+        responseDto.setContent("删除成功");
+        return responseDto;
+    }
+
     /**
      * 校验参数
      *
@@ -96,15 +109,5 @@ public class MonsterController {
         BusinessUtil.require(monsterDto.getMultiple(), BusinessExceptionCode.MULTIPLE);
         BusinessUtil.require(monsterDto.getMaxBet(), BusinessExceptionCode.MAX_BET);
         BusinessUtil.require(monsterDto.getRates(), BusinessExceptionCode.RATES);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    @ApiOperation(value = "删除怪物", notes = "删除怪物请求")
-    public ResponseDto<String> delete(@ApiParam(value = "怪物ID", required = true)
-                                      @PathVariable int id) {
-        monsterService.removeById(id);
-        ResponseDto<String> responseDto = new ResponseDto<>();
-        responseDto.setContent("删除成功");
-        return responseDto;
     }
 }
