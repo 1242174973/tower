@@ -1,7 +1,9 @@
 package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.dto.*;
+import com.tower.dto.page.WithdrawLogPageDto;
 import com.tower.entity.Player;
 import com.tower.entity.UserBankCard;
 import com.tower.entity.UserWithdrawConfig;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author 梦-屿-千-寻
@@ -115,4 +118,23 @@ public class UserBankCardController {
         return AccountController.getPlayerDtoResponseDto(player);
     }
 
+    @PostMapping("/userWithdrawList")
+    @ApiOperation(value = "提现记录", notes = "参数 分页参数")
+    public ResponseDto<WithdrawLogPageDto> withdrawList(Player player,
+                                                        @ApiParam(value = "获取信息", required = true)
+                                                        @RequestBody WithdrawLogPageDto withdrawLogPageDto) {
+        BusinessUtil.assertParam(withdrawLogPageDto.getPage() > 0, "页数必须大于0");
+        BusinessUtil.assertParam(withdrawLogPageDto.getSize() > 0, "条数必须大于0");
+        ResponseDto<WithdrawLogPageDto> responseDto = new ResponseDto<>();
+        Page<WithdrawLog> page = new Page<>(withdrawLogPageDto.getPage(), withdrawLogPageDto.getSize());
+        LambdaQueryWrapper<WithdrawLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        logLambdaQueryWrapper.orderByDesc(WithdrawLog::getCreateTime);
+        logLambdaQueryWrapper.eq(WithdrawLog::getUserId, player.getId());
+        page = withdrawLogService.page(page, logLambdaQueryWrapper);
+        List<WithdrawLogDto> withdrawLogDtoList = CopyUtil.copyList(page.getRecords(), WithdrawLogDto.class);
+        withdrawLogPageDto.setList(withdrawLogDtoList);
+        withdrawLogPageDto.setTotal((int) page.getTotal());
+        responseDto.setContent(withdrawLogPageDto);
+        return responseDto;
+    }
 }
