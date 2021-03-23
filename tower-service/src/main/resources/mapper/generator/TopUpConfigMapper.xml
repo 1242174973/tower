@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tower.mapper.TopUpConfigMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.tower.entity.TopUpConfig">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="model" property="model" />
+        <result column="bank_card_name" property="bankCardName" />
+        <result column="payee" property="payee" />
+        <result column="bank_card_num" property="bankCardNum" />
+        <result column="sub_branch" property="subBranch" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, type, model, bank_card_name, payee, bank_card_num, sub_branch, create_time
+    </sql>
+
+</mapper>
