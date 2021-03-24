@@ -16,11 +16,12 @@
         <result column="bank_card_num" property="bankCardNum" />
         <result column="create_time" property="createTime" />
         <result column="audit_time" property="auditTime" />
+        <result column="order" property="order"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_id, withdraw_money, service_charge, remit, state, audit, audit_id, bank_card_name, bank_card_num, create_time, audit_time
+        id, user_id, order , withdraw_money, service_charge, remit, state, audit, audit_id, bank_card_name, bank_card_num, create_time, audit_time
     </sql>
 
 </mapper>

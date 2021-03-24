@@ -46,6 +46,9 @@ public enum BusinessExceptionCode {
     TODAY_WITHDRAW_SIZE("今日可提现次数"),
     TOTAL_WITHDRAW_SIZE("每日可提现次数"),
     SERVICE_CHARGE("提现手续费"),
+    TYPE("类型"),
+    MODEL("模式"),
+    PAYEE("持卡人"),
     ;
     /**
      * 描述

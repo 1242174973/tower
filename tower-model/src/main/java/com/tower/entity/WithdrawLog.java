@@ -24,14 +24,17 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="WithdrawLog对象", description="")
+@ApiModel(value = "WithdrawLog对象", description = "")
 public class WithdrawLog implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "提现记录表")
-      @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+
+    @ApiModelProperty(value = "订单号")
+    private String order;
 
     @ApiModelProperty(value = "玩家id")
     private Integer userId;

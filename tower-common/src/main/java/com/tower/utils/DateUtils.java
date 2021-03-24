@@ -20,25 +20,40 @@ public class DateUtils {
         return dformat.format(dat);
     }
 
-    public static long byDayTime(int day){
+    public static String getNowDate() {
+        LocalDateTime now = LocalDateTime.now();
+        StringBuilder sb = new StringBuilder();
+        sb.append(now.getYear())
+                .append(now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue())
+                .append(now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth())
+                .append(now.getHour() < 10 ? "0" + now.getHour() : now.getHour())
+                .append(now.getMinute() < 10 ? "0" + now.getMinute() : now.getMinute())
+                .append(now.getSecond() < 10 ? "0" + now.getSecond() : now.getSecond());
+        return sb.toString();
+    }
+
+    public static long byDayTime(int day) {
         LocalDate localDate = LocalDate.now();
         localDate = localDate.plusDays(day);
         LocalDateTime dateTime = LocalDateTime.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth(), 0, 0, 0);
         return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
-    public static LocalDateTime byDayLocalDateTime(int day){
+
+    public static LocalDateTime byDayLocalDateTime(int day) {
         LocalDate localDate = LocalDate.now();
         localDate = localDate.plusDays(day);
         return LocalDateTime.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth(), 0, 0, 0);
     }
-    public static boolean isBeforeDay(int day,long timestamp){
-        return timestamp<byDayTime(day);
+
+    public static boolean isBeforeDay(int day, long timestamp) {
+        return timestamp < byDayTime(day);
     }
+
     public static void main(String[] args) {
         long l = byDayTime(0);
         long currentTimeMillis = System.currentTimeMillis();
         System.out.println(l);
         System.out.println(currentTimeMillis);
-        System.out.println(currentTimeMillis-l);
+        System.out.println(currentTimeMillis - l);
     }
 }

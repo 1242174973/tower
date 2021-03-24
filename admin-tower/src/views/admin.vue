@@ -176,6 +176,14 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="withdraw-topUpConfig-sidebar">
+                                <router-link to="/withdraw/topUpConfig">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    充值信息
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
                     </li>

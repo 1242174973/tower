@@ -12,7 +12,7 @@ import User from "./views/admin/User"
 import UserWithdrawConfig from "./views/admin/UserWithdrawConfig"
 import UserBankCard from "./views/admin/UserBankCard"
 import WithdrawLog from "./views/admin/WithdrawLog"
-
+import TopUpConfig from "./views/admin/TopUpConfig"
 
 
 Vue.use(Router);
@@ -76,6 +76,10 @@ export default new Router({
             path: "withdraw/withdrawLog",
             name: "withdraw/withdrawLog",
             component: WithdrawLog,
+        },{
+            path: "withdraw/topUpConfig",
+            name: "withdraw/topUpConfig",
+            component: TopUpConfig,
         },
 
         ]

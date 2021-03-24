@@ -47,7 +47,7 @@
 
             <tbody>
             <tr v-for="withdrawLog in withdrawLogs">
-                <td>{{withdrawLog.id}}</td>
+                <td>{{withdrawLog.order}}</td>
                 <td>{{withdrawLog.userId}}</td>
                 <td>{{withdrawLog.withdrawMoney}}</td>
                 <td>{{withdrawLog.serviceCharge}}</td>

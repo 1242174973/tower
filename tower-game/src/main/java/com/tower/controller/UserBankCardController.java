@@ -14,6 +14,8 @@ import com.tower.service.UserWithdrawConfigService;
 import com.tower.service.WithdrawLogService;
 import com.tower.utils.BusinessUtil;
 import com.tower.utils.CopyUtil;
+import com.tower.utils.DateUtil;
+import com.tower.utils.DateUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -23,6 +25,7 @@ import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author 梦-屿-千-寻
@@ -109,6 +112,7 @@ public class UserBankCardController {
         UserWithdrawConfig one = userWithdrawConfigService.getOne(lambdaQueryWrapper);
 
         WithdrawLog withdrawLog = new WithdrawLog().setUserId(player.getId())
+                .setOrder(DateUtils.getNowDate()+(new Random().nextInt(900000)+100000))
                 .setBankCardName(userBankCard.getBankCardName())
                 .setBankCardNum(userBankCard.getBankCardNum())
                 .setCreateTime(LocalDateTime.now())
