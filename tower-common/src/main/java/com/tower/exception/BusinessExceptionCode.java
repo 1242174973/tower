@@ -51,6 +51,8 @@ public enum BusinessExceptionCode {
     PAYEE("持卡人"),
     TOP_UP_MONEY("充值金额"),
     TOP_UP_ID("充值信息ID"),
+    RECEPTION_ID("接收人"),
+    COIN("分数"),
     ;
     /**
      * 描述
