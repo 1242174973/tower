@@ -224,6 +224,14 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="log-transferLog-sidebar">
+                                <router-link to="/log/transferLog">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                   玩家转账记录
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
                     </li>
