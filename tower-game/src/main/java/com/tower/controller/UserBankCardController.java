@@ -19,6 +19,8 @@ import com.tower.utils.DateUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -99,20 +101,24 @@ public class UserBankCardController {
 
     @PostMapping("/userWithdrawConfig/{money}")
     @ApiOperation(value = "提现", notes = "参数 提现金额")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<PlayerDto> withdraw(Player player,
                                            @ApiParam(value = "提现金额", required = true)
                                            @PathVariable double money) {
         BusinessUtil.assertParam(player.getMoney().doubleValue() > money, "玩家余额不足" + money);
-        player.setMoney(player.getMoney().subtract(BigDecimal.valueOf(money)));
         LambdaQueryWrapper<UserBankCard> userBankCardLambdaQueryWrapper = new LambdaQueryWrapper<>();
         UserBankCard userBankCard = userBankCardService.getOne(userBankCardLambdaQueryWrapper);
         BusinessUtil.assertParam(userBankCard != null, "玩家没有绑定银行卡");
         LambdaQueryWrapper<UserWithdrawConfig> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(UserWithdrawConfig::getUserId, player.getId());
         UserWithdrawConfig one = userWithdrawConfigService.getOne(lambdaQueryWrapper);
-
+        BusinessUtil.assertParam(one.getTodayWithdrawSize() > 0, "提现次数不足");
+        BusinessUtil.assertParam(one.getTodayWithdrawMoney() > money, "提现额度不足");
+        player.setMoney(player.getMoney().subtract(BigDecimal.valueOf(money)));
+        one.setTodayWithdrawSize(one.getTodayWithdrawSize() - 1);
+        one.setTodayWithdrawMoney(one.getTodayWithdrawMoney() - money);
         WithdrawLog withdrawLog = new WithdrawLog().setUserId(player.getId())
-                .setOrder(DateUtils.getNowDate()+(new Random().nextInt(900000)+100000))
+                .setOrder(DateUtils.getNowDate() + (new Random().nextInt(900000) + 100000))
                 .setBankCardName(userBankCard.getBankCardName())
                 .setState(0)
                 .setBankCardNum(userBankCard.getBankCardNum())
@@ -120,6 +126,7 @@ public class UserBankCardController {
                 .setWithdrawMoney(BigDecimal.valueOf(money))
                 .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()));
         withdrawLogService.save(withdrawLog);
+        userWithdrawConfigService.save(one);
         return AccountController.getPlayerDtoResponseDto(player);
     }
 
