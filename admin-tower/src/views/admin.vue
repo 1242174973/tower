@@ -176,6 +176,15 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="withdraw-topUpLog-sidebar">
+                                <router-link to="/withdraw/topUpLog">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    充值审核
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
+
                             <li class="" id="withdraw-topUpConfig-sidebar">
                                 <router-link to="/withdraw/topUpConfig">
                                     <i class="menu-icon fa fa-caret-right"></i>
