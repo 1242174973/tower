@@ -1,8 +1,11 @@
 package com.tower.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.TransferLogDto;
+import com.tower.dto.page.game.TransferLogPageDto;
 import com.tower.entity.Player;
 import com.tower.entity.TransferLog;
 import com.tower.exception.BusinessException;
@@ -10,18 +13,17 @@ import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.PlayerService;
 import com.tower.service.TransferLogService;
 import com.tower.utils.BusinessUtil;
+import com.tower.utils.CopyUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author 梦-屿-千-寻
@@ -65,5 +67,24 @@ public class TransferController {
         }
         AccountController.getPlayerDtoResponseDto(receptionPlayer);
         return AccountController.getPlayerDtoResponseDto(player);
+    }
+
+    @GetMapping("/transferLog")
+    @ApiOperation(value = "获取转账记录", notes = "参数 分页参数")
+    public ResponseDto<TransferLogPageDto> topUpLogList(Player player, @RequestBody TransferLogPageDto transferLogPageDto) {
+        BusinessUtil.assertParam(transferLogPageDto.getPage() > 0, "页数必须大于0");
+        BusinessUtil.assertParam(transferLogPageDto.getSize() > 0, "条数必须大于0");
+        ResponseDto<TransferLogPageDto> responseDto = new ResponseDto<>();
+        Page<TransferLog> page = new Page<>(transferLogPageDto.getPage(), transferLogPageDto.getSize());
+        LambdaQueryWrapper<TransferLog> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper
+                .or(wrapper -> wrapper.eq(TransferLog::getReceptionId, player.getId()))
+                .or(wrapper -> wrapper.eq(TransferLog::getTransferId, player.getId()));
+        page = transferLogService.page(page, lambdaQueryWrapper);
+        transferLogPageDto.setTotal((int) page.getTotal());
+        List<TransferLogDto> topUpLogDtoList = CopyUtil.copyList(page.getRecords(), TransferLogDto.class);
+        transferLogPageDto.setList(topUpLogDtoList);
+        responseDto.setContent(transferLogPageDto);
+        return responseDto;
     }
 }
