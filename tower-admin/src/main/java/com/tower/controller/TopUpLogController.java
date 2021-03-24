@@ -20,8 +20,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* @author 梦-屿-千-寻
-*/
+ * @author 梦-屿-千-寻
+ */
 @RestController
 @RequestMapping("/topUpLog")
 @Api(value = "充值记录", tags = "充值记录相关请求")
@@ -38,7 +38,15 @@ public class TopUpLogController {
         LambdaQueryWrapper<TopUpLog> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         if (!StringUtils.isEmpty(pageDto.getSearch())) {
             lambdaQueryWrapper
-                .or(queryWrapper -> queryWrapper.like(TopUpLog::getId, pageDto.getSearch()));
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getUserId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getBankCardNum, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getBankCardName, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getPayee, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getOrder, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getRemit, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getAudit, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getAuditId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getId, pageDto.getSearch()));
         }
         lambdaQueryWrapper.orderByDesc(TopUpLog::getCreateTime);
         Page<TopUpLog> page = new Page<>(pageDto.getPage(), pageDto.getSize());
@@ -54,7 +62,7 @@ public class TopUpLogController {
     @PostMapping("/add")
     @ApiOperation(value = "添加充值记录", notes = "添加充值记录请求")
     public ResponseDto<TopUpLogDto> add(@ApiParam(value = "充值记录信息", required = true)
-        @RequestBody TopUpLogDto topUpLogDto) {
+                                        @RequestBody TopUpLogDto topUpLogDto) {
         requireParam(topUpLogDto);
         TopUpLog topUpLog = CopyUtil.copy(topUpLogDto, TopUpLog.class);
         topUpLog.setCreateTime(LocalDateTime.now());
@@ -69,14 +77,14 @@ public class TopUpLogController {
     @PostMapping("/edit")
     @ApiOperation(value = "修改充值记录", notes = "修改充值记录请求")
     public ResponseDto<TopUpLogDto> edit(@ApiParam(value = "充值记录信息", required = true)
-                                       @RequestBody TopUpLogDto topUpLogDto) {
+                                         @RequestBody TopUpLogDto topUpLogDto) {
         requireParam(topUpLogDto);
         BusinessUtil.require(topUpLogDto.getId(), BusinessExceptionCode.ID);
         TopUpLog topUpLog = topUpLogService.getById(topUpLogDto.getId());
         BusinessUtil.assertParam(topUpLog != null, "充值记录没找到");
-         topUpLogService.saveOrUpdate(topUpLog);
+        topUpLogService.saveOrUpdate(topUpLog);
         ResponseDto<TopUpLogDto> responseDto = new ResponseDto<>();
-        topUpLogDto = CopyUtil.copy(topUpLog,TopUpLogDto.class);
+        topUpLogDto = CopyUtil.copy(topUpLog, TopUpLogDto.class);
         responseDto.setContent(topUpLogDto);
         return responseDto;
     }
@@ -93,10 +101,10 @@ public class TopUpLogController {
 
 
     /**
-    * 校验参数
-    *
-    * @param topUpLogDto 参数
-    */
+     * 校验参数
+     *
+     * @param topUpLogDto 参数
+     */
     private void requireParam(TopUpLogDto topUpLogDto) {
 
     }

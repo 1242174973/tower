@@ -20,8 +20,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* @author 梦-屿-千-寻
-*/
+ * @author 梦-屿-千-寻
+ */
 @RestController
 @RequestMapping("/transferLog")
 @Api(value = "转账记录", tags = "转账记录相关请求")
@@ -38,7 +38,9 @@ public class TransferLogController {
         LambdaQueryWrapper<TransferLog> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         if (!StringUtils.isEmpty(pageDto.getSearch())) {
             lambdaQueryWrapper
-                .or(queryWrapper -> queryWrapper.like(TransferLog::getId, pageDto.getSearch()));
+                    .or(queryWrapper -> queryWrapper.like(TransferLog::getId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TransferLog::getTransferId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TransferLog::getReceptionId, pageDto.getSearch()));
         }
         lambdaQueryWrapper.orderByDesc(TransferLog::getCreateTime);
         Page<TransferLog> page = new Page<>(pageDto.getPage(), pageDto.getSize());
@@ -54,7 +56,7 @@ public class TransferLogController {
     @PostMapping("/add")
     @ApiOperation(value = "添加转账记录", notes = "添加转账记录请求")
     public ResponseDto<TransferLogDto> add(@ApiParam(value = "转账记录信息", required = true)
-        @RequestBody TransferLogDto transferLogDto) {
+                                           @RequestBody TransferLogDto transferLogDto) {
         requireParam(transferLogDto);
         TransferLog transferLog = CopyUtil.copy(transferLogDto, TransferLog.class);
         transferLog.setCreateTime(LocalDateTime.now());
@@ -69,14 +71,14 @@ public class TransferLogController {
     @PostMapping("/edit")
     @ApiOperation(value = "修改转账记录", notes = "修改转账记录请求")
     public ResponseDto<TransferLogDto> edit(@ApiParam(value = "转账记录信息", required = true)
-                                       @RequestBody TransferLogDto transferLogDto) {
+                                            @RequestBody TransferLogDto transferLogDto) {
         requireParam(transferLogDto);
         BusinessUtil.require(transferLogDto.getId(), BusinessExceptionCode.ID);
         TransferLog transferLog = transferLogService.getById(transferLogDto.getId());
         BusinessUtil.assertParam(transferLog != null, "转账记录没找到");
-         transferLogService.saveOrUpdate(transferLog);
+        transferLogService.saveOrUpdate(transferLog);
         ResponseDto<TransferLogDto> responseDto = new ResponseDto<>();
-        transferLogDto = CopyUtil.copy(transferLog,TransferLogDto.class);
+        transferLogDto = CopyUtil.copy(transferLog, TransferLogDto.class);
         responseDto.setContent(transferLogDto);
         return responseDto;
     }
@@ -93,10 +95,10 @@ public class TransferLogController {
 
 
     /**
-    * 校验参数
-    *
-    * @param transferLogDto 参数
-    */
+     * 校验参数
+     *
+     * @param transferLogDto 参数
+     */
     private void requireParam(TransferLogDto transferLogDto) {
 
     }

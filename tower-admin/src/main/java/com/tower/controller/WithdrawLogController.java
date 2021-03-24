@@ -20,8 +20,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* @author 梦-屿-千-寻
-*/
+ * @author 梦-屿-千-寻
+ */
 @RestController
 @RequestMapping("/withdrawLog")
 @Api(value = "提现审核", tags = "提现审核相关请求")
@@ -38,7 +38,14 @@ public class WithdrawLogController {
         LambdaQueryWrapper<WithdrawLog> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         if (!StringUtils.isEmpty(pageDto.getSearch())) {
             lambdaQueryWrapper
-                .or(queryWrapper -> queryWrapper.like(WithdrawLog::getId, pageDto.getSearch()));
+                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getOrder, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getUserId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getBankCardName, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getBankCardNum, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getRemit, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getAudit, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getAuditId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getId, pageDto.getSearch()));
         }
         lambdaQueryWrapper.orderByDesc(WithdrawLog::getCreateTime);
         Page<WithdrawLog> page = new Page<>(pageDto.getPage(), pageDto.getSize());
@@ -54,7 +61,7 @@ public class WithdrawLogController {
     @PostMapping("/add")
     @ApiOperation(value = "添加提现审核", notes = "添加提现审核请求")
     public ResponseDto<WithdrawLogDto> add(@ApiParam(value = "提现审核信息", required = true)
-        @RequestBody WithdrawLogDto withdrawLogDto) {
+                                           @RequestBody WithdrawLogDto withdrawLogDto) {
         requireParam(withdrawLogDto);
         WithdrawLog withdrawLog = CopyUtil.copy(withdrawLogDto, WithdrawLog.class);
         withdrawLog.setCreateTime(LocalDateTime.now());
@@ -69,14 +76,14 @@ public class WithdrawLogController {
     @PostMapping("/edit")
     @ApiOperation(value = "修改提现审核", notes = "修改提现审核请求")
     public ResponseDto<WithdrawLogDto> edit(@ApiParam(value = "提现审核信息", required = true)
-                                       @RequestBody WithdrawLogDto withdrawLogDto) {
+                                            @RequestBody WithdrawLogDto withdrawLogDto) {
         requireParam(withdrawLogDto);
         BusinessUtil.require(withdrawLogDto.getId(), BusinessExceptionCode.ID);
         WithdrawLog withdrawLog = withdrawLogService.getById(withdrawLogDto.getId());
         BusinessUtil.assertParam(withdrawLog != null, "提现审核没找到");
-         withdrawLogService.saveOrUpdate(withdrawLog);
+        withdrawLogService.saveOrUpdate(withdrawLog);
         ResponseDto<WithdrawLogDto> responseDto = new ResponseDto<>();
-        withdrawLogDto = CopyUtil.copy(withdrawLog,WithdrawLogDto.class);
+        withdrawLogDto = CopyUtil.copy(withdrawLog, WithdrawLogDto.class);
         responseDto.setContent(withdrawLogDto);
         return responseDto;
     }
@@ -93,10 +100,10 @@ public class WithdrawLogController {
 
 
     /**
-    * 校验参数
-    *
-    * @param withdrawLogDto 参数
-    */
+     * 校验参数
+     *
+     * @param withdrawLogDto 参数
+     */
     private void requireParam(WithdrawLogDto withdrawLogDto) {
 
     }
