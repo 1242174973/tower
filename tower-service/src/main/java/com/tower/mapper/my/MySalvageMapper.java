@@ -16,4 +16,6 @@ public interface MySalvageMapper extends BaseMapper<Salvage> {
     Integer selectTotalSalvage(int userId);
 
     Integer selectTotalGet(int userId);
+
+    void settlement();
 }

@@ -24,5 +24,14 @@ public interface MySalvageService extends IService<Salvage> {
      * @return 已领取救援金
      */
     Integer selectTotalGet(int userId);
+    /**
+     * 将结算所有救援金
+     */
+    void settlement();
 
+    /**
+     *  添加今天的救援数据
+     * @param id 玩家ID
+     */
+    void insertToday(int id);
 }

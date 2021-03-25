@@ -17,6 +17,9 @@
     <sql id="Base_Column_List">
         id, user_id, profit, salvage, get_salvage, status, create_time
     </sql>
+    <update id="settlement">
+        UPDATE salvage SET status =1 WHERE status=0
+    </update>
     <select id="selectTotalSalvage" resultType="java.lang.Integer">
          SELECT SUM(salvage) AS salvage
         FROM salvage
