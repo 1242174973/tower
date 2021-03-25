@@ -29,26 +29,16 @@ public class AutoResetRebatePlugin {
     private MyChallengeRewardService challengeRewardService;
 
     /**
-     * 每天凌晨执行一次    重置所有提现次数   "0 0 0 * * ? ";//每天凌晨0:00:00执行一次,?用于无指定日期
+     * 每天凌晨1点执行一次    重置所有提现次数   "0 0 0 * * ? ";//每天凌晨0:00:00执行一次,?用于无指定日期
      * //@Scheduled(cron = "*\/5 * * * * ?")
      */
-    @Scheduled(cron = "*/5 * * * * ?")
+    @Scheduled(cron = "0 0 0 * * ? ")
     public void resetRebate() {
         LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         List<Player> players = playerService.getBaseMapper().selectList(lambdaQueryWrapper);
         challengeRewardService.settlement();
         for (Player player : players) {
             challengeRewardService.insertToday(player.getId());
-           /* LambdaQueryWrapper<ChallengeReward> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq(ChallengeReward::getUserId, player.getId())
-                    .ge(ChallengeReward::getCreateTime, DateUtils.getDate(0))
-                    .le(ChallengeReward::getCreateTime, DateUtils.getDate(1));
-            ChallengeReward challengeReward = challengeRewardService.getOne(queryWrapper);
-            if (challengeReward == null) {
-                challengeReward = new ChallengeReward().setCreateTime(LocalDateTime.now()).setUserId(player.getId())
-                        .setStatus(0).setChallenge(BigDecimal.ZERO).setGetRebate(BigDecimal.ZERO).setRebate(BigDecimal.ZERO);
-                challengeRewardService.save(challengeReward);
-            }*/
         }
     }
 }
