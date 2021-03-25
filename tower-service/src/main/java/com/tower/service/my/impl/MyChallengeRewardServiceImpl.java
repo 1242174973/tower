@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>
@@ -49,5 +50,10 @@ public class MyChallengeRewardServiceImpl extends ServiceImpl<MyChallengeRewardM
                     .setStatus(0).setChallenge(BigDecimal.ZERO).setGetRebate(BigDecimal.ZERO).setRebate(BigDecimal.ZERO);
             save(challengeReward);
         }
+    }
+
+    @Override
+    public void getChallengeReward(List<Integer> rewardIds) {
+        baseMapper.getChallengeReward(rewardIds);
     }
 }

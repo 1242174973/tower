@@ -3,6 +3,8 @@ package com.tower.mapper.my;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.tower.entity.ChallengeReward;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -18,4 +20,6 @@ public interface MyChallengeRewardMapper extends BaseMapper<ChallengeReward> {
     Integer selectTotalGet(int userId);
 
     void settlement();
+
+    void getChallengeReward(List<Integer> rewardIds);
 }

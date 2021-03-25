@@ -4,13 +4,13 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.tower.entity.ChallengeReward">
-        <id column="id" property="id" />
-        <result column="user_id" property="userId" />
-        <result column="challenge" property="challenge" />
-        <result column="rebate" property="rebate" />
-        <result column="get_rebate" property="getRebate" />
-        <result column="status" property="status" />
-        <result column="create_time" property="createTime" />
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="challenge" property="challenge"/>
+        <result column="rebate" property="rebate"/>
+        <result column="get_rebate" property="getRebate"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -33,5 +33,11 @@
         WHERE user_id=#{userId}
         GROUP BY user_id
     </select>
+    <update id="getChallengeReward">
+        UPDATE challenge_reward
+        SET get_rebate=rebate,
+        status=2
+        WHERE id in #{rewardIds}
+    </update>
 
 </mapper>
