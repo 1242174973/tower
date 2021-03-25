@@ -16,6 +16,7 @@ import TopUpConfig from "./views/admin/TopUpConfig"
 import TopUpLog from "./views/admin/TopUpLog"
 import TransferLog from "./views/admin/TransferLog"
 import ChallengeReward from  "./views/admin/ChallengeReward"
+import Salvage from  "./views/admin/Salvage"
 
 
 Vue.use(Router);
@@ -71,6 +72,10 @@ export default new Router({
             path: "welfare/challengeReward",
             name: "welfare/challengeReward",
             component: ChallengeReward,
+        },{
+            path: "welfare/salvage",
+            name: "welfare/salvage",
+            component: Salvage,
         },
 
             {

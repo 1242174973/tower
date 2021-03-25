@@ -28,7 +28,7 @@ public class AutoResetSalvagePlugin {
      * 每天凌晨1点执行一次    重置所有提现次数   "0 0 0 * * ? ";//每天凌晨0:00:00执行一次,?用于无指定日期
      * //@Scheduled(cron = "*\/5 * * * * ?")
      */
-    @Scheduled(cron = "*/5 * * * * ?")
+    @Scheduled(cron = "0 0 0 * * ? ")
     public void resetRebate() {
         LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         List<Player> players = playerService.getBaseMapper().selectList(lambdaQueryWrapper);

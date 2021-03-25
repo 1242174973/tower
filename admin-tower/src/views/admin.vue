@@ -121,7 +121,7 @@
                         </ul>
 
 
-                    <li class="" >
+                    <li class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 福利管理 </span>
@@ -138,6 +138,14 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="welfare-salvage-sidebar">
+                                <router-link to="/welfare/salvage">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    救援金福利
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
                             <li class="" id="welfare-challengeReward-sidebar">
                                 <router-link to="/welfare/challengeReward">
                                     <i class="menu-icon fa fa-caret-right"></i>
@@ -146,11 +154,12 @@
 
                                 <b class="arrow"></b>
                             </li>
+
                         </ul>
                     </li>
 
 
-                    <li class="" >
+                    <li class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 充值提现管理 </span>
@@ -205,8 +214,7 @@
                     </li>
 
 
-
-                    <li class="" >
+                    <li class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 记录管理 </span>
@@ -234,7 +242,7 @@
                             <li class="" id="log-transferLog-sidebar">
                                 <router-link to="/log/transferLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
-                                   玩家转账记录
+                                    玩家转账记录
                                 </router-link>
 
                                 <b class="arrow"></b>
@@ -242,7 +250,7 @@
 
                         </ul>
                     </li>
-                    <li class="" >
+                    <li class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 后台管理 </span>
@@ -344,7 +352,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button v-on:click="updatePasswordSubmit()" type="button" class="btn btn-primary">保存</button>
+                            <button v-on:click="updatePasswordSubmit()" type="button" class="btn btn-primary">保存
+                            </button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -363,9 +372,9 @@
         data: function () {
             return {
                 loginUser: {},
-                oldPassword:"",
-                newPassword:"",
-                newPassword2:""
+                oldPassword: "",
+                newPassword: "",
+                newPassword2: ""
             }
         },
         mounted: function () {
@@ -431,23 +440,23 @@
             login() {
                 this.$router.push("/admin")
             },
-            updatePassword(){
+            updatePassword() {
                 $("#update-password").modal("show");
             },
-            updatePasswordSubmit(){
+            updatePasswordSubmit() {
                 let _this = this;
                 // 保存校验
                 if (1 != 1
                     || !Validator.require(_this.oldPassword, "旧密码")
-                    || !Validator.require( _this.newPassword, "新密码")
-                    ||!Validator.length( _this.newPassword,"新密码", 8,20)
-                    || !Validator.require( _this.newPassword2, "第二次输入的新密码")
-                    || !(Validator.requireValue( _this.newPassword != _this.newPassword2,"两次密码输入不一致"))
+                    || !Validator.require(_this.newPassword, "新密码")
+                    || !Validator.length(_this.newPassword, "新密码", 8, 20)
+                    || !Validator.require(_this.newPassword2, "第二次输入的新密码")
+                    || !(Validator.requireValue(_this.newPassword != _this.newPassword2, "两次密码输入不一致"))
                 ) {
                     return;
                 }
                 Loading.show();
-                _this.$ajax.post(process.env.VUE_APP_SERVER + '/login/updatePassword/'+hex_md5(_this.oldPassword+KEY)+"/"+hex_md5(_this.newPassword+KEY)).then((response) => {
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/login/updatePassword/' + hex_md5(_this.oldPassword + KEY) + "/" + hex_md5(_this.newPassword + KEY)).then((response) => {
                     Loading.hide();
                     let resp = response.data;
                     if (resp.success) {
