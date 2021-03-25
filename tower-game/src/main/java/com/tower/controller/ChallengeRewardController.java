@@ -3,11 +3,17 @@ package com.tower.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.dto.ChallengeRewardDto;
+import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.page.game.ChallengeRewardPageDto;
 import com.tower.entity.ChallengeReward;
 import com.tower.entity.Player;
+import com.tower.entity.WelfareLog;
+import com.tower.enums.AwardStatus;
+import com.tower.enums.WelfareModelEnum;
+import com.tower.enums.WelfareTypeEnum;
 import com.tower.service.ChallengeRewardService;
+import com.tower.service.WelfareLogService;
 import com.tower.service.my.MyChallengeRewardService;
 import com.tower.utils.BusinessUtil;
 import com.tower.utils.CopyUtil;
@@ -20,7 +26,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author 梦-屿-千-寻
@@ -33,6 +42,9 @@ public class ChallengeRewardController {
 
     @Resource
     private MyChallengeRewardService challengeRewardService;
+
+    @Resource
+    private WelfareLogService welfareLogService;
 
     @GetMapping("/todayReward")
     @ApiOperation(value = "今日挑战奖励", notes = "无需参数")
@@ -82,4 +94,28 @@ public class ChallengeRewardController {
         responseDto.setContent(challengeRewardPageDto);
         return responseDto;
     }
+
+    @GetMapping("/getChallengeReward")
+    @ApiOperation(value = "领取挑战奖励", notes = "无需参数")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ResponseDto<PlayerDto> getChallengeReward(Player player) {
+        LambdaQueryWrapper<ChallengeReward> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(ChallengeReward::getUserId, player.getId())
+                .eq(ChallengeReward::getStatus, AwardStatus.CLEARING);
+        List<ChallengeReward> challengeRewards = challengeRewardService.getBaseMapper().selectList(lambdaQueryWrapper);
+        BusinessUtil.assertParam(challengeRewards != null && challengeRewards.size() > 0, "暂时没有可领取奖励");
+        //可领取的奖励
+        double sum = challengeRewards.stream().mapToDouble(challengeReward -> challengeReward.getRebate().doubleValue()).sum();
+        //添加福利记录
+        WelfareLog welfareLog = new WelfareLog().setCreateTime(LocalDateTime.now()).setUserId(player.getId())
+                .setWelfareType(WelfareTypeEnum.GOLD.getCode()).setMode(WelfareModelEnum.CHALLENGE.getCode())
+                .setWelfare(BigDecimal.valueOf(sum));
+        welfareLogService.save(welfareLog);
+        //领取更新数据库
+        List<Integer> rewardIds = challengeRewards.stream().map(ChallengeReward::getId).collect(Collectors.toList());
+        challengeRewardService.getChallengeReward(rewardIds);
+        player.setMoney(player.getMoney().add(BigDecimal.valueOf(sum)));
+        return AccountController.getPlayerDtoResponseDto(player);
+    }
+
 }

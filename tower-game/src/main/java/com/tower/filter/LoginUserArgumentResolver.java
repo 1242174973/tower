@@ -41,7 +41,7 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
         Player user = null;
         if (token != null) {
             // 这边拿到的 token  前往redis获得用户信息返回
-            user = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO , token), Player.class);
+            user = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO, token), Player.class);
         }
         return user;
     }

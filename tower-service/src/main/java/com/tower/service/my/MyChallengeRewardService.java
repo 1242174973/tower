@@ -3,6 +3,8 @@ package com.tower.service.my;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.tower.entity.ChallengeReward;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -34,4 +36,10 @@ public interface MyChallengeRewardService extends IService<ChallengeReward> {
      * @param id 玩家id
      */
     void insertToday(int id);
+
+    /**
+     * 领取奖励
+     * @param rewardIds 奖励id
+     */
+    void getChallengeReward(List<Integer> rewardIds);
 }

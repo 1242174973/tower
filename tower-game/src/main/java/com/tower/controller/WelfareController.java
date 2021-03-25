@@ -8,6 +8,7 @@ import com.tower.dto.page.game.WelFareLogPageDto;
 import com.tower.entity.Player;
 import com.tower.entity.SignIn;
 import com.tower.entity.WelfareLog;
+import com.tower.enums.WelfareTypeEnum;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.SignInService;
 import com.tower.service.WelfareLogService;
@@ -94,7 +95,7 @@ public class WelfareController {
         WelfareLog welfareLog = new WelfareLog();
         welfareLog.setMode(1);
         welfareLog.setWelfare(one == null ? BigDecimal.ZERO : one.getAward());
-        welfareLog.setWelfareType(one == null ? 1 : one.getAwardType());
+        welfareLog.setWelfareType(one == null ? WelfareTypeEnum.GOLD.getCode() : one.getAwardType());
         welfareLog.setUserId(player.getId());
         welfareLog.setCreateTime(LocalDateTime.now());
         welfareLogService.save(welfareLog);
