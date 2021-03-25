@@ -15,7 +15,7 @@ import WithdrawLog from "./views/admin/WithdrawLog"
 import TopUpConfig from "./views/admin/TopUpConfig"
 import TopUpLog from "./views/admin/TopUpLog"
 import TransferLog from "./views/admin/TransferLog"
-
+import ChallengeReward from  "./views/admin/ChallengeReward"
 
 
 Vue.use(Router);
@@ -67,7 +67,13 @@ export default new Router({
             path: "welfare/signIn",
             name: "welfare/signIn",
             component: SignIn,
-        }, {
+        },{
+            path: "welfare/challengeReward",
+            name: "welfare/challengeReward",
+            component: ChallengeReward,
+        },
+
+            {
             path: "admin/user",
             name: "admin/user",
             component: User,

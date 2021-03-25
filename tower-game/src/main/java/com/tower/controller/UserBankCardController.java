@@ -118,7 +118,7 @@ public class UserBankCardController {
         one.setTodayWithdrawSize(one.getTodayWithdrawSize() - 1);
         one.setTodayWithdrawMoney(one.getTodayWithdrawMoney() - money);
         WithdrawLog withdrawLog = new WithdrawLog().setUserId(player.getId())
-                .setOrder(DateUtils.getNowDate() + (new Random().nextInt(900000) + 100000))
+                .setOrderId(DateUtils.getNowDate() + (new Random().nextInt(900000) + 100000))
                 .setBankCardName(userBankCard.getBankCardName())
                 .setState(0)
                 .setBankCardNum(userBankCard.getBankCardNum())

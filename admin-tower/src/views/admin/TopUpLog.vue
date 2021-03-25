@@ -29,7 +29,6 @@
         <table id="simple-table" class="table  table-bordered table-hover">
             <thead>
             <tr>
-                <th>充值记录</th>
                 <th>订单号</th>
                 <th>玩家ID</th>
                 <th>充值金额</th>
@@ -49,8 +48,7 @@
 
             <tbody>
             <tr v-for="topUpLog in topUpLogs">
-                <td>{{topUpLog.id}}</td>
-                <td>{{topUpLog.order}}</td>
+                <td>{{topUpLog.orderId}}</td>
                 <td>{{topUpLog.userId}}</td>
                 <td>{{topUpLog.topUpMoney}}</td>
                 <td>{{topUpLog.remit}}</td>

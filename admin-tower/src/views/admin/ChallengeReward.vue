@@ -1,11 +1,6 @@
 <template>
     <div>
         <p>
-            <!--            <button v-on:click="add()" class="btn btn-white btn-default btn-round">-->
-            <!--                <i class="ace-icon fa fa-edit"></i>-->
-            <!--                新增-->
-            <!--            </button>-->
-            &nbsp;
             <button v-on:click="list(page)" class="btn btn-white btn-default btn-round">
                 <i class="ace-icon fa fa-refresh"></i>
                 刷新
@@ -29,58 +24,34 @@
         <table id="simple-table" class="table  table-bordered table-hover">
             <thead>
             <tr>
-                <th>提现订单</th>
-                <th>玩家id</th>
-                <th>提现金额</th>
-                <th>手续费金额</th>
-                <th>实际汇款</th>
-                <th>当前状态</th>
-                <th>审核说明</th>
-                <th>审核人id</th>
-                <th>提现银行</th>
-                <th>银行卡号</th>
+                <th>返利ID</th>
+                <th>玩家ID</th>
+                <th>挑战账目</th>
+                <th>返利</th>
+                <th>已领取返利</th>
+                <th>状态</th>
                 <th>创建时间</th>
-                <th>审核时间</th>
                 <th>操作</th>
             </tr>
             </thead>
 
             <tbody>
-            <tr v-for="withdrawLog in withdrawLogs">
-                <td>{{withdrawLog.orderId}}</td>
-                <td>{{withdrawLog.userId}}</td>
-                <td>{{withdrawLog.withdrawMoney}}</td>
-                <td>{{withdrawLog.serviceCharge}}</td>
-                <td>{{withdrawLog.remit}}</td>
-                <td v-show="withdrawLog.state===0">审核中</td>
-                <td v-show="withdrawLog.state===1">汇款中</td>
-                <td v-show="withdrawLog.state===2">成功</td>
-                <td v-show="withdrawLog.state===10">失败</td>
-                <td>{{withdrawLog.audit}}</td>
-                <td>{{withdrawLog.auditId}}</td>
-                <td>{{withdrawLog.bankCardName}}</td>
-                <td>{{withdrawLog.bankCardNum}}</td>
-                <td>{{withdrawLog.createTime}}</td>
-                <td>{{withdrawLog.auditTime}}</td>
+            <tr v-for="challengeReward in challengeRewards">
+                <td>{{challengeReward.id}}</td>
+                <td>{{challengeReward.userId}}</td>
+                <td>{{challengeReward.challenge}}</td>
+                <td>{{challengeReward.rebate}}</td>
+                <td>{{challengeReward.getRebate}}</td>
+                <td v-show="challengeReward.status===0">未结算</td>
+                <td v-show="challengeReward.status===1">已结算</td>
+                <td v-show="challengeReward.status===2">已领取</td>
+                <td>{{challengeReward.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <div v-show="withdrawLog.state===0">
-                            <button v-on:click="edit(withdrawLog)" class="btn btn-xs btn-info">
-                                审核通过
-                            </button>
-                            <button v-on:click="edit(withdrawLog)" class="btn btn-xs btn-info">
-                                审核失败
-                            </button>
-                        </div>
-                        <div v-show="withdrawLog.state===1">
-                            <button v-on:click="edit(withdrawLog)" class="btn btn-xs btn-info">
-                                汇款
-                            </button>
-                        </div>
-                        <!--                        <button v-on:click="edit(withdrawLog)" class="btn btn-xs btn-info">-->
+                        <!--                        <button v-on:click="edit(challengeReward)" class="btn btn-xs btn-info">-->
                         <!--                            <i class="ace-icon fa fa-pencil bigger-120"></i>-->
                         <!--                        </button>-->
-                        <!--                        <button v-on:click="del(withdrawLog.id)" class="btn btn-xs btn-danger">-->
+                        <!--                        <button v-on:click="del(challengeReward.id)" class="btn btn-xs btn-danger">-->
                         <!--                            <i class="ace-icon fa fa-trash-o bigger-120"></i>-->
                         <!--                        </button>-->
                     </div>
@@ -100,57 +71,39 @@
                     <div class="modal-body">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">玩家id</label>
+                                <label class="col-sm-2 control-label">玩家ID</label>
                                 <div class="col-sm-10">
-                                    <input v-model="withdrawLog.userId" class="form-control">
+                                    <input v-model="challengeReward.userId" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">提现金额</label>
+                                <label class="col-sm-2 control-label">挑战账目</label>
                                 <div class="col-sm-10">
-                                    <input v-model="withdrawLog.withdrawMoney" class="form-control">
+                                    <input v-model="challengeReward.challenge" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">手续费金额</label>
+                                <label class="col-sm-2 control-label">返利</label>
                                 <div class="col-sm-10">
-                                    <input v-model="withdrawLog.serviceCharge" class="form-control">
+                                    <input v-model="challengeReward.rebate" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">实际汇款</label>
+                                <label class="col-sm-2 control-label">已领取</label>
                                 <div class="col-sm-10">
-                                    <input v-model="withdrawLog.remit" class="form-control">
+                                    <input v-model="challengeReward.getRebate" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">当前状态（0审核，1通过，汇款中，3汇款成功，4失败）</label>
+                                <label class="col-sm-2 control-label">状态（0未结算，1已结算，2已领取）</label>
                                 <div class="col-sm-10">
-                                    <input v-model="withdrawLog.state" class="form-control">
+                                    <input v-model="challengeReward.status" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">审核说明</label>
+                                <label class="col-sm-2 control-label">创建时间</label>
                                 <div class="col-sm-10">
-                                    <input v-model="withdrawLog.audit" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">审核id</label>
-                                <div class="col-sm-10">
-                                    <input v-model="withdrawLog.auditId" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">提现银行</label>
-                                <div class="col-sm-10">
-                                    <input v-model="withdrawLog.bankCardName" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">银行卡号</label>
-                                <div class="col-sm-10">
-                                    <input v-model="withdrawLog.bankCardNum" class="form-control">
+                                    <input v-model="challengeReward.createTime" class="form-control">
                                 </div>
                             </div>
                         </form>
@@ -170,11 +123,11 @@
 
     export default {
         components: {Pagination},
-        name: "withdrawLog",
+        name: "challengeReward",
         data: function () {
             return {
-                withdrawLog: {},
-                withdrawLogs: [],
+                challengeReward: {},
+                challengeRewards: [],
                 page: 1,
                 search: "",
             }
@@ -192,16 +145,16 @@
              */
             add() {
                 let _this = this;
-                _this.withdrawLog = {};
+                _this.challengeReward = {};
                 $("#form-modal").modal("show");
             },
 
             /**
              * 点击【编辑】
              */
-            edit(withdrawLog) {
+            edit(challengeReward) {
                 let _this = this;
-                _this.withdrawLog = $.extend({}, withdrawLog);
+                _this.challengeReward = $.extend({}, challengeReward);
                 $("#form-modal").modal("show");
             },
 
@@ -212,14 +165,14 @@
                 let _this = this;
                 _this.page = page;
                 Loading.show();
-                _this.$ajax.post(process.env.VUE_APP_SERVER + '/withdrawLog/list', {
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/challengeReward/list', {
                     page: page,
                     size: _this.$refs.pagination.size,
                     search: _this.search,
                 }).then((response) => {
                     Loading.hide();
                     let resp = response.data;
-                    _this.withdrawLogs = resp.content.list;
+                    _this.challengeRewards = resp.content.list;
                     _this.$refs.pagination.render(page, resp.content.total);
 
                 })
@@ -233,23 +186,19 @@
 
                 // 保存校验
                 if (1 != 1
-                    || !Validator.require(_this.withdrawLog.userId, "玩家id")
-                    || !Validator.require(_this.withdrawLog.withdrawMoney, "提现金额")
-                    || !Validator.require(_this.withdrawLog.serviceCharge, "手续费金额")
-                    || !Validator.require(_this.withdrawLog.state, "当前状态（0审核，1通过，汇款中，3汇款成功，4失败）")
-                    || !Validator.length(_this.withdrawLog.audit, "审核说明", 1, 255)
-                    || !Validator.require(_this.withdrawLog.bankCardName, "提现银行")
-                    || !Validator.length(_this.withdrawLog.bankCardName, "提现银行", 1, 255)
-                    || !Validator.require(_this.withdrawLog.bankCardNum, "银行卡号")
-                    || !Validator.length(_this.withdrawLog.bankCardNum, "银行卡号", 1, 255)
-                    || !Validator.require(_this.withdrawLog.createTime, "创建时间")
+                    || !Validator.require(_this.challengeReward.userId, "玩家ID")
+                    || !Validator.require(_this.challengeReward.challenge, "挑战账目")
+                    || !Validator.require(_this.challengeReward.rebate, "返利")
+                    || !Validator.require(_this.challengeReward.getRebate, "已领取")
+                    || !Validator.require(_this.challengeReward.status, "状态（0未结算，1已结算，2已领取）")
+                    || !Validator.require(_this.challengeReward.createTime, "创建时间")
                 ) {
                     return;
                 }
 
                 Loading.show();
-                if (_this.withdrawLog.id === undefined) {
-                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/withdrawLog/add', _this.withdrawLog).then((response) => {
+                if (_this.challengeReward.id === undefined) {
+                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/challengeReward/add', _this.challengeReward).then((response) => {
                         Loading.hide();
                         let resp = response.data;
                         if (resp.success) {
@@ -261,7 +210,7 @@
                         }
                     })
                 } else {
-                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/withdrawLog/edit', _this.withdrawLog).then((response) => {
+                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/challengeReward/edit', _this.challengeReward).then((response) => {
                         Loading.hide();
                         let resp = response.data;
                         if (resp.success) {
@@ -280,9 +229,9 @@
              */
             del(id) {
                 let _this = this;
-                Confirm.show("删除提现审核后不可恢复，确认删除？", function () {
+                Confirm.show("删除挑战福利后不可恢复，确认删除？", function () {
                     Loading.show();
-                    _this.$ajax.delete(process.env.VUE_APP_SERVER + '/withdrawLog/delete/' + id).then((response) => {
+                    _this.$ajax.delete(process.env.VUE_APP_SERVER + '/challengeReward/delete/' + id).then((response) => {
                         Loading.hide();
                         let resp = response.data;
                         if (resp.success) {

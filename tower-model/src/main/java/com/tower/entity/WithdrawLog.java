@@ -34,7 +34,7 @@ public class WithdrawLog implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "订单号")
-    private String order;
+    private String orderId;
 
     @ApiModelProperty(value = "玩家id")
     private Integer userId;

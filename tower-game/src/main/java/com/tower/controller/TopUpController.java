@@ -70,7 +70,7 @@ public class TopUpController {
                 .setBankCardNum(topUpConfig.getBankCardNum())
                 .setUserId(player.getId())
                 .setState(0)
-                .setOrder(DateUtils.getNowDate() + (new Random().nextInt(900000) + 100000))
+                .setOrderId(DateUtils.getNowDate() + (new Random().nextInt(900000) + 100000))
                 .setCreateTime(LocalDateTime.now());
         topUpLogService.save(topUpLog);
         return AccountController.getPlayerDtoResponseDto(player);

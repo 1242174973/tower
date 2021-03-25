@@ -140,6 +140,17 @@
                             </li>
 
                         </ul>
+                    <ul class="submenu">
+                        <li class="" id="welfare-challengeReward-sidebar">
+                            <router-link to="/welfare/challengeReward">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                挑战福利
+                            </router-link>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                    </ul>
                     </li>
 
 

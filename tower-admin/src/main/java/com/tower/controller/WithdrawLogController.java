@@ -38,7 +38,7 @@ public class WithdrawLogController {
         LambdaQueryWrapper<WithdrawLog> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         if (!StringUtils.isEmpty(pageDto.getSearch())) {
             lambdaQueryWrapper
-                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getOrder, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(WithdrawLog::getOrderId, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(WithdrawLog::getUserId, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(WithdrawLog::getBankCardName, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(WithdrawLog::getBankCardNum, pageDto.getSearch()))

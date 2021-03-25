@@ -37,7 +37,7 @@ public class WithdrawLogDto implements Serializable {
     private Integer userId;
 
     @ApiModelProperty(value = "订单号")
-    private String order;
+    private String orderId;
 
     @ApiModelProperty(value = "提现金额")
     private BigDecimal withdrawMoney;

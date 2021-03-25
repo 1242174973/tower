@@ -16,7 +16,7 @@
         <result column="bank_card_num" property="bankCardNum" />
         <result column="create_time" property="createTime" />
         <result column="audit_time" property="auditTime" />
-        <result column="order" property="order"/>
+        <result column="order_id" property="orderId"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

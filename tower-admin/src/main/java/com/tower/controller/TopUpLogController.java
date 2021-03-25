@@ -42,7 +42,7 @@ public class TopUpLogController {
                     .or(queryWrapper -> queryWrapper.like(TopUpLog::getBankCardNum, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(TopUpLog::getBankCardName, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(TopUpLog::getPayee, pageDto.getSearch()))
-                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getOrder, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getOrderId, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(TopUpLog::getRemit, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(TopUpLog::getAudit, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(TopUpLog::getAuditId, pageDto.getSearch()))

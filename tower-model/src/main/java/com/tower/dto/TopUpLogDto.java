@@ -36,7 +36,7 @@ public class TopUpLogDto implements Serializable {
     private Integer topUpId;
 
     @ApiModelProperty(value = "订单号")
-    private String order;
+    private String orderId;
 
     @ApiModelProperty(value = "玩家ID")
     private Integer userId;
