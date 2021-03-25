@@ -51,7 +51,7 @@ public class ChallengeRewardController {
         return responseDto;
     }
 
-    @PostMapping("/todayReward")
+    @PostMapping("/rewardList")
     @ApiOperation(value = "挑战奖励明细", notes = "参数 分页参数 日期年 日期月")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<ChallengeRewardPageDto> rewardList(Player player,
