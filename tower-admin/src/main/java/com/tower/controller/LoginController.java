@@ -52,7 +52,7 @@ public class LoginController {
         String token = UuidUtil.getShortUuid();
         userDto.setToken(token);
         userDto.setName(mysqlUser.getName());
-        redisOperator.set(token, JsonUtils.objectToJson(mysqlUser), 3600*24);
+        redisOperator.set(token, JsonUtils.objectToJson(mysqlUser), 3600*24*30);
         responseDto.setContent(userDto);
         return responseDto;
     }

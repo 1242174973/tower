@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>
@@ -50,6 +51,11 @@ public class MySalvageServiceImpl extends ServiceImpl<MySalvageMapper, Salvage> 
                     .setGetSalvage(BigDecimal.ZERO).setSalvage(BigDecimal.ZERO);
             save(salvage);
         }
+    }
+
+    @Override
+    public void getSalvage(List<Integer> rewardIds) {
+        baseMapper.getSalvage(rewardIds);
     }
 
 

@@ -2,16 +2,18 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.tower.dto.ChallengeRewardDto;
-import com.tower.dto.ResponseDto;
-import com.tower.dto.SafeBoxLogDto;
-import com.tower.dto.SalvageDto;
+import com.tower.dto.*;
 import com.tower.dto.page.game.ChallengeRewardPageDto;
 import com.tower.dto.page.game.SalvagePageDto;
 import com.tower.entity.ChallengeReward;
 import com.tower.entity.Player;
 import com.tower.entity.Salvage;
+import com.tower.entity.WelfareLog;
+import com.tower.enums.AwardStatus;
+import com.tower.enums.WelfareModelEnum;
+import com.tower.enums.WelfareTypeEnum;
 import com.tower.service.SalvageService;
+import com.tower.service.WelfareLogService;
 import com.tower.service.my.MyChallengeRewardService;
 import com.tower.service.my.MySalvageService;
 import com.tower.utils.BusinessUtil;
@@ -25,7 +27,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author 梦-屿-千-寻
@@ -38,6 +43,9 @@ public class SalvageController {
 
     @Resource
     private MySalvageService salvageService;
+
+    @Resource
+    private WelfareLogService welfareLogService;
 
     @GetMapping("/todaySalvage")
     @ApiOperation(value = "今日预计援助金", notes = "无需参数")
@@ -93,5 +101,27 @@ public class SalvageController {
         salvagePageDto.setTotalGet(salvageService.selectTotalGet(player.getId()));
         responseDto.setContent(salvagePageDto);
         return responseDto;
+    }
+    @GetMapping("/getSalvage")
+    @ApiOperation(value = "领取救助金", notes = "无需参数")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ResponseDto<PlayerDto> getSalvage(Player player) {
+        LambdaQueryWrapper<Salvage> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(Salvage::getUserId, player.getId())
+                .eq(Salvage::getStatus, AwardStatus.CLEARING);
+        List<Salvage> salvages = salvageService.getBaseMapper().selectList(lambdaQueryWrapper);
+        BusinessUtil.assertParam(salvages != null && salvages.size() > 0, "暂时没有可领取奖励");
+        //可领取的奖励
+        double sum = salvages.stream().mapToDouble(salvage -> salvage.getSalvage().doubleValue()).sum();
+        //添加福利记录
+        WelfareLog welfareLog = new WelfareLog().setCreateTime(LocalDateTime.now()).setUserId(player.getId())
+                .setWelfareType(WelfareTypeEnum.GOLD.getCode()).setMode(WelfareModelEnum.RESCUE.getCode())
+                .setWelfare(BigDecimal.valueOf(sum));
+        welfareLogService.save(welfareLog);
+        //领取更新数据库
+        List<Integer> rewardIds = salvages.stream().map(Salvage::getId).collect(Collectors.toList());
+        salvageService.getSalvage(rewardIds);
+        player.setMoney(player.getMoney().add(BigDecimal.valueOf(sum)));
+        return AccountController.getPlayerDtoResponseDto(player);
     }
 }

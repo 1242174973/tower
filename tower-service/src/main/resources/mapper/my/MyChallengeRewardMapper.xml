@@ -37,7 +37,7 @@
         UPDATE challenge_reward
         SET get_rebate=rebate,
         status=2
-        WHERE id in #{rewardIds}
+        WHERE id IN #{rewardIds}
     </update>
 
 </mapper>

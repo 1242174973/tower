@@ -3,6 +3,8 @@ package com.tower.service.my;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.tower.entity.Salvage;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -34,4 +36,10 @@ public interface MySalvageService extends IService<Salvage> {
      * @param id 玩家ID
      */
     void insertToday(int id);
+
+    /**
+     * 领取救助金
+     * @param rewardIds 领取id
+     */
+    void getSalvage(List<Integer> rewardIds);
 }

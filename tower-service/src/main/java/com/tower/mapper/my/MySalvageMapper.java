@@ -3,6 +3,8 @@ package com.tower.mapper.my;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.tower.entity.Salvage;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -18,4 +20,6 @@ public interface MySalvageMapper extends BaseMapper<Salvage> {
     Integer selectTotalGet(int userId);
 
     void settlement();
+
+    void getSalvage(List<Integer> rewardIds);
 }

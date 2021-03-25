@@ -38,11 +38,11 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
         assert request != null;
         String token = request.getHeader("token");
         // 然后根据token获取用户登录信息
-        Player user = null;
+        Player player = null;
         if (token != null) {
             // 这边拿到的 token  前往redis获得用户信息返回
-            user = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO, token), Player.class);
+            player = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO, token), Player.class);
         }
-        return user;
+        return player;
     }
 }
