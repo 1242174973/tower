@@ -113,7 +113,7 @@ public class UserBankCardController {
         lambdaQueryWrapper.eq(UserWithdrawConfig::getUserId, player.getId());
         UserWithdrawConfig one = userWithdrawConfigService.getOne(lambdaQueryWrapper);
         BusinessUtil.assertParam(one.getTodayWithdrawSize() > 0, "提现次数不足");
-        BusinessUtil.assertParam(one.getTodayWithdrawMoney() > money, "提现额度不足");
+        BusinessUtil.assertParam(one.getTodayWithdrawMoney() >= money, "提现额度不足");
         player.setMoney(player.getMoney().subtract(BigDecimal.valueOf(money)));
         one.setTodayWithdrawSize(one.getTodayWithdrawSize() - 1);
         one.setTodayWithdrawMoney(one.getTodayWithdrawMoney() - money);
@@ -126,7 +126,7 @@ public class UserBankCardController {
                 .setWithdrawMoney(BigDecimal.valueOf(money))
                 .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()));
         withdrawLogService.save(withdrawLog);
-        userWithdrawConfigService.save(one);
+        userWithdrawConfigService.saveOrUpdate(one);
         return AccountController.getPlayerDtoResponseDto(player);
     }
 

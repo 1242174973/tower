@@ -76,6 +76,11 @@ public class UserWithdrawConfigController {
         BusinessUtil.require(userWithdrawConfigDto.getId(), BusinessExceptionCode.ID);
         UserWithdrawConfig userWithdrawConfig = userWithdrawConfigService.getById(userWithdrawConfigDto.getId());
         BusinessUtil.assertParam(userWithdrawConfig != null, "提现配置没找到");
+        userWithdrawConfig.setTodayWithdrawMoney(userWithdrawConfigDto.getTodayWithdrawMoney());
+        userWithdrawConfig.setTodayWithdrawSize(userWithdrawConfigDto.getTodayWithdrawSize());
+        userWithdrawConfig.setTotalWithdrawSize(userWithdrawConfigDto.getTotalWithdrawSize());
+        userWithdrawConfig.setTotalWithdrawMoney(userWithdrawConfigDto.getTotalWithdrawMoney());
+        userWithdrawConfig.setServiceCharge(userWithdrawConfigDto.getServiceCharge());
         userWithdrawConfigService.saveOrUpdate(userWithdrawConfig);
         ResponseDto<UserWithdrawConfigDto> responseDto = new ResponseDto<>();
         userWithdrawConfigDto = CopyUtil.copy(userWithdrawConfig, UserWithdrawConfigDto.class);
@@ -100,10 +105,10 @@ public class UserWithdrawConfigController {
      * @param userWithdrawConfigDto 参数
      */
     private void requireParam(UserWithdrawConfigDto userWithdrawConfigDto) {
-        BusinessUtil.require(userWithdrawConfigDto.getTodayWithdrawMoney(),BusinessExceptionCode.TODAY_WITHDRAW_MONEY);
-        BusinessUtil.require(userWithdrawConfigDto.getTotalWithdrawMoney(),BusinessExceptionCode.TOTAL_WITHDRAW_MONEY);
-        BusinessUtil.require(userWithdrawConfigDto.getTodayWithdrawSize(),BusinessExceptionCode.TODAY_WITHDRAW_SIZE);
-        BusinessUtil.require(userWithdrawConfigDto.getTotalWithdrawSize(),BusinessExceptionCode.TOTAL_WITHDRAW_SIZE);
-        BusinessUtil.require(userWithdrawConfigDto.getServiceCharge(),BusinessExceptionCode.SERVICE_CHARGE);
+        BusinessUtil.require(userWithdrawConfigDto.getTodayWithdrawMoney(), BusinessExceptionCode.TODAY_WITHDRAW_MONEY);
+        BusinessUtil.require(userWithdrawConfigDto.getTotalWithdrawMoney(), BusinessExceptionCode.TOTAL_WITHDRAW_MONEY);
+        BusinessUtil.require(userWithdrawConfigDto.getTodayWithdrawSize(), BusinessExceptionCode.TODAY_WITHDRAW_SIZE);
+        BusinessUtil.require(userWithdrawConfigDto.getTotalWithdrawSize(), BusinessExceptionCode.TOTAL_WITHDRAW_SIZE);
+        BusinessUtil.require(userWithdrawConfigDto.getServiceCharge(), BusinessExceptionCode.SERVICE_CHARGE);
     }
 }
