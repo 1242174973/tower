@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tower.mapper.my.MyPlayerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.tower.entity.Player">
+        <id column="id" property="id"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="account" property="account"/>
+        <result column="pic" property="pic"/>
+        <result column="vip" property="vip"/>
+        <result column="money" property="money"/>
+        <result column="safe_box" property="safeBox"/>
+        <result column="safe_box_password" property="safeBoxPassword"/>
+        <result column="sign_in" property="signIn"/>
+        <result column="total_sign_in" property="totalSignIn"/>
+        <result column="spread" property="spread"/>
+        <result column="super_id" property="superId"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, nick_name, password, salt, account, pic, vip, money, safe_box, safe_box_password, sign_in, total_sign_in, spread, super_id, create_time
+    </sql>
+    <update id="resetPlayerWithdraw">
+        UPDATE user_withdraw_config SET today_withdraw_size=total_withdraw_size,today_withdraw_money=total_withdraw_money
+    </update>
+</mapper>

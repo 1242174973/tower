@@ -44,5 +44,8 @@ public interface Mid {
      * 错误信息返回
      */
     int MID_SERVER_ERROR_RES = 2100;
-
+    /**
+     * 玩家信息返回
+     */
+    int PLAYER_INFO_RES = 2101;
 }

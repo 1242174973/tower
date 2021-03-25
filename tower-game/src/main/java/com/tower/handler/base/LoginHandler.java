@@ -4,6 +4,7 @@ import com.tower.core.AbsLogicHandler;
 import com.tower.core.ILogicHandler;
 import com.tower.core.constant.GameConst;
 import com.tower.core.constant.Mid;
+import com.tower.core.pipline.MsgBossHandler;
 import com.tower.core.utils.MsgUtil;
 import com.tower.entity.Player;
 import com.tower.msg.Tower;
@@ -22,6 +23,8 @@ import javax.annotation.Resource;
  */
 @Component
 public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid, ILogicHandler<Tower.LoginReq> {
+
+
     @Resource
     private RedisOperator redisOperator;
 
@@ -49,6 +52,7 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
         }
         ch.attr(GameConst.ATTR_USER_ID).set(player.getId().longValue());
         sendLoginSuccess(ch, player);
+        MsgBossHandler.putPlayerIdChannel(player.getId(), ch);
     }
 
     @Override
@@ -59,9 +63,11 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
     /**
      * 发送登录成功
      *
-     * @param player
+     * @param player w
      */
     private void sendLoginSuccess(Channel ch, Player player) {
+        Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
+        msgCtn.setType(Mid.MID_LOGIN_RES);
         Tower.LoginRes.Builder builder = Tower.LoginRes.newBuilder();
         builder.setSuc(true);
         Tower.UserInfoRes.Builder userInfoRes = Tower.UserInfoRes.newBuilder();
@@ -70,6 +76,8 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
         userInfoRes.setNickname(player.getNickName());
         userInfoRes.setMoney(player.getMoney().doubleValue());
         userInfoRes.setSafeBox(player.getSafeBox().doubleValue());
-        MsgUtil.sendMsg(ch, builder.build().toByteArray());
+        builder.setUserInfo(userInfoRes);
+        msgCtn.setDatas(builder.build().toByteString());
+        MsgUtil.sendMsg(ch, msgCtn.build().toByteArray());
     }
 }

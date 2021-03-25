@@ -17,13 +17,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class ChallengeRewardServiceImpl extends ServiceImpl<ChallengeRewardMapper, ChallengeReward> implements ChallengeRewardService {
 
-    @Override
-    public Integer selectTotalRebate(int userId) {
-        return baseMapper.selectTotalRebate(userId);
-    }
-
-    @Override
-    public int selectTotalGet(int userId) {
-            return baseMapper.selectTotalGet(userId);
-    }
 }

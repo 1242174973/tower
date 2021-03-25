@@ -8,6 +8,7 @@ import com.tower.dto.page.game.ChallengeRewardPageDto;
 import com.tower.entity.ChallengeReward;
 import com.tower.entity.Player;
 import com.tower.service.ChallengeRewardService;
+import com.tower.service.my.MyChallengeRewardService;
 import com.tower.utils.BusinessUtil;
 import com.tower.utils.CopyUtil;
 import com.tower.utils.DateUtils;
@@ -31,7 +32,7 @@ import java.util.List;
 public class ChallengeRewardController {
 
     @Resource
-    private ChallengeRewardService challengeRewardService;
+    private MyChallengeRewardService challengeRewardService;
 
     @GetMapping("/todayReward")
     @ApiOperation(value = "今日挑战奖励", notes = "无需参数")
@@ -39,8 +40,8 @@ public class ChallengeRewardController {
     public ResponseDto<ChallengeRewardDto> todayReward(Player player) {
         LambdaQueryWrapper<ChallengeReward> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(ChallengeReward::getUserId, player.getId())
-                .ge(ChallengeReward::getCreateTime, DateUtils.getDate(1))
-                .le(ChallengeReward::getCreateTime, DateUtils.getDate(0));
+                .ge(ChallengeReward::getCreateTime, DateUtils.getDate(0))
+                .le(ChallengeReward::getCreateTime, DateUtils.getDate(1));
         ChallengeReward challengeReward = challengeRewardService.getOne(lambdaQueryWrapper);
         BusinessUtil.assertParam(challengeReward != null, "找不到今日挑战奖励");
         ChallengeRewardDto challengeRewardDto = CopyUtil.copy(challengeReward, ChallengeRewardDto.class);

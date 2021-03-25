@@ -42,7 +42,7 @@ public class TransferController {
 
     @PostMapping("/transfer")
     @ApiOperation(value = "转账请求", notes = "参数 接收人ID 转账金额")
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class,noRollbackFor = BusinessException.class)
     public ResponseDto<PlayerDto> transfer(Player player, @RequestBody TransferLogDto transferLogDto) {
         BusinessUtil.require(transferLogDto.getReceptionId(), BusinessExceptionCode.RECEPTION_ID);
         BusinessUtil.require(transferLogDto.getCoin(), BusinessExceptionCode.COIN);
@@ -69,7 +69,7 @@ public class TransferController {
         return AccountController.getPlayerDtoResponseDto(player);
     }
 
-    @GetMapping("/transferLog")
+    @PostMapping("/transferLog")
     @ApiOperation(value = "获取转账记录", notes = "参数 分页参数")
     public ResponseDto<TransferLogPageDto> topUpLogList(Player player, @RequestBody TransferLogPageDto transferLogPageDto) {
         BusinessUtil.assertParam(transferLogPageDto.getPage() > 0, "页数必须大于0");

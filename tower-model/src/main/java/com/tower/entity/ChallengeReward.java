@@ -43,7 +43,7 @@ public class ChallengeReward implements Serializable {
     private BigDecimal rebate;
 
     @ApiModelProperty(value = "已领取")
-    private BigDecimal get;
+    private BigDecimal getRebate;
 
     @ApiModelProperty(value = "状态（0未结算，1已结算，2已领取）")
     private Integer status;

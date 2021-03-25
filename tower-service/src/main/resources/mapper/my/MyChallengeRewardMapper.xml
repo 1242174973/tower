@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tower.mapper.ChallengeRewardMapper">
+<mapper namespace="com.tower.mapper.my.MyChallengeRewardMapper">
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.tower.entity.ChallengeReward">
@@ -17,5 +17,21 @@
     <sql id="Base_Column_List">
         id, user_id, challenge, rebate, get_rebate, status, create_time
     </sql>
+    <update id="settlement">
+        UPDATE challenge_reward SET status =1 WHERE status=0
+
+    </update>
+    <select id="selectTotalRebate" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT SUM(rebate) AS rebate
+        FROM challenge_reward
+        WHERE user_id=#{userId}
+        GROUP BY user_id
+    </select>
+    <select id="selectTotalGet" resultType="java.lang.Integer">
+        SELECT SUM(get_rebate) AS rebate
+        FROM challenge_reward
+        WHERE user_id=#{userId}
+        GROUP BY user_id
+    </select>
 
 </mapper>

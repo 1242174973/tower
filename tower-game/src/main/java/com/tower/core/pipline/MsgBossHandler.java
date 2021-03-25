@@ -12,6 +12,7 @@ import com.tower.core.utils.MsgUtil;
 import com.tower.exception.ServerException;
 import com.tower.msg.Tower;
 import com.tower.utils.MyApplicationContextUti;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
@@ -22,6 +23,7 @@ import io.netty.util.Attribute;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.*;
 
 /**
@@ -33,6 +35,8 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
     private static final ExecutorService executeLogin = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
     private static final ExecutorService executeGame = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
     private static final ExecutorService executeRecord = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
+
+    private static Map<Integer, Channel> playerIdChannel=new ConcurrentHashMap<>();
 
 
     private static MsgMapping msgMapping = null;
@@ -245,5 +249,12 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
         } else {
             log.error("未知的CH[{}]异常:{}", ctx.channel().id(), cause.getMessage(), cause);
         }
+    }
+
+    public static void putPlayerIdChannel(int playerId,Channel channel){
+        playerIdChannel.put(playerId,channel);
+    }
+    public static Channel getPlayerIdChannel(int playerId){
+        return playerIdChannel.get(playerId);
     }
 }

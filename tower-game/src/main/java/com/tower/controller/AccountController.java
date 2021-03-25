@@ -2,15 +2,21 @@ package com.tower.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.tower.core.constant.Mid;
+import com.tower.core.pipline.MsgBossHandler;
+import com.tower.core.utils.MsgUtil;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
 import com.tower.entity.Player;
 import com.tower.entity.UserWithdrawConfig;
 import com.tower.exception.BusinessExceptionCode;
+import com.tower.msg.Tower;
 import com.tower.service.PlayerService;
 import com.tower.service.UserWithdrawConfigService;
+import com.tower.service.my.MyChallengeRewardService;
 import com.tower.utils.*;
 import com.tower.variable.RedisVariable;
+import io.netty.channel.Channel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -43,6 +49,9 @@ public class AccountController {
 
     @Resource
     private PlayerService playerService;
+
+    @Resource
+    private MyChallengeRewardService challengeRewardService;
 
     @PostMapping("/register")
     @ApiOperation(value = "用户注册", notes = "需要参数 昵称 图片验证码  图片验证码token  用户名  密码  推广码")
@@ -79,12 +88,12 @@ public class AccountController {
         player.setSafeBox(BigDecimal.ZERO);
         player.setSpread(UuidUtil.getShortUuid(4));
         player.setSuperId(superId);
-        player.setPic("http://www.baidu.com");
+        player.setPic("https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/80/crop/xy/ai/w/160/h/160/resize/w/160?url=https%3A%2F%2Fimg02.sogoucdn.com%2Fapp%2Fa%2F10010016%2F4e2cfdceac8118da34011cb5c49da00b&appid=201003&sign=676de451cea1a4192b7eede671eae0ce");
         player.setSalt(UuidUtil.getShortUuid(8));
         player.setSignInTime(DateUtils.byDayLocalDateTime(-1));
         player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(player.getPassword() + player.getSalt())));
         ResponseDto<PlayerDto> playerDtoResponseDto = getPlayerDtoResponseDto(player);
-        Integer userId = playerDtoResponseDto.getContent().getId();
+        int userId = playerDtoResponseDto.getContent().getId();
         UserWithdrawConfig userWithdrawConfig = new UserWithdrawConfig();
         userWithdrawConfig.setUserId(userId).
                 setCreateTime(LocalDateTime.now()).
@@ -93,6 +102,7 @@ public class AccountController {
                 setTotalWithdrawSize(0).
                 setTodayWithdrawSize(0);
         userWithdrawConfigService.save(userWithdrawConfig);
+        challengeRewardService.insertToday(userId);
         return playerDtoResponseDto;
     }
 
@@ -166,6 +176,19 @@ public class AccountController {
         userDto.setToken(token);
         ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
         responseDto.setContent(userDto);
+        Channel channel = MsgBossHandler.getPlayerIdChannel(player.getId());
+        if(channel!=null){
+            Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
+            msgCtn.setType(Mid.PLAYER_INFO_RES);
+            Tower.UserInfoRes.Builder userInfoRes = Tower.UserInfoRes.newBuilder();
+            userInfoRes.setAccount(player.getAccount());
+            userInfoRes.setId(player.getId());
+            userInfoRes.setNickname(player.getNickName());
+            userInfoRes.setMoney(player.getMoney().doubleValue());
+            userInfoRes.setSafeBox(player.getSafeBox().doubleValue());
+            msgCtn.setDatas(userInfoRes.build().toByteString());
+            MsgUtil.sendMsg(channel, msgCtn.build().toByteArray());
+        }
         return responseDto;
     }
 

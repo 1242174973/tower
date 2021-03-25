@@ -12,8 +12,4 @@ import com.tower.entity.ChallengeReward;
  * @since 2021-03-24
  */
 public interface ChallengeRewardMapper extends BaseMapper<ChallengeReward> {
-
-    Integer selectTotalRebate(int userId);
-
-    Integer selectTotalGet(int userId);
 }
