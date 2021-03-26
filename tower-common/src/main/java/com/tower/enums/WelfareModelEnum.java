@@ -8,7 +8,8 @@ public enum WelfareModelEnum {
     //金币
     SIGN_IN(1,"签到"),
     RESCUE(2,"救援"),
-    CHALLENGE(2,"挑战"),
+    CHALLENGE(3,"挑战"),
+    WITHDRAW(4,"提现"),
     ;
     private int code;
     private String desc;

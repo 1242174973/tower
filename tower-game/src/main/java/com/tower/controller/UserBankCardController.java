@@ -4,13 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.dto.*;
 import com.tower.dto.page.WithdrawLogPageDto;
-import com.tower.entity.Player;
-import com.tower.entity.UserBankCard;
-import com.tower.entity.UserWithdrawConfig;
-import com.tower.entity.WithdrawLog;
+import com.tower.entity.*;
+import com.tower.enums.WelfareModelEnum;
+import com.tower.enums.WelfareTypeEnum;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.UserBankCardService;
 import com.tower.service.UserWithdrawConfigService;
+import com.tower.service.WelfareLogService;
 import com.tower.service.WithdrawLogService;
 import com.tower.utils.BusinessUtil;
 import com.tower.utils.CopyUtil;
@@ -46,6 +46,9 @@ public class UserBankCardController {
 
     @Resource
     private WithdrawLogService withdrawLogService;
+
+    @Resource
+    private WelfareLogService welfareLogService;
 
     @PostMapping("/bindBankCard")
     @ApiOperation(value = "绑定银行卡", notes = "参数 银行卡持卡人 银行卡号 银行 支行 省 市")
@@ -126,6 +129,13 @@ public class UserBankCardController {
                 .setWithdrawMoney(BigDecimal.valueOf(money))
                 .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()/100));
         withdrawLogService.save(withdrawLog);
+        WelfareLog welfareLog = new WelfareLog();
+        welfareLog.setMode(WelfareModelEnum.SIGN_IN.getCode());
+        welfareLog.setWelfare(BigDecimal.valueOf(-money));
+        welfareLog.setWelfareType( WelfareTypeEnum.GOLD.getCode());
+        welfareLog.setUserId(player.getId());
+        welfareLog.setCreateTime(LocalDateTime.now());
+        welfareLogService.save(welfareLog);
         userWithdrawConfigService.saveOrUpdate(one);
         return AccountController.getPlayerDtoResponseDto(player);
     }
