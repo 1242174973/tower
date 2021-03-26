@@ -187,7 +187,7 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
             userIdAttr.set(null);
             executeLogin.execute(()->{
                 //TODO 处理玩家断开连接
-                // hall.leaveUser(userId,false);
+                playerIdChannel.remove(userId.intValue());
             });
 
         } else {
