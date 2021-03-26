@@ -50,6 +50,7 @@ public class LoginAdminGatewayFilterFactory extends WebMvcConfigurationSupport {
                 .addPathPatterns("/**")
                 .excludePathPatterns(
                         "/account/**",
+                        "/feign/**",
                         "/file/imageUpload",
                         "/kaptcha/image-code/**",
                         "/v2/api-docs");

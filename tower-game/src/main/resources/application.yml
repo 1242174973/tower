@@ -14,7 +14,23 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: jef5re4g6e4
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 192.168.3.148:8848
+        namespace: public # 注册到 nacos 的指定 namespace，默认为 public
+        cluster-name: consumer-cluster  #集群名称
+      config:
+        server-addr: 192.168.3.148:8848  # nacos配置中心地址
+        namespace: public
+        file-extension: yaml  #配置文件的后缀名
+        refresh-enabled: true  #默认true：自动刷新
 netty:
   port: 10101
 game:
   verify: true
+logging:
+  level:
+    com.alibaba.nacos.client.config.impl: WARN

@@ -14,6 +14,7 @@ import com.tower.enums.AuditType;
 import com.tower.enums.WelfareModelEnum;
 import com.tower.enums.WelfareTypeEnum;
 import com.tower.exception.BusinessExceptionCode;
+import com.tower.feign.PlayerFeign;
 import com.tower.service.PlayerService;
 import com.tower.service.WelfareLogService;
 import com.tower.service.WithdrawLogService;
@@ -22,6 +23,8 @@ import com.tower.variable.RedisVariable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +43,9 @@ public class WithdrawLogController {
 
     @Resource
     private WithdrawLogService withdrawLogService;
+
+    @Resource
+    private PlayerFeign playerFeign;
 
     @Resource
     private WelfareLogService welfareLogService;
@@ -147,6 +153,7 @@ public class WithdrawLogController {
 
     @PostMapping("/editError")
     @ApiOperation(value = "审核失败", notes = "审核失败请求")
+    @Transactional(propagation= Propagation.REQUIRED,rollbackFor = Exception.class)
     public ResponseDto<WithdrawLogDto> editError(User user,
                                                  @ApiParam(value = "提现审核信息", required = true)
                                                  @RequestBody WithdrawLogDto withdrawLogDto) {
@@ -169,7 +176,8 @@ public class WithdrawLogController {
         welfareLogService.save(welfareLog);
         Player player = getPlayer(withdrawLog.getUserId());
         player.setMoney(player.getMoney().add(withdrawLog.getWithdrawMoney()));
-        updatePlayerInfo(player);
+        playerFeign.save(player);
+//        updatePlayerInfo(player);
         ResponseDto<WithdrawLogDto> responseDto = new ResponseDto<>();
         withdrawLogDto = CopyUtil.copy(withdrawLog, WithdrawLogDto.class);
         responseDto.setContent(withdrawLogDto);
