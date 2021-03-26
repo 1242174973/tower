@@ -2,9 +2,7 @@ package com.tower.feign;
 
 import com.tower.entity.Player;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author 梦-屿-千-寻
@@ -20,4 +18,12 @@ public interface PlayerFeign {
      */
     @PostMapping("/save")
     void save(@RequestBody Player player);
+
+    /**
+     * 根据玩家id获得玩家信息
+     * @param id 玩家id
+     * @return 玩家信息
+     */
+    @GetMapping("/playerInfo/{id}")
+    Player playerInfo(@PathVariable int id);
 }

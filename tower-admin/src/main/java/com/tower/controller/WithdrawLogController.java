@@ -153,7 +153,7 @@ public class WithdrawLogController {
 
     @PostMapping("/editError")
     @ApiOperation(value = "审核失败", notes = "审核失败请求")
-    @Transactional(propagation= Propagation.REQUIRED,rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<WithdrawLogDto> editError(User user,
                                                  @ApiParam(value = "提现审核信息", required = true)
                                                  @RequestBody WithdrawLogDto withdrawLogDto) {
@@ -174,57 +174,15 @@ public class WithdrawLogController {
         welfareLog.setUserId(withdrawLog.getUserId());
         welfareLog.setCreateTime(LocalDateTime.now());
         welfareLogService.save(welfareLog);
-        Player player = getPlayer(withdrawLog.getUserId());
+        Player player = playerFeign.playerInfo(withdrawLog.getUserId());
         player.setMoney(player.getMoney().add(withdrawLog.getWithdrawMoney()));
         playerFeign.save(player);
-//        updatePlayerInfo(player);
         ResponseDto<WithdrawLogDto> responseDto = new ResponseDto<>();
         withdrawLogDto = CopyUtil.copy(withdrawLog, WithdrawLogDto.class);
         responseDto.setContent(withdrawLogDto);
         return responseDto;
     }
 
-    private static Player getPlayer(Integer userId) {
-        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
-        String token = getToken(userId);
-        // 然后根据token获取用户登录信息
-        Player player = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO, token), Player.class);
-        if (player == null) {
-            PlayerService playerService = MyApplicationContextUti.getBean(PlayerService.class);
-            player = playerService.getById(userId);
-        }
-        return player;
-    }
-
-    /**
-     * 根据player对象获得返回体
-     *
-     * @param player 玩家
-     */
-    public static void updatePlayerInfo(Player player) {
-        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
-        PlayerService playerService = MyApplicationContextUti.getBean(PlayerService.class);
-        playerService.saveOrUpdate(player);
-        String token = getToken(player.getId());
-        redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
-    }
-
-    /**
-     * 获得token
-     *
-     * @param userId userId
-     * @return token
-     */
-    private static String getToken(int userId) {
-        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
-        String token = redisOperator.hget(RedisVariable.USER_TOKEN, userId);
-        if (token != null) {
-            return token;
-        }
-        token = UuidUtil.getShortUuid();
-        redisOperator.hset(RedisVariable.USER_TOKEN, userId, token);
-        return token;
-    }
 
     @PostMapping("/remittance")
     @ApiOperation(value = "汇款", notes = "汇款")

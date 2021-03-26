@@ -2,6 +2,7 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.TransferLogDto;
@@ -42,7 +43,7 @@ public class TransferController {
 
     @PostMapping("/transfer")
     @ApiOperation(value = "转账请求", notes = "参数 接收人ID 转账金额")
-    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class,noRollbackFor = BusinessException.class)
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, noRollbackFor = BusinessException.class)
     public ResponseDto<PlayerDto> transfer(Player player, @RequestBody TransferLogDto transferLogDto) {
         BusinessUtil.require(transferLogDto.getReceptionId(), BusinessExceptionCode.RECEPTION_ID);
         BusinessUtil.require(transferLogDto.getCoin(), BusinessExceptionCode.COIN);
@@ -65,7 +66,7 @@ public class TransferController {
             transferLogService.save(transferLog);
             throw ex;
         }
-        AccountController.getPlayerDtoResponseDto(receptionPlayer);
+        PlayerUtils.savePlayer(receptionPlayer);
         return AccountController.getPlayerDtoResponseDto(player);
     }
 

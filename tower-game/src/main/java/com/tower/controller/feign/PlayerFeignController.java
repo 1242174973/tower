@@ -1,6 +1,7 @@
 package com.tower.controller.feign;
 
 import com.tower.controller.AccountController;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.entity.Player;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +18,11 @@ public class PlayerFeignController {
     @PostMapping("/save")
     @ApiOperation(value = "保存玩家信息", notes = "参数 玩家信息对象")
     public void save(@RequestBody Player player) {
-        AccountController.getPlayerDtoResponseDto(player);
+        PlayerUtils.savePlayer(player);
     }
-
+    @GetMapping("/playerInfo/{id}")
+    @ApiOperation(value = "获得玩家信息", notes = "参数 玩家ID")
+    public Player playerInfo(@PathVariable int id) {
+        return PlayerUtils.getPlayer(id);
+    }
 }
