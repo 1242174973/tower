@@ -12,11 +12,12 @@ import User from "./views/admin/User"
 import UserWithdrawConfig from "./views/admin/UserWithdrawConfig"
 import UserBankCard from "./views/admin/UserBankCard"
 import WithdrawLog from "./views/admin/WithdrawLog"
+import WithdrawLogLog from "./views/admin/WithdrawLogLog"
 import TopUpConfig from "./views/admin/TopUpConfig"
 import TopUpLog from "./views/admin/TopUpLog"
 import TransferLog from "./views/admin/TransferLog"
-import ChallengeReward from  "./views/admin/ChallengeReward"
-import Salvage from  "./views/admin/Salvage"
+import ChallengeReward from "./views/admin/ChallengeReward"
+import Salvage from "./views/admin/Salvage"
 
 
 Vue.use(Router);
@@ -60,49 +61,53 @@ export default new Router({
             path: "log/safeBoxLog",
             name: "log/safeBoxLog",
             component: SafeBoxLog,
-        },{
+        }, {
             path: "log/transferLog",
             name: "log/transferLog",
             component: TransferLog,
-        },{
+        }, {
+            path: "log/withdrawLogLog",
+            name: "log/withdrawLogLog",
+            component: WithdrawLogLog,
+        }, {
             path: "welfare/signIn",
             name: "welfare/signIn",
             component: SignIn,
-        },{
+        }, {
             path: "welfare/challengeReward",
             name: "welfare/challengeReward",
             component: ChallengeReward,
-        },{
+        }, {
             path: "welfare/salvage",
             name: "welfare/salvage",
             component: Salvage,
         },
 
             {
-            path: "admin/user",
-            name: "admin/user",
-            component: User,
-        }, {
-            path: "withdraw/userWithdrawConfig",
-            name: "withdraw/userWithdrawConfig",
-            component: UserWithdrawConfig,
-        },{
-            path: "withdraw/userBankCard",
-            name: "withdraw/userBankCard",
-            component: UserBankCard,
-        },{
-            path: "withdraw/withdrawLog",
-            name: "withdraw/withdrawLog",
-            component: WithdrawLog,
-        },{
-            path: "withdraw/topUpConfig",
-            name: "withdraw/topUpConfig",
-            component: TopUpConfig,
-        },{
-            path: "withdraw/topUpLog",
-            name: "withdraw/topUpLog",
-            component: TopUpLog,
-        },
+                path: "admin/user",
+                name: "admin/user",
+                component: User,
+            }, {
+                path: "withdraw/userWithdrawConfig",
+                name: "withdraw/userWithdrawConfig",
+                component: UserWithdrawConfig,
+            }, {
+                path: "withdraw/userBankCard",
+                name: "withdraw/userBankCard",
+                component: UserBankCard,
+            }, {
+                path: "withdraw/withdrawLog",
+                name: "withdraw/withdrawLog",
+                component: WithdrawLog,
+            }, {
+                path: "withdraw/topUpConfig",
+                name: "withdraw/topUpConfig",
+                component: TopUpConfig,
+            }, {
+                path: "withdraw/topUpLog",
+                name: "withdraw/topUpLog",
+                component: TopUpLog,
+            },
 
         ]
     }]

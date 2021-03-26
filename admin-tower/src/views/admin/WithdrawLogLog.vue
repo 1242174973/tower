@@ -64,18 +64,6 @@
                 <td>{{withdrawLog.auditTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-show="withdrawLog.state===0" v-on:click="editOk(withdrawLog)"
-                                class="btn btn-xs btn-info">
-                            审核通过
-                        </button>
-                        <button v-show="withdrawLog.state===0" v-on:click="editError(withdrawLog)"
-                                class="btn btn-xs btn-danger">
-                            审核失败
-                        </button>
-                        <button v-show="withdrawLog.state===1" v-on:click="edit(withdrawLog)"
-                                class="btn btn-xs btn-info">
-                            汇款
-                        </button>
                         <!--                        <button v-on:click="edit(withdrawLog)" class="btn btn-xs btn-info">-->
                         <!--                            <i class="ace-icon fa fa-pencil bigger-120"></i>-->
                         <!--                        </button>-->
@@ -226,7 +214,7 @@
                 let _this = this;
                 _this.page = page;
                 Loading.show();
-                _this.$ajax.post(process.env.VUE_APP_SERVER + '/withdrawLog/list', {
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/withdrawLog/listLog', {
                     page: page,
                     size: _this.$refs.pagination.size,
                     search: _this.search,

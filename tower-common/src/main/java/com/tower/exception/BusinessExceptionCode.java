@@ -53,6 +53,7 @@ public enum BusinessExceptionCode {
     TOP_UP_ID("充值信息ID"),
     RECEPTION_ID("接收人"),
     COIN("分数"),
+    USER_ID("玩家id"),
     ;
     /**
      * 描述

@@ -124,7 +124,7 @@ public class UserBankCardController {
                 .setBankCardNum(userBankCard.getBankCardNum())
                 .setCreateTime(LocalDateTime.now())
                 .setWithdrawMoney(BigDecimal.valueOf(money))
-                .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()));
+                .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()/100));
         withdrawLogService.save(withdrawLog);
         userWithdrawConfigService.saveOrUpdate(one);
         return AccountController.getPlayerDtoResponseDto(player);

@@ -1,6 +1,8 @@
 package com.tower.filter;
 
 import com.tower.exception.BusinessException;
+import com.tower.exception.BusinessExceptionCode;
+import com.tower.utils.BusinessUtil;
 import com.tower.utils.RedisOperator;
 import com.tower.variable.RedisVariable;
 import org.slf4j.Logger;
@@ -28,7 +30,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     private RedisOperator redisOperator;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         // 如果不是映射到方法直接通过
         if (!(handler instanceof HandlerMethod)) {
             return true;
@@ -36,25 +38,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         // 从 http 请求头中取出 token
         String token = request.getHeader("token");
         LOG.info("后台登录验证开始，token：{}", token);
-        if (token == null || token.isEmpty()) {
-            LOG.info("token为空，请求被拦截---{}",request.getRequestURI());
-            throw new BusinessException("请先登录");
-        }
+        BusinessUtil.require(token, BusinessExceptionCode.TOKEN);
         String object = redisOperator.get(token);
-        if (object == null) {
-            LOG.warn("token无效，请求被拦截---{}",request.getRequestURI());
-            throw new BusinessException("请重新登录");
-        } else {
-            // 这边拿到的 用户信息 判断权限
-//            User user= JsonUtils.jsonToPojo(object, User.class);
-//            String requestURI = request.getRequestURI();
-//            if(!canAuthority(user.getTgAuthorities(),requestURI)){
-//                LOG.info( "权限不够，请求被拦截" );
-//                return false;
-//            }
-            LOG.info("已登录：{}", object);
-            return true;
-        }
+        BusinessUtil.assertParam(object != null, "请重新登录");
+        // 这边拿到的 用户信息 判断权限
+        //TODO 判断权限
+        LOG.info("已登录：{}", object);
+        return true;
     }
 
     /*private boolean canAuthority(List<TGAuthority> tgAuthorities, String requestURI) {
