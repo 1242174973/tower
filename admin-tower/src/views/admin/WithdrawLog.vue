@@ -126,6 +126,12 @@
                                 </div>
                             </div>
                             <div v-show="withdrawLog.state==1" class="form-group">
+                                <label class="col-sm-2 control-label">应当汇款</label>
+                                <div class="col-sm-10">
+                                   <h4 style="color:red">{{withdrawLog.withdrawMoney-withdrawLog.serviceCharge}}</h4>
+                                </div>
+                            </div>
+                            <div v-show="withdrawLog.state==1" class="form-group">
                                 <label class="col-sm-2 control-label">实际汇款</label>
                                 <div class="col-sm-10">
                                     <input v-model="withdrawLog.remit" class="form-control">
@@ -153,6 +159,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button v-show="withdrawLog.aType===3" v-on:click="remittance()" type="button" class="btn btn-primary">确认汇款</button>
                         <button v-show="withdrawLog.aType===1" v-on:click="save()" type="button" class="btn btn-primary">审核通过</button>
                         <button v-show="withdrawLog.aType===2" v-on:click="save()" type="button" class="btn btn-danger">审核失败</button>
                     </div>
@@ -199,6 +206,7 @@
             edit(withdrawLog) {
                 let _this = this;
                 _this.withdrawLog = $.extend({}, withdrawLog);
+                _this.withdrawLog.aType=3;
                 $("#form-modal").modal("show");
             },
             /**
@@ -239,6 +247,29 @@
                 })
             },
 
+            remittance(){
+                let _this = this;
+                // 保存校验
+                if (1 != 1
+                    || !Validator.require(_this.withdrawLog.userId, "玩家id")
+                    || !Validator.require(_this.withdrawLog.remit, "实际汇款")
+                    || !Validator.require(_this.withdrawLog.aType, "分辨参数")
+                ) {
+                    return;
+                }
+                Loading.show();
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/withdrawLog/remittance', _this.withdrawLog).then((response) => {
+                    Loading.hide();
+                    let resp = response.data;
+                    if (resp.success) {
+                        $("#form-modal").modal("hide");
+                        _this.list(_this.page);
+                        Toast.success("操作成功！");
+                    } else {
+                        Toast.warning(resp.message);
+                    }
+                })
+            },
             /**
              * 点击【保存】
              */

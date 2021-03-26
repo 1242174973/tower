@@ -154,6 +154,27 @@ public class WithdrawLogController {
         return responseDto;
     }
 
+
+    @PostMapping("/remittance")
+    @ApiOperation(value = "汇款", notes = "汇款")
+    public ResponseDto<WithdrawLogDto> remittance(User user,
+                                              @ApiParam(value = "提现审核信息", required = true)
+                                              @RequestBody WithdrawLogDto withdrawLogDto) {
+        requireParam(withdrawLogDto);
+        BusinessUtil.require(withdrawLogDto.getId(), BusinessExceptionCode.ID);
+        WithdrawLog withdrawLog = withdrawLogService.getById(withdrawLogDto.getId());
+        BusinessUtil.assertParam(withdrawLog != null, "提现审核没找到");
+        withdrawLog.setRemit(withdrawLogDto.getRemit());
+        withdrawLog.setState(AuditType.SUCCESS.getCode());
+        withdrawLogService.saveOrUpdate(withdrawLog);
+        ResponseDto<WithdrawLogDto> responseDto = new ResponseDto<>();
+        withdrawLogDto = CopyUtil.copy(withdrawLog, WithdrawLogDto.class);
+        responseDto.setContent(withdrawLogDto);
+        return responseDto;
+    }
+
+
+
     @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "删除提现审核", notes = "删除提现审核请求")
     public ResponseDto<String> delete(@ApiParam(value = "提现审核ID", required = true)
@@ -163,6 +184,8 @@ public class WithdrawLogController {
         responseDto.setContent("删除成功");
         return responseDto;
     }
+
+
 
 
     /**
