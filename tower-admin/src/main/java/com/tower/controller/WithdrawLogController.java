@@ -2,15 +2,23 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.dto.PlayerDto;
 import com.tower.dto.WithdrawLogDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.page.WithdrawLogPageDto;
+import com.tower.entity.Player;
 import com.tower.entity.User;
+import com.tower.entity.WelfareLog;
 import com.tower.entity.WithdrawLog;
 import com.tower.enums.AuditType;
+import com.tower.enums.WelfareModelEnum;
+import com.tower.enums.WelfareTypeEnum;
 import com.tower.exception.BusinessExceptionCode;
+import com.tower.service.PlayerService;
+import com.tower.service.WelfareLogService;
 import com.tower.service.WithdrawLogService;
 import com.tower.utils.*;
+import com.tower.variable.RedisVariable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,6 +40,9 @@ public class WithdrawLogController {
 
     @Resource
     private WithdrawLogService withdrawLogService;
+
+    @Resource
+    private WelfareLogService welfareLogService;
 
     @PostMapping("/list")
     @ApiOperation(value = "获得所有提现审核", notes = "获得所有提现审核请求")
@@ -65,6 +76,7 @@ public class WithdrawLogController {
         responseDto.setContent(pageDto);
         return responseDto;
     }
+
     @PostMapping("/listLog")
     @ApiOperation(value = "获得所有提现记录", notes = "获得所有提现记录")
     public ResponseDto<WithdrawLogPageDto> listLog(@RequestBody WithdrawLogPageDto pageDto) {
@@ -134,7 +146,7 @@ public class WithdrawLogController {
     }
 
     @PostMapping("/editError")
-    @ApiOperation(value = "修改提现审核", notes = "修改提现审核请求")
+    @ApiOperation(value = "审核失败", notes = "审核失败请求")
     public ResponseDto<WithdrawLogDto> editError(User user,
                                                  @ApiParam(value = "提现审核信息", required = true)
                                                  @RequestBody WithdrawLogDto withdrawLogDto) {
@@ -148,18 +160,69 @@ public class WithdrawLogController {
         withdrawLog.setState(AuditType.ERROR.getCode());
         withdrawLog.setRemit(BigDecimal.ZERO);
         withdrawLogService.saveOrUpdate(withdrawLog);
+        WelfareLog welfareLog = new WelfareLog();
+        welfareLog.setMode(WelfareModelEnum.WITHDRAW_ERROR.getCode());
+        welfareLog.setWelfare(withdrawLog.getWithdrawMoney());
+        welfareLog.setWelfareType(WelfareTypeEnum.GOLD.getCode());
+        welfareLog.setUserId(withdrawLog.getUserId());
+        welfareLog.setCreateTime(LocalDateTime.now());
+        welfareLogService.save(welfareLog);
+        Player player = getPlayer(withdrawLog.getUserId());
+        player.setMoney(player.getMoney().add(withdrawLog.getWithdrawMoney()));
+        updatePlayerInfo(player);
         ResponseDto<WithdrawLogDto> responseDto = new ResponseDto<>();
         withdrawLogDto = CopyUtil.copy(withdrawLog, WithdrawLogDto.class);
         responseDto.setContent(withdrawLogDto);
         return responseDto;
     }
 
+    private static Player getPlayer(Integer userId) {
+        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
+        String token = getToken(userId);
+        // 然后根据token获取用户登录信息
+        Player player = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO, token), Player.class);
+        if (player == null) {
+            PlayerService playerService = MyApplicationContextUti.getBean(PlayerService.class);
+            player = playerService.getById(userId);
+        }
+        return player;
+    }
+
+    /**
+     * 根据player对象获得返回体
+     *
+     * @param player 玩家
+     */
+    public static void updatePlayerInfo(Player player) {
+        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
+        PlayerService playerService = MyApplicationContextUti.getBean(PlayerService.class);
+        playerService.saveOrUpdate(player);
+        String token = getToken(player.getId());
+        redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
+    }
+
+    /**
+     * 获得token
+     *
+     * @param userId userId
+     * @return token
+     */
+    private static String getToken(int userId) {
+        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
+        String token = redisOperator.hget(RedisVariable.USER_TOKEN, userId);
+        if (token != null) {
+            return token;
+        }
+        token = UuidUtil.getShortUuid();
+        redisOperator.hset(RedisVariable.USER_TOKEN, userId, token);
+        return token;
+    }
 
     @PostMapping("/remittance")
     @ApiOperation(value = "汇款", notes = "汇款")
-    public ResponseDto<WithdrawLogDto> remittance(User user,
-                                              @ApiParam(value = "提现审核信息", required = true)
-                                              @RequestBody WithdrawLogDto withdrawLogDto) {
+    public ResponseDto<WithdrawLogDto> remittance(
+            @ApiParam(value = "提现审核信息", required = true)
+            @RequestBody WithdrawLogDto withdrawLogDto) {
         requireParam(withdrawLogDto);
         BusinessUtil.require(withdrawLogDto.getId(), BusinessExceptionCode.ID);
         WithdrawLog withdrawLog = withdrawLogService.getById(withdrawLogDto.getId());
@@ -174,7 +237,6 @@ public class WithdrawLogController {
     }
 
 
-
     @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "删除提现审核", notes = "删除提现审核请求")
     public ResponseDto<String> delete(@ApiParam(value = "提现审核ID", required = true)
@@ -184,8 +246,6 @@ public class WithdrawLogController {
         responseDto.setContent("删除成功");
         return responseDto;
     }
-
-
 
 
     /**

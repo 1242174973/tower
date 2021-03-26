@@ -130,7 +130,7 @@ public class UserBankCardController {
                 .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()/100));
         withdrawLogService.save(withdrawLog);
         WelfareLog welfareLog = new WelfareLog();
-        welfareLog.setMode(WelfareModelEnum.SIGN_IN.getCode());
+        welfareLog.setMode(WelfareModelEnum.WITHDRAW.getCode());
         welfareLog.setWelfare(BigDecimal.valueOf(-money));
         welfareLog.setWelfareType( WelfareTypeEnum.GOLD.getCode());
         welfareLog.setUserId(player.getId());
