@@ -1,3 +1,4 @@
+/*
 package com.tower.config;
 
 import org.springframework.amqp.core.Binding;
@@ -13,10 +14,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+*/
 /**
  * @author 梦-屿-千-寻
  * @date 2021/3/27 10:49
- */
+ *//*
+
 @Configuration
 public class RabbitConfig {
     @Value("${spring.rabbitmq.host}")
@@ -55,16 +58,19 @@ public class RabbitConfig {
         return connectionFactory;
     }
 
-    /**
+    */
+/**
      * 必须是prototype类型
-     */
+     *//*
+
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public RabbitTemplate rabbitTemplate() {
         return new RabbitTemplate(connectionFactory());
     }
 
-    /**
+    */
+/**
      * 针对消费者配置
      * 1. 设置交换机类型
      * 2. 将队列绑定到交换机
@@ -72,17 +78,20 @@ public class RabbitConfig {
      * HeadersExchange ：通过添加属性key-value匹配
      * DirectExchange:按照routingkey分发到指定队列
      * TopicExchange:多关键字匹配
-     */
+     *//*
+
     @Bean
     public DirectExchange defaultExchange() {
         return new DirectExchange(EXCHANGE_A);
     }
 
-    /**
+    */
+/**
      * 获取队列A
      *
      * @return 队列
-     */
+     *//*
+
     @Bean
     public Queue queueA() {
         //队列持久
@@ -95,3 +104,4 @@ public class RabbitConfig {
     }
 
 }
+*/

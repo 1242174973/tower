@@ -1,3 +1,4 @@
+/*
 package com.tower.core.rabbit;
 
 import com.tower.config.RabbitConfig;
@@ -8,22 +9,28 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+*/
 /**
  * @author 梦-屿-千-寻
  * @date 2021/3/27 10:54
- */
+ *//*
+
 @Slf4j
 @Component
 public class MsgProducer implements RabbitTemplate.ConfirmCallback {
 
-    /**
+    */
+/**
      * 由于rabbitTemplate的scope属性设置为ConfigurableBeanFactory.SCOPE_PROTOTYPE，所以不能自动注入
-     */
+     *//*
+
     private RabbitTemplate rabbitTemplate;
 
-    /**
+    */
+/**
      * 构造方法注入rabbitTemplate
-     */
+     *//*
+
     @Autowired
     public MsgProducer(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
@@ -46,3 +53,4 @@ public class MsgProducer implements RabbitTemplate.ConfirmCallback {
         }
     }
 }
+*/
