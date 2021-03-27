@@ -14,6 +14,12 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: jef5re4g6e4
+  #对于rabbitMQ的支持
+  rabbitmq:
+    host: 192.168.3.68
+    port: 5672
+    username: admin
+    password: 123456
 netty:
   port: 10101
 game:

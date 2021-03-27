@@ -1,6 +1,7 @@
 package com.tower;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.tower.core.rabbit.MsgProducer;
 import com.tower.entity.Player;
 import com.tower.service.PlayerService;
 import com.tower.service.my.MyChallengeRewardService;
@@ -34,5 +35,16 @@ public class TowerApplication {
             challengeRewardService.insertToday(player.getId());
             salvageService.insertToday(player.getId());
         }
+        MsgProducer msgProducer= context.getBean(MsgProducer.class);
+        for (int i = 0; i <1000000 ; i++) {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            msgProducer.sendMsg("我是消息"+i);
+            System.out.println("发送消息"+i);
+        }
+
     }
 }
