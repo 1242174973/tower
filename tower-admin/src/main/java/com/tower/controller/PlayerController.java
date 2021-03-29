@@ -8,6 +8,7 @@ import com.tower.dto.page.PlayerPageDto;
 import com.tower.entity.Player;
 import com.tower.entity.SignIn;
 import com.tower.exception.BusinessExceptionCode;
+import com.tower.feign.PlayerFeign;
 import com.tower.service.PlayerService;
 import com.tower.utils.*;
 import com.tower.variable.RedisVariable;
@@ -31,6 +32,9 @@ public class PlayerController {
 
     @Resource
     private PlayerService playerService;
+
+    @Resource
+    private PlayerFeign playerFeign;
 
     @PostMapping("/list")
     @ApiOperation(value = "获得所有玩家", notes = "获得所有玩家请求")
@@ -58,7 +62,7 @@ public class PlayerController {
 
     @PostMapping("/edit")
     @ApiOperation(value = "修改玩家", notes = "修改玩家请求")
-    public ResponseDto<PlayerDto> edit(@ApiParam(value = "玩家ID", required = true)
+    public ResponseDto<String> edit(@ApiParam(value = "玩家ID", required = true)
                                     @RequestBody PlayerDto playerDto) {
         BusinessUtil.require(playerDto.getId(), BusinessExceptionCode.ID);
         BusinessUtil.require(playerDto.getVip(), BusinessExceptionCode.VIP_LEVEL);
@@ -75,7 +79,8 @@ public class PlayerController {
         player.setSafeBox(player.getSafeBox());
         player.setSignIn(player.getSignIn());
         player.setTotalSignIn(player.getTotalSignIn());
-        return getPlayerDtoResponseDto(player);
+        playerFeign.save(player);
+        return new ResponseDto<>();
     }
 
     @DeleteMapping("/delete/{id}")
@@ -86,41 +91,5 @@ public class PlayerController {
         ResponseDto<String> responseDto = new ResponseDto<>();
         responseDto.setContent("删除成功");
         return responseDto;
-    }
-
-    /**
-     * 根据player对象获得返回体
-     *
-     * @param player 玩家
-     * @return 返回体
-     */
-    public static ResponseDto<PlayerDto> getPlayerDtoResponseDto(Player player) {
-        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
-        PlayerService playerService = MyApplicationContextUti.getBean(PlayerService.class);
-        playerService.saveOrUpdate(player);
-        PlayerDto userDto = CopyUtil.copy(player, PlayerDto.class);
-        String token = getToken(player.getId());
-        redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
-        userDto.setToken(token);
-        ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
-        responseDto.setContent(userDto);
-        return responseDto;
-    }
-
-    /**
-     * 获得token
-     *
-     * @param userId userId
-     * @return token
-     */
-    private static String getToken(int userId) {
-        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
-        String token = redisOperator.hget(RedisVariable.USER_TOKEN, userId);
-        if (token != null) {
-            return token;
-        }
-        token = UuidUtil.getShortUuid();
-        redisOperator.hset(RedisVariable.USER_TOKEN, userId, token);
-        return token;
     }
 }

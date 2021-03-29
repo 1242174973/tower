@@ -4,6 +4,7 @@ import io.netty.util.HashedWheelTimer;
 import io.netty.util.Timeout;
 import io.netty.util.TimerTask;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.*;
 
 /**
@@ -22,5 +23,13 @@ public class ExecuteHashedWheelTimer {
             }
         };
         return wheelTimer.newTimeout(timerTask, delay, unit);
+    }
+
+    public static void main(String[] args) {
+//        ExecuteHashedWheelTimer executeHashedWheelTimer=new ExecuteHashedWheelTimer();
+//        executeHashedWheelTimer.newTimeout(()-> {
+//            System.out.println(LocalDateTime.now());
+//            executeHashedWheelTimer.newTimeout(()-> System.out.println(LocalDateTime.now()),5,TimeUnit.SECONDS);
+//        },5,TimeUnit.SECONDS);
     }
 }
