@@ -10,12 +10,16 @@ import com.tower.entity.Player;
 import com.tower.msg.Tower;
 import com.tower.utils.JsonUtils;
 import com.tower.utils.RedisOperator;
+import com.tower.utils.UuidUtil;
 import com.tower.variable.RedisVariable;
 import io.netty.channel.Channel;
+import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.util.Random;
 
 /**
  * @author 梦-屿-千-寻
@@ -68,6 +72,7 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
     private void sendLoginSuccess(Channel ch, Player player) {
         Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
         msgCtn.setType(Mid.MID_LOGIN_RES);
+        msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
         Tower.LoginRes.Builder builder = Tower.LoginRes.newBuilder();
         builder.setSuc(true);
         Tower.UserInfoRes.Builder userInfoRes = Tower.UserInfoRes.newBuilder();

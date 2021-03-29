@@ -1,5 +1,6 @@
 package com.tower.core;
 
+import com.tower.handler.base.LoginHandler;
 import com.tower.utils.MyApplicationContextUti;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ public class MsgMapping {
     public void init() {
         log.info("Init Msg Mapping... Start");
         List<Class<?>> list = new ArrayList<>();
+        list.add(LoginHandler.class);
         // 赋值
         handleMap = genMapBySpring(list);
         log.info("Init Msg Mapping... End");

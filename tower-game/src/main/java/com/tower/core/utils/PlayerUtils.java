@@ -10,6 +10,7 @@ import com.tower.service.PlayerService;
 import com.tower.utils.*;
 import com.tower.variable.RedisVariable;
 import io.netty.channel.Channel;
+import org.apache.commons.lang3.RandomUtils;
 
 /**
  * @author 梦-屿-千-寻
@@ -32,6 +33,7 @@ public class PlayerUtils {
         if (channel != null) {
             Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
             msgCtn.setType(Mid.PLAYER_INFO_RES);
+            msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
             Tower.UserInfoRes.Builder userInfoRes = Tower.UserInfoRes.newBuilder();
             userInfoRes.setAccount(player.getAccount());
             userInfoRes.setId(player.getId());

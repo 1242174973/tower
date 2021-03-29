@@ -20,6 +20,7 @@ import io.netty.channel.Channel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.RandomUtils;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -180,6 +181,7 @@ public class AccountController {
         if(channel!=null){
             Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
             msgCtn.setType(Mid.PLAYER_INFO_RES);
+            msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
             Tower.UserInfoRes.Builder userInfoRes = Tower.UserInfoRes.newBuilder();
             userInfoRes.setAccount(player.getAccount());
             userInfoRes.setId(player.getId());

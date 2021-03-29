@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/feign/player")
-@Api(value = "玩家请求", tags = "玩家相关请求")
+@Api(value = "玩家请求", tags = "玩家相关请求",hidden = true)
 public class PlayerFeignController {
     @PostMapping("/save")
     @ApiOperation(value = "保存玩家信息", notes = "参数 玩家信息对象")

@@ -4,6 +4,7 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 import com.tower.exception.ServerException;
+import com.tower.msg.Tower;
 import io.netty.channel.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,5 +55,13 @@ public abstract class AbsLogicHandler<T extends MessageLite> {
     @SuppressWarnings("unchecked")
     public T parseProto(ByteString bs) throws ServerException, InvalidProtocolBufferException{
         return (T)prototype.getParserForType().parseFrom(bs);
+    }
+
+    public static void main(String[] args) throws InvalidProtocolBufferException {
+        Tower.LoginReq.Builder builder = Tower.LoginReq.newBuilder();
+        builder.setToken("assss");
+        byte[] bytes = builder.build().toByteArray();
+        Tower.LoginReq loginReq = Tower.LoginReq.parseFrom(bytes);
+        System.out.println(loginReq.getToken());
     }
 }

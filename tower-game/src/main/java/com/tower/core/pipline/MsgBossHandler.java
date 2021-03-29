@@ -36,7 +36,7 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
     private static final ExecutorService executeGame = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
     private static final ExecutorService executeRecord = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
 
-    private static Map<Integer, Channel> playerIdChannel=new ConcurrentHashMap<>();
+    private static Map<Integer, Channel> playerIdChannel = new ConcurrentHashMap<>();
 
 
     private static MsgMapping msgMapping = null;
@@ -185,7 +185,7 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
         if (userId != null) {
             log.info("用户{}连接[{}]断开,清空channel的ATTR_USER_ID", userId, ctx.channel().id());
             userIdAttr.set(null);
-            executeLogin.execute(()->{
+            executeLogin.execute(() -> {
                 //TODO 处理玩家断开连接
                 playerIdChannel.remove(userId.intValue());
             });
@@ -251,10 +251,11 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
         }
     }
 
-    public static void putPlayerIdChannel(int playerId,Channel channel){
-        playerIdChannel.put(playerId,channel);
+    public static void putPlayerIdChannel(int playerId, Channel channel) {
+        playerIdChannel.put(playerId, channel);
     }
-    public static Channel getPlayerIdChannel(int playerId){
+
+    public static Channel getPlayerIdChannel(int playerId) {
         return playerIdChannel.get(playerId);
     }
 }
