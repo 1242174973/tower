@@ -11,8 +11,8 @@ import java.util.List;
 @Data
 public class DataLog {
     private String ver;
-    private int limit;
+    private Integer limit;
     private List<MonsterInfo> monsterInfosList;
-    private long serverTime;
-    private boolean isFreeze;
+    private Long serverTime;
+    private Boolean isFreeze;
 }

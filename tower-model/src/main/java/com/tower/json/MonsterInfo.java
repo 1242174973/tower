@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class MonsterInfo {
     private String ver;
-    private int monsterId;
-    private int fearWeaponId;
-    private long attackTime;
+    private Integer monsterId;
+    private Integer fearWeaponId;
+    private Long attackTime;
 }

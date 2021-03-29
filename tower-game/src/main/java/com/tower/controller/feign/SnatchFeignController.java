@@ -1,5 +1,6 @@
 package com.tower.controller.feign;
 
+import com.tower.core.game.TowerGame;
 import com.tower.core.utils.PlayerUtils;
 import com.tower.entity.Player;
 import com.tower.json.AttackInfo;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -27,24 +29,44 @@ import java.util.Map;
 @Slf4j
 public class SnatchFeignController {
 
+    @Resource
+    private TowerGame towerGame;
+
     @PostMapping("/data")
     @ApiOperation(value = "接收发送的数据", notes = "参数 数据")
     public void dataLog(@RequestBody String dataStr) {
         dataStr = dataStr.substring(1, dataStr.length() - 1).replace("\\\"", "\"");
-        System.out.println("收到 记录数据 " + JsonUtils.jsonToPojo(dataStr, DataLog.class));
+        JsonUtils.jsonToPojo(dataStr, DataLog.class);
+//        System.out.println("收到 记录数据 ");
     }
 
     @PostMapping("/start")
     @ApiOperation(value = "接收开始请求", notes = "参数 数据")
     public void start(@RequestBody String startStr) {
         startStr = startStr.substring(1, startStr.length() - 1).replace("\\\"", "\"");
-        System.err.println("开始" + JsonUtils.jsonToPojo(startStr, StartInfo.class));
+        StartInfo startInfo = JsonUtils.jsonToPojo(startStr, StartInfo.class);
+        if (startInfo.getStartTime() != towerGame.getStartTime() && startInfo.getStartTime() >= towerGame.getEndTime() && towerGame.isAward()) {
+            towerGame.setStartTime(startInfo.getStartTime());
+            towerGame.setAwardTime(startInfo.getAwardTime());
+            towerGame.setEndTime(startInfo.getEndTime());
+            towerGame.setMonsterId(null);
+            towerGame.gameStart();
+            System.err.println("游戏开始成功");
+        }
     }
 
     @PostMapping("/attack")
     @ApiOperation(value = "接收出怪数据", notes = "参数 数据")
     public void attack(@RequestBody String attackStr) {
         attackStr = attackStr.substring(1, attackStr.length() - 1).replace("\\\"", "\"");
-        System.err.println("出怪" + JsonUtils.jsonToPojo(attackStr, AttackInfo.class));
+        AttackInfo attackInfo = JsonUtils.jsonToPojo(attackStr, AttackInfo.class);
+        if (towerGame.getMonsterId() != null) {
+            return;
+        }
+        if (System.currentTimeMillis() > towerGame.getAwardTime() &&
+                System.currentTimeMillis() < towerGame.getEndTime()) {
+            towerGame.setMonsterId(attackInfo.getMonsterId());
+            System.err.println("设置出怪成功");
+        }
     }
 }
