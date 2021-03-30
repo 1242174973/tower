@@ -68,7 +68,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -125,14 +125,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_MsgCtn_descriptor;
+      return com.tower.msg.Tower.internal_static_src_MsgCtn_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_MsgCtn_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_MsgCtn_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              MsgCtn.class, Builder.class);
+              com.tower.msg.Tower.MsgCtn.class, com.tower.msg.Tower.MsgCtn.Builder.class);
     }
 
     public static com.google.protobuf.Parser<MsgCtn> PARSER =
@@ -145,7 +145,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<MsgCtn> getParserForType() {
       return PARSER;
     }
@@ -260,59 +260,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static MsgCtn parseFrom(
+    public static com.tower.msg.Tower.MsgCtn parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static MsgCtn parseFrom(
+    public static com.tower.msg.Tower.MsgCtn parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static MsgCtn parseFrom(byte[] data)
+    public static com.tower.msg.Tower.MsgCtn parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static MsgCtn parseFrom(
+    public static com.tower.msg.Tower.MsgCtn parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static MsgCtn parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.MsgCtn parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static MsgCtn parseFrom(
+    public static com.tower.msg.Tower.MsgCtn parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static MsgCtn parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.MsgCtn parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static MsgCtn parseDelimitedFrom(
+    public static com.tower.msg.Tower.MsgCtn parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static MsgCtn parseFrom(
+    public static com.tower.msg.Tower.MsgCtn parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static MsgCtn parseFrom(
+    public static com.tower.msg.Tower.MsgCtn parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -321,14 +321,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(MsgCtn prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.MsgCtn prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -341,17 +341,17 @@ public final class Tower {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements MsgCtnOrBuilder {
+       implements com.tower.msg.Tower.MsgCtnOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_MsgCtn_descriptor;
+        return com.tower.msg.Tower.internal_static_src_MsgCtn_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_MsgCtn_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_MsgCtn_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                MsgCtn.class, Builder.class);
+                com.tower.msg.Tower.MsgCtn.class, com.tower.msg.Tower.MsgCtn.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.MsgCtn.newBuilder()
@@ -360,7 +360,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -389,23 +389,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_MsgCtn_descriptor;
+        return com.tower.msg.Tower.internal_static_src_MsgCtn_descriptor;
       }
 
-      public MsgCtn getDefaultInstanceForType() {
-        return MsgCtn.getDefaultInstance();
+      public com.tower.msg.Tower.MsgCtn getDefaultInstanceForType() {
+        return com.tower.msg.Tower.MsgCtn.getDefaultInstance();
       }
 
-      public MsgCtn build() {
-        MsgCtn result = buildPartial();
+      public com.tower.msg.Tower.MsgCtn build() {
+        com.tower.msg.Tower.MsgCtn result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public MsgCtn buildPartial() {
-        MsgCtn result = new MsgCtn(this);
+      public com.tower.msg.Tower.MsgCtn buildPartial() {
+        com.tower.msg.Tower.MsgCtn result = new com.tower.msg.Tower.MsgCtn(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -426,16 +426,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof MsgCtn) {
-          return mergeFrom((MsgCtn)other);
+        if (other instanceof com.tower.msg.Tower.MsgCtn) {
+          return mergeFrom((com.tower.msg.Tower.MsgCtn)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(MsgCtn other) {
-        if (other == MsgCtn.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.MsgCtn other) {
+        if (other == com.tower.msg.Tower.MsgCtn.getDefaultInstance()) return this;
         if (other.hasType()) {
           setType(other.getType());
         }
@@ -451,11 +451,11 @@ public final class Tower {
 
       public final boolean isInitialized() {
         if (!hasType()) {
-
+          
           return false;
         }
         if (!hasReqMsgId()) {
-
+          
           return false;
         }
         return true;
@@ -465,11 +465,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        MsgCtn parsedMessage = null;
+        com.tower.msg.Tower.MsgCtn parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (MsgCtn) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.MsgCtn) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -614,7 +614,7 @@ public final class Tower {
     /**
      * <code>required string error_msg = 2;</code>
      */
-    String getErrorMsg();
+    java.lang.String getErrorMsg();
     /**
      * <code>required string error_msg = 2;</code>
      */
@@ -629,7 +629,7 @@ public final class Tower {
     /**
      * <code>optional string error_msg_ext = 3;</code>
      */
-    String getErrorMsgExt();
+    java.lang.String getErrorMsgExt();
     /**
      * <code>optional string error_msg_ext = 3;</code>
      */
@@ -644,7 +644,7 @@ public final class Tower {
     /**
      * <code>optional string error_code = 4;</code>
      */
-    String getErrorCode();
+    java.lang.String getErrorCode();
     /**
      * <code>optional string error_code = 4;</code>
      */
@@ -678,7 +678,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -740,14 +740,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_ServerErrorRes_descriptor;
+      return com.tower.msg.Tower.internal_static_src_ServerErrorRes_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_ServerErrorRes_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_ServerErrorRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ServerErrorRes.class, Builder.class);
+              com.tower.msg.Tower.ServerErrorRes.class, com.tower.msg.Tower.ServerErrorRes.Builder.class);
     }
 
     public static com.google.protobuf.Parser<ServerErrorRes> PARSER =
@@ -760,7 +760,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<ServerErrorRes> getParserForType() {
       return PARSER;
     }
@@ -784,7 +784,7 @@ public final class Tower {
 
     // required string error_msg = 2;
     public static final int ERROR_MSG_FIELD_NUMBER = 2;
-    private Object errorMsg_;
+    private java.lang.Object errorMsg_;
     /**
      * <code>required string error_msg = 2;</code>
      */
@@ -794,14 +794,14 @@ public final class Tower {
     /**
      * <code>required string error_msg = 2;</code>
      */
-    public String getErrorMsg() {
-      Object ref = errorMsg_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getErrorMsg() {
+      java.lang.Object ref = errorMsg_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           errorMsg_ = s;
         }
@@ -813,11 +813,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getErrorMsgBytes() {
-      Object ref = errorMsg_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = errorMsg_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         errorMsg_ = b;
         return b;
       } else {
@@ -827,7 +827,7 @@ public final class Tower {
 
     // optional string error_msg_ext = 3;
     public static final int ERROR_MSG_EXT_FIELD_NUMBER = 3;
-    private Object errorMsgExt_;
+    private java.lang.Object errorMsgExt_;
     /**
      * <code>optional string error_msg_ext = 3;</code>
      */
@@ -837,14 +837,14 @@ public final class Tower {
     /**
      * <code>optional string error_msg_ext = 3;</code>
      */
-    public String getErrorMsgExt() {
-      Object ref = errorMsgExt_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getErrorMsgExt() {
+      java.lang.Object ref = errorMsgExt_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           errorMsgExt_ = s;
         }
@@ -856,11 +856,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getErrorMsgExtBytes() {
-      Object ref = errorMsgExt_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = errorMsgExt_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         errorMsgExt_ = b;
         return b;
       } else {
@@ -870,7 +870,7 @@ public final class Tower {
 
     // optional string error_code = 4;
     public static final int ERROR_CODE_FIELD_NUMBER = 4;
-    private Object errorCode_;
+    private java.lang.Object errorCode_;
     /**
      * <code>optional string error_code = 4;</code>
      */
@@ -880,14 +880,14 @@ public final class Tower {
     /**
      * <code>optional string error_code = 4;</code>
      */
-    public String getErrorCode() {
-      Object ref = errorCode_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getErrorCode() {
+      java.lang.Object ref = errorCode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           errorCode_ = s;
         }
@@ -899,11 +899,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getErrorCodeBytes() {
-      Object ref = errorCode_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = errorCode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         errorCode_ = b;
         return b;
       } else {
@@ -980,59 +980,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static ServerErrorRes parseFrom(
+    public static com.tower.msg.Tower.ServerErrorRes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ServerErrorRes parseFrom(
+    public static com.tower.msg.Tower.ServerErrorRes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ServerErrorRes parseFrom(byte[] data)
+    public static com.tower.msg.Tower.ServerErrorRes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ServerErrorRes parseFrom(
+    public static com.tower.msg.Tower.ServerErrorRes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ServerErrorRes parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.ServerErrorRes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static ServerErrorRes parseFrom(
+    public static com.tower.msg.Tower.ServerErrorRes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static ServerErrorRes parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.ServerErrorRes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static ServerErrorRes parseDelimitedFrom(
+    public static com.tower.msg.Tower.ServerErrorRes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static ServerErrorRes parseFrom(
+    public static com.tower.msg.Tower.ServerErrorRes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static ServerErrorRes parseFrom(
+    public static com.tower.msg.Tower.ServerErrorRes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1041,14 +1041,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(ServerErrorRes prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.ServerErrorRes prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1061,17 +1061,17 @@ public final class Tower {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements ServerErrorResOrBuilder {
+       implements com.tower.msg.Tower.ServerErrorResOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_ServerErrorRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_ServerErrorRes_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_ServerErrorRes_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_ServerErrorRes_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ServerErrorRes.class, Builder.class);
+                com.tower.msg.Tower.ServerErrorRes.class, com.tower.msg.Tower.ServerErrorRes.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.ServerErrorRes.newBuilder()
@@ -1080,7 +1080,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1111,23 +1111,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_ServerErrorRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_ServerErrorRes_descriptor;
       }
 
-      public ServerErrorRes getDefaultInstanceForType() {
-        return ServerErrorRes.getDefaultInstance();
+      public com.tower.msg.Tower.ServerErrorRes getDefaultInstanceForType() {
+        return com.tower.msg.Tower.ServerErrorRes.getDefaultInstance();
       }
 
-      public ServerErrorRes build() {
-        ServerErrorRes result = buildPartial();
+      public com.tower.msg.Tower.ServerErrorRes build() {
+        com.tower.msg.Tower.ServerErrorRes result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public ServerErrorRes buildPartial() {
-        ServerErrorRes result = new ServerErrorRes(this);
+      public com.tower.msg.Tower.ServerErrorRes buildPartial() {
+        com.tower.msg.Tower.ServerErrorRes result = new com.tower.msg.Tower.ServerErrorRes(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1152,16 +1152,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ServerErrorRes) {
-          return mergeFrom((ServerErrorRes)other);
+        if (other instanceof com.tower.msg.Tower.ServerErrorRes) {
+          return mergeFrom((com.tower.msg.Tower.ServerErrorRes)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ServerErrorRes other) {
-        if (other == ServerErrorRes.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.ServerErrorRes other) {
+        if (other == com.tower.msg.Tower.ServerErrorRes.getDefaultInstance()) return this;
         if (other.hasReqMsgId()) {
           setReqMsgId(other.getReqMsgId());
         }
@@ -1186,11 +1186,11 @@ public final class Tower {
 
       public final boolean isInitialized() {
         if (!hasReqMsgId()) {
-
+          
           return false;
         }
         if (!hasErrorMsg()) {
-
+          
           return false;
         }
         return true;
@@ -1200,11 +1200,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ServerErrorRes parsedMessage = null;
+        com.tower.msg.Tower.ServerErrorRes parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ServerErrorRes) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.ServerErrorRes) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1249,7 +1249,7 @@ public final class Tower {
       }
 
       // required string error_msg = 2;
-      private Object errorMsg_ = "";
+      private java.lang.Object errorMsg_ = "";
       /**
        * <code>required string error_msg = 2;</code>
        */
@@ -1259,15 +1259,15 @@ public final class Tower {
       /**
        * <code>required string error_msg = 2;</code>
        */
-      public String getErrorMsg() {
-        Object ref = errorMsg_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getErrorMsg() {
+        java.lang.Object ref = errorMsg_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           errorMsg_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -1275,11 +1275,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getErrorMsgBytes() {
-        Object ref = errorMsg_;
+        java.lang.Object ref = errorMsg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           errorMsg_ = b;
           return b;
         } else {
@@ -1290,7 +1290,7 @@ public final class Tower {
        * <code>required string error_msg = 2;</code>
        */
       public Builder setErrorMsg(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1323,7 +1323,7 @@ public final class Tower {
       }
 
       // optional string error_msg_ext = 3;
-      private Object errorMsgExt_ = "";
+      private java.lang.Object errorMsgExt_ = "";
       /**
        * <code>optional string error_msg_ext = 3;</code>
        */
@@ -1333,15 +1333,15 @@ public final class Tower {
       /**
        * <code>optional string error_msg_ext = 3;</code>
        */
-      public String getErrorMsgExt() {
-        Object ref = errorMsgExt_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getErrorMsgExt() {
+        java.lang.Object ref = errorMsgExt_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           errorMsgExt_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -1349,11 +1349,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getErrorMsgExtBytes() {
-        Object ref = errorMsgExt_;
+        java.lang.Object ref = errorMsgExt_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           errorMsgExt_ = b;
           return b;
         } else {
@@ -1364,7 +1364,7 @@ public final class Tower {
        * <code>optional string error_msg_ext = 3;</code>
        */
       public Builder setErrorMsgExt(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1397,7 +1397,7 @@ public final class Tower {
       }
 
       // optional string error_code = 4;
-      private Object errorCode_ = "";
+      private java.lang.Object errorCode_ = "";
       /**
        * <code>optional string error_code = 4;</code>
        */
@@ -1407,15 +1407,15 @@ public final class Tower {
       /**
        * <code>optional string error_code = 4;</code>
        */
-      public String getErrorCode() {
-        Object ref = errorCode_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getErrorCode() {
+        java.lang.Object ref = errorCode_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           errorCode_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -1423,11 +1423,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getErrorCodeBytes() {
-        Object ref = errorCode_;
+        java.lang.Object ref = errorCode_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           errorCode_ = b;
           return b;
         } else {
@@ -1438,7 +1438,7 @@ public final class Tower {
        * <code>optional string error_code = 4;</code>
        */
       public Builder setErrorCode(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1531,7 +1531,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -1583,14 +1583,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_HeartBeatRes_descriptor;
+      return com.tower.msg.Tower.internal_static_src_HeartBeatRes_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_HeartBeatRes_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_HeartBeatRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              HeartBeatRes.class, Builder.class);
+              com.tower.msg.Tower.HeartBeatRes.class, com.tower.msg.Tower.HeartBeatRes.Builder.class);
     }
 
     public static com.google.protobuf.Parser<HeartBeatRes> PARSER =
@@ -1603,7 +1603,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<HeartBeatRes> getParserForType() {
       return PARSER;
     }
@@ -1686,59 +1686,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static HeartBeatRes parseFrom(
+    public static com.tower.msg.Tower.HeartBeatRes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static HeartBeatRes parseFrom(
+    public static com.tower.msg.Tower.HeartBeatRes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static HeartBeatRes parseFrom(byte[] data)
+    public static com.tower.msg.Tower.HeartBeatRes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static HeartBeatRes parseFrom(
+    public static com.tower.msg.Tower.HeartBeatRes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static HeartBeatRes parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.HeartBeatRes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static HeartBeatRes parseFrom(
+    public static com.tower.msg.Tower.HeartBeatRes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static HeartBeatRes parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.HeartBeatRes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static HeartBeatRes parseDelimitedFrom(
+    public static com.tower.msg.Tower.HeartBeatRes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static HeartBeatRes parseFrom(
+    public static com.tower.msg.Tower.HeartBeatRes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static HeartBeatRes parseFrom(
+    public static com.tower.msg.Tower.HeartBeatRes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1747,14 +1747,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(HeartBeatRes prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.HeartBeatRes prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1767,17 +1767,17 @@ public final class Tower {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements HeartBeatResOrBuilder {
+       implements com.tower.msg.Tower.HeartBeatResOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_HeartBeatRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_HeartBeatRes_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_HeartBeatRes_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_HeartBeatRes_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                HeartBeatRes.class, Builder.class);
+                com.tower.msg.Tower.HeartBeatRes.class, com.tower.msg.Tower.HeartBeatRes.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.HeartBeatRes.newBuilder()
@@ -1786,7 +1786,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1813,23 +1813,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_HeartBeatRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_HeartBeatRes_descriptor;
       }
 
-      public HeartBeatRes getDefaultInstanceForType() {
-        return HeartBeatRes.getDefaultInstance();
+      public com.tower.msg.Tower.HeartBeatRes getDefaultInstanceForType() {
+        return com.tower.msg.Tower.HeartBeatRes.getDefaultInstance();
       }
 
-      public HeartBeatRes build() {
-        HeartBeatRes result = buildPartial();
+      public com.tower.msg.Tower.HeartBeatRes build() {
+        com.tower.msg.Tower.HeartBeatRes result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public HeartBeatRes buildPartial() {
-        HeartBeatRes result = new HeartBeatRes(this);
+      public com.tower.msg.Tower.HeartBeatRes buildPartial() {
+        com.tower.msg.Tower.HeartBeatRes result = new com.tower.msg.Tower.HeartBeatRes(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1846,16 +1846,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof HeartBeatRes) {
-          return mergeFrom((HeartBeatRes)other);
+        if (other instanceof com.tower.msg.Tower.HeartBeatRes) {
+          return mergeFrom((com.tower.msg.Tower.HeartBeatRes)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(HeartBeatRes other) {
-        if (other == HeartBeatRes.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.HeartBeatRes other) {
+        if (other == com.tower.msg.Tower.HeartBeatRes.getDefaultInstance()) return this;
         if (other.hasReqTime()) {
           setReqTime(other.getReqTime());
         }
@@ -1874,11 +1874,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        HeartBeatRes parsedMessage = null;
+        com.tower.msg.Tower.HeartBeatRes parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (HeartBeatRes) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.HeartBeatRes) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1985,7 +1985,7 @@ public final class Tower {
      * 账号token
      * </pre>
      */
-    String getToken();
+    java.lang.String getToken();
     /**
      * <code>required string token = 1;</code>
      *
@@ -2023,7 +2023,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -2070,14 +2070,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_LoginReq_descriptor;
+      return com.tower.msg.Tower.internal_static_src_LoginReq_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_LoginReq_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_LoginReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              LoginReq.class, Builder.class);
+              com.tower.msg.Tower.LoginReq.class, com.tower.msg.Tower.LoginReq.Builder.class);
     }
 
     public static com.google.protobuf.Parser<LoginReq> PARSER =
@@ -2090,7 +2090,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<LoginReq> getParserForType() {
       return PARSER;
     }
@@ -2098,7 +2098,7 @@ public final class Tower {
     private int bitField0_;
     // required string token = 1;
     public static final int TOKEN_FIELD_NUMBER = 1;
-    private Object token_;
+    private java.lang.Object token_;
     /**
      * <code>required string token = 1;</code>
      *
@@ -2116,14 +2116,14 @@ public final class Tower {
      * 账号token
      * </pre>
      */
-    public String getToken() {
-      Object ref = token_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getToken() {
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           token_ = s;
         }
@@ -2139,11 +2139,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getTokenBytes() {
-      Object ref = token_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         token_ = b;
         return b;
       } else {
@@ -2192,59 +2192,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static LoginReq parseFrom(
+    public static com.tower.msg.Tower.LoginReq parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LoginReq parseFrom(
+    public static com.tower.msg.Tower.LoginReq parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LoginReq parseFrom(byte[] data)
+    public static com.tower.msg.Tower.LoginReq parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LoginReq parseFrom(
+    public static com.tower.msg.Tower.LoginReq parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LoginReq parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.LoginReq parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static LoginReq parseFrom(
+    public static com.tower.msg.Tower.LoginReq parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static LoginReq parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.LoginReq parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static LoginReq parseDelimitedFrom(
+    public static com.tower.msg.Tower.LoginReq parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static LoginReq parseFrom(
+    public static com.tower.msg.Tower.LoginReq parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static LoginReq parseFrom(
+    public static com.tower.msg.Tower.LoginReq parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2253,14 +2253,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(LoginReq prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.LoginReq prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2273,17 +2273,17 @@ public final class Tower {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements LoginReqOrBuilder {
+       implements com.tower.msg.Tower.LoginReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_LoginReq_descriptor;
+        return com.tower.msg.Tower.internal_static_src_LoginReq_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_LoginReq_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_LoginReq_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                LoginReq.class, Builder.class);
+                com.tower.msg.Tower.LoginReq.class, com.tower.msg.Tower.LoginReq.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.LoginReq.newBuilder()
@@ -2292,7 +2292,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2317,23 +2317,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_LoginReq_descriptor;
+        return com.tower.msg.Tower.internal_static_src_LoginReq_descriptor;
       }
 
-      public LoginReq getDefaultInstanceForType() {
-        return LoginReq.getDefaultInstance();
+      public com.tower.msg.Tower.LoginReq getDefaultInstanceForType() {
+        return com.tower.msg.Tower.LoginReq.getDefaultInstance();
       }
 
-      public LoginReq build() {
-        LoginReq result = buildPartial();
+      public com.tower.msg.Tower.LoginReq build() {
+        com.tower.msg.Tower.LoginReq result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public LoginReq buildPartial() {
-        LoginReq result = new LoginReq(this);
+      public com.tower.msg.Tower.LoginReq buildPartial() {
+        com.tower.msg.Tower.LoginReq result = new com.tower.msg.Tower.LoginReq(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2346,16 +2346,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof LoginReq) {
-          return mergeFrom((LoginReq)other);
+        if (other instanceof com.tower.msg.Tower.LoginReq) {
+          return mergeFrom((com.tower.msg.Tower.LoginReq)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(LoginReq other) {
-        if (other == LoginReq.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.LoginReq other) {
+        if (other == com.tower.msg.Tower.LoginReq.getDefaultInstance()) return this;
         if (other.hasToken()) {
           bitField0_ |= 0x00000001;
           token_ = other.token_;
@@ -2367,7 +2367,7 @@ public final class Tower {
 
       public final boolean isInitialized() {
         if (!hasToken()) {
-
+          
           return false;
         }
         return true;
@@ -2377,11 +2377,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        LoginReq parsedMessage = null;
+        com.tower.msg.Tower.LoginReq parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (LoginReq) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.LoginReq) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2393,7 +2393,7 @@ public final class Tower {
       private int bitField0_;
 
       // required string token = 1;
-      private Object token_ = "";
+      private java.lang.Object token_ = "";
       /**
        * <code>required string token = 1;</code>
        *
@@ -2411,15 +2411,15 @@ public final class Tower {
        * 账号token
        * </pre>
        */
-      public String getToken() {
-        Object ref = token_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getToken() {
+        java.lang.Object ref = token_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           token_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -2431,11 +2431,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getTokenBytes() {
-        Object ref = token_;
+        java.lang.Object ref = token_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           token_ = b;
           return b;
         } else {
@@ -2450,7 +2450,7 @@ public final class Tower {
        * </pre>
        */
       public Builder setToken(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2538,7 +2538,7 @@ public final class Tower {
      *提示信息
      * </pre>
      */
-    String getMsg();
+    java.lang.String getMsg();
     /**
      * <code>optional string msg = 2;</code>
      *
@@ -2565,7 +2565,7 @@ public final class Tower {
      *用户信息
      * </pre>
      */
-    UserInfoRes getUserInfo();
+    com.tower.msg.Tower.UserInfoRes getUserInfo();
     /**
      * <code>optional .src.UserInfoRes userInfo = 3;</code>
      *
@@ -2573,13 +2573,13 @@ public final class Tower {
      *用户信息
      * </pre>
      */
-    UserInfoResOrBuilder getUserInfoOrBuilder();
+    com.tower.msg.Tower.UserInfoResOrBuilder getUserInfoOrBuilder();
   }
   /**
    * Protobuf type {@code src.LoginRes}
    *
    * <pre>
-   * 通用登录返回
+   * 通用登录返回			
    * </pre>
    */
   public static final class LoginRes extends
@@ -2602,7 +2602,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -2641,11 +2641,11 @@ public final class Tower {
               break;
             }
             case 26: {
-              UserInfoRes.Builder subBuilder = null;
+              com.tower.msg.Tower.UserInfoRes.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = userInfo_.toBuilder();
               }
-              userInfo_ = input.readMessage(UserInfoRes.PARSER, extensionRegistry);
+              userInfo_ = input.readMessage(com.tower.msg.Tower.UserInfoRes.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(userInfo_);
                 userInfo_ = subBuilder.buildPartial();
@@ -2667,14 +2667,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_LoginRes_descriptor;
+      return com.tower.msg.Tower.internal_static_src_LoginRes_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_LoginRes_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_LoginRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              LoginRes.class, Builder.class);
+              com.tower.msg.Tower.LoginRes.class, com.tower.msg.Tower.LoginRes.Builder.class);
     }
 
     public static com.google.protobuf.Parser<LoginRes> PARSER =
@@ -2687,7 +2687,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<LoginRes> getParserForType() {
       return PARSER;
     }
@@ -2719,7 +2719,7 @@ public final class Tower {
 
     // optional string msg = 2;
     public static final int MSG_FIELD_NUMBER = 2;
-    private Object msg_;
+    private java.lang.Object msg_;
     /**
      * <code>optional string msg = 2;</code>
      *
@@ -2737,14 +2737,14 @@ public final class Tower {
      *提示信息
      * </pre>
      */
-    public String getMsg() {
-      Object ref = msg_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           msg_ = s;
         }
@@ -2760,11 +2760,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getMsgBytes() {
-      Object ref = msg_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         msg_ = b;
         return b;
       } else {
@@ -2774,7 +2774,7 @@ public final class Tower {
 
     // optional .src.UserInfoRes userInfo = 3;
     public static final int USERINFO_FIELD_NUMBER = 3;
-    private UserInfoRes userInfo_;
+    private com.tower.msg.Tower.UserInfoRes userInfo_;
     /**
      * <code>optional .src.UserInfoRes userInfo = 3;</code>
      *
@@ -2792,7 +2792,7 @@ public final class Tower {
      *用户信息
      * </pre>
      */
-    public UserInfoRes getUserInfo() {
+    public com.tower.msg.Tower.UserInfoRes getUserInfo() {
       return userInfo_;
     }
     /**
@@ -2802,14 +2802,14 @@ public final class Tower {
      *用户信息
      * </pre>
      */
-    public UserInfoResOrBuilder getUserInfoOrBuilder() {
+    public com.tower.msg.Tower.UserInfoResOrBuilder getUserInfoOrBuilder() {
       return userInfo_;
     }
 
     private void initFields() {
       suc_ = false;
       msg_ = "";
-      userInfo_ = UserInfoRes.getDefaultInstance();
+      userInfo_ = com.tower.msg.Tower.UserInfoRes.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2863,59 +2863,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static LoginRes parseFrom(
+    public static com.tower.msg.Tower.LoginRes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LoginRes parseFrom(
+    public static com.tower.msg.Tower.LoginRes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LoginRes parseFrom(byte[] data)
+    public static com.tower.msg.Tower.LoginRes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LoginRes parseFrom(
+    public static com.tower.msg.Tower.LoginRes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LoginRes parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.LoginRes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static LoginRes parseFrom(
+    public static com.tower.msg.Tower.LoginRes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static LoginRes parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.LoginRes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static LoginRes parseDelimitedFrom(
+    public static com.tower.msg.Tower.LoginRes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static LoginRes parseFrom(
+    public static com.tower.msg.Tower.LoginRes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static LoginRes parseFrom(
+    public static com.tower.msg.Tower.LoginRes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2924,14 +2924,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(LoginRes prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.LoginRes prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2939,22 +2939,22 @@ public final class Tower {
      * Protobuf type {@code src.LoginRes}
      *
      * <pre>
-     * 通用登录返回
+     * 通用登录返回			
      * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements LoginResOrBuilder {
+       implements com.tower.msg.Tower.LoginResOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_LoginRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_LoginRes_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_LoginRes_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_LoginRes_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                LoginRes.class, Builder.class);
+                com.tower.msg.Tower.LoginRes.class, com.tower.msg.Tower.LoginRes.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.LoginRes.newBuilder()
@@ -2963,7 +2963,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2983,7 +2983,7 @@ public final class Tower {
         msg_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         if (userInfoBuilder_ == null) {
-          userInfo_ = UserInfoRes.getDefaultInstance();
+          userInfo_ = com.tower.msg.Tower.UserInfoRes.getDefaultInstance();
         } else {
           userInfoBuilder_.clear();
         }
@@ -2997,23 +2997,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_LoginRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_LoginRes_descriptor;
       }
 
-      public LoginRes getDefaultInstanceForType() {
-        return LoginRes.getDefaultInstance();
+      public com.tower.msg.Tower.LoginRes getDefaultInstanceForType() {
+        return com.tower.msg.Tower.LoginRes.getDefaultInstance();
       }
 
-      public LoginRes build() {
-        LoginRes result = buildPartial();
+      public com.tower.msg.Tower.LoginRes build() {
+        com.tower.msg.Tower.LoginRes result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public LoginRes buildPartial() {
-        LoginRes result = new LoginRes(this);
+      public com.tower.msg.Tower.LoginRes buildPartial() {
+        com.tower.msg.Tower.LoginRes result = new com.tower.msg.Tower.LoginRes(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3038,16 +3038,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof LoginRes) {
-          return mergeFrom((LoginRes)other);
+        if (other instanceof com.tower.msg.Tower.LoginRes) {
+          return mergeFrom((com.tower.msg.Tower.LoginRes)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(LoginRes other) {
-        if (other == LoginRes.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.LoginRes other) {
+        if (other == com.tower.msg.Tower.LoginRes.getDefaultInstance()) return this;
         if (other.hasSuc()) {
           setSuc(other.getSuc());
         }
@@ -3065,7 +3065,7 @@ public final class Tower {
 
       public final boolean isInitialized() {
         if (!hasSuc()) {
-
+          
           return false;
         }
         return true;
@@ -3075,11 +3075,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        LoginRes parsedMessage = null;
+        com.tower.msg.Tower.LoginRes parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (LoginRes) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.LoginRes) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -3140,7 +3140,7 @@ public final class Tower {
       }
 
       // optional string msg = 2;
-      private Object msg_ = "";
+      private java.lang.Object msg_ = "";
       /**
        * <code>optional string msg = 2;</code>
        *
@@ -3158,15 +3158,15 @@ public final class Tower {
        *提示信息
        * </pre>
        */
-      public String getMsg() {
-        Object ref = msg_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getMsg() {
+        java.lang.Object ref = msg_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           msg_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -3178,11 +3178,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getMsgBytes() {
-        Object ref = msg_;
+        java.lang.Object ref = msg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           msg_ = b;
           return b;
         } else {
@@ -3197,7 +3197,7 @@ public final class Tower {
        * </pre>
        */
       public Builder setMsg(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3238,9 +3238,9 @@ public final class Tower {
       }
 
       // optional .src.UserInfoRes userInfo = 3;
-      private UserInfoRes userInfo_ = UserInfoRes.getDefaultInstance();
+      private com.tower.msg.Tower.UserInfoRes userInfo_ = com.tower.msg.Tower.UserInfoRes.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          UserInfoRes, UserInfoRes.Builder, UserInfoResOrBuilder> userInfoBuilder_;
+          com.tower.msg.Tower.UserInfoRes, com.tower.msg.Tower.UserInfoRes.Builder, com.tower.msg.Tower.UserInfoResOrBuilder> userInfoBuilder_;
       /**
        * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
@@ -3258,7 +3258,7 @@ public final class Tower {
        *用户信息
        * </pre>
        */
-      public UserInfoRes getUserInfo() {
+      public com.tower.msg.Tower.UserInfoRes getUserInfo() {
         if (userInfoBuilder_ == null) {
           return userInfo_;
         } else {
@@ -3272,7 +3272,7 @@ public final class Tower {
        *用户信息
        * </pre>
        */
-      public Builder setUserInfo(UserInfoRes value) {
+      public Builder setUserInfo(com.tower.msg.Tower.UserInfoRes value) {
         if (userInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3293,7 +3293,7 @@ public final class Tower {
        * </pre>
        */
       public Builder setUserInfo(
-          UserInfoRes.Builder builderForValue) {
+          com.tower.msg.Tower.UserInfoRes.Builder builderForValue) {
         if (userInfoBuilder_ == null) {
           userInfo_ = builderForValue.build();
           onChanged();
@@ -3310,12 +3310,12 @@ public final class Tower {
        *用户信息
        * </pre>
        */
-      public Builder mergeUserInfo(UserInfoRes value) {
+      public Builder mergeUserInfo(com.tower.msg.Tower.UserInfoRes value) {
         if (userInfoBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              userInfo_ != UserInfoRes.getDefaultInstance()) {
+              userInfo_ != com.tower.msg.Tower.UserInfoRes.getDefaultInstance()) {
             userInfo_ =
-              UserInfoRes.newBuilder(userInfo_).mergeFrom(value).buildPartial();
+              com.tower.msg.Tower.UserInfoRes.newBuilder(userInfo_).mergeFrom(value).buildPartial();
           } else {
             userInfo_ = value;
           }
@@ -3335,7 +3335,7 @@ public final class Tower {
        */
       public Builder clearUserInfo() {
         if (userInfoBuilder_ == null) {
-          userInfo_ = UserInfoRes.getDefaultInstance();
+          userInfo_ = com.tower.msg.Tower.UserInfoRes.getDefaultInstance();
           onChanged();
         } else {
           userInfoBuilder_.clear();
@@ -3350,7 +3350,7 @@ public final class Tower {
        *用户信息
        * </pre>
        */
-      public UserInfoRes.Builder getUserInfoBuilder() {
+      public com.tower.msg.Tower.UserInfoRes.Builder getUserInfoBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getUserInfoFieldBuilder().getBuilder();
@@ -3362,7 +3362,7 @@ public final class Tower {
        *用户信息
        * </pre>
        */
-      public UserInfoResOrBuilder getUserInfoOrBuilder() {
+      public com.tower.msg.Tower.UserInfoResOrBuilder getUserInfoOrBuilder() {
         if (userInfoBuilder_ != null) {
           return userInfoBuilder_.getMessageOrBuilder();
         } else {
@@ -3377,11 +3377,11 @@ public final class Tower {
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          UserInfoRes, UserInfoRes.Builder, UserInfoResOrBuilder>
+          com.tower.msg.Tower.UserInfoRes, com.tower.msg.Tower.UserInfoRes.Builder, com.tower.msg.Tower.UserInfoResOrBuilder> 
           getUserInfoFieldBuilder() {
         if (userInfoBuilder_ == null) {
           userInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              UserInfoRes, UserInfoRes.Builder, UserInfoResOrBuilder>(
+              com.tower.msg.Tower.UserInfoRes, com.tower.msg.Tower.UserInfoRes.Builder, com.tower.msg.Tower.UserInfoResOrBuilder>(
                   userInfo_,
                   getParentForChildren(),
                   isClean());
@@ -3438,7 +3438,7 @@ public final class Tower {
      *昵称
      * </pre>
      */
-    String getNickname();
+    java.lang.String getNickname();
     /**
      * <code>optional string nickname = 2;</code>
      *
@@ -3465,7 +3465,7 @@ public final class Tower {
      *账号
      * </pre>
      */
-    String getAccount();
+    java.lang.String getAccount();
     /**
      * <code>optional string account = 3;</code>
      *
@@ -3516,7 +3516,7 @@ public final class Tower {
    * Protobuf type {@code src.UserInfoRes}
    *
    * <pre>
-   *用户信息
+   *用户信息			
    * </pre>
    */
   public static final class UserInfoRes extends
@@ -3539,7 +3539,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -3606,14 +3606,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_UserInfoRes_descriptor;
+      return com.tower.msg.Tower.internal_static_src_UserInfoRes_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_UserInfoRes_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_UserInfoRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              UserInfoRes.class, Builder.class);
+              com.tower.msg.Tower.UserInfoRes.class, com.tower.msg.Tower.UserInfoRes.Builder.class);
     }
 
     public static com.google.protobuf.Parser<UserInfoRes> PARSER =
@@ -3626,7 +3626,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<UserInfoRes> getParserForType() {
       return PARSER;
     }
@@ -3658,7 +3658,7 @@ public final class Tower {
 
     // optional string nickname = 2;
     public static final int NICKNAME_FIELD_NUMBER = 2;
-    private Object nickname_;
+    private java.lang.Object nickname_;
     /**
      * <code>optional string nickname = 2;</code>
      *
@@ -3676,14 +3676,14 @@ public final class Tower {
      *昵称
      * </pre>
      */
-    public String getNickname() {
-      Object ref = nickname_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           nickname_ = s;
         }
@@ -3699,11 +3699,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getNicknameBytes() {
-      Object ref = nickname_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         nickname_ = b;
         return b;
       } else {
@@ -3713,7 +3713,7 @@ public final class Tower {
 
     // optional string account = 3;
     public static final int ACCOUNT_FIELD_NUMBER = 3;
-    private Object account_;
+    private java.lang.Object account_;
     /**
      * <code>optional string account = 3;</code>
      *
@@ -3731,14 +3731,14 @@ public final class Tower {
      *账号
      * </pre>
      */
-    public String getAccount() {
-      Object ref = account_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getAccount() {
+      java.lang.Object ref = account_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           account_ = s;
         }
@@ -3754,11 +3754,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getAccountBytes() {
-      Object ref = account_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = account_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         account_ = b;
         return b;
       } else {
@@ -3883,59 +3883,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static UserInfoRes parseFrom(
+    public static com.tower.msg.Tower.UserInfoRes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static UserInfoRes parseFrom(
+    public static com.tower.msg.Tower.UserInfoRes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static UserInfoRes parseFrom(byte[] data)
+    public static com.tower.msg.Tower.UserInfoRes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static UserInfoRes parseFrom(
+    public static com.tower.msg.Tower.UserInfoRes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static UserInfoRes parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.UserInfoRes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static UserInfoRes parseFrom(
+    public static com.tower.msg.Tower.UserInfoRes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static UserInfoRes parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.UserInfoRes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static UserInfoRes parseDelimitedFrom(
+    public static com.tower.msg.Tower.UserInfoRes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static UserInfoRes parseFrom(
+    public static com.tower.msg.Tower.UserInfoRes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static UserInfoRes parseFrom(
+    public static com.tower.msg.Tower.UserInfoRes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3944,14 +3944,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(UserInfoRes prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.UserInfoRes prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3959,22 +3959,22 @@ public final class Tower {
      * Protobuf type {@code src.UserInfoRes}
      *
      * <pre>
-     *用户信息
+     *用户信息			
      * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements UserInfoResOrBuilder {
+       implements com.tower.msg.Tower.UserInfoResOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_UserInfoRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_UserInfoRes_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_UserInfoRes_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_UserInfoRes_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                UserInfoRes.class, Builder.class);
+                com.tower.msg.Tower.UserInfoRes.class, com.tower.msg.Tower.UserInfoRes.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.UserInfoRes.newBuilder()
@@ -3983,7 +3983,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4016,23 +4016,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_UserInfoRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_UserInfoRes_descriptor;
       }
 
-      public UserInfoRes getDefaultInstanceForType() {
-        return UserInfoRes.getDefaultInstance();
+      public com.tower.msg.Tower.UserInfoRes getDefaultInstanceForType() {
+        return com.tower.msg.Tower.UserInfoRes.getDefaultInstance();
       }
 
-      public UserInfoRes build() {
-        UserInfoRes result = buildPartial();
+      public com.tower.msg.Tower.UserInfoRes build() {
+        com.tower.msg.Tower.UserInfoRes result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public UserInfoRes buildPartial() {
-        UserInfoRes result = new UserInfoRes(this);
+      public com.tower.msg.Tower.UserInfoRes buildPartial() {
+        com.tower.msg.Tower.UserInfoRes result = new com.tower.msg.Tower.UserInfoRes(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4061,16 +4061,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof UserInfoRes) {
-          return mergeFrom((UserInfoRes)other);
+        if (other instanceof com.tower.msg.Tower.UserInfoRes) {
+          return mergeFrom((com.tower.msg.Tower.UserInfoRes)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(UserInfoRes other) {
-        if (other == UserInfoRes.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.UserInfoRes other) {
+        if (other == com.tower.msg.Tower.UserInfoRes.getDefaultInstance()) return this;
         if (other.hasId()) {
           setId(other.getId());
         }
@@ -4102,11 +4102,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        UserInfoRes parsedMessage = null;
+        com.tower.msg.Tower.UserInfoRes parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (UserInfoRes) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.UserInfoRes) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -4167,7 +4167,7 @@ public final class Tower {
       }
 
       // optional string nickname = 2;
-      private Object nickname_ = "";
+      private java.lang.Object nickname_ = "";
       /**
        * <code>optional string nickname = 2;</code>
        *
@@ -4185,15 +4185,15 @@ public final class Tower {
        *昵称
        * </pre>
        */
-      public String getNickname() {
-        Object ref = nickname_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           nickname_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -4205,11 +4205,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getNicknameBytes() {
-        Object ref = nickname_;
+        java.lang.Object ref = nickname_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           nickname_ = b;
           return b;
         } else {
@@ -4224,7 +4224,7 @@ public final class Tower {
        * </pre>
        */
       public Builder setNickname(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -4265,7 +4265,7 @@ public final class Tower {
       }
 
       // optional string account = 3;
-      private Object account_ = "";
+      private java.lang.Object account_ = "";
       /**
        * <code>optional string account = 3;</code>
        *
@@ -4283,15 +4283,15 @@ public final class Tower {
        *账号
        * </pre>
        */
-      public String getAccount() {
-        Object ref = account_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getAccount() {
+        java.lang.Object ref = account_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           account_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -4303,11 +4303,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getAccountBytes() {
-        Object ref = account_;
+        java.lang.Object ref = account_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           account_ = b;
           return b;
         } else {
@@ -4322,7 +4322,7 @@ public final class Tower {
        * </pre>
        */
       public Builder setAccount(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -4496,7 +4496,7 @@ public final class Tower {
    * Protobuf type {@code src.RoomReq}
    *
    * <pre>
-   * 房间请求
+   * 房间请求			
    * </pre>
    */
   public static final class RoomReq extends
@@ -4519,7 +4519,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -4566,14 +4566,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_RoomReq_descriptor;
+      return com.tower.msg.Tower.internal_static_src_RoomReq_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_RoomReq_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_RoomReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              RoomReq.class, Builder.class);
+              com.tower.msg.Tower.RoomReq.class, com.tower.msg.Tower.RoomReq.Builder.class);
     }
 
     public static com.google.protobuf.Parser<RoomReq> PARSER =
@@ -4586,7 +4586,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<RoomReq> getParserForType() {
       return PARSER;
     }
@@ -4657,59 +4657,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static RoomReq parseFrom(
+    public static com.tower.msg.Tower.RoomReq parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RoomReq parseFrom(
+    public static com.tower.msg.Tower.RoomReq parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RoomReq parseFrom(byte[] data)
+    public static com.tower.msg.Tower.RoomReq parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RoomReq parseFrom(
+    public static com.tower.msg.Tower.RoomReq parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RoomReq parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.RoomReq parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static RoomReq parseFrom(
+    public static com.tower.msg.Tower.RoomReq parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static RoomReq parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.RoomReq parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static RoomReq parseDelimitedFrom(
+    public static com.tower.msg.Tower.RoomReq parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static RoomReq parseFrom(
+    public static com.tower.msg.Tower.RoomReq parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static RoomReq parseFrom(
+    public static com.tower.msg.Tower.RoomReq parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4718,14 +4718,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(RoomReq prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.RoomReq prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -4733,22 +4733,22 @@ public final class Tower {
      * Protobuf type {@code src.RoomReq}
      *
      * <pre>
-     * 房间请求
+     * 房间请求			
      * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements RoomReqOrBuilder {
+       implements com.tower.msg.Tower.RoomReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_RoomReq_descriptor;
+        return com.tower.msg.Tower.internal_static_src_RoomReq_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_RoomReq_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_RoomReq_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                RoomReq.class, Builder.class);
+                com.tower.msg.Tower.RoomReq.class, com.tower.msg.Tower.RoomReq.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.RoomReq.newBuilder()
@@ -4757,7 +4757,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4782,23 +4782,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_RoomReq_descriptor;
+        return com.tower.msg.Tower.internal_static_src_RoomReq_descriptor;
       }
 
-      public RoomReq getDefaultInstanceForType() {
-        return RoomReq.getDefaultInstance();
+      public com.tower.msg.Tower.RoomReq getDefaultInstanceForType() {
+        return com.tower.msg.Tower.RoomReq.getDefaultInstance();
       }
 
-      public RoomReq build() {
-        RoomReq result = buildPartial();
+      public com.tower.msg.Tower.RoomReq build() {
+        com.tower.msg.Tower.RoomReq result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public RoomReq buildPartial() {
-        RoomReq result = new RoomReq(this);
+      public com.tower.msg.Tower.RoomReq buildPartial() {
+        com.tower.msg.Tower.RoomReq result = new com.tower.msg.Tower.RoomReq(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4811,16 +4811,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof RoomReq) {
-          return mergeFrom((RoomReq)other);
+        if (other instanceof com.tower.msg.Tower.RoomReq) {
+          return mergeFrom((com.tower.msg.Tower.RoomReq)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(RoomReq other) {
-        if (other == RoomReq.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.RoomReq other) {
+        if (other == com.tower.msg.Tower.RoomReq.getDefaultInstance()) return this;
         if (other.hasCmd()) {
           setCmd(other.getCmd());
         }
@@ -4830,7 +4830,7 @@ public final class Tower {
 
       public final boolean isInitialized() {
         if (!hasCmd()) {
-
+          
           return false;
         }
         return true;
@@ -4840,11 +4840,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        RoomReq parsedMessage = null;
+        com.tower.msg.Tower.RoomReq parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (RoomReq) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.RoomReq) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -4970,7 +4970,7 @@ public final class Tower {
      *提示信息
      * </pre>
      */
-    String getMsg();
+    java.lang.String getMsg();
     /**
      * <code>optional string msg = 3;</code>
      *
@@ -4981,37 +4981,172 @@ public final class Tower {
     com.google.protobuf.ByteString
         getMsgBytes();
 
-    // optional .src.RoomInfo roomInfo = 4;
+    // repeated .src.MonsterInfo monsterInfo = 4;
     /**
-     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
      *
      * <pre>
-     *用户信息
+     *怪物信息
      * </pre>
      */
-    boolean hasRoomInfo();
+    java.util.List<com.tower.msg.Tower.MonsterInfo> 
+        getMonsterInfoList();
     /**
-     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
      *
      * <pre>
-     *用户信息
+     *怪物信息
      * </pre>
      */
-    RoomInfo getRoomInfo();
+    com.tower.msg.Tower.MonsterInfo getMonsterInfo(int index);
     /**
-     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
      *
      * <pre>
-     *用户信息
+     *怪物信息
      * </pre>
      */
-    RoomInfoOrBuilder getRoomInfoOrBuilder();
+    int getMonsterInfoCount();
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    java.util.List<? extends com.tower.msg.Tower.MonsterInfoOrBuilder> 
+        getMonsterInfoOrBuilderList();
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    com.tower.msg.Tower.MonsterInfoOrBuilder getMonsterInfoOrBuilder(
+        int index);
+
+    // repeated .src.AttackLog attackLog = 5;
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    java.util.List<com.tower.msg.Tower.AttackLog> 
+        getAttackLogList();
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    com.tower.msg.Tower.AttackLog getAttackLog(int index);
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    int getAttackLogCount();
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    java.util.List<? extends com.tower.msg.Tower.AttackLogOrBuilder> 
+        getAttackLogOrBuilderList();
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    com.tower.msg.Tower.AttackLogOrBuilder getAttackLogOrBuilder(
+        int index);
+
+    // repeated .src.RecommendMonster recommendMonster = 6;
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    java.util.List<com.tower.msg.Tower.RecommendMonster> 
+        getRecommendMonsterList();
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    com.tower.msg.Tower.RecommendMonster getRecommendMonster(int index);
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    int getRecommendMonsterCount();
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    java.util.List<? extends com.tower.msg.Tower.RecommendMonsterOrBuilder> 
+        getRecommendMonsterOrBuilderList();
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    com.tower.msg.Tower.RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
+        int index);
+
+    // repeated int32 recommendId = 7;
+    /**
+     * <code>repeated int32 recommendId = 7;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    java.util.List<java.lang.Integer> getRecommendIdList();
+    /**
+     * <code>repeated int32 recommendId = 7;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    int getRecommendIdCount();
+    /**
+     * <code>repeated int32 recommendId = 7;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    int getRecommendId(int index);
   }
   /**
    * Protobuf type {@code src.RoomRes}
    *
    * <pre>
-   * 房间返回
+   * 房间返回			
    * </pre>
    */
   public static final class RoomRes extends
@@ -5034,7 +5169,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -5078,16 +5213,48 @@ public final class Tower {
               break;
             }
             case 34: {
-              RoomInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = roomInfo_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                monsterInfo_ = new java.util.ArrayList<com.tower.msg.Tower.MonsterInfo>();
+                mutable_bitField0_ |= 0x00000008;
               }
-              roomInfo_ = input.readMessage(RoomInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(roomInfo_);
-                roomInfo_ = subBuilder.buildPartial();
+              monsterInfo_.add(input.readMessage(com.tower.msg.Tower.MonsterInfo.PARSER, extensionRegistry));
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                attackLog_ = new java.util.ArrayList<com.tower.msg.Tower.AttackLog>();
+                mutable_bitField0_ |= 0x00000010;
               }
-              bitField0_ |= 0x00000008;
+              attackLog_.add(input.readMessage(com.tower.msg.Tower.AttackLog.PARSER, extensionRegistry));
+              break;
+            }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                recommendMonster_ = new java.util.ArrayList<com.tower.msg.Tower.RecommendMonster>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              recommendMonster_.add(input.readMessage(com.tower.msg.Tower.RecommendMonster.PARSER, extensionRegistry));
+              break;
+            }
+            case 56: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                recommendId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              recommendId_.add(input.readInt32());
+              break;
+            }
+            case 58: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040) && input.getBytesUntilLimit() > 0) {
+                recommendId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                recommendId_.add(input.readInt32());
+              }
+              input.popLimit(limit);
               break;
             }
           }
@@ -5098,20 +5265,32 @@ public final class Tower {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          monsterInfo_ = java.util.Collections.unmodifiableList(monsterInfo_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          attackLog_ = java.util.Collections.unmodifiableList(attackLog_);
+        }
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          recommendMonster_ = java.util.Collections.unmodifiableList(recommendMonster_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          recommendId_ = java.util.Collections.unmodifiableList(recommendId_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_RoomRes_descriptor;
+      return com.tower.msg.Tower.internal_static_src_RoomRes_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_RoomRes_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_RoomRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              RoomRes.class, Builder.class);
+              com.tower.msg.Tower.RoomRes.class, com.tower.msg.Tower.RoomRes.Builder.class);
     }
 
     public static com.google.protobuf.Parser<RoomRes> PARSER =
@@ -5124,7 +5303,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<RoomRes> getParserForType() {
       return PARSER;
     }
@@ -5180,7 +5359,7 @@ public final class Tower {
 
     // optional string msg = 3;
     public static final int MSG_FIELD_NUMBER = 3;
-    private Object msg_;
+    private java.lang.Object msg_;
     /**
      * <code>optional string msg = 3;</code>
      *
@@ -5198,14 +5377,14 @@ public final class Tower {
      *提示信息
      * </pre>
      */
-    public String getMsg() {
-      Object ref = msg_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           msg_ = s;
         }
@@ -5221,11 +5400,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getMsgBytes() {
-      Object ref = msg_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         msg_ = b;
         return b;
       } else {
@@ -5233,45 +5412,217 @@ public final class Tower {
       }
     }
 
-    // optional .src.RoomInfo roomInfo = 4;
-    public static final int ROOMINFO_FIELD_NUMBER = 4;
-    private RoomInfo roomInfo_;
+    // repeated .src.MonsterInfo monsterInfo = 4;
+    public static final int MONSTERINFO_FIELD_NUMBER = 4;
+    private java.util.List<com.tower.msg.Tower.MonsterInfo> monsterInfo_;
     /**
-     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
      *
      * <pre>
-     *用户信息
+     *怪物信息
      * </pre>
      */
-    public boolean hasRoomInfo() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+    public java.util.List<com.tower.msg.Tower.MonsterInfo> getMonsterInfoList() {
+      return monsterInfo_;
     }
     /**
-     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
      *
      * <pre>
-     *用户信息
+     *怪物信息
      * </pre>
      */
-    public RoomInfo getRoomInfo() {
-      return roomInfo_;
+    public java.util.List<? extends com.tower.msg.Tower.MonsterInfoOrBuilder> 
+        getMonsterInfoOrBuilderList() {
+      return monsterInfo_;
     }
     /**
-     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
      *
      * <pre>
-     *用户信息
+     *怪物信息
      * </pre>
      */
-    public RoomInfoOrBuilder getRoomInfoOrBuilder() {
-      return roomInfo_;
+    public int getMonsterInfoCount() {
+      return monsterInfo_.size();
+    }
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.MonsterInfo getMonsterInfo(int index) {
+      return monsterInfo_.get(index);
+    }
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.MonsterInfoOrBuilder getMonsterInfoOrBuilder(
+        int index) {
+      return monsterInfo_.get(index);
+    }
+
+    // repeated .src.AttackLog attackLog = 5;
+    public static final int ATTACKLOG_FIELD_NUMBER = 5;
+    private java.util.List<com.tower.msg.Tower.AttackLog> attackLog_;
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public java.util.List<com.tower.msg.Tower.AttackLog> getAttackLogList() {
+      return attackLog_;
+    }
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public java.util.List<? extends com.tower.msg.Tower.AttackLogOrBuilder> 
+        getAttackLogOrBuilderList() {
+      return attackLog_;
+    }
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public int getAttackLogCount() {
+      return attackLog_.size();
+    }
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.AttackLog getAttackLog(int index) {
+      return attackLog_.get(index);
+    }
+    /**
+     * <code>repeated .src.AttackLog attackLog = 5;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.AttackLogOrBuilder getAttackLogOrBuilder(
+        int index) {
+      return attackLog_.get(index);
+    }
+
+    // repeated .src.RecommendMonster recommendMonster = 6;
+    public static final int RECOMMENDMONSTER_FIELD_NUMBER = 6;
+    private java.util.List<com.tower.msg.Tower.RecommendMonster> recommendMonster_;
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public java.util.List<com.tower.msg.Tower.RecommendMonster> getRecommendMonsterList() {
+      return recommendMonster_;
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public java.util.List<? extends com.tower.msg.Tower.RecommendMonsterOrBuilder> 
+        getRecommendMonsterOrBuilderList() {
+      return recommendMonster_;
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public int getRecommendMonsterCount() {
+      return recommendMonster_.size();
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public com.tower.msg.Tower.RecommendMonster getRecommendMonster(int index) {
+      return recommendMonster_.get(index);
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public com.tower.msg.Tower.RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
+        int index) {
+      return recommendMonster_.get(index);
+    }
+
+    // repeated int32 recommendId = 7;
+    public static final int RECOMMENDID_FIELD_NUMBER = 7;
+    private java.util.List<java.lang.Integer> recommendId_;
+    /**
+     * <code>repeated int32 recommendId = 7;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    public java.util.List<java.lang.Integer>
+        getRecommendIdList() {
+      return recommendId_;
+    }
+    /**
+     * <code>repeated int32 recommendId = 7;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    public int getRecommendIdCount() {
+      return recommendId_.size();
+    }
+    /**
+     * <code>repeated int32 recommendId = 7;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    public int getRecommendId(int index) {
+      return recommendId_.get(index);
     }
 
     private void initFields() {
       cmd_ = 0;
       suc_ = false;
       msg_ = "";
-      roomInfo_ = RoomInfo.getDefaultInstance();
+      monsterInfo_ = java.util.Collections.emptyList();
+      attackLog_ = java.util.Collections.emptyList();
+      recommendMonster_ = java.util.Collections.emptyList();
+      recommendId_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5286,8 +5637,20 @@ public final class Tower {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (hasRoomInfo()) {
-        if (!getRoomInfo().isInitialized()) {
+      for (int i = 0; i < getMonsterInfoCount(); i++) {
+        if (!getMonsterInfo(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getAttackLogCount(); i++) {
+        if (!getAttackLog(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getRecommendMonsterCount(); i++) {
+        if (!getRecommendMonster(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -5308,8 +5671,17 @@ public final class Tower {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(3, getMsgBytes());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, roomInfo_);
+      for (int i = 0; i < monsterInfo_.size(); i++) {
+        output.writeMessage(4, monsterInfo_.get(i));
+      }
+      for (int i = 0; i < attackLog_.size(); i++) {
+        output.writeMessage(5, attackLog_.get(i));
+      }
+      for (int i = 0; i < recommendMonster_.size(); i++) {
+        output.writeMessage(6, recommendMonster_.get(i));
+      }
+      for (int i = 0; i < recommendId_.size(); i++) {
+        output.writeInt32(7, recommendId_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -5332,9 +5704,26 @@ public final class Tower {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(3, getMsgBytes());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      for (int i = 0; i < monsterInfo_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, roomInfo_);
+          .computeMessageSize(4, monsterInfo_.get(i));
+      }
+      for (int i = 0; i < attackLog_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, attackLog_.get(i));
+      }
+      for (int i = 0; i < recommendMonster_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, recommendMonster_.get(i));
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < recommendId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(recommendId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getRecommendIdList().size();
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5342,59 +5731,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static RoomRes parseFrom(
+    public static com.tower.msg.Tower.RoomRes parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RoomRes parseFrom(
+    public static com.tower.msg.Tower.RoomRes parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RoomRes parseFrom(byte[] data)
+    public static com.tower.msg.Tower.RoomRes parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RoomRes parseFrom(
+    public static com.tower.msg.Tower.RoomRes parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RoomRes parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.RoomRes parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static RoomRes parseFrom(
+    public static com.tower.msg.Tower.RoomRes parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static RoomRes parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.RoomRes parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static RoomRes parseDelimitedFrom(
+    public static com.tower.msg.Tower.RoomRes parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static RoomRes parseFrom(
+    public static com.tower.msg.Tower.RoomRes parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static RoomRes parseFrom(
+    public static com.tower.msg.Tower.RoomRes parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5403,14 +5792,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(RoomRes prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.RoomRes prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -5418,22 +5807,22 @@ public final class Tower {
      * Protobuf type {@code src.RoomRes}
      *
      * <pre>
-     * 房间返回
+     * 房间返回			
      * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements RoomResOrBuilder {
+       implements com.tower.msg.Tower.RoomResOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_RoomRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_RoomRes_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_RoomRes_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_RoomRes_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                RoomRes.class, Builder.class);
+                com.tower.msg.Tower.RoomRes.class, com.tower.msg.Tower.RoomRes.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.RoomRes.newBuilder()
@@ -5442,13 +5831,15 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getRoomInfoFieldBuilder();
+          getMonsterInfoFieldBuilder();
+          getAttackLogFieldBuilder();
+          getRecommendMonsterFieldBuilder();
         }
       }
       private static Builder create() {
@@ -5463,12 +5854,26 @@ public final class Tower {
         bitField0_ = (bitField0_ & ~0x00000002);
         msg_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        if (roomInfoBuilder_ == null) {
-          roomInfo_ = RoomInfo.getDefaultInstance();
+        if (monsterInfoBuilder_ == null) {
+          monsterInfo_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
-          roomInfoBuilder_.clear();
+          monsterInfoBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
+        if (attackLogBuilder_ == null) {
+          attackLog_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          attackLogBuilder_.clear();
+        }
+        if (recommendMonsterBuilder_ == null) {
+          recommendMonster_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+        } else {
+          recommendMonsterBuilder_.clear();
+        }
+        recommendId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -5478,23 +5883,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_RoomRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_RoomRes_descriptor;
       }
 
-      public RoomRes getDefaultInstanceForType() {
-        return RoomRes.getDefaultInstance();
+      public com.tower.msg.Tower.RoomRes getDefaultInstanceForType() {
+        return com.tower.msg.Tower.RoomRes.getDefaultInstance();
       }
 
-      public RoomRes build() {
-        RoomRes result = buildPartial();
+      public com.tower.msg.Tower.RoomRes build() {
+        com.tower.msg.Tower.RoomRes result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public RoomRes buildPartial() {
-        RoomRes result = new RoomRes(this);
+      public com.tower.msg.Tower.RoomRes buildPartial() {
+        com.tower.msg.Tower.RoomRes result = new com.tower.msg.Tower.RoomRes(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5509,30 +5914,54 @@ public final class Tower {
           to_bitField0_ |= 0x00000004;
         }
         result.msg_ = msg_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        if (roomInfoBuilder_ == null) {
-          result.roomInfo_ = roomInfo_;
+        if (monsterInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            monsterInfo_ = java.util.Collections.unmodifiableList(monsterInfo_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.monsterInfo_ = monsterInfo_;
         } else {
-          result.roomInfo_ = roomInfoBuilder_.build();
+          result.monsterInfo_ = monsterInfoBuilder_.build();
         }
+        if (attackLogBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            attackLog_ = java.util.Collections.unmodifiableList(attackLog_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.attackLog_ = attackLog_;
+        } else {
+          result.attackLog_ = attackLogBuilder_.build();
+        }
+        if (recommendMonsterBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+            recommendMonster_ = java.util.Collections.unmodifiableList(recommendMonster_);
+            bitField0_ = (bitField0_ & ~0x00000020);
+          }
+          result.recommendMonster_ = recommendMonster_;
+        } else {
+          result.recommendMonster_ = recommendMonsterBuilder_.build();
+        }
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          recommendId_ = java.util.Collections.unmodifiableList(recommendId_);
+          bitField0_ = (bitField0_ & ~0x00000040);
+        }
+        result.recommendId_ = recommendId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof RoomRes) {
-          return mergeFrom((RoomRes)other);
+        if (other instanceof com.tower.msg.Tower.RoomRes) {
+          return mergeFrom((com.tower.msg.Tower.RoomRes)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(RoomRes other) {
-        if (other == RoomRes.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.RoomRes other) {
+        if (other == com.tower.msg.Tower.RoomRes.getDefaultInstance()) return this;
         if (other.hasCmd()) {
           setCmd(other.getCmd());
         }
@@ -5544,8 +5973,93 @@ public final class Tower {
           msg_ = other.msg_;
           onChanged();
         }
-        if (other.hasRoomInfo()) {
-          mergeRoomInfo(other.getRoomInfo());
+        if (monsterInfoBuilder_ == null) {
+          if (!other.monsterInfo_.isEmpty()) {
+            if (monsterInfo_.isEmpty()) {
+              monsterInfo_ = other.monsterInfo_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureMonsterInfoIsMutable();
+              monsterInfo_.addAll(other.monsterInfo_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.monsterInfo_.isEmpty()) {
+            if (monsterInfoBuilder_.isEmpty()) {
+              monsterInfoBuilder_.dispose();
+              monsterInfoBuilder_ = null;
+              monsterInfo_ = other.monsterInfo_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              monsterInfoBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMonsterInfoFieldBuilder() : null;
+            } else {
+              monsterInfoBuilder_.addAllMessages(other.monsterInfo_);
+            }
+          }
+        }
+        if (attackLogBuilder_ == null) {
+          if (!other.attackLog_.isEmpty()) {
+            if (attackLog_.isEmpty()) {
+              attackLog_ = other.attackLog_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureAttackLogIsMutable();
+              attackLog_.addAll(other.attackLog_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.attackLog_.isEmpty()) {
+            if (attackLogBuilder_.isEmpty()) {
+              attackLogBuilder_.dispose();
+              attackLogBuilder_ = null;
+              attackLog_ = other.attackLog_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              attackLogBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getAttackLogFieldBuilder() : null;
+            } else {
+              attackLogBuilder_.addAllMessages(other.attackLog_);
+            }
+          }
+        }
+        if (recommendMonsterBuilder_ == null) {
+          if (!other.recommendMonster_.isEmpty()) {
+            if (recommendMonster_.isEmpty()) {
+              recommendMonster_ = other.recommendMonster_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+            } else {
+              ensureRecommendMonsterIsMutable();
+              recommendMonster_.addAll(other.recommendMonster_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.recommendMonster_.isEmpty()) {
+            if (recommendMonsterBuilder_.isEmpty()) {
+              recommendMonsterBuilder_.dispose();
+              recommendMonsterBuilder_ = null;
+              recommendMonster_ = other.recommendMonster_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+              recommendMonsterBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRecommendMonsterFieldBuilder() : null;
+            } else {
+              recommendMonsterBuilder_.addAllMessages(other.recommendMonster_);
+            }
+          }
+        }
+        if (!other.recommendId_.isEmpty()) {
+          if (recommendId_.isEmpty()) {
+            recommendId_ = other.recommendId_;
+            bitField0_ = (bitField0_ & ~0x00000040);
+          } else {
+            ensureRecommendIdIsMutable();
+            recommendId_.addAll(other.recommendId_);
+          }
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5553,16 +6067,28 @@ public final class Tower {
 
       public final boolean isInitialized() {
         if (!hasCmd()) {
-
+          
           return false;
         }
         if (!hasSuc()) {
-
+          
           return false;
         }
-        if (hasRoomInfo()) {
-          if (!getRoomInfo().isInitialized()) {
-
+        for (int i = 0; i < getMonsterInfoCount(); i++) {
+          if (!getMonsterInfo(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getAttackLogCount(); i++) {
+          if (!getAttackLog(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getRecommendMonsterCount(); i++) {
+          if (!getRecommendMonster(i).isInitialized()) {
+            
             return false;
           }
         }
@@ -5573,11 +6099,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        RoomRes parsedMessage = null;
+        com.tower.msg.Tower.RoomRes parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (RoomRes) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.RoomRes) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -5687,7 +6213,7 @@ public final class Tower {
       }
 
       // optional string msg = 3;
-      private Object msg_ = "";
+      private java.lang.Object msg_ = "";
       /**
        * <code>optional string msg = 3;</code>
        *
@@ -5705,15 +6231,15 @@ public final class Tower {
        *提示信息
        * </pre>
        */
-      public String getMsg() {
-        Object ref = msg_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getMsg() {
+        java.lang.Object ref = msg_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           msg_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -5725,11 +6251,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getMsgBytes() {
-        Object ref = msg_;
+        java.lang.Object ref = msg_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           msg_ = b;
           return b;
         } else {
@@ -5744,7 +6270,7 @@ public final class Tower {
        * </pre>
        */
       public Builder setMsg(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -5784,1022 +6310,27 @@ public final class Tower {
         return this;
       }
 
-      // optional .src.RoomInfo roomInfo = 4;
-      private RoomInfo roomInfo_ = RoomInfo.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          RoomInfo, RoomInfo.Builder, RoomInfoOrBuilder> roomInfoBuilder_;
-      /**
-       * <code>optional .src.RoomInfo roomInfo = 4;</code>
-       *
-       * <pre>
-       *用户信息
-       * </pre>
-       */
-      public boolean hasRoomInfo() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional .src.RoomInfo roomInfo = 4;</code>
-       *
-       * <pre>
-       *用户信息
-       * </pre>
-       */
-      public RoomInfo getRoomInfo() {
-        if (roomInfoBuilder_ == null) {
-          return roomInfo_;
-        } else {
-          return roomInfoBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .src.RoomInfo roomInfo = 4;</code>
-       *
-       * <pre>
-       *用户信息
-       * </pre>
-       */
-      public Builder setRoomInfo(RoomInfo value) {
-        if (roomInfoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          roomInfo_ = value;
-          onChanged();
-        } else {
-          roomInfoBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .src.RoomInfo roomInfo = 4;</code>
-       *
-       * <pre>
-       *用户信息
-       * </pre>
-       */
-      public Builder setRoomInfo(
-          RoomInfo.Builder builderForValue) {
-        if (roomInfoBuilder_ == null) {
-          roomInfo_ = builderForValue.build();
-          onChanged();
-        } else {
-          roomInfoBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .src.RoomInfo roomInfo = 4;</code>
-       *
-       * <pre>
-       *用户信息
-       * </pre>
-       */
-      public Builder mergeRoomInfo(RoomInfo value) {
-        if (roomInfoBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              roomInfo_ != RoomInfo.getDefaultInstance()) {
-            roomInfo_ =
-              RoomInfo.newBuilder(roomInfo_).mergeFrom(value).buildPartial();
-          } else {
-            roomInfo_ = value;
-          }
-          onChanged();
-        } else {
-          roomInfoBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .src.RoomInfo roomInfo = 4;</code>
-       *
-       * <pre>
-       *用户信息
-       * </pre>
-       */
-      public Builder clearRoomInfo() {
-        if (roomInfoBuilder_ == null) {
-          roomInfo_ = RoomInfo.getDefaultInstance();
-          onChanged();
-        } else {
-          roomInfoBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-      /**
-       * <code>optional .src.RoomInfo roomInfo = 4;</code>
-       *
-       * <pre>
-       *用户信息
-       * </pre>
-       */
-      public RoomInfo.Builder getRoomInfoBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return getRoomInfoFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .src.RoomInfo roomInfo = 4;</code>
-       *
-       * <pre>
-       *用户信息
-       * </pre>
-       */
-      public RoomInfoOrBuilder getRoomInfoOrBuilder() {
-        if (roomInfoBuilder_ != null) {
-          return roomInfoBuilder_.getMessageOrBuilder();
-        } else {
-          return roomInfo_;
-        }
-      }
-      /**
-       * <code>optional .src.RoomInfo roomInfo = 4;</code>
-       *
-       * <pre>
-       *用户信息
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          RoomInfo, RoomInfo.Builder, RoomInfoOrBuilder>
-          getRoomInfoFieldBuilder() {
-        if (roomInfoBuilder_ == null) {
-          roomInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              RoomInfo, RoomInfo.Builder, RoomInfoOrBuilder>(
-                  roomInfo_,
-                  getParentForChildren(),
-                  isClean());
-          roomInfo_ = null;
-        }
-        return roomInfoBuilder_;
-      }
-
-      // @@protoc_insertion_point(builder_scope:src.RoomRes)
-    }
-
-    static {
-      defaultInstance = new RoomRes(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:src.RoomRes)
-  }
-
-  public interface RoomInfoOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // repeated .src.MonsterInfo monsterInfo = 1;
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    java.util.List<MonsterInfo>
-        getMonsterInfoList();
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    MonsterInfo getMonsterInfo(int index);
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    int getMonsterInfoCount();
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    java.util.List<? extends MonsterInfoOrBuilder>
-        getMonsterInfoOrBuilderList();
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    MonsterInfoOrBuilder getMonsterInfoOrBuilder(
-            int index);
-
-    // repeated .src.AttackLog attackLog = 2;
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    java.util.List<AttackLog>
-        getAttackLogList();
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    AttackLog getAttackLog(int index);
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    int getAttackLogCount();
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    java.util.List<? extends AttackLogOrBuilder>
-        getAttackLogOrBuilderList();
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    AttackLogOrBuilder getAttackLogOrBuilder(
-            int index);
-
-    // repeated .src.RecommendMonster recommendMonster = 3;
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    java.util.List<RecommendMonster>
-        getRecommendMonsterList();
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    RecommendMonster getRecommendMonster(int index);
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    int getRecommendMonsterCount();
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    java.util.List<? extends RecommendMonsterOrBuilder>
-        getRecommendMonsterOrBuilderList();
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
-            int index);
-  }
-  /**
-   * Protobuf type {@code src.RoomInfo}
-   *
-   * <pre>
-   *房间信息
-   * </pre>
-   */
-  public static final class RoomInfo extends
-      com.google.protobuf.GeneratedMessage
-      implements RoomInfoOrBuilder {
-    // Use RoomInfo.newBuilder() to construct.
-    private RoomInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private RoomInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final RoomInfo defaultInstance;
-    public static RoomInfo getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public RoomInfo getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RoomInfo(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                monsterInfo_ = new java.util.ArrayList<MonsterInfo>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              monsterInfo_.add(input.readMessage(MonsterInfo.PARSER, extensionRegistry));
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                attackLog_ = new java.util.ArrayList<AttackLog>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              attackLog_.add(input.readMessage(AttackLog.PARSER, extensionRegistry));
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                recommendMonster_ = new java.util.ArrayList<RecommendMonster>();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              recommendMonster_.add(input.readMessage(RecommendMonster.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          monsterInfo_ = java.util.Collections.unmodifiableList(monsterInfo_);
-        }
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          attackLog_ = java.util.Collections.unmodifiableList(attackLog_);
-        }
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          recommendMonster_ = java.util.Collections.unmodifiableList(recommendMonster_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return Tower.internal_static_src_RoomInfo_descriptor;
-    }
-
-    protected FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_RoomInfo_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              RoomInfo.class, Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<RoomInfo> PARSER =
-        new com.google.protobuf.AbstractParser<RoomInfo>() {
-      public RoomInfo parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RoomInfo(input, extensionRegistry);
-      }
-    };
-
-    @Override
-    public com.google.protobuf.Parser<RoomInfo> getParserForType() {
-      return PARSER;
-    }
-
-    // repeated .src.MonsterInfo monsterInfo = 1;
-    public static final int MONSTERINFO_FIELD_NUMBER = 1;
-    private java.util.List<MonsterInfo> monsterInfo_;
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    public java.util.List<MonsterInfo> getMonsterInfoList() {
-      return monsterInfo_;
-    }
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    public java.util.List<? extends MonsterInfoOrBuilder>
-        getMonsterInfoOrBuilderList() {
-      return monsterInfo_;
-    }
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    public int getMonsterInfoCount() {
-      return monsterInfo_.size();
-    }
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    public MonsterInfo getMonsterInfo(int index) {
-      return monsterInfo_.get(index);
-    }
-    /**
-     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
-     *
-     * <pre>
-     *怪物信息
-     * </pre>
-     */
-    public MonsterInfoOrBuilder getMonsterInfoOrBuilder(
-        int index) {
-      return monsterInfo_.get(index);
-    }
-
-    // repeated .src.AttackLog attackLog = 2;
-    public static final int ATTACKLOG_FIELD_NUMBER = 2;
-    private java.util.List<AttackLog> attackLog_;
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    public java.util.List<AttackLog> getAttackLogList() {
-      return attackLog_;
-    }
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    public java.util.List<? extends AttackLogOrBuilder>
-        getAttackLogOrBuilderList() {
-      return attackLog_;
-    }
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    public int getAttackLogCount() {
-      return attackLog_.size();
-    }
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    public AttackLog getAttackLog(int index) {
-      return attackLog_.get(index);
-    }
-    /**
-     * <code>repeated .src.AttackLog attackLog = 2;</code>
-     *
-     * <pre>
-     *记录信息
-     * </pre>
-     */
-    public AttackLogOrBuilder getAttackLogOrBuilder(
-        int index) {
-      return attackLog_.get(index);
-    }
-
-    // repeated .src.RecommendMonster recommendMonster = 3;
-    public static final int RECOMMENDMONSTER_FIELD_NUMBER = 3;
-    private java.util.List<RecommendMonster> recommendMonster_;
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    public java.util.List<RecommendMonster> getRecommendMonsterList() {
-      return recommendMonster_;
-    }
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    public java.util.List<? extends RecommendMonsterOrBuilder>
-        getRecommendMonsterOrBuilderList() {
-      return recommendMonster_;
-    }
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    public int getRecommendMonsterCount() {
-      return recommendMonster_.size();
-    }
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    public RecommendMonster getRecommendMonster(int index) {
-      return recommendMonster_.get(index);
-    }
-    /**
-     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
-     *
-     * <pre>
-     *推荐怪物
-     * </pre>
-     */
-    public RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
-        int index) {
-      return recommendMonster_.get(index);
-    }
-
-    private void initFields() {
-      monsterInfo_ = java.util.Collections.emptyList();
-      attackLog_ = java.util.Collections.emptyList();
-      recommendMonster_ = java.util.Collections.emptyList();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      for (int i = 0; i < getMonsterInfoCount(); i++) {
-        if (!getMonsterInfo(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      for (int i = 0; i < getAttackLogCount(); i++) {
-        if (!getAttackLog(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      for (int i = 0; i < getRecommendMonsterCount(); i++) {
-        if (!getRecommendMonster(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      for (int i = 0; i < monsterInfo_.size(); i++) {
-        output.writeMessage(1, monsterInfo_.get(i));
-      }
-      for (int i = 0; i < attackLog_.size(); i++) {
-        output.writeMessage(2, attackLog_.get(i));
-      }
-      for (int i = 0; i < recommendMonster_.size(); i++) {
-        output.writeMessage(3, recommendMonster_.get(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (int i = 0; i < monsterInfo_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, monsterInfo_.get(i));
-      }
-      for (int i = 0; i < attackLog_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, attackLog_.get(i));
-      }
-      for (int i = 0; i < recommendMonster_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, recommendMonster_.get(i));
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static RoomInfo parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static RoomInfo parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static RoomInfo parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static RoomInfo parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static RoomInfo parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static RoomInfo parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static RoomInfo parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static RoomInfo parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static RoomInfo parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static RoomInfo parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(RoomInfo prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @Override
-    protected Builder newBuilderForType(
-        BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code src.RoomInfo}
-     *
-     * <pre>
-     *房间信息
-     * </pre>
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements RoomInfoOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return Tower.internal_static_src_RoomInfo_descriptor;
-      }
-
-      protected FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_RoomInfo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                RoomInfo.class, Builder.class);
-      }
-
-      // Construct using com.tower.msg.Tower.RoomInfo.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getMonsterInfoFieldBuilder();
-          getAttackLogFieldBuilder();
-          getRecommendMonsterFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        if (monsterInfoBuilder_ == null) {
-          monsterInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          monsterInfoBuilder_.clear();
-        }
-        if (attackLogBuilder_ == null) {
-          attackLog_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          attackLogBuilder_.clear();
-        }
-        if (recommendMonsterBuilder_ == null) {
-          recommendMonster_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
-        } else {
-          recommendMonsterBuilder_.clear();
-        }
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return Tower.internal_static_src_RoomInfo_descriptor;
-      }
-
-      public RoomInfo getDefaultInstanceForType() {
-        return RoomInfo.getDefaultInstance();
-      }
-
-      public RoomInfo build() {
-        RoomInfo result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public RoomInfo buildPartial() {
-        RoomInfo result = new RoomInfo(this);
-        int from_bitField0_ = bitField0_;
-        if (monsterInfoBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            monsterInfo_ = java.util.Collections.unmodifiableList(monsterInfo_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.monsterInfo_ = monsterInfo_;
-        } else {
-          result.monsterInfo_ = monsterInfoBuilder_.build();
-        }
-        if (attackLogBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            attackLog_ = java.util.Collections.unmodifiableList(attackLog_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.attackLog_ = attackLog_;
-        } else {
-          result.attackLog_ = attackLogBuilder_.build();
-        }
-        if (recommendMonsterBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
-            recommendMonster_ = java.util.Collections.unmodifiableList(recommendMonster_);
-            bitField0_ = (bitField0_ & ~0x00000004);
-          }
-          result.recommendMonster_ = recommendMonster_;
-        } else {
-          result.recommendMonster_ = recommendMonsterBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof RoomInfo) {
-          return mergeFrom((RoomInfo)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(RoomInfo other) {
-        if (other == RoomInfo.getDefaultInstance()) return this;
-        if (monsterInfoBuilder_ == null) {
-          if (!other.monsterInfo_.isEmpty()) {
-            if (monsterInfo_.isEmpty()) {
-              monsterInfo_ = other.monsterInfo_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureMonsterInfoIsMutable();
-              monsterInfo_.addAll(other.monsterInfo_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.monsterInfo_.isEmpty()) {
-            if (monsterInfoBuilder_.isEmpty()) {
-              monsterInfoBuilder_.dispose();
-              monsterInfoBuilder_ = null;
-              monsterInfo_ = other.monsterInfo_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              monsterInfoBuilder_ =
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getMonsterInfoFieldBuilder() : null;
-            } else {
-              monsterInfoBuilder_.addAllMessages(other.monsterInfo_);
-            }
-          }
-        }
-        if (attackLogBuilder_ == null) {
-          if (!other.attackLog_.isEmpty()) {
-            if (attackLog_.isEmpty()) {
-              attackLog_ = other.attackLog_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureAttackLogIsMutable();
-              attackLog_.addAll(other.attackLog_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.attackLog_.isEmpty()) {
-            if (attackLogBuilder_.isEmpty()) {
-              attackLogBuilder_.dispose();
-              attackLogBuilder_ = null;
-              attackLog_ = other.attackLog_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              attackLogBuilder_ =
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getAttackLogFieldBuilder() : null;
-            } else {
-              attackLogBuilder_.addAllMessages(other.attackLog_);
-            }
-          }
-        }
-        if (recommendMonsterBuilder_ == null) {
-          if (!other.recommendMonster_.isEmpty()) {
-            if (recommendMonster_.isEmpty()) {
-              recommendMonster_ = other.recommendMonster_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-            } else {
-              ensureRecommendMonsterIsMutable();
-              recommendMonster_.addAll(other.recommendMonster_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.recommendMonster_.isEmpty()) {
-            if (recommendMonsterBuilder_.isEmpty()) {
-              recommendMonsterBuilder_.dispose();
-              recommendMonsterBuilder_ = null;
-              recommendMonster_ = other.recommendMonster_;
-              bitField0_ = (bitField0_ & ~0x00000004);
-              recommendMonsterBuilder_ =
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getRecommendMonsterFieldBuilder() : null;
-            } else {
-              recommendMonsterBuilder_.addAllMessages(other.recommendMonster_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        for (int i = 0; i < getMonsterInfoCount(); i++) {
-          if (!getMonsterInfo(i).isInitialized()) {
-
-            return false;
-          }
-        }
-        for (int i = 0; i < getAttackLogCount(); i++) {
-          if (!getAttackLog(i).isInitialized()) {
-
-            return false;
-          }
-        }
-        for (int i = 0; i < getRecommendMonsterCount(); i++) {
-          if (!getRecommendMonster(i).isInitialized()) {
-
-            return false;
-          }
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        RoomInfo parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (RoomInfo) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // repeated .src.MonsterInfo monsterInfo = 1;
-      private java.util.List<MonsterInfo> monsterInfo_ =
+      // repeated .src.MonsterInfo monsterInfo = 4;
+      private java.util.List<com.tower.msg.Tower.MonsterInfo> monsterInfo_ =
         java.util.Collections.emptyList();
       private void ensureMonsterInfoIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          monsterInfo_ = new java.util.ArrayList<MonsterInfo>(monsterInfo_);
-          bitField0_ |= 0x00000001;
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          monsterInfo_ = new java.util.ArrayList<com.tower.msg.Tower.MonsterInfo>(monsterInfo_);
+          bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          MonsterInfo, MonsterInfo.Builder, MonsterInfoOrBuilder> monsterInfoBuilder_;
+          com.tower.msg.Tower.MonsterInfo, com.tower.msg.Tower.MonsterInfo.Builder, com.tower.msg.Tower.MonsterInfoOrBuilder> monsterInfoBuilder_;
 
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
-      public java.util.List<MonsterInfo> getMonsterInfoList() {
+      public java.util.List<com.tower.msg.Tower.MonsterInfo> getMonsterInfoList() {
         if (monsterInfoBuilder_ == null) {
           return java.util.Collections.unmodifiableList(monsterInfo_);
         } else {
@@ -6807,7 +6338,7 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
@@ -6821,13 +6352,13 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
-      public MonsterInfo getMonsterInfo(int index) {
+      public com.tower.msg.Tower.MonsterInfo getMonsterInfo(int index) {
         if (monsterInfoBuilder_ == null) {
           return monsterInfo_.get(index);
         } else {
@@ -6835,14 +6366,14 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
       public Builder setMonsterInfo(
-          int index, MonsterInfo value) {
+          int index, com.tower.msg.Tower.MonsterInfo value) {
         if (monsterInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6856,14 +6387,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
       public Builder setMonsterInfo(
-          int index, MonsterInfo.Builder builderForValue) {
+          int index, com.tower.msg.Tower.MonsterInfo.Builder builderForValue) {
         if (monsterInfoBuilder_ == null) {
           ensureMonsterInfoIsMutable();
           monsterInfo_.set(index, builderForValue.build());
@@ -6874,13 +6405,13 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
-      public Builder addMonsterInfo(MonsterInfo value) {
+      public Builder addMonsterInfo(com.tower.msg.Tower.MonsterInfo value) {
         if (monsterInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6894,14 +6425,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
       public Builder addMonsterInfo(
-          int index, MonsterInfo value) {
+          int index, com.tower.msg.Tower.MonsterInfo value) {
         if (monsterInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6915,14 +6446,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
       public Builder addMonsterInfo(
-          MonsterInfo.Builder builderForValue) {
+          com.tower.msg.Tower.MonsterInfo.Builder builderForValue) {
         if (monsterInfoBuilder_ == null) {
           ensureMonsterInfoIsMutable();
           monsterInfo_.add(builderForValue.build());
@@ -6933,14 +6464,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
       public Builder addMonsterInfo(
-          int index, MonsterInfo.Builder builderForValue) {
+          int index, com.tower.msg.Tower.MonsterInfo.Builder builderForValue) {
         if (monsterInfoBuilder_ == null) {
           ensureMonsterInfoIsMutable();
           monsterInfo_.add(index, builderForValue.build());
@@ -6951,14 +6482,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
       public Builder addAllMonsterInfo(
-          Iterable<? extends MonsterInfo> values) {
+          java.lang.Iterable<? extends com.tower.msg.Tower.MonsterInfo> values) {
         if (monsterInfoBuilder_ == null) {
           ensureMonsterInfoIsMutable();
           super.addAll(values, monsterInfo_);
@@ -6969,7 +6500,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
@@ -6978,7 +6509,7 @@ public final class Tower {
       public Builder clearMonsterInfo() {
         if (monsterInfoBuilder_ == null) {
           monsterInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           monsterInfoBuilder_.clear();
@@ -6986,7 +6517,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
@@ -7003,24 +6534,24 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
-      public MonsterInfo.Builder getMonsterInfoBuilder(
+      public com.tower.msg.Tower.MonsterInfo.Builder getMonsterInfoBuilder(
           int index) {
         return getMonsterInfoFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
-      public MonsterInfoOrBuilder getMonsterInfoOrBuilder(
+      public com.tower.msg.Tower.MonsterInfoOrBuilder getMonsterInfoOrBuilder(
           int index) {
         if (monsterInfoBuilder_ == null) {
           return monsterInfo_.get(index);  } else {
@@ -7028,13 +6559,13 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
-      public java.util.List<? extends MonsterInfoOrBuilder>
+      public java.util.List<? extends com.tower.msg.Tower.MonsterInfoOrBuilder> 
            getMonsterInfoOrBuilderList() {
         if (monsterInfoBuilder_ != null) {
           return monsterInfoBuilder_.getMessageOrBuilderList();
@@ -7043,47 +6574,47 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
-      public MonsterInfo.Builder addMonsterInfoBuilder() {
+      public com.tower.msg.Tower.MonsterInfo.Builder addMonsterInfoBuilder() {
         return getMonsterInfoFieldBuilder().addBuilder(
-            MonsterInfo.getDefaultInstance());
+            com.tower.msg.Tower.MonsterInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
-      public MonsterInfo.Builder addMonsterInfoBuilder(
+      public com.tower.msg.Tower.MonsterInfo.Builder addMonsterInfoBuilder(
           int index) {
         return getMonsterInfoFieldBuilder().addBuilder(
-            index, MonsterInfo.getDefaultInstance());
+            index, com.tower.msg.Tower.MonsterInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       * <code>repeated .src.MonsterInfo monsterInfo = 4;</code>
        *
        * <pre>
        *怪物信息
        * </pre>
        */
-      public java.util.List<MonsterInfo.Builder>
+      public java.util.List<com.tower.msg.Tower.MonsterInfo.Builder> 
            getMonsterInfoBuilderList() {
         return getMonsterInfoFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          MonsterInfo, MonsterInfo.Builder, MonsterInfoOrBuilder>
+          com.tower.msg.Tower.MonsterInfo, com.tower.msg.Tower.MonsterInfo.Builder, com.tower.msg.Tower.MonsterInfoOrBuilder> 
           getMonsterInfoFieldBuilder() {
         if (monsterInfoBuilder_ == null) {
           monsterInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              MonsterInfo, MonsterInfo.Builder, MonsterInfoOrBuilder>(
+              com.tower.msg.Tower.MonsterInfo, com.tower.msg.Tower.MonsterInfo.Builder, com.tower.msg.Tower.MonsterInfoOrBuilder>(
                   monsterInfo_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           monsterInfo_ = null;
@@ -7091,27 +6622,27 @@ public final class Tower {
         return monsterInfoBuilder_;
       }
 
-      // repeated .src.AttackLog attackLog = 2;
-      private java.util.List<AttackLog> attackLog_ =
+      // repeated .src.AttackLog attackLog = 5;
+      private java.util.List<com.tower.msg.Tower.AttackLog> attackLog_ =
         java.util.Collections.emptyList();
       private void ensureAttackLogIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          attackLog_ = new java.util.ArrayList<AttackLog>(attackLog_);
-          bitField0_ |= 0x00000002;
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          attackLog_ = new java.util.ArrayList<com.tower.msg.Tower.AttackLog>(attackLog_);
+          bitField0_ |= 0x00000010;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          AttackLog, AttackLog.Builder, AttackLogOrBuilder> attackLogBuilder_;
+          com.tower.msg.Tower.AttackLog, com.tower.msg.Tower.AttackLog.Builder, com.tower.msg.Tower.AttackLogOrBuilder> attackLogBuilder_;
 
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
-      public java.util.List<AttackLog> getAttackLogList() {
+      public java.util.List<com.tower.msg.Tower.AttackLog> getAttackLogList() {
         if (attackLogBuilder_ == null) {
           return java.util.Collections.unmodifiableList(attackLog_);
         } else {
@@ -7119,7 +6650,7 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
@@ -7133,13 +6664,13 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
-      public AttackLog getAttackLog(int index) {
+      public com.tower.msg.Tower.AttackLog getAttackLog(int index) {
         if (attackLogBuilder_ == null) {
           return attackLog_.get(index);
         } else {
@@ -7147,14 +6678,14 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
       public Builder setAttackLog(
-          int index, AttackLog value) {
+          int index, com.tower.msg.Tower.AttackLog value) {
         if (attackLogBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7168,14 +6699,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
       public Builder setAttackLog(
-          int index, AttackLog.Builder builderForValue) {
+          int index, com.tower.msg.Tower.AttackLog.Builder builderForValue) {
         if (attackLogBuilder_ == null) {
           ensureAttackLogIsMutable();
           attackLog_.set(index, builderForValue.build());
@@ -7186,13 +6717,13 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
-      public Builder addAttackLog(AttackLog value) {
+      public Builder addAttackLog(com.tower.msg.Tower.AttackLog value) {
         if (attackLogBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7206,14 +6737,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
       public Builder addAttackLog(
-          int index, AttackLog value) {
+          int index, com.tower.msg.Tower.AttackLog value) {
         if (attackLogBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7227,14 +6758,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
       public Builder addAttackLog(
-          AttackLog.Builder builderForValue) {
+          com.tower.msg.Tower.AttackLog.Builder builderForValue) {
         if (attackLogBuilder_ == null) {
           ensureAttackLogIsMutable();
           attackLog_.add(builderForValue.build());
@@ -7245,14 +6776,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
       public Builder addAttackLog(
-          int index, AttackLog.Builder builderForValue) {
+          int index, com.tower.msg.Tower.AttackLog.Builder builderForValue) {
         if (attackLogBuilder_ == null) {
           ensureAttackLogIsMutable();
           attackLog_.add(index, builderForValue.build());
@@ -7263,14 +6794,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
       public Builder addAllAttackLog(
-          Iterable<? extends AttackLog> values) {
+          java.lang.Iterable<? extends com.tower.msg.Tower.AttackLog> values) {
         if (attackLogBuilder_ == null) {
           ensureAttackLogIsMutable();
           super.addAll(values, attackLog_);
@@ -7281,7 +6812,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
@@ -7290,7 +6821,7 @@ public final class Tower {
       public Builder clearAttackLog() {
         if (attackLogBuilder_ == null) {
           attackLog_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           attackLogBuilder_.clear();
@@ -7298,7 +6829,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
@@ -7315,24 +6846,24 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
-      public AttackLog.Builder getAttackLogBuilder(
+      public com.tower.msg.Tower.AttackLog.Builder getAttackLogBuilder(
           int index) {
         return getAttackLogFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
-      public AttackLogOrBuilder getAttackLogOrBuilder(
+      public com.tower.msg.Tower.AttackLogOrBuilder getAttackLogOrBuilder(
           int index) {
         if (attackLogBuilder_ == null) {
           return attackLog_.get(index);  } else {
@@ -7340,13 +6871,13 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
-      public java.util.List<? extends AttackLogOrBuilder>
+      public java.util.List<? extends com.tower.msg.Tower.AttackLogOrBuilder> 
            getAttackLogOrBuilderList() {
         if (attackLogBuilder_ != null) {
           return attackLogBuilder_.getMessageOrBuilderList();
@@ -7355,47 +6886,47 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
-      public AttackLog.Builder addAttackLogBuilder() {
+      public com.tower.msg.Tower.AttackLog.Builder addAttackLogBuilder() {
         return getAttackLogFieldBuilder().addBuilder(
-            AttackLog.getDefaultInstance());
+            com.tower.msg.Tower.AttackLog.getDefaultInstance());
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
-      public AttackLog.Builder addAttackLogBuilder(
+      public com.tower.msg.Tower.AttackLog.Builder addAttackLogBuilder(
           int index) {
         return getAttackLogFieldBuilder().addBuilder(
-            index, AttackLog.getDefaultInstance());
+            index, com.tower.msg.Tower.AttackLog.getDefaultInstance());
       }
       /**
-       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       * <code>repeated .src.AttackLog attackLog = 5;</code>
        *
        * <pre>
        *记录信息
        * </pre>
        */
-      public java.util.List<AttackLog.Builder>
+      public java.util.List<com.tower.msg.Tower.AttackLog.Builder> 
            getAttackLogBuilderList() {
         return getAttackLogFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          AttackLog, AttackLog.Builder, AttackLogOrBuilder>
+          com.tower.msg.Tower.AttackLog, com.tower.msg.Tower.AttackLog.Builder, com.tower.msg.Tower.AttackLogOrBuilder> 
           getAttackLogFieldBuilder() {
         if (attackLogBuilder_ == null) {
           attackLogBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              AttackLog, AttackLog.Builder, AttackLogOrBuilder>(
+              com.tower.msg.Tower.AttackLog, com.tower.msg.Tower.AttackLog.Builder, com.tower.msg.Tower.AttackLogOrBuilder>(
                   attackLog_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           attackLog_ = null;
@@ -7403,27 +6934,27 @@ public final class Tower {
         return attackLogBuilder_;
       }
 
-      // repeated .src.RecommendMonster recommendMonster = 3;
-      private java.util.List<RecommendMonster> recommendMonster_ =
+      // repeated .src.RecommendMonster recommendMonster = 6;
+      private java.util.List<com.tower.msg.Tower.RecommendMonster> recommendMonster_ =
         java.util.Collections.emptyList();
       private void ensureRecommendMonsterIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          recommendMonster_ = new java.util.ArrayList<RecommendMonster>(recommendMonster_);
-          bitField0_ |= 0x00000004;
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          recommendMonster_ = new java.util.ArrayList<com.tower.msg.Tower.RecommendMonster>(recommendMonster_);
+          bitField0_ |= 0x00000020;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          RecommendMonster, RecommendMonster.Builder, RecommendMonsterOrBuilder> recommendMonsterBuilder_;
+          com.tower.msg.Tower.RecommendMonster, com.tower.msg.Tower.RecommendMonster.Builder, com.tower.msg.Tower.RecommendMonsterOrBuilder> recommendMonsterBuilder_;
 
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
-      public java.util.List<RecommendMonster> getRecommendMonsterList() {
+      public java.util.List<com.tower.msg.Tower.RecommendMonster> getRecommendMonsterList() {
         if (recommendMonsterBuilder_ == null) {
           return java.util.Collections.unmodifiableList(recommendMonster_);
         } else {
@@ -7431,10 +6962,10 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
       public int getRecommendMonsterCount() {
@@ -7445,13 +6976,13 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
-      public RecommendMonster getRecommendMonster(int index) {
+      public com.tower.msg.Tower.RecommendMonster getRecommendMonster(int index) {
         if (recommendMonsterBuilder_ == null) {
           return recommendMonster_.get(index);
         } else {
@@ -7459,14 +6990,14 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
       public Builder setRecommendMonster(
-          int index, RecommendMonster value) {
+          int index, com.tower.msg.Tower.RecommendMonster value) {
         if (recommendMonsterBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7480,14 +7011,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
       public Builder setRecommendMonster(
-          int index, RecommendMonster.Builder builderForValue) {
+          int index, com.tower.msg.Tower.RecommendMonster.Builder builderForValue) {
         if (recommendMonsterBuilder_ == null) {
           ensureRecommendMonsterIsMutable();
           recommendMonster_.set(index, builderForValue.build());
@@ -7498,13 +7029,13 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
-      public Builder addRecommendMonster(RecommendMonster value) {
+      public Builder addRecommendMonster(com.tower.msg.Tower.RecommendMonster value) {
         if (recommendMonsterBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7518,14 +7049,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
       public Builder addRecommendMonster(
-          int index, RecommendMonster value) {
+          int index, com.tower.msg.Tower.RecommendMonster value) {
         if (recommendMonsterBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7539,14 +7070,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
       public Builder addRecommendMonster(
-          RecommendMonster.Builder builderForValue) {
+          com.tower.msg.Tower.RecommendMonster.Builder builderForValue) {
         if (recommendMonsterBuilder_ == null) {
           ensureRecommendMonsterIsMutable();
           recommendMonster_.add(builderForValue.build());
@@ -7557,14 +7088,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
       public Builder addRecommendMonster(
-          int index, RecommendMonster.Builder builderForValue) {
+          int index, com.tower.msg.Tower.RecommendMonster.Builder builderForValue) {
         if (recommendMonsterBuilder_ == null) {
           ensureRecommendMonsterIsMutable();
           recommendMonster_.add(index, builderForValue.build());
@@ -7575,14 +7106,14 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
       public Builder addAllRecommendMonster(
-          Iterable<? extends RecommendMonster> values) {
+          java.lang.Iterable<? extends com.tower.msg.Tower.RecommendMonster> values) {
         if (recommendMonsterBuilder_ == null) {
           ensureRecommendMonsterIsMutable();
           super.addAll(values, recommendMonster_);
@@ -7593,16 +7124,16 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
       public Builder clearRecommendMonster() {
         if (recommendMonsterBuilder_ == null) {
           recommendMonster_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000020);
           onChanged();
         } else {
           recommendMonsterBuilder_.clear();
@@ -7610,10 +7141,10 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
       public Builder removeRecommendMonster(int index) {
@@ -7627,24 +7158,24 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
-      public RecommendMonster.Builder getRecommendMonsterBuilder(
+      public com.tower.msg.Tower.RecommendMonster.Builder getRecommendMonsterBuilder(
           int index) {
         return getRecommendMonsterFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
-      public RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
+      public com.tower.msg.Tower.RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
           int index) {
         if (recommendMonsterBuilder_ == null) {
           return recommendMonster_.get(index);  } else {
@@ -7652,13 +7183,13 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
-      public java.util.List<? extends RecommendMonsterOrBuilder>
+      public java.util.List<? extends com.tower.msg.Tower.RecommendMonsterOrBuilder> 
            getRecommendMonsterOrBuilderList() {
         if (recommendMonsterBuilder_ != null) {
           return recommendMonsterBuilder_.getMessageOrBuilderList();
@@ -7667,47 +7198,47 @@ public final class Tower {
         }
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
-      public RecommendMonster.Builder addRecommendMonsterBuilder() {
+      public com.tower.msg.Tower.RecommendMonster.Builder addRecommendMonsterBuilder() {
         return getRecommendMonsterFieldBuilder().addBuilder(
-            RecommendMonster.getDefaultInstance());
+            com.tower.msg.Tower.RecommendMonster.getDefaultInstance());
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
-      public RecommendMonster.Builder addRecommendMonsterBuilder(
+      public com.tower.msg.Tower.RecommendMonster.Builder addRecommendMonsterBuilder(
           int index) {
         return getRecommendMonsterFieldBuilder().addBuilder(
-            index, RecommendMonster.getDefaultInstance());
+            index, com.tower.msg.Tower.RecommendMonster.getDefaultInstance());
       }
       /**
-       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       * <code>repeated .src.RecommendMonster recommendMonster = 6;</code>
        *
        * <pre>
-       *推荐怪物
+       *推荐怪物概率
        * </pre>
        */
-      public java.util.List<RecommendMonster.Builder>
+      public java.util.List<com.tower.msg.Tower.RecommendMonster.Builder> 
            getRecommendMonsterBuilderList() {
         return getRecommendMonsterFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          RecommendMonster, RecommendMonster.Builder, RecommendMonsterOrBuilder>
+          com.tower.msg.Tower.RecommendMonster, com.tower.msg.Tower.RecommendMonster.Builder, com.tower.msg.Tower.RecommendMonsterOrBuilder> 
           getRecommendMonsterFieldBuilder() {
         if (recommendMonsterBuilder_ == null) {
           recommendMonsterBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              RecommendMonster, RecommendMonster.Builder, RecommendMonsterOrBuilder>(
+              com.tower.msg.Tower.RecommendMonster, com.tower.msg.Tower.RecommendMonster.Builder, com.tower.msg.Tower.RecommendMonsterOrBuilder>(
                   recommendMonster_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
                   isClean());
           recommendMonster_ = null;
@@ -7715,15 +7246,109 @@ public final class Tower {
         return recommendMonsterBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:src.RoomInfo)
+      // repeated int32 recommendId = 7;
+      private java.util.List<java.lang.Integer> recommendId_ = java.util.Collections.emptyList();
+      private void ensureRecommendIdIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          recommendId_ = new java.util.ArrayList<java.lang.Integer>(recommendId_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+      /**
+       * <code>repeated int32 recommendId = 7;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public java.util.List<java.lang.Integer>
+          getRecommendIdList() {
+        return java.util.Collections.unmodifiableList(recommendId_);
+      }
+      /**
+       * <code>repeated int32 recommendId = 7;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public int getRecommendIdCount() {
+        return recommendId_.size();
+      }
+      /**
+       * <code>repeated int32 recommendId = 7;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public int getRecommendId(int index) {
+        return recommendId_.get(index);
+      }
+      /**
+       * <code>repeated int32 recommendId = 7;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public Builder setRecommendId(
+          int index, int value) {
+        ensureRecommendIdIsMutable();
+        recommendId_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 recommendId = 7;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public Builder addRecommendId(int value) {
+        ensureRecommendIdIsMutable();
+        recommendId_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 recommendId = 7;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public Builder addAllRecommendId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRecommendIdIsMutable();
+        super.addAll(values, recommendId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 recommendId = 7;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public Builder clearRecommendId() {
+        recommendId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.RoomRes)
     }
 
     static {
-      defaultInstance = new RoomInfo(true);
+      defaultInstance = new RoomRes(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:src.RoomInfo)
+    // @@protoc_insertion_point(class_scope:src.RoomRes)
   }
 
   public interface MonsterInfoOrBuilder
@@ -7763,7 +7388,7 @@ public final class Tower {
      *怪物昵称
      * </pre>
      */
-    String getMonsterName();
+    java.lang.String getMonsterName();
     /**
      * <code>required string monsterName = 2;</code>
      *
@@ -7850,7 +7475,7 @@ public final class Tower {
    * Protobuf type {@code src.MonsterInfo}
    *
    * <pre>
-   *怪物信息
+   *怪物信息	
    * </pre>
    */
   public static final class MonsterInfo extends
@@ -7873,7 +7498,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -7945,14 +7570,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_MonsterInfo_descriptor;
+      return com.tower.msg.Tower.internal_static_src_MonsterInfo_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_MonsterInfo_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_MonsterInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              MonsterInfo.class, Builder.class);
+              com.tower.msg.Tower.MonsterInfo.class, com.tower.msg.Tower.MonsterInfo.Builder.class);
     }
 
     public static com.google.protobuf.Parser<MonsterInfo> PARSER =
@@ -7965,7 +7590,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<MonsterInfo> getParserForType() {
       return PARSER;
     }
@@ -7997,7 +7622,7 @@ public final class Tower {
 
     // required string monsterName = 2;
     public static final int MONSTERNAME_FIELD_NUMBER = 2;
-    private Object monsterName_;
+    private java.lang.Object monsterName_;
     /**
      * <code>required string monsterName = 2;</code>
      *
@@ -8015,14 +7640,14 @@ public final class Tower {
      *怪物昵称
      * </pre>
      */
-    public String getMonsterName() {
-      Object ref = monsterName_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getMonsterName() {
+      java.lang.Object ref = monsterName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           monsterName_ = s;
         }
@@ -8038,11 +7663,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getMonsterNameBytes() {
-      Object ref = monsterName_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = monsterName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         monsterName_ = b;
         return b;
       } else {
@@ -8247,59 +7872,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static MonsterInfo parseFrom(
+    public static com.tower.msg.Tower.MonsterInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static MonsterInfo parseFrom(
+    public static com.tower.msg.Tower.MonsterInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static MonsterInfo parseFrom(byte[] data)
+    public static com.tower.msg.Tower.MonsterInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static MonsterInfo parseFrom(
+    public static com.tower.msg.Tower.MonsterInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static MonsterInfo parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.MonsterInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static MonsterInfo parseFrom(
+    public static com.tower.msg.Tower.MonsterInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static MonsterInfo parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.MonsterInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static MonsterInfo parseDelimitedFrom(
+    public static com.tower.msg.Tower.MonsterInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static MonsterInfo parseFrom(
+    public static com.tower.msg.Tower.MonsterInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static MonsterInfo parseFrom(
+    public static com.tower.msg.Tower.MonsterInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8308,14 +7933,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(MonsterInfo prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.MonsterInfo prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -8323,22 +7948,22 @@ public final class Tower {
      * Protobuf type {@code src.MonsterInfo}
      *
      * <pre>
-     *怪物信息
+     *怪物信息	
      * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements MonsterInfoOrBuilder {
+       implements com.tower.msg.Tower.MonsterInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_MonsterInfo_descriptor;
+        return com.tower.msg.Tower.internal_static_src_MonsterInfo_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_MonsterInfo_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_MonsterInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                MonsterInfo.class, Builder.class);
+                com.tower.msg.Tower.MonsterInfo.class, com.tower.msg.Tower.MonsterInfo.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.MonsterInfo.newBuilder()
@@ -8347,7 +7972,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -8382,23 +8007,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_MonsterInfo_descriptor;
+        return com.tower.msg.Tower.internal_static_src_MonsterInfo_descriptor;
       }
 
-      public MonsterInfo getDefaultInstanceForType() {
-        return MonsterInfo.getDefaultInstance();
+      public com.tower.msg.Tower.MonsterInfo getDefaultInstanceForType() {
+        return com.tower.msg.Tower.MonsterInfo.getDefaultInstance();
       }
 
-      public MonsterInfo build() {
-        MonsterInfo result = buildPartial();
+      public com.tower.msg.Tower.MonsterInfo build() {
+        com.tower.msg.Tower.MonsterInfo result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public MonsterInfo buildPartial() {
-        MonsterInfo result = new MonsterInfo(this);
+      public com.tower.msg.Tower.MonsterInfo buildPartial() {
+        com.tower.msg.Tower.MonsterInfo result = new com.tower.msg.Tower.MonsterInfo(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -8431,16 +8056,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof MonsterInfo) {
-          return mergeFrom((MonsterInfo)other);
+        if (other instanceof com.tower.msg.Tower.MonsterInfo) {
+          return mergeFrom((com.tower.msg.Tower.MonsterInfo)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(MonsterInfo other) {
-        if (other == MonsterInfo.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.MonsterInfo other) {
+        if (other == com.tower.msg.Tower.MonsterInfo.getDefaultInstance()) return this;
         if (other.hasMonsterId()) {
           setMonsterId(other.getMonsterId());
         }
@@ -8467,27 +8092,27 @@ public final class Tower {
 
       public final boolean isInitialized() {
         if (!hasMonsterId()) {
-
+          
           return false;
         }
         if (!hasMonsterName()) {
-
+          
           return false;
         }
         if (!hasAppearNum()) {
-
+          
           return false;
         }
         if (!hasRates()) {
-
+          
           return false;
         }
         if (!hasMaxBet()) {
-
+          
           return false;
         }
         if (!hasMultiple()) {
-
+          
           return false;
         }
         return true;
@@ -8497,11 +8122,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        MonsterInfo parsedMessage = null;
+        com.tower.msg.Tower.MonsterInfo parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (MonsterInfo) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.MonsterInfo) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -8562,7 +8187,7 @@ public final class Tower {
       }
 
       // required string monsterName = 2;
-      private Object monsterName_ = "";
+      private java.lang.Object monsterName_ = "";
       /**
        * <code>required string monsterName = 2;</code>
        *
@@ -8580,15 +8205,15 @@ public final class Tower {
        *怪物昵称
        * </pre>
        */
-      public String getMonsterName() {
-        Object ref = monsterName_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getMonsterName() {
+        java.lang.Object ref = monsterName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           monsterName_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -8600,11 +8225,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getMonsterNameBytes() {
-        Object ref = monsterName_;
+        java.lang.Object ref = monsterName_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           monsterName_ = b;
           return b;
         } else {
@@ -8619,7 +8244,7 @@ public final class Tower {
        * </pre>
        */
       public Builder setMonsterName(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8885,7 +8510,7 @@ public final class Tower {
      *期号
      * </pre>
      */
-    String getOrderId();
+    java.lang.String getOrderId();
     /**
      * <code>required string orderId = 1;</code>
      *
@@ -8912,7 +8537,7 @@ public final class Tower {
      *怪物ID
      * </pre>
      */
-    String getMonsterId();
+    java.lang.String getMonsterId();
     /**
      * <code>required string monsterId = 2;</code>
      *
@@ -8950,7 +8575,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -9002,14 +8627,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_AttackLog_descriptor;
+      return com.tower.msg.Tower.internal_static_src_AttackLog_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_AttackLog_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_AttackLog_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              AttackLog.class, Builder.class);
+              com.tower.msg.Tower.AttackLog.class, com.tower.msg.Tower.AttackLog.Builder.class);
     }
 
     public static com.google.protobuf.Parser<AttackLog> PARSER =
@@ -9022,7 +8647,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<AttackLog> getParserForType() {
       return PARSER;
     }
@@ -9030,7 +8655,7 @@ public final class Tower {
     private int bitField0_;
     // required string orderId = 1;
     public static final int ORDERID_FIELD_NUMBER = 1;
-    private Object orderId_;
+    private java.lang.Object orderId_;
     /**
      * <code>required string orderId = 1;</code>
      *
@@ -9048,14 +8673,14 @@ public final class Tower {
      *期号
      * </pre>
      */
-    public String getOrderId() {
-      Object ref = orderId_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getOrderId() {
+      java.lang.Object ref = orderId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           orderId_ = s;
         }
@@ -9071,11 +8696,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getOrderIdBytes() {
-      Object ref = orderId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = orderId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         orderId_ = b;
         return b;
       } else {
@@ -9085,7 +8710,7 @@ public final class Tower {
 
     // required string monsterId = 2;
     public static final int MONSTERID_FIELD_NUMBER = 2;
-    private Object monsterId_;
+    private java.lang.Object monsterId_;
     /**
      * <code>required string monsterId = 2;</code>
      *
@@ -9103,14 +8728,14 @@ public final class Tower {
      *怪物ID
      * </pre>
      */
-    public String getMonsterId() {
-      Object ref = monsterId_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getMonsterId() {
+      java.lang.Object ref = monsterId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           monsterId_ = s;
         }
@@ -9126,11 +8751,11 @@ public final class Tower {
      */
     public com.google.protobuf.ByteString
         getMonsterIdBytes() {
-      Object ref = monsterId_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
+      java.lang.Object ref = monsterId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         monsterId_ = b;
         return b;
       } else {
@@ -9191,59 +8816,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static AttackLog parseFrom(
+    public static com.tower.msg.Tower.AttackLog parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static AttackLog parseFrom(
+    public static com.tower.msg.Tower.AttackLog parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static AttackLog parseFrom(byte[] data)
+    public static com.tower.msg.Tower.AttackLog parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static AttackLog parseFrom(
+    public static com.tower.msg.Tower.AttackLog parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static AttackLog parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.AttackLog parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static AttackLog parseFrom(
+    public static com.tower.msg.Tower.AttackLog parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static AttackLog parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.AttackLog parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static AttackLog parseDelimitedFrom(
+    public static com.tower.msg.Tower.AttackLog parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static AttackLog parseFrom(
+    public static com.tower.msg.Tower.AttackLog parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static AttackLog parseFrom(
+    public static com.tower.msg.Tower.AttackLog parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9252,14 +8877,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(AttackLog prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.AttackLog prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -9272,17 +8897,17 @@ public final class Tower {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements AttackLogOrBuilder {
+       implements com.tower.msg.Tower.AttackLogOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_AttackLog_descriptor;
+        return com.tower.msg.Tower.internal_static_src_AttackLog_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_AttackLog_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_AttackLog_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                AttackLog.class, Builder.class);
+                com.tower.msg.Tower.AttackLog.class, com.tower.msg.Tower.AttackLog.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.AttackLog.newBuilder()
@@ -9291,7 +8916,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -9318,23 +8943,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_AttackLog_descriptor;
+        return com.tower.msg.Tower.internal_static_src_AttackLog_descriptor;
       }
 
-      public AttackLog getDefaultInstanceForType() {
-        return AttackLog.getDefaultInstance();
+      public com.tower.msg.Tower.AttackLog getDefaultInstanceForType() {
+        return com.tower.msg.Tower.AttackLog.getDefaultInstance();
       }
 
-      public AttackLog build() {
-        AttackLog result = buildPartial();
+      public com.tower.msg.Tower.AttackLog build() {
+        com.tower.msg.Tower.AttackLog result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public AttackLog buildPartial() {
-        AttackLog result = new AttackLog(this);
+      public com.tower.msg.Tower.AttackLog buildPartial() {
+        com.tower.msg.Tower.AttackLog result = new com.tower.msg.Tower.AttackLog(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -9351,16 +8976,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof AttackLog) {
-          return mergeFrom((AttackLog)other);
+        if (other instanceof com.tower.msg.Tower.AttackLog) {
+          return mergeFrom((com.tower.msg.Tower.AttackLog)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(AttackLog other) {
-        if (other == AttackLog.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.AttackLog other) {
+        if (other == com.tower.msg.Tower.AttackLog.getDefaultInstance()) return this;
         if (other.hasOrderId()) {
           bitField0_ |= 0x00000001;
           orderId_ = other.orderId_;
@@ -9377,11 +9002,11 @@ public final class Tower {
 
       public final boolean isInitialized() {
         if (!hasOrderId()) {
-
+          
           return false;
         }
         if (!hasMonsterId()) {
-
+          
           return false;
         }
         return true;
@@ -9391,11 +9016,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        AttackLog parsedMessage = null;
+        com.tower.msg.Tower.AttackLog parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (AttackLog) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.AttackLog) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -9407,7 +9032,7 @@ public final class Tower {
       private int bitField0_;
 
       // required string orderId = 1;
-      private Object orderId_ = "";
+      private java.lang.Object orderId_ = "";
       /**
        * <code>required string orderId = 1;</code>
        *
@@ -9425,15 +9050,15 @@ public final class Tower {
        *期号
        * </pre>
        */
-      public String getOrderId() {
-        Object ref = orderId_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getOrderId() {
+        java.lang.Object ref = orderId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           orderId_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -9445,11 +9070,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getOrderIdBytes() {
-        Object ref = orderId_;
+        java.lang.Object ref = orderId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           orderId_ = b;
           return b;
         } else {
@@ -9464,7 +9089,7 @@ public final class Tower {
        * </pre>
        */
       public Builder setOrderId(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -9505,7 +9130,7 @@ public final class Tower {
       }
 
       // required string monsterId = 2;
-      private Object monsterId_ = "";
+      private java.lang.Object monsterId_ = "";
       /**
        * <code>required string monsterId = 2;</code>
        *
@@ -9523,15 +9148,15 @@ public final class Tower {
        *怪物ID
        * </pre>
        */
-      public String getMonsterId() {
-        Object ref = monsterId_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref)
+      public java.lang.String getMonsterId() {
+        java.lang.Object ref = monsterId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
           monsterId_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -9543,11 +9168,11 @@ public final class Tower {
        */
       public com.google.protobuf.ByteString
           getMonsterIdBytes() {
-        Object ref = monsterId_;
+        java.lang.Object ref = monsterId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           monsterId_ = b;
           return b;
         } else {
@@ -9562,7 +9187,7 @@ public final class Tower {
        * </pre>
        */
       public Builder setMonsterId(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -9697,7 +9322,7 @@ public final class Tower {
     }
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
@@ -9754,14 +9379,14 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Tower.internal_static_src_RecommendMonster_descriptor;
+      return com.tower.msg.Tower.internal_static_src_RecommendMonster_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Tower.internal_static_src_RecommendMonster_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_RecommendMonster_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              RecommendMonster.class, Builder.class);
+              com.tower.msg.Tower.RecommendMonster.class, com.tower.msg.Tower.RecommendMonster.Builder.class);
     }
 
     public static com.google.protobuf.Parser<RecommendMonster> PARSER =
@@ -9774,7 +9399,7 @@ public final class Tower {
       }
     };
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<RecommendMonster> getParserForType() {
       return PARSER;
     }
@@ -9917,59 +9542,59 @@ public final class Tower {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public static RecommendMonster parseFrom(
+    public static com.tower.msg.Tower.RecommendMonster parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RecommendMonster parseFrom(
+    public static com.tower.msg.Tower.RecommendMonster parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RecommendMonster parseFrom(byte[] data)
+    public static com.tower.msg.Tower.RecommendMonster parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RecommendMonster parseFrom(
+    public static com.tower.msg.Tower.RecommendMonster parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RecommendMonster parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.RecommendMonster parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static RecommendMonster parseFrom(
+    public static com.tower.msg.Tower.RecommendMonster parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static RecommendMonster parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.RecommendMonster parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static RecommendMonster parseDelimitedFrom(
+    public static com.tower.msg.Tower.RecommendMonster parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static RecommendMonster parseFrom(
+    public static com.tower.msg.Tower.RecommendMonster parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static RecommendMonster parseFrom(
+    public static com.tower.msg.Tower.RecommendMonster parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9978,14 +9603,14 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(RecommendMonster prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.RecommendMonster prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -9998,17 +9623,17 @@ public final class Tower {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements RecommendMonsterOrBuilder {
+       implements com.tower.msg.Tower.RecommendMonsterOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Tower.internal_static_src_RecommendMonster_descriptor;
+        return com.tower.msg.Tower.internal_static_src_RecommendMonster_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Tower.internal_static_src_RecommendMonster_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_RecommendMonster_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                RecommendMonster.class, Builder.class);
+                com.tower.msg.Tower.RecommendMonster.class, com.tower.msg.Tower.RecommendMonster.Builder.class);
       }
 
       // Construct using com.tower.msg.Tower.RecommendMonster.newBuilder()
@@ -10017,7 +9642,7 @@ public final class Tower {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -10046,23 +9671,23 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Tower.internal_static_src_RecommendMonster_descriptor;
+        return com.tower.msg.Tower.internal_static_src_RecommendMonster_descriptor;
       }
 
-      public RecommendMonster getDefaultInstanceForType() {
-        return RecommendMonster.getDefaultInstance();
+      public com.tower.msg.Tower.RecommendMonster getDefaultInstanceForType() {
+        return com.tower.msg.Tower.RecommendMonster.getDefaultInstance();
       }
 
-      public RecommendMonster build() {
-        RecommendMonster result = buildPartial();
+      public com.tower.msg.Tower.RecommendMonster build() {
+        com.tower.msg.Tower.RecommendMonster result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public RecommendMonster buildPartial() {
-        RecommendMonster result = new RecommendMonster(this);
+      public com.tower.msg.Tower.RecommendMonster buildPartial() {
+        com.tower.msg.Tower.RecommendMonster result = new com.tower.msg.Tower.RecommendMonster(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -10083,16 +9708,16 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof RecommendMonster) {
-          return mergeFrom((RecommendMonster)other);
+        if (other instanceof com.tower.msg.Tower.RecommendMonster) {
+          return mergeFrom((com.tower.msg.Tower.RecommendMonster)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(RecommendMonster other) {
-        if (other == RecommendMonster.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tower.msg.Tower.RecommendMonster other) {
+        if (other == com.tower.msg.Tower.RecommendMonster.getDefaultInstance()) return this;
         if (other.hasMonsterId()) {
           setMonsterId(other.getMonsterId());
         }
@@ -10108,15 +9733,15 @@ public final class Tower {
 
       public final boolean isInitialized() {
         if (!hasMonsterId()) {
-
+          
           return false;
         }
         if (!hasRates()) {
-
+          
           return false;
         }
         if (!hasContinuous()) {
-
+          
           return false;
         }
         return true;
@@ -10126,11 +9751,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        RecommendMonster parsedMessage = null;
+        com.tower.msg.Tower.RecommendMonster parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (RecommendMonster) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.RecommendMonster) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -10340,11 +9965,6 @@ public final class Tower {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_src_RoomRes_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_src_RoomInfo_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_src_RoomInfo_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_src_MonsterInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -10367,7 +9987,7 @@ public final class Tower {
   private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
+    java.lang.String[] descriptorData = {
       "\n\013tower.proto\022\003src\"9\n\006MsgCtn\022\014\n\004type\030\001 \002" +
       "(\005\022\022\n\nreq_msg_id\030\002 \002(\005\022\r\n\005datas\030\003 \001(\014\"b\n" +
       "\016ServerErrorRes\022\022\n\nreq_msg_id\030\001 \002(\005\022\021\n\te" +
@@ -10379,19 +9999,18 @@ public final class Tower {
       "c.UserInfoRes\"\\\n\013UserInfoRes\022\n\n\002id\030\001 \001(\005" +
       "\022\020\n\010nickname\030\002 \001(\t\022\017\n\007account\030\003 \001(\t\022\r\n\005m",
       "oney\030\004 \001(\001\022\017\n\007safeBox\030\005 \001(\001\"\026\n\007RoomReq\022\013" +
-      "\n\003cmd\030\001 \002(\005\"Q\n\007RoomRes\022\013\n\003cmd\030\001 \002(\005\022\013\n\003s" +
-      "uc\030\002 \002(\010\022\013\n\003msg\030\003 \001(\t\022\037\n\010roomInfo\030\004 \001(\0132" +
-      "\r.src.RoomInfo\"\205\001\n\010RoomInfo\022%\n\013monsterIn" +
-      "fo\030\001 \003(\0132\020.src.MonsterInfo\022!\n\tattackLog\030" +
-      "\002 \003(\0132\016.src.AttackLog\022/\n\020recommendMonste" +
-      "r\030\003 \003(\0132\025.src.RecommendMonster\"y\n\013Monste" +
-      "rInfo\022\021\n\tmonsterId\030\001 \002(\005\022\023\n\013monsterName\030" +
-      "\002 \002(\t\022\021\n\tappearNum\030\003 \002(\005\022\r\n\005rates\030\004 \002(\005\022" +
-      "\016\n\006maxBet\030\005 \002(\005\022\020\n\010multiple\030\006 \002(\005\"/\n\tAtt",
-      "ackLog\022\017\n\007orderId\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002" +
-      "(\t\"H\n\020RecommendMonster\022\021\n\tmonsterId\030\001 \002(" +
-      "\005\022\r\n\005rates\030\002 \002(\005\022\022\n\ncontinuous\030\003 \002(\005B\017\n\r" +
-      "com.tower.msg"
+      "\n\003cmd\030\001 \002(\005\"\300\001\n\007RoomRes\022\013\n\003cmd\030\001 \002(\005\022\013\n\003" +
+      "suc\030\002 \002(\010\022\013\n\003msg\030\003 \001(\t\022%\n\013monsterInfo\030\004 " +
+      "\003(\0132\020.src.MonsterInfo\022!\n\tattackLog\030\005 \003(\013" +
+      "2\016.src.AttackLog\022/\n\020recommendMonster\030\006 \003" +
+      "(\0132\025.src.RecommendMonster\022\023\n\013recommendId" +
+      "\030\007 \003(\005\"y\n\013MonsterInfo\022\021\n\tmonsterId\030\001 \002(\005" +
+      "\022\023\n\013monsterName\030\002 \002(\t\022\021\n\tappearNum\030\003 \002(\005" +
+      "\022\r\n\005rates\030\004 \002(\005\022\016\n\006maxBet\030\005 \002(\005\022\020\n\010multi" +
+      "ple\030\006 \002(\005\"/\n\tAttackLog\022\017\n\007orderId\030\001 \002(\t\022",
+      "\021\n\tmonsterId\030\002 \002(\t\"H\n\020RecommendMonster\022\021" +
+      "\n\tmonsterId\030\001 \002(\005\022\r\n\005rates\030\002 \002(\005\022\022\n\ncont" +
+      "inuous\030\003 \002(\005B\017\n\rcom.tower.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -10403,73 +10022,67 @@ public final class Tower {
           internal_static_src_MsgCtn_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_MsgCtn_descriptor,
-              new String[] { "Type", "ReqMsgId", "Datas", });
+              new java.lang.String[] { "Type", "ReqMsgId", "Datas", });
           internal_static_src_ServerErrorRes_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_src_ServerErrorRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_ServerErrorRes_descriptor,
-              new String[] { "ReqMsgId", "ErrorMsg", "ErrorMsgExt", "ErrorCode", });
+              new java.lang.String[] { "ReqMsgId", "ErrorMsg", "ErrorMsgExt", "ErrorCode", });
           internal_static_src_HeartBeatRes_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_src_HeartBeatRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_HeartBeatRes_descriptor,
-              new String[] { "ReqTime", "ServerTime", });
+              new java.lang.String[] { "ReqTime", "ServerTime", });
           internal_static_src_LoginReq_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_src_LoginReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_LoginReq_descriptor,
-              new String[] { "Token", });
+              new java.lang.String[] { "Token", });
           internal_static_src_LoginRes_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_src_LoginRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_LoginRes_descriptor,
-              new String[] { "Suc", "Msg", "UserInfo", });
+              new java.lang.String[] { "Suc", "Msg", "UserInfo", });
           internal_static_src_UserInfoRes_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_src_UserInfoRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_UserInfoRes_descriptor,
-              new String[] { "Id", "Nickname", "Account", "Money", "SafeBox", });
+              new java.lang.String[] { "Id", "Nickname", "Account", "Money", "SafeBox", });
           internal_static_src_RoomReq_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_src_RoomReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_RoomReq_descriptor,
-              new String[] { "Cmd", });
+              new java.lang.String[] { "Cmd", });
           internal_static_src_RoomRes_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_src_RoomRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_RoomRes_descriptor,
-              new String[] { "Cmd", "Suc", "Msg", "RoomInfo", });
-          internal_static_src_RoomInfo_descriptor =
-            getDescriptor().getMessageTypes().get(8);
-          internal_static_src_RoomInfo_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_src_RoomInfo_descriptor,
-              new String[] { "MonsterInfo", "AttackLog", "RecommendMonster", });
+              new java.lang.String[] { "Cmd", "Suc", "Msg", "MonsterInfo", "AttackLog", "RecommendMonster", "RecommendId", });
           internal_static_src_MonsterInfo_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_src_MonsterInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_MonsterInfo_descriptor,
-              new String[] { "MonsterId", "MonsterName", "AppearNum", "Rates", "MaxBet", "Multiple", });
+              new java.lang.String[] { "MonsterId", "MonsterName", "AppearNum", "Rates", "MaxBet", "Multiple", });
           internal_static_src_AttackLog_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_src_AttackLog_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_AttackLog_descriptor,
-              new String[] { "OrderId", "MonsterId", });
+              new java.lang.String[] { "OrderId", "MonsterId", });
           internal_static_src_RecommendMonster_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_src_RecommendMonster_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_RecommendMonster_descriptor,
-              new String[] { "MonsterId", "Rates", "Continuous", });
+              new java.lang.String[] { "MonsterId", "Rates", "Continuous", });
           return null;
         }
       };

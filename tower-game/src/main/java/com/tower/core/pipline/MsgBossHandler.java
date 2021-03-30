@@ -20,10 +20,13 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.Attribute;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.*;
 
 /**
@@ -37,7 +40,7 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
     private static final ExecutorService executeRecord = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
 
     private static Map<Integer, Channel> playerIdChannel = new ConcurrentHashMap<>();
-
+    private static Set<Integer> roomUserIds = new CopyOnWriteArraySet<>();
 
     private static MsgMapping msgMapping = null;
     private static Hall hall = null;
@@ -257,5 +260,9 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
 
     public static Channel getPlayerIdChannel(int playerId) {
         return playerIdChannel.get(playerId);
+    }
+
+    public static Set<Integer> getRoomUserIds() {
+        return roomUserIds;
     }
 }

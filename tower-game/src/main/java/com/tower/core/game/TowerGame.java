@@ -1,16 +1,23 @@
 package com.tower.core.game;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.core.thread.ExecuteHashedWheelTimer;
 import com.tower.entity.AttackLog;
+import com.tower.entity.Monster;
+import com.tower.game.MonsterInfo;
 import com.tower.service.AttackLogService;
+import com.tower.service.MonsterService;
+import com.tower.utils.CopyUtil;
 import com.tower.utils.DateUtils;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -24,7 +31,8 @@ public class TowerGame {
 
     @Resource
     private AttackLogService attackLogService;
-
+    @Resource
+    private MonsterService monsterService;
     /**
      * 此局版本号
      */
@@ -66,11 +74,82 @@ public class TowerGame {
     private int num;
 
     /**
+     * 怪物信息
+     */
+    private List<MonsterInfo> monsterInfoList;
+    /**
+     * 记录信息
+     */
+    private List<AttackLog> attackLogList;
+    /**
+     * 推荐ID
+     */
+    private List<Integer> recommendIds;
+
+    /**
      * 游戏初始化
      */
     public void init() {
-        setAward(true);
         executeHashedWheelTimer = new ExecuteHashedWheelTimer();
+        LambdaQueryWrapper<AttackLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        logLambdaQueryWrapper.like(AttackLog::getOrderId, DateUtils.getYearAndMonthAndDay()).orderByDesc(AttackLog::getCreateTime);
+        Page<AttackLog> page = new Page<>(1, 1);
+        page = attackLogService.page(page, logLambdaQueryWrapper);
+        attackLogList = attackLogService.getBaseMapper().selectList(logLambdaQueryWrapper);
+        if (page.getRecords().size() <= 0) {
+            setNum(0);
+        } else {
+            AttackLog attackLog = page.getRecords().get(0);
+            String replace = attackLog.getOrderId().replace(DateUtils.getYearAndMonthAndDay(), "");
+            setNum(Integer.parseInt(replace));
+        }
+        initMonsterInfoList();
+        initRecommendIds();
+        setAward(true);
+    }
+
+    /**
+     * 初始化推荐怪物
+     */
+    private void initRecommendIds() {
+        recommendIds = new ArrayList<>();
+        List<Integer> list = new ArrayList<>(Arrays.asList(3, 4, 5, 6));
+        recommendIds.add(list.remove(RandomUtils.nextInt(0, list.size())));
+        list = new ArrayList<>(Arrays.asList(1, 2, 7, 8));
+        list.remove(RandomUtils.nextInt(0, list.size()));
+        recommendIds.addAll(list);
+    }
+
+    /**
+     * 初始化今天的怪物信息
+     */
+    private void initMonsterInfoList() {
+        monsterInfoList = new ArrayList<>();
+        LambdaQueryWrapper<Monster> wrapper = new LambdaQueryWrapper<>();
+        List<Monster> monsters = monsterService.getBaseMapper().selectList(wrapper);
+        monsterInfoList = CopyUtil.copyList(monsters, MonsterInfo.class);
+        for (MonsterInfo monster : monsterInfoList) {
+            monster.setAppearNum(getAppearNum(monster.getId()));
+            monster.setContinuous(getContinuous(monster.getId()));
+            monster.setCurrRates(monster.getRates() * 10 - monster.getContinuous() + RandomUtils.nextInt(0, monster.getContinuous() * 2));
+        }
+    }
+
+    private int getContinuous(int currMonsterId) {
+        int num = 0;
+        for (AttackLog attackLog : attackLogList) {
+            if (attackLog.getMonsterId().equals(currMonsterId)) {
+                return num;
+            }
+            num++;
+        }
+        return num;
+    }
+
+    private int getAppearNum(int currMonsterId) {
+        LambdaQueryWrapper<AttackLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        logLambdaQueryWrapper.eq(AttackLog::getMonsterId, currMonsterId).like(AttackLog::getOrderId, DateUtils.getYearAndMonthAndDay());
+        return attackLogService.count(logLambdaQueryWrapper);
     }
 
     /**
