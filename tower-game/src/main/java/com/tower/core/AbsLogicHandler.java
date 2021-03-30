@@ -56,12 +56,4 @@ public abstract class AbsLogicHandler<T extends MessageLite> {
     public T parseProto(ByteString bs) throws ServerException, InvalidProtocolBufferException{
         return (T)prototype.getParserForType().parseFrom(bs);
     }
-
-    public static void main(String[] args) throws InvalidProtocolBufferException {
-        Tower.LoginReq.Builder builder = Tower.LoginReq.newBuilder();
-        builder.setToken("assss");
-        byte[] bytes = builder.build().toByteArray();
-        Tower.LoginReq loginReq = Tower.LoginReq.parseFrom(bytes);
-        System.out.println(loginReq.getToken());
-    }
 }

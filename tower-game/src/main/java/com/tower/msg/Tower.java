@@ -2549,9 +2549,9 @@ public final class Tower {
     com.google.protobuf.ByteString
         getMsgBytes();
 
-    // optional .src.UserInfoRes user_info = 3;
+    // optional .src.UserInfoRes userInfo = 3;
     /**
-     * <code>optional .src.UserInfoRes user_info = 3;</code>
+     * <code>optional .src.UserInfoRes userInfo = 3;</code>
      *
      * <pre>
      *用户信息
@@ -2559,7 +2559,7 @@ public final class Tower {
      */
     boolean hasUserInfo();
     /**
-     * <code>optional .src.UserInfoRes user_info = 3;</code>
+     * <code>optional .src.UserInfoRes userInfo = 3;</code>
      *
      * <pre>
      *用户信息
@@ -2567,7 +2567,7 @@ public final class Tower {
      */
     UserInfoRes getUserInfo();
     /**
-     * <code>optional .src.UserInfoRes user_info = 3;</code>
+     * <code>optional .src.UserInfoRes userInfo = 3;</code>
      *
      * <pre>
      *用户信息
@@ -2772,11 +2772,11 @@ public final class Tower {
       }
     }
 
-    // optional .src.UserInfoRes user_info = 3;
-    public static final int USER_INFO_FIELD_NUMBER = 3;
+    // optional .src.UserInfoRes userInfo = 3;
+    public static final int USERINFO_FIELD_NUMBER = 3;
     private UserInfoRes userInfo_;
     /**
-     * <code>optional .src.UserInfoRes user_info = 3;</code>
+     * <code>optional .src.UserInfoRes userInfo = 3;</code>
      *
      * <pre>
      *用户信息
@@ -2786,7 +2786,7 @@ public final class Tower {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .src.UserInfoRes user_info = 3;</code>
+     * <code>optional .src.UserInfoRes userInfo = 3;</code>
      *
      * <pre>
      *用户信息
@@ -2796,7 +2796,7 @@ public final class Tower {
       return userInfo_;
     }
     /**
-     * <code>optional .src.UserInfoRes user_info = 3;</code>
+     * <code>optional .src.UserInfoRes userInfo = 3;</code>
      *
      * <pre>
      *用户信息
@@ -3237,12 +3237,12 @@ public final class Tower {
         return this;
       }
 
-      // optional .src.UserInfoRes user_info = 3;
+      // optional .src.UserInfoRes userInfo = 3;
       private UserInfoRes userInfo_ = UserInfoRes.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           UserInfoRes, UserInfoRes.Builder, UserInfoResOrBuilder> userInfoBuilder_;
       /**
-       * <code>optional .src.UserInfoRes user_info = 3;</code>
+       * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
        * <pre>
        *用户信息
@@ -3252,7 +3252,7 @@ public final class Tower {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .src.UserInfoRes user_info = 3;</code>
+       * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
        * <pre>
        *用户信息
@@ -3266,7 +3266,7 @@ public final class Tower {
         }
       }
       /**
-       * <code>optional .src.UserInfoRes user_info = 3;</code>
+       * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
        * <pre>
        *用户信息
@@ -3286,7 +3286,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>optional .src.UserInfoRes user_info = 3;</code>
+       * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
        * <pre>
        *用户信息
@@ -3304,7 +3304,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>optional .src.UserInfoRes user_info = 3;</code>
+       * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
        * <pre>
        *用户信息
@@ -3327,7 +3327,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>optional .src.UserInfoRes user_info = 3;</code>
+       * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
        * <pre>
        *用户信息
@@ -3344,7 +3344,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>optional .src.UserInfoRes user_info = 3;</code>
+       * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
        * <pre>
        *用户信息
@@ -3356,7 +3356,7 @@ public final class Tower {
         return getUserInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .src.UserInfoRes user_info = 3;</code>
+       * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
        * <pre>
        *用户信息
@@ -3370,7 +3370,7 @@ public final class Tower {
         }
       }
       /**
-       * <code>optional .src.UserInfoRes user_info = 3;</code>
+       * <code>optional .src.UserInfoRes userInfo = 3;</code>
        *
        * <pre>
        *用户信息
@@ -3494,9 +3494,9 @@ public final class Tower {
      */
     double getMoney();
 
-    // optional double safe_box = 5;
+    // optional double safeBox = 5;
     /**
-     * <code>optional double safe_box = 5;</code>
+     * <code>optional double safeBox = 5;</code>
      *
      * <pre>
      *保险柜余额
@@ -3504,7 +3504,7 @@ public final class Tower {
      */
     boolean hasSafeBox();
     /**
-     * <code>optional double safe_box = 5;</code>
+     * <code>optional double safeBox = 5;</code>
      *
      * <pre>
      *保险柜余额
@@ -3790,11 +3790,11 @@ public final class Tower {
       return money_;
     }
 
-    // optional double safe_box = 5;
-    public static final int SAFE_BOX_FIELD_NUMBER = 5;
+    // optional double safeBox = 5;
+    public static final int SAFEBOX_FIELD_NUMBER = 5;
     private double safeBox_;
     /**
-     * <code>optional double safe_box = 5;</code>
+     * <code>optional double safeBox = 5;</code>
      *
      * <pre>
      *保险柜余额
@@ -3804,7 +3804,7 @@ public final class Tower {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional double safe_box = 5;</code>
+     * <code>optional double safeBox = 5;</code>
      *
      * <pre>
      *保险柜余额
@@ -4411,10 +4411,10 @@ public final class Tower {
         return this;
       }
 
-      // optional double safe_box = 5;
+      // optional double safeBox = 5;
       private double safeBox_ ;
       /**
-       * <code>optional double safe_box = 5;</code>
+       * <code>optional double safeBox = 5;</code>
        *
        * <pre>
        *保险柜余额
@@ -4424,7 +4424,7 @@ public final class Tower {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional double safe_box = 5;</code>
+       * <code>optional double safeBox = 5;</code>
        *
        * <pre>
        *保险柜余额
@@ -4434,7 +4434,7 @@ public final class Tower {
         return safeBox_;
       }
       /**
-       * <code>optional double safe_box = 5;</code>
+       * <code>optional double safeBox = 5;</code>
        *
        * <pre>
        *保险柜余额
@@ -4447,7 +4447,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>optional double safe_box = 5;</code>
+       * <code>optional double safeBox = 5;</code>
        *
        * <pre>
        *保险柜余额
@@ -4469,6 +4469,5834 @@ public final class Tower {
     }
 
     // @@protoc_insertion_point(class_scope:src.UserInfoRes)
+  }
+
+  public interface RoomReqOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 cmd = 1;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    boolean hasCmd();
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    int getCmd();
+  }
+  /**
+   * Protobuf type {@code src.RoomReq}
+   *
+   * <pre>
+   * 房间请求
+   * </pre>
+   */
+  public static final class RoomReq extends
+      com.google.protobuf.GeneratedMessage
+      implements RoomReqOrBuilder {
+    // Use RoomReq.newBuilder() to construct.
+    private RoomReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RoomReq(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RoomReq defaultInstance;
+    public static RoomReq getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RoomReq getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RoomReq(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              cmd_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Tower.internal_static_src_RoomReq_descriptor;
+    }
+
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Tower.internal_static_src_RoomReq_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              RoomReq.class, Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RoomReq> PARSER =
+        new com.google.protobuf.AbstractParser<RoomReq>() {
+      public RoomReq parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RoomReq(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<RoomReq> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 cmd = 1;
+    public static final int CMD_FIELD_NUMBER = 1;
+    private int cmd_;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    public boolean hasCmd() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    public int getCmd() {
+      return cmd_;
+    }
+
+    private void initFields() {
+      cmd_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasCmd()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, cmd_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, cmd_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static RoomReq parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static RoomReq parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static RoomReq parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static RoomReq parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static RoomReq parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static RoomReq parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static RoomReq parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static RoomReq parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static RoomReq parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static RoomReq parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(RoomReq prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.RoomReq}
+     *
+     * <pre>
+     * 房间请求
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements RoomReqOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Tower.internal_static_src_RoomReq_descriptor;
+      }
+
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Tower.internal_static_src_RoomReq_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                RoomReq.class, Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.RoomReq.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        cmd_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Tower.internal_static_src_RoomReq_descriptor;
+      }
+
+      public RoomReq getDefaultInstanceForType() {
+        return RoomReq.getDefaultInstance();
+      }
+
+      public RoomReq build() {
+        RoomReq result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public RoomReq buildPartial() {
+        RoomReq result = new RoomReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.cmd_ = cmd_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof RoomReq) {
+          return mergeFrom((RoomReq)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(RoomReq other) {
+        if (other == RoomReq.getDefaultInstance()) return this;
+        if (other.hasCmd()) {
+          setCmd(other.getCmd());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCmd()) {
+
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        RoomReq parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (RoomReq) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 cmd = 1;
+      private int cmd_ ;
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public boolean hasCmd() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public int getCmd() {
+        return cmd_;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public Builder setCmd(int value) {
+        bitField0_ |= 0x00000001;
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public Builder clearCmd() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cmd_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.RoomReq)
+    }
+
+    static {
+      defaultInstance = new RoomReq(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.RoomReq)
+  }
+
+  public interface RoomResOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 cmd = 1;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    boolean hasCmd();
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    int getCmd();
+
+    // required bool suc = 2;
+    /**
+     * <code>required bool suc = 2;</code>
+     *
+     * <pre>
+     *是否成功
+     * </pre>
+     */
+    boolean hasSuc();
+    /**
+     * <code>required bool suc = 2;</code>
+     *
+     * <pre>
+     *是否成功
+     * </pre>
+     */
+    boolean getSuc();
+
+    // optional string msg = 3;
+    /**
+     * <code>optional string msg = 3;</code>
+     *
+     * <pre>
+     *提示信息
+     * </pre>
+     */
+    boolean hasMsg();
+    /**
+     * <code>optional string msg = 3;</code>
+     *
+     * <pre>
+     *提示信息
+     * </pre>
+     */
+    String getMsg();
+    /**
+     * <code>optional string msg = 3;</code>
+     *
+     * <pre>
+     *提示信息
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMsgBytes();
+
+    // optional .src.RoomInfo roomInfo = 4;
+    /**
+     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     *
+     * <pre>
+     *用户信息
+     * </pre>
+     */
+    boolean hasRoomInfo();
+    /**
+     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     *
+     * <pre>
+     *用户信息
+     * </pre>
+     */
+    RoomInfo getRoomInfo();
+    /**
+     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     *
+     * <pre>
+     *用户信息
+     * </pre>
+     */
+    RoomInfoOrBuilder getRoomInfoOrBuilder();
+  }
+  /**
+   * Protobuf type {@code src.RoomRes}
+   *
+   * <pre>
+   * 房间返回
+   * </pre>
+   */
+  public static final class RoomRes extends
+      com.google.protobuf.GeneratedMessage
+      implements RoomResOrBuilder {
+    // Use RoomRes.newBuilder() to construct.
+    private RoomRes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RoomRes(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RoomRes defaultInstance;
+    public static RoomRes getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RoomRes getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RoomRes(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              cmd_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              suc_ = input.readBool();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              msg_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              RoomInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = roomInfo_.toBuilder();
+              }
+              roomInfo_ = input.readMessage(RoomInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(roomInfo_);
+                roomInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Tower.internal_static_src_RoomRes_descriptor;
+    }
+
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Tower.internal_static_src_RoomRes_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              RoomRes.class, Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RoomRes> PARSER =
+        new com.google.protobuf.AbstractParser<RoomRes>() {
+      public RoomRes parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RoomRes(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<RoomRes> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 cmd = 1;
+    public static final int CMD_FIELD_NUMBER = 1;
+    private int cmd_;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    public boolean hasCmd() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    public int getCmd() {
+      return cmd_;
+    }
+
+    // required bool suc = 2;
+    public static final int SUC_FIELD_NUMBER = 2;
+    private boolean suc_;
+    /**
+     * <code>required bool suc = 2;</code>
+     *
+     * <pre>
+     *是否成功
+     * </pre>
+     */
+    public boolean hasSuc() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required bool suc = 2;</code>
+     *
+     * <pre>
+     *是否成功
+     * </pre>
+     */
+    public boolean getSuc() {
+      return suc_;
+    }
+
+    // optional string msg = 3;
+    public static final int MSG_FIELD_NUMBER = 3;
+    private Object msg_;
+    /**
+     * <code>optional string msg = 3;</code>
+     *
+     * <pre>
+     *提示信息
+     * </pre>
+     */
+    public boolean hasMsg() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string msg = 3;</code>
+     *
+     * <pre>
+     *提示信息
+     * </pre>
+     */
+    public String getMsg() {
+      Object ref = msg_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          msg_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string msg = 3;</code>
+     *
+     * <pre>
+     *提示信息
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMsgBytes() {
+      Object ref = msg_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        msg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional .src.RoomInfo roomInfo = 4;
+    public static final int ROOMINFO_FIELD_NUMBER = 4;
+    private RoomInfo roomInfo_;
+    /**
+     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     *
+     * <pre>
+     *用户信息
+     * </pre>
+     */
+    public boolean hasRoomInfo() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     *
+     * <pre>
+     *用户信息
+     * </pre>
+     */
+    public RoomInfo getRoomInfo() {
+      return roomInfo_;
+    }
+    /**
+     * <code>optional .src.RoomInfo roomInfo = 4;</code>
+     *
+     * <pre>
+     *用户信息
+     * </pre>
+     */
+    public RoomInfoOrBuilder getRoomInfoOrBuilder() {
+      return roomInfo_;
+    }
+
+    private void initFields() {
+      cmd_ = 0;
+      suc_ = false;
+      msg_ = "";
+      roomInfo_ = RoomInfo.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasCmd()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSuc()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasRoomInfo()) {
+        if (!getRoomInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(2, suc_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getMsgBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, roomInfo_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, suc_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getMsgBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, roomInfo_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static RoomRes parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static RoomRes parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static RoomRes parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static RoomRes parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static RoomRes parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static RoomRes parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static RoomRes parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static RoomRes parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static RoomRes parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static RoomRes parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(RoomRes prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.RoomRes}
+     *
+     * <pre>
+     * 房间返回
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements RoomResOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Tower.internal_static_src_RoomRes_descriptor;
+      }
+
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Tower.internal_static_src_RoomRes_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                RoomRes.class, Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.RoomRes.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRoomInfoFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        cmd_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        suc_ = false;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        msg_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (roomInfoBuilder_ == null) {
+          roomInfo_ = RoomInfo.getDefaultInstance();
+        } else {
+          roomInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Tower.internal_static_src_RoomRes_descriptor;
+      }
+
+      public RoomRes getDefaultInstanceForType() {
+        return RoomRes.getDefaultInstance();
+      }
+
+      public RoomRes build() {
+        RoomRes result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public RoomRes buildPartial() {
+        RoomRes result = new RoomRes(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.cmd_ = cmd_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.suc_ = suc_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.msg_ = msg_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (roomInfoBuilder_ == null) {
+          result.roomInfo_ = roomInfo_;
+        } else {
+          result.roomInfo_ = roomInfoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof RoomRes) {
+          return mergeFrom((RoomRes)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(RoomRes other) {
+        if (other == RoomRes.getDefaultInstance()) return this;
+        if (other.hasCmd()) {
+          setCmd(other.getCmd());
+        }
+        if (other.hasSuc()) {
+          setSuc(other.getSuc());
+        }
+        if (other.hasMsg()) {
+          bitField0_ |= 0x00000004;
+          msg_ = other.msg_;
+          onChanged();
+        }
+        if (other.hasRoomInfo()) {
+          mergeRoomInfo(other.getRoomInfo());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCmd()) {
+
+          return false;
+        }
+        if (!hasSuc()) {
+
+          return false;
+        }
+        if (hasRoomInfo()) {
+          if (!getRoomInfo().isInitialized()) {
+
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        RoomRes parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (RoomRes) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 cmd = 1;
+      private int cmd_ ;
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public boolean hasCmd() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public int getCmd() {
+        return cmd_;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public Builder setCmd(int value) {
+        bitField0_ |= 0x00000001;
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public Builder clearCmd() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cmd_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required bool suc = 2;
+      private boolean suc_ ;
+      /**
+       * <code>required bool suc = 2;</code>
+       *
+       * <pre>
+       *是否成功
+       * </pre>
+       */
+      public boolean hasSuc() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required bool suc = 2;</code>
+       *
+       * <pre>
+       *是否成功
+       * </pre>
+       */
+      public boolean getSuc() {
+        return suc_;
+      }
+      /**
+       * <code>required bool suc = 2;</code>
+       *
+       * <pre>
+       *是否成功
+       * </pre>
+       */
+      public Builder setSuc(boolean value) {
+        bitField0_ |= 0x00000002;
+        suc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool suc = 2;</code>
+       *
+       * <pre>
+       *是否成功
+       * </pre>
+       */
+      public Builder clearSuc() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        suc_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional string msg = 3;
+      private Object msg_ = "";
+      /**
+       * <code>optional string msg = 3;</code>
+       *
+       * <pre>
+       *提示信息
+       * </pre>
+       */
+      public boolean hasMsg() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string msg = 3;</code>
+       *
+       * <pre>
+       *提示信息
+       * </pre>
+       */
+      public String getMsg() {
+        Object ref = msg_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          msg_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>optional string msg = 3;</code>
+       *
+       * <pre>
+       *提示信息
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getMsgBytes() {
+        Object ref = msg_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          msg_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string msg = 3;</code>
+       *
+       * <pre>
+       *提示信息
+       * </pre>
+       */
+      public Builder setMsg(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        msg_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string msg = 3;</code>
+       *
+       * <pre>
+       *提示信息
+       * </pre>
+       */
+      public Builder clearMsg() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        msg_ = getDefaultInstance().getMsg();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string msg = 3;</code>
+       *
+       * <pre>
+       *提示信息
+       * </pre>
+       */
+      public Builder setMsgBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        msg_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional .src.RoomInfo roomInfo = 4;
+      private RoomInfo roomInfo_ = RoomInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          RoomInfo, RoomInfo.Builder, RoomInfoOrBuilder> roomInfoBuilder_;
+      /**
+       * <code>optional .src.RoomInfo roomInfo = 4;</code>
+       *
+       * <pre>
+       *用户信息
+       * </pre>
+       */
+      public boolean hasRoomInfo() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .src.RoomInfo roomInfo = 4;</code>
+       *
+       * <pre>
+       *用户信息
+       * </pre>
+       */
+      public RoomInfo getRoomInfo() {
+        if (roomInfoBuilder_ == null) {
+          return roomInfo_;
+        } else {
+          return roomInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .src.RoomInfo roomInfo = 4;</code>
+       *
+       * <pre>
+       *用户信息
+       * </pre>
+       */
+      public Builder setRoomInfo(RoomInfo value) {
+        if (roomInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          roomInfo_ = value;
+          onChanged();
+        } else {
+          roomInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .src.RoomInfo roomInfo = 4;</code>
+       *
+       * <pre>
+       *用户信息
+       * </pre>
+       */
+      public Builder setRoomInfo(
+          RoomInfo.Builder builderForValue) {
+        if (roomInfoBuilder_ == null) {
+          roomInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          roomInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .src.RoomInfo roomInfo = 4;</code>
+       *
+       * <pre>
+       *用户信息
+       * </pre>
+       */
+      public Builder mergeRoomInfo(RoomInfo value) {
+        if (roomInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              roomInfo_ != RoomInfo.getDefaultInstance()) {
+            roomInfo_ =
+              RoomInfo.newBuilder(roomInfo_).mergeFrom(value).buildPartial();
+          } else {
+            roomInfo_ = value;
+          }
+          onChanged();
+        } else {
+          roomInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .src.RoomInfo roomInfo = 4;</code>
+       *
+       * <pre>
+       *用户信息
+       * </pre>
+       */
+      public Builder clearRoomInfo() {
+        if (roomInfoBuilder_ == null) {
+          roomInfo_ = RoomInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          roomInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .src.RoomInfo roomInfo = 4;</code>
+       *
+       * <pre>
+       *用户信息
+       * </pre>
+       */
+      public RoomInfo.Builder getRoomInfoBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getRoomInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .src.RoomInfo roomInfo = 4;</code>
+       *
+       * <pre>
+       *用户信息
+       * </pre>
+       */
+      public RoomInfoOrBuilder getRoomInfoOrBuilder() {
+        if (roomInfoBuilder_ != null) {
+          return roomInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return roomInfo_;
+        }
+      }
+      /**
+       * <code>optional .src.RoomInfo roomInfo = 4;</code>
+       *
+       * <pre>
+       *用户信息
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          RoomInfo, RoomInfo.Builder, RoomInfoOrBuilder>
+          getRoomInfoFieldBuilder() {
+        if (roomInfoBuilder_ == null) {
+          roomInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              RoomInfo, RoomInfo.Builder, RoomInfoOrBuilder>(
+                  roomInfo_,
+                  getParentForChildren(),
+                  isClean());
+          roomInfo_ = null;
+        }
+        return roomInfoBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.RoomRes)
+    }
+
+    static {
+      defaultInstance = new RoomRes(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.RoomRes)
+  }
+
+  public interface RoomInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .src.MonsterInfo monsterInfo = 1;
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    java.util.List<MonsterInfo>
+        getMonsterInfoList();
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    MonsterInfo getMonsterInfo(int index);
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    int getMonsterInfoCount();
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    java.util.List<? extends MonsterInfoOrBuilder>
+        getMonsterInfoOrBuilderList();
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    MonsterInfoOrBuilder getMonsterInfoOrBuilder(
+            int index);
+
+    // repeated .src.AttackLog attackLog = 2;
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    java.util.List<AttackLog>
+        getAttackLogList();
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    AttackLog getAttackLog(int index);
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    int getAttackLogCount();
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    java.util.List<? extends AttackLogOrBuilder>
+        getAttackLogOrBuilderList();
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    AttackLogOrBuilder getAttackLogOrBuilder(
+            int index);
+
+    // repeated .src.RecommendMonster recommendMonster = 3;
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    java.util.List<RecommendMonster>
+        getRecommendMonsterList();
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    RecommendMonster getRecommendMonster(int index);
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    int getRecommendMonsterCount();
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    java.util.List<? extends RecommendMonsterOrBuilder>
+        getRecommendMonsterOrBuilderList();
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
+            int index);
+  }
+  /**
+   * Protobuf type {@code src.RoomInfo}
+   *
+   * <pre>
+   *房间信息
+   * </pre>
+   */
+  public static final class RoomInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements RoomInfoOrBuilder {
+    // Use RoomInfo.newBuilder() to construct.
+    private RoomInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RoomInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RoomInfo defaultInstance;
+    public static RoomInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RoomInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RoomInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                monsterInfo_ = new java.util.ArrayList<MonsterInfo>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              monsterInfo_.add(input.readMessage(MonsterInfo.PARSER, extensionRegistry));
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                attackLog_ = new java.util.ArrayList<AttackLog>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              attackLog_.add(input.readMessage(AttackLog.PARSER, extensionRegistry));
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                recommendMonster_ = new java.util.ArrayList<RecommendMonster>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              recommendMonster_.add(input.readMessage(RecommendMonster.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          monsterInfo_ = java.util.Collections.unmodifiableList(monsterInfo_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          attackLog_ = java.util.Collections.unmodifiableList(attackLog_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          recommendMonster_ = java.util.Collections.unmodifiableList(recommendMonster_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Tower.internal_static_src_RoomInfo_descriptor;
+    }
+
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Tower.internal_static_src_RoomInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              RoomInfo.class, Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RoomInfo> PARSER =
+        new com.google.protobuf.AbstractParser<RoomInfo>() {
+      public RoomInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RoomInfo(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<RoomInfo> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .src.MonsterInfo monsterInfo = 1;
+    public static final int MONSTERINFO_FIELD_NUMBER = 1;
+    private java.util.List<MonsterInfo> monsterInfo_;
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    public java.util.List<MonsterInfo> getMonsterInfoList() {
+      return monsterInfo_;
+    }
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    public java.util.List<? extends MonsterInfoOrBuilder>
+        getMonsterInfoOrBuilderList() {
+      return monsterInfo_;
+    }
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    public int getMonsterInfoCount() {
+      return monsterInfo_.size();
+    }
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    public MonsterInfo getMonsterInfo(int index) {
+      return monsterInfo_.get(index);
+    }
+    /**
+     * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    public MonsterInfoOrBuilder getMonsterInfoOrBuilder(
+        int index) {
+      return monsterInfo_.get(index);
+    }
+
+    // repeated .src.AttackLog attackLog = 2;
+    public static final int ATTACKLOG_FIELD_NUMBER = 2;
+    private java.util.List<AttackLog> attackLog_;
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public java.util.List<AttackLog> getAttackLogList() {
+      return attackLog_;
+    }
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public java.util.List<? extends AttackLogOrBuilder>
+        getAttackLogOrBuilderList() {
+      return attackLog_;
+    }
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public int getAttackLogCount() {
+      return attackLog_.size();
+    }
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public AttackLog getAttackLog(int index) {
+      return attackLog_.get(index);
+    }
+    /**
+     * <code>repeated .src.AttackLog attackLog = 2;</code>
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public AttackLogOrBuilder getAttackLogOrBuilder(
+        int index) {
+      return attackLog_.get(index);
+    }
+
+    // repeated .src.RecommendMonster recommendMonster = 3;
+    public static final int RECOMMENDMONSTER_FIELD_NUMBER = 3;
+    private java.util.List<RecommendMonster> recommendMonster_;
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    public java.util.List<RecommendMonster> getRecommendMonsterList() {
+      return recommendMonster_;
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    public java.util.List<? extends RecommendMonsterOrBuilder>
+        getRecommendMonsterOrBuilderList() {
+      return recommendMonster_;
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    public int getRecommendMonsterCount() {
+      return recommendMonster_.size();
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    public RecommendMonster getRecommendMonster(int index) {
+      return recommendMonster_.get(index);
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    public RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
+        int index) {
+      return recommendMonster_.get(index);
+    }
+
+    private void initFields() {
+      monsterInfo_ = java.util.Collections.emptyList();
+      attackLog_ = java.util.Collections.emptyList();
+      recommendMonster_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getMonsterInfoCount(); i++) {
+        if (!getMonsterInfo(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getAttackLogCount(); i++) {
+        if (!getAttackLog(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getRecommendMonsterCount(); i++) {
+        if (!getRecommendMonster(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < monsterInfo_.size(); i++) {
+        output.writeMessage(1, monsterInfo_.get(i));
+      }
+      for (int i = 0; i < attackLog_.size(); i++) {
+        output.writeMessage(2, attackLog_.get(i));
+      }
+      for (int i = 0; i < recommendMonster_.size(); i++) {
+        output.writeMessage(3, recommendMonster_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < monsterInfo_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, monsterInfo_.get(i));
+      }
+      for (int i = 0; i < attackLog_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, attackLog_.get(i));
+      }
+      for (int i = 0; i < recommendMonster_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, recommendMonster_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static RoomInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static RoomInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static RoomInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static RoomInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static RoomInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static RoomInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static RoomInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static RoomInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static RoomInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static RoomInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(RoomInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.RoomInfo}
+     *
+     * <pre>
+     *房间信息
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements RoomInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Tower.internal_static_src_RoomInfo_descriptor;
+      }
+
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Tower.internal_static_src_RoomInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                RoomInfo.class, Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.RoomInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMonsterInfoFieldBuilder();
+          getAttackLogFieldBuilder();
+          getRecommendMonsterFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (monsterInfoBuilder_ == null) {
+          monsterInfo_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          monsterInfoBuilder_.clear();
+        }
+        if (attackLogBuilder_ == null) {
+          attackLog_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          attackLogBuilder_.clear();
+        }
+        if (recommendMonsterBuilder_ == null) {
+          recommendMonster_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          recommendMonsterBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Tower.internal_static_src_RoomInfo_descriptor;
+      }
+
+      public RoomInfo getDefaultInstanceForType() {
+        return RoomInfo.getDefaultInstance();
+      }
+
+      public RoomInfo build() {
+        RoomInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public RoomInfo buildPartial() {
+        RoomInfo result = new RoomInfo(this);
+        int from_bitField0_ = bitField0_;
+        if (monsterInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            monsterInfo_ = java.util.Collections.unmodifiableList(monsterInfo_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.monsterInfo_ = monsterInfo_;
+        } else {
+          result.monsterInfo_ = monsterInfoBuilder_.build();
+        }
+        if (attackLogBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            attackLog_ = java.util.Collections.unmodifiableList(attackLog_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.attackLog_ = attackLog_;
+        } else {
+          result.attackLog_ = attackLogBuilder_.build();
+        }
+        if (recommendMonsterBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            recommendMonster_ = java.util.Collections.unmodifiableList(recommendMonster_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.recommendMonster_ = recommendMonster_;
+        } else {
+          result.recommendMonster_ = recommendMonsterBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof RoomInfo) {
+          return mergeFrom((RoomInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(RoomInfo other) {
+        if (other == RoomInfo.getDefaultInstance()) return this;
+        if (monsterInfoBuilder_ == null) {
+          if (!other.monsterInfo_.isEmpty()) {
+            if (monsterInfo_.isEmpty()) {
+              monsterInfo_ = other.monsterInfo_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureMonsterInfoIsMutable();
+              monsterInfo_.addAll(other.monsterInfo_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.monsterInfo_.isEmpty()) {
+            if (monsterInfoBuilder_.isEmpty()) {
+              monsterInfoBuilder_.dispose();
+              monsterInfoBuilder_ = null;
+              monsterInfo_ = other.monsterInfo_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              monsterInfoBuilder_ =
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMonsterInfoFieldBuilder() : null;
+            } else {
+              monsterInfoBuilder_.addAllMessages(other.monsterInfo_);
+            }
+          }
+        }
+        if (attackLogBuilder_ == null) {
+          if (!other.attackLog_.isEmpty()) {
+            if (attackLog_.isEmpty()) {
+              attackLog_ = other.attackLog_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureAttackLogIsMutable();
+              attackLog_.addAll(other.attackLog_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.attackLog_.isEmpty()) {
+            if (attackLogBuilder_.isEmpty()) {
+              attackLogBuilder_.dispose();
+              attackLogBuilder_ = null;
+              attackLog_ = other.attackLog_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              attackLogBuilder_ =
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getAttackLogFieldBuilder() : null;
+            } else {
+              attackLogBuilder_.addAllMessages(other.attackLog_);
+            }
+          }
+        }
+        if (recommendMonsterBuilder_ == null) {
+          if (!other.recommendMonster_.isEmpty()) {
+            if (recommendMonster_.isEmpty()) {
+              recommendMonster_ = other.recommendMonster_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureRecommendMonsterIsMutable();
+              recommendMonster_.addAll(other.recommendMonster_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.recommendMonster_.isEmpty()) {
+            if (recommendMonsterBuilder_.isEmpty()) {
+              recommendMonsterBuilder_.dispose();
+              recommendMonsterBuilder_ = null;
+              recommendMonster_ = other.recommendMonster_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              recommendMonsterBuilder_ =
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRecommendMonsterFieldBuilder() : null;
+            } else {
+              recommendMonsterBuilder_.addAllMessages(other.recommendMonster_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getMonsterInfoCount(); i++) {
+          if (!getMonsterInfo(i).isInitialized()) {
+
+            return false;
+          }
+        }
+        for (int i = 0; i < getAttackLogCount(); i++) {
+          if (!getAttackLog(i).isInitialized()) {
+
+            return false;
+          }
+        }
+        for (int i = 0; i < getRecommendMonsterCount(); i++) {
+          if (!getRecommendMonster(i).isInitialized()) {
+
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        RoomInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (RoomInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .src.MonsterInfo monsterInfo = 1;
+      private java.util.List<MonsterInfo> monsterInfo_ =
+        java.util.Collections.emptyList();
+      private void ensureMonsterInfoIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          monsterInfo_ = new java.util.ArrayList<MonsterInfo>(monsterInfo_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          MonsterInfo, MonsterInfo.Builder, MonsterInfoOrBuilder> monsterInfoBuilder_;
+
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public java.util.List<MonsterInfo> getMonsterInfoList() {
+        if (monsterInfoBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(monsterInfo_);
+        } else {
+          return monsterInfoBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public int getMonsterInfoCount() {
+        if (monsterInfoBuilder_ == null) {
+          return monsterInfo_.size();
+        } else {
+          return monsterInfoBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public MonsterInfo getMonsterInfo(int index) {
+        if (monsterInfoBuilder_ == null) {
+          return monsterInfo_.get(index);
+        } else {
+          return monsterInfoBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public Builder setMonsterInfo(
+          int index, MonsterInfo value) {
+        if (monsterInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMonsterInfoIsMutable();
+          monsterInfo_.set(index, value);
+          onChanged();
+        } else {
+          monsterInfoBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public Builder setMonsterInfo(
+          int index, MonsterInfo.Builder builderForValue) {
+        if (monsterInfoBuilder_ == null) {
+          ensureMonsterInfoIsMutable();
+          monsterInfo_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          monsterInfoBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public Builder addMonsterInfo(MonsterInfo value) {
+        if (monsterInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMonsterInfoIsMutable();
+          monsterInfo_.add(value);
+          onChanged();
+        } else {
+          monsterInfoBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public Builder addMonsterInfo(
+          int index, MonsterInfo value) {
+        if (monsterInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMonsterInfoIsMutable();
+          monsterInfo_.add(index, value);
+          onChanged();
+        } else {
+          monsterInfoBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public Builder addMonsterInfo(
+          MonsterInfo.Builder builderForValue) {
+        if (monsterInfoBuilder_ == null) {
+          ensureMonsterInfoIsMutable();
+          monsterInfo_.add(builderForValue.build());
+          onChanged();
+        } else {
+          monsterInfoBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public Builder addMonsterInfo(
+          int index, MonsterInfo.Builder builderForValue) {
+        if (monsterInfoBuilder_ == null) {
+          ensureMonsterInfoIsMutable();
+          monsterInfo_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          monsterInfoBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public Builder addAllMonsterInfo(
+          Iterable<? extends MonsterInfo> values) {
+        if (monsterInfoBuilder_ == null) {
+          ensureMonsterInfoIsMutable();
+          super.addAll(values, monsterInfo_);
+          onChanged();
+        } else {
+          monsterInfoBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public Builder clearMonsterInfo() {
+        if (monsterInfoBuilder_ == null) {
+          monsterInfo_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          monsterInfoBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public Builder removeMonsterInfo(int index) {
+        if (monsterInfoBuilder_ == null) {
+          ensureMonsterInfoIsMutable();
+          monsterInfo_.remove(index);
+          onChanged();
+        } else {
+          monsterInfoBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public MonsterInfo.Builder getMonsterInfoBuilder(
+          int index) {
+        return getMonsterInfoFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public MonsterInfoOrBuilder getMonsterInfoOrBuilder(
+          int index) {
+        if (monsterInfoBuilder_ == null) {
+          return monsterInfo_.get(index);  } else {
+          return monsterInfoBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public java.util.List<? extends MonsterInfoOrBuilder>
+           getMonsterInfoOrBuilderList() {
+        if (monsterInfoBuilder_ != null) {
+          return monsterInfoBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(monsterInfo_);
+        }
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public MonsterInfo.Builder addMonsterInfoBuilder() {
+        return getMonsterInfoFieldBuilder().addBuilder(
+            MonsterInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public MonsterInfo.Builder addMonsterInfoBuilder(
+          int index) {
+        return getMonsterInfoFieldBuilder().addBuilder(
+            index, MonsterInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.MonsterInfo monsterInfo = 1;</code>
+       *
+       * <pre>
+       *怪物信息
+       * </pre>
+       */
+      public java.util.List<MonsterInfo.Builder>
+           getMonsterInfoBuilderList() {
+        return getMonsterInfoFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          MonsterInfo, MonsterInfo.Builder, MonsterInfoOrBuilder>
+          getMonsterInfoFieldBuilder() {
+        if (monsterInfoBuilder_ == null) {
+          monsterInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              MonsterInfo, MonsterInfo.Builder, MonsterInfoOrBuilder>(
+                  monsterInfo_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          monsterInfo_ = null;
+        }
+        return monsterInfoBuilder_;
+      }
+
+      // repeated .src.AttackLog attackLog = 2;
+      private java.util.List<AttackLog> attackLog_ =
+        java.util.Collections.emptyList();
+      private void ensureAttackLogIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          attackLog_ = new java.util.ArrayList<AttackLog>(attackLog_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          AttackLog, AttackLog.Builder, AttackLogOrBuilder> attackLogBuilder_;
+
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public java.util.List<AttackLog> getAttackLogList() {
+        if (attackLogBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(attackLog_);
+        } else {
+          return attackLogBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public int getAttackLogCount() {
+        if (attackLogBuilder_ == null) {
+          return attackLog_.size();
+        } else {
+          return attackLogBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public AttackLog getAttackLog(int index) {
+        if (attackLogBuilder_ == null) {
+          return attackLog_.get(index);
+        } else {
+          return attackLogBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public Builder setAttackLog(
+          int index, AttackLog value) {
+        if (attackLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAttackLogIsMutable();
+          attackLog_.set(index, value);
+          onChanged();
+        } else {
+          attackLogBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public Builder setAttackLog(
+          int index, AttackLog.Builder builderForValue) {
+        if (attackLogBuilder_ == null) {
+          ensureAttackLogIsMutable();
+          attackLog_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          attackLogBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public Builder addAttackLog(AttackLog value) {
+        if (attackLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAttackLogIsMutable();
+          attackLog_.add(value);
+          onChanged();
+        } else {
+          attackLogBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public Builder addAttackLog(
+          int index, AttackLog value) {
+        if (attackLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAttackLogIsMutable();
+          attackLog_.add(index, value);
+          onChanged();
+        } else {
+          attackLogBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public Builder addAttackLog(
+          AttackLog.Builder builderForValue) {
+        if (attackLogBuilder_ == null) {
+          ensureAttackLogIsMutable();
+          attackLog_.add(builderForValue.build());
+          onChanged();
+        } else {
+          attackLogBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public Builder addAttackLog(
+          int index, AttackLog.Builder builderForValue) {
+        if (attackLogBuilder_ == null) {
+          ensureAttackLogIsMutable();
+          attackLog_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          attackLogBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public Builder addAllAttackLog(
+          Iterable<? extends AttackLog> values) {
+        if (attackLogBuilder_ == null) {
+          ensureAttackLogIsMutable();
+          super.addAll(values, attackLog_);
+          onChanged();
+        } else {
+          attackLogBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public Builder clearAttackLog() {
+        if (attackLogBuilder_ == null) {
+          attackLog_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          attackLogBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public Builder removeAttackLog(int index) {
+        if (attackLogBuilder_ == null) {
+          ensureAttackLogIsMutable();
+          attackLog_.remove(index);
+          onChanged();
+        } else {
+          attackLogBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public AttackLog.Builder getAttackLogBuilder(
+          int index) {
+        return getAttackLogFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public AttackLogOrBuilder getAttackLogOrBuilder(
+          int index) {
+        if (attackLogBuilder_ == null) {
+          return attackLog_.get(index);  } else {
+          return attackLogBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public java.util.List<? extends AttackLogOrBuilder>
+           getAttackLogOrBuilderList() {
+        if (attackLogBuilder_ != null) {
+          return attackLogBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(attackLog_);
+        }
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public AttackLog.Builder addAttackLogBuilder() {
+        return getAttackLogFieldBuilder().addBuilder(
+            AttackLog.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public AttackLog.Builder addAttackLogBuilder(
+          int index) {
+        return getAttackLogFieldBuilder().addBuilder(
+            index, AttackLog.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.AttackLog attackLog = 2;</code>
+       *
+       * <pre>
+       *记录信息
+       * </pre>
+       */
+      public java.util.List<AttackLog.Builder>
+           getAttackLogBuilderList() {
+        return getAttackLogFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          AttackLog, AttackLog.Builder, AttackLogOrBuilder>
+          getAttackLogFieldBuilder() {
+        if (attackLogBuilder_ == null) {
+          attackLogBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              AttackLog, AttackLog.Builder, AttackLogOrBuilder>(
+                  attackLog_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          attackLog_ = null;
+        }
+        return attackLogBuilder_;
+      }
+
+      // repeated .src.RecommendMonster recommendMonster = 3;
+      private java.util.List<RecommendMonster> recommendMonster_ =
+        java.util.Collections.emptyList();
+      private void ensureRecommendMonsterIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          recommendMonster_ = new java.util.ArrayList<RecommendMonster>(recommendMonster_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          RecommendMonster, RecommendMonster.Builder, RecommendMonsterOrBuilder> recommendMonsterBuilder_;
+
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public java.util.List<RecommendMonster> getRecommendMonsterList() {
+        if (recommendMonsterBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(recommendMonster_);
+        } else {
+          return recommendMonsterBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public int getRecommendMonsterCount() {
+        if (recommendMonsterBuilder_ == null) {
+          return recommendMonster_.size();
+        } else {
+          return recommendMonsterBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public RecommendMonster getRecommendMonster(int index) {
+        if (recommendMonsterBuilder_ == null) {
+          return recommendMonster_.get(index);
+        } else {
+          return recommendMonsterBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public Builder setRecommendMonster(
+          int index, RecommendMonster value) {
+        if (recommendMonsterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.set(index, value);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public Builder setRecommendMonster(
+          int index, RecommendMonster.Builder builderForValue) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public Builder addRecommendMonster(RecommendMonster value) {
+        if (recommendMonsterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.add(value);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public Builder addRecommendMonster(
+          int index, RecommendMonster value) {
+        if (recommendMonsterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.add(index, value);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public Builder addRecommendMonster(
+          RecommendMonster.Builder builderForValue) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.add(builderForValue.build());
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public Builder addRecommendMonster(
+          int index, RecommendMonster.Builder builderForValue) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public Builder addAllRecommendMonster(
+          Iterable<? extends RecommendMonster> values) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          super.addAll(values, recommendMonster_);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public Builder clearRecommendMonster() {
+        if (recommendMonsterBuilder_ == null) {
+          recommendMonster_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public Builder removeRecommendMonster(int index) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.remove(index);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public RecommendMonster.Builder getRecommendMonsterBuilder(
+          int index) {
+        return getRecommendMonsterFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
+          int index) {
+        if (recommendMonsterBuilder_ == null) {
+          return recommendMonster_.get(index);  } else {
+          return recommendMonsterBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public java.util.List<? extends RecommendMonsterOrBuilder>
+           getRecommendMonsterOrBuilderList() {
+        if (recommendMonsterBuilder_ != null) {
+          return recommendMonsterBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(recommendMonster_);
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public RecommendMonster.Builder addRecommendMonsterBuilder() {
+        return getRecommendMonsterFieldBuilder().addBuilder(
+            RecommendMonster.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public RecommendMonster.Builder addRecommendMonsterBuilder(
+          int index) {
+        return getRecommendMonsterFieldBuilder().addBuilder(
+            index, RecommendMonster.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 3;</code>
+       *
+       * <pre>
+       *推荐怪物
+       * </pre>
+       */
+      public java.util.List<RecommendMonster.Builder>
+           getRecommendMonsterBuilderList() {
+        return getRecommendMonsterFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          RecommendMonster, RecommendMonster.Builder, RecommendMonsterOrBuilder>
+          getRecommendMonsterFieldBuilder() {
+        if (recommendMonsterBuilder_ == null) {
+          recommendMonsterBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              RecommendMonster, RecommendMonster.Builder, RecommendMonsterOrBuilder>(
+                  recommendMonster_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          recommendMonster_ = null;
+        }
+        return recommendMonsterBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.RoomInfo)
+    }
+
+    static {
+      defaultInstance = new RoomInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.RoomInfo)
+  }
+
+  public interface MonsterInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 monsterId = 1;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    int getMonsterId();
+
+    // required string monsterName = 2;
+    /**
+     * <code>required string monsterName = 2;</code>
+     *
+     * <pre>
+     *怪物昵称
+     * </pre>
+     */
+    boolean hasMonsterName();
+    /**
+     * <code>required string monsterName = 2;</code>
+     *
+     * <pre>
+     *怪物昵称
+     * </pre>
+     */
+    String getMonsterName();
+    /**
+     * <code>required string monsterName = 2;</code>
+     *
+     * <pre>
+     *怪物昵称
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMonsterNameBytes();
+
+    // required int32 appearNum = 3;
+    /**
+     * <code>required int32 appearNum = 3;</code>
+     *
+     * <pre>
+     *今日出现次数
+     * </pre>
+     */
+    boolean hasAppearNum();
+    /**
+     * <code>required int32 appearNum = 3;</code>
+     *
+     * <pre>
+     *今日出现次数
+     * </pre>
+     */
+    int getAppearNum();
+
+    // required int32 rates = 4;
+    /**
+     * <code>required int32 rates = 4;</code>
+     *
+     * <pre>
+     *出现概率 千分之
+     * </pre>
+     */
+    boolean hasRates();
+    /**
+     * <code>required int32 rates = 4;</code>
+     *
+     * <pre>
+     *出现概率 千分之
+     * </pre>
+     */
+    int getRates();
+
+    // required int32 maxBet = 5;
+    /**
+     * <code>required int32 maxBet = 5;</code>
+     *
+     * <pre>
+     *最大下注
+     * </pre>
+     */
+    boolean hasMaxBet();
+    /**
+     * <code>required int32 maxBet = 5;</code>
+     *
+     * <pre>
+     *最大下注
+     * </pre>
+     */
+    int getMaxBet();
+
+    // required int32 multiple = 6;
+    /**
+     * <code>required int32 multiple = 6;</code>
+     *
+     * <pre>
+     *回报倍数
+     * </pre>
+     */
+    boolean hasMultiple();
+    /**
+     * <code>required int32 multiple = 6;</code>
+     *
+     * <pre>
+     *回报倍数
+     * </pre>
+     */
+    int getMultiple();
+  }
+  /**
+   * Protobuf type {@code src.MonsterInfo}
+   *
+   * <pre>
+   *怪物信息
+   * </pre>
+   */
+  public static final class MonsterInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements MonsterInfoOrBuilder {
+    // Use MonsterInfo.newBuilder() to construct.
+    private MonsterInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MonsterInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MonsterInfo defaultInstance;
+    public static MonsterInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MonsterInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MonsterInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              monsterId_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              monsterName_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              appearNum_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              rates_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              maxBet_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              multiple_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Tower.internal_static_src_MonsterInfo_descriptor;
+    }
+
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Tower.internal_static_src_MonsterInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              MonsterInfo.class, Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<MonsterInfo> PARSER =
+        new com.google.protobuf.AbstractParser<MonsterInfo>() {
+      public MonsterInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MonsterInfo(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<MonsterInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 monsterId = 1;
+    public static final int MONSTERID_FIELD_NUMBER = 1;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // required string monsterName = 2;
+    public static final int MONSTERNAME_FIELD_NUMBER = 2;
+    private Object monsterName_;
+    /**
+     * <code>required string monsterName = 2;</code>
+     *
+     * <pre>
+     *怪物昵称
+     * </pre>
+     */
+    public boolean hasMonsterName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string monsterName = 2;</code>
+     *
+     * <pre>
+     *怪物昵称
+     * </pre>
+     */
+    public String getMonsterName() {
+      Object ref = monsterName_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          monsterName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string monsterName = 2;</code>
+     *
+     * <pre>
+     *怪物昵称
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMonsterNameBytes() {
+      Object ref = monsterName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        monsterName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 appearNum = 3;
+    public static final int APPEARNUM_FIELD_NUMBER = 3;
+    private int appearNum_;
+    /**
+     * <code>required int32 appearNum = 3;</code>
+     *
+     * <pre>
+     *今日出现次数
+     * </pre>
+     */
+    public boolean hasAppearNum() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 appearNum = 3;</code>
+     *
+     * <pre>
+     *今日出现次数
+     * </pre>
+     */
+    public int getAppearNum() {
+      return appearNum_;
+    }
+
+    // required int32 rates = 4;
+    public static final int RATES_FIELD_NUMBER = 4;
+    private int rates_;
+    /**
+     * <code>required int32 rates = 4;</code>
+     *
+     * <pre>
+     *出现概率 千分之
+     * </pre>
+     */
+    public boolean hasRates() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required int32 rates = 4;</code>
+     *
+     * <pre>
+     *出现概率 千分之
+     * </pre>
+     */
+    public int getRates() {
+      return rates_;
+    }
+
+    // required int32 maxBet = 5;
+    public static final int MAXBET_FIELD_NUMBER = 5;
+    private int maxBet_;
+    /**
+     * <code>required int32 maxBet = 5;</code>
+     *
+     * <pre>
+     *最大下注
+     * </pre>
+     */
+    public boolean hasMaxBet() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 maxBet = 5;</code>
+     *
+     * <pre>
+     *最大下注
+     * </pre>
+     */
+    public int getMaxBet() {
+      return maxBet_;
+    }
+
+    // required int32 multiple = 6;
+    public static final int MULTIPLE_FIELD_NUMBER = 6;
+    private int multiple_;
+    /**
+     * <code>required int32 multiple = 6;</code>
+     *
+     * <pre>
+     *回报倍数
+     * </pre>
+     */
+    public boolean hasMultiple() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required int32 multiple = 6;</code>
+     *
+     * <pre>
+     *回报倍数
+     * </pre>
+     */
+    public int getMultiple() {
+      return multiple_;
+    }
+
+    private void initFields() {
+      monsterId_ = 0;
+      monsterName_ = "";
+      appearNum_ = 0;
+      rates_ = 0;
+      maxBet_ = 0;
+      multiple_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonsterName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAppearNum()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRates()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMaxBet()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMultiple()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getMonsterNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, appearNum_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, rates_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, maxBet_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, multiple_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getMonsterNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, appearNum_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, rates_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, maxBet_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, multiple_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static MonsterInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static MonsterInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static MonsterInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static MonsterInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static MonsterInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static MonsterInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static MonsterInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static MonsterInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static MonsterInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static MonsterInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(MonsterInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.MonsterInfo}
+     *
+     * <pre>
+     *怪物信息
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements MonsterInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Tower.internal_static_src_MonsterInfo_descriptor;
+      }
+
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Tower.internal_static_src_MonsterInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                MonsterInfo.class, Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.MonsterInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        appearNum_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        rates_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        maxBet_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        multiple_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Tower.internal_static_src_MonsterInfo_descriptor;
+      }
+
+      public MonsterInfo getDefaultInstanceForType() {
+        return MonsterInfo.getDefaultInstance();
+      }
+
+      public MonsterInfo build() {
+        MonsterInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public MonsterInfo buildPartial() {
+        MonsterInfo result = new MonsterInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.monsterName_ = monsterName_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.appearNum_ = appearNum_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.rates_ = rates_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.maxBet_ = maxBet_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.multiple_ = multiple_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof MonsterInfo) {
+          return mergeFrom((MonsterInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(MonsterInfo other) {
+        if (other == MonsterInfo.getDefaultInstance()) return this;
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        if (other.hasMonsterName()) {
+          bitField0_ |= 0x00000002;
+          monsterName_ = other.monsterName_;
+          onChanged();
+        }
+        if (other.hasAppearNum()) {
+          setAppearNum(other.getAppearNum());
+        }
+        if (other.hasRates()) {
+          setRates(other.getRates());
+        }
+        if (other.hasMaxBet()) {
+          setMaxBet(other.getMaxBet());
+        }
+        if (other.hasMultiple()) {
+          setMultiple(other.getMultiple());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonsterId()) {
+
+          return false;
+        }
+        if (!hasMonsterName()) {
+
+          return false;
+        }
+        if (!hasAppearNum()) {
+
+          return false;
+        }
+        if (!hasRates()) {
+
+          return false;
+        }
+        if (!hasMaxBet()) {
+
+          return false;
+        }
+        if (!hasMultiple()) {
+
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        MonsterInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (MonsterInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 monsterId = 1;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000001;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string monsterName = 2;
+      private Object monsterName_ = "";
+      /**
+       * <code>required string monsterName = 2;</code>
+       *
+       * <pre>
+       *怪物昵称
+       * </pre>
+       */
+      public boolean hasMonsterName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string monsterName = 2;</code>
+       *
+       * <pre>
+       *怪物昵称
+       * </pre>
+       */
+      public String getMonsterName() {
+        Object ref = monsterName_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          monsterName_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>required string monsterName = 2;</code>
+       *
+       * <pre>
+       *怪物昵称
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getMonsterNameBytes() {
+        Object ref = monsterName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          monsterName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string monsterName = 2;</code>
+       *
+       * <pre>
+       *怪物昵称
+       * </pre>
+       */
+      public Builder setMonsterName(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        monsterName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string monsterName = 2;</code>
+       *
+       * <pre>
+       *怪物昵称
+       * </pre>
+       */
+      public Builder clearMonsterName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        monsterName_ = getDefaultInstance().getMonsterName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string monsterName = 2;</code>
+       *
+       * <pre>
+       *怪物昵称
+       * </pre>
+       */
+      public Builder setMonsterNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        monsterName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 appearNum = 3;
+      private int appearNum_ ;
+      /**
+       * <code>required int32 appearNum = 3;</code>
+       *
+       * <pre>
+       *今日出现次数
+       * </pre>
+       */
+      public boolean hasAppearNum() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 appearNum = 3;</code>
+       *
+       * <pre>
+       *今日出现次数
+       * </pre>
+       */
+      public int getAppearNum() {
+        return appearNum_;
+      }
+      /**
+       * <code>required int32 appearNum = 3;</code>
+       *
+       * <pre>
+       *今日出现次数
+       * </pre>
+       */
+      public Builder setAppearNum(int value) {
+        bitField0_ |= 0x00000004;
+        appearNum_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 appearNum = 3;</code>
+       *
+       * <pre>
+       *今日出现次数
+       * </pre>
+       */
+      public Builder clearAppearNum() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        appearNum_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 rates = 4;
+      private int rates_ ;
+      /**
+       * <code>required int32 rates = 4;</code>
+       *
+       * <pre>
+       *出现概率 千分之
+       * </pre>
+       */
+      public boolean hasRates() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 rates = 4;</code>
+       *
+       * <pre>
+       *出现概率 千分之
+       * </pre>
+       */
+      public int getRates() {
+        return rates_;
+      }
+      /**
+       * <code>required int32 rates = 4;</code>
+       *
+       * <pre>
+       *出现概率 千分之
+       * </pre>
+       */
+      public Builder setRates(int value) {
+        bitField0_ |= 0x00000008;
+        rates_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 rates = 4;</code>
+       *
+       * <pre>
+       *出现概率 千分之
+       * </pre>
+       */
+      public Builder clearRates() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        rates_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 maxBet = 5;
+      private int maxBet_ ;
+      /**
+       * <code>required int32 maxBet = 5;</code>
+       *
+       * <pre>
+       *最大下注
+       * </pre>
+       */
+      public boolean hasMaxBet() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 maxBet = 5;</code>
+       *
+       * <pre>
+       *最大下注
+       * </pre>
+       */
+      public int getMaxBet() {
+        return maxBet_;
+      }
+      /**
+       * <code>required int32 maxBet = 5;</code>
+       *
+       * <pre>
+       *最大下注
+       * </pre>
+       */
+      public Builder setMaxBet(int value) {
+        bitField0_ |= 0x00000010;
+        maxBet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 maxBet = 5;</code>
+       *
+       * <pre>
+       *最大下注
+       * </pre>
+       */
+      public Builder clearMaxBet() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        maxBet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 multiple = 6;
+      private int multiple_ ;
+      /**
+       * <code>required int32 multiple = 6;</code>
+       *
+       * <pre>
+       *回报倍数
+       * </pre>
+       */
+      public boolean hasMultiple() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required int32 multiple = 6;</code>
+       *
+       * <pre>
+       *回报倍数
+       * </pre>
+       */
+      public int getMultiple() {
+        return multiple_;
+      }
+      /**
+       * <code>required int32 multiple = 6;</code>
+       *
+       * <pre>
+       *回报倍数
+       * </pre>
+       */
+      public Builder setMultiple(int value) {
+        bitField0_ |= 0x00000020;
+        multiple_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 multiple = 6;</code>
+       *
+       * <pre>
+       *回报倍数
+       * </pre>
+       */
+      public Builder clearMultiple() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        multiple_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.MonsterInfo)
+    }
+
+    static {
+      defaultInstance = new MonsterInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.MonsterInfo)
+  }
+
+  public interface AttackLogOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string orderId = 1;
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    boolean hasOrderId();
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    String getOrderId();
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getOrderIdBytes();
+
+    // required string monsterId = 2;
+    /**
+     * <code>required string monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required string monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    String getMonsterId();
+    /**
+     * <code>required string monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMonsterIdBytes();
+  }
+  /**
+   * Protobuf type {@code src.AttackLog}
+   *
+   * <pre>
+   *记录信息
+   * </pre>
+   */
+  public static final class AttackLog extends
+      com.google.protobuf.GeneratedMessage
+      implements AttackLogOrBuilder {
+    // Use AttackLog.newBuilder() to construct.
+    private AttackLog(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private AttackLog(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AttackLog defaultInstance;
+    public static AttackLog getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public AttackLog getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AttackLog(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              orderId_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              monsterId_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Tower.internal_static_src_AttackLog_descriptor;
+    }
+
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Tower.internal_static_src_AttackLog_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              AttackLog.class, Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<AttackLog> PARSER =
+        new com.google.protobuf.AbstractParser<AttackLog>() {
+      public AttackLog parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AttackLog(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<AttackLog> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string orderId = 1;
+    public static final int ORDERID_FIELD_NUMBER = 1;
+    private Object orderId_;
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    public boolean hasOrderId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    public String getOrderId() {
+      Object ref = orderId_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          orderId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getOrderIdBytes() {
+      Object ref = orderId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        orderId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required string monsterId = 2;
+    public static final int MONSTERID_FIELD_NUMBER = 2;
+    private Object monsterId_;
+    /**
+     * <code>required string monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    public String getMonsterId() {
+      Object ref = monsterId_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          monsterId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMonsterIdBytes() {
+      Object ref = monsterId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        monsterId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      orderId_ = "";
+      monsterId_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasOrderId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getOrderIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getMonsterIdBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getOrderIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getMonsterIdBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static AttackLog parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static AttackLog parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static AttackLog parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static AttackLog parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static AttackLog parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static AttackLog parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static AttackLog parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static AttackLog parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static AttackLog parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static AttackLog parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(AttackLog prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.AttackLog}
+     *
+     * <pre>
+     *记录信息
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements AttackLogOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Tower.internal_static_src_AttackLog_descriptor;
+      }
+
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Tower.internal_static_src_AttackLog_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                AttackLog.class, Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.AttackLog.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        orderId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Tower.internal_static_src_AttackLog_descriptor;
+      }
+
+      public AttackLog getDefaultInstanceForType() {
+        return AttackLog.getDefaultInstance();
+      }
+
+      public AttackLog build() {
+        AttackLog result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public AttackLog buildPartial() {
+        AttackLog result = new AttackLog(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.orderId_ = orderId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.monsterId_ = monsterId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof AttackLog) {
+          return mergeFrom((AttackLog)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(AttackLog other) {
+        if (other == AttackLog.getDefaultInstance()) return this;
+        if (other.hasOrderId()) {
+          bitField0_ |= 0x00000001;
+          orderId_ = other.orderId_;
+          onChanged();
+        }
+        if (other.hasMonsterId()) {
+          bitField0_ |= 0x00000002;
+          monsterId_ = other.monsterId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasOrderId()) {
+
+          return false;
+        }
+        if (!hasMonsterId()) {
+
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        AttackLog parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (AttackLog) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string orderId = 1;
+      private Object orderId_ = "";
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public boolean hasOrderId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public String getOrderId() {
+        Object ref = orderId_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          orderId_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getOrderIdBytes() {
+        Object ref = orderId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          orderId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public Builder setOrderId(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        orderId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public Builder clearOrderId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        orderId_ = getDefaultInstance().getOrderId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public Builder setOrderIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        orderId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required string monsterId = 2;
+      private Object monsterId_ = "";
+      /**
+       * <code>required string monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public String getMonsterId() {
+        Object ref = monsterId_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          monsterId_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>required string monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getMonsterIdBytes() {
+        Object ref = monsterId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          monsterId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public Builder setMonsterId(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        monsterId_ = getDefaultInstance().getMonsterId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public Builder setMonsterIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.AttackLog)
+    }
+
+    static {
+      defaultInstance = new AttackLog(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.AttackLog)
+  }
+
+  public interface RecommendMonsterOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 monsterId = 1;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    int getMonsterId();
+
+    // required int32 rates = 2;
+    /**
+     * <code>required int32 rates = 2;</code>
+     *
+     * <pre>
+     *出现概率 万分之
+     * </pre>
+     */
+    boolean hasRates();
+    /**
+     * <code>required int32 rates = 2;</code>
+     *
+     * <pre>
+     *出现概率 万分之
+     * </pre>
+     */
+    int getRates();
+
+    // required int32 continuous = 3;
+    /**
+     * <code>required int32 continuous = 3;</code>
+     *
+     * <pre>
+     *连续的次数
+     * </pre>
+     */
+    boolean hasContinuous();
+    /**
+     * <code>required int32 continuous = 3;</code>
+     *
+     * <pre>
+     *连续的次数
+     * </pre>
+     */
+    int getContinuous();
+  }
+  /**
+   * Protobuf type {@code src.RecommendMonster}
+   *
+   * <pre>
+   *推荐怪物
+   * </pre>
+   */
+  public static final class RecommendMonster extends
+      com.google.protobuf.GeneratedMessage
+      implements RecommendMonsterOrBuilder {
+    // Use RecommendMonster.newBuilder() to construct.
+    private RecommendMonster(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RecommendMonster(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RecommendMonster defaultInstance;
+    public static RecommendMonster getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RecommendMonster getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RecommendMonster(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              monsterId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              rates_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              continuous_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Tower.internal_static_src_RecommendMonster_descriptor;
+    }
+
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Tower.internal_static_src_RecommendMonster_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              RecommendMonster.class, Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RecommendMonster> PARSER =
+        new com.google.protobuf.AbstractParser<RecommendMonster>() {
+      public RecommendMonster parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RecommendMonster(input, extensionRegistry);
+      }
+    };
+
+    @Override
+    public com.google.protobuf.Parser<RecommendMonster> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 monsterId = 1;
+    public static final int MONSTERID_FIELD_NUMBER = 1;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 monsterId = 1;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // required int32 rates = 2;
+    public static final int RATES_FIELD_NUMBER = 2;
+    private int rates_;
+    /**
+     * <code>required int32 rates = 2;</code>
+     *
+     * <pre>
+     *出现概率 万分之
+     * </pre>
+     */
+    public boolean hasRates() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 rates = 2;</code>
+     *
+     * <pre>
+     *出现概率 万分之
+     * </pre>
+     */
+    public int getRates() {
+      return rates_;
+    }
+
+    // required int32 continuous = 3;
+    public static final int CONTINUOUS_FIELD_NUMBER = 3;
+    private int continuous_;
+    /**
+     * <code>required int32 continuous = 3;</code>
+     *
+     * <pre>
+     *连续的次数
+     * </pre>
+     */
+    public boolean hasContinuous() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 continuous = 3;</code>
+     *
+     * <pre>
+     *连续的次数
+     * </pre>
+     */
+    public int getContinuous() {
+      return continuous_;
+    }
+
+    private void initFields() {
+      monsterId_ = 0;
+      rates_ = 0;
+      continuous_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRates()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasContinuous()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, rates_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, continuous_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, monsterId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, rates_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, continuous_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @Override
+    protected Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static RecommendMonster parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static RecommendMonster parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static RecommendMonster parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static RecommendMonster parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static RecommendMonster parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static RecommendMonster parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static RecommendMonster parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static RecommendMonster parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static RecommendMonster parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static RecommendMonster parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(RecommendMonster prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.RecommendMonster}
+     *
+     * <pre>
+     *推荐怪物
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements RecommendMonsterOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Tower.internal_static_src_RecommendMonster_descriptor;
+      }
+
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Tower.internal_static_src_RecommendMonster_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                RecommendMonster.class, Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.RecommendMonster.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        rates_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        continuous_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Tower.internal_static_src_RecommendMonster_descriptor;
+      }
+
+      public RecommendMonster getDefaultInstanceForType() {
+        return RecommendMonster.getDefaultInstance();
+      }
+
+      public RecommendMonster build() {
+        RecommendMonster result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public RecommendMonster buildPartial() {
+        RecommendMonster result = new RecommendMonster(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.rates_ = rates_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.continuous_ = continuous_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof RecommendMonster) {
+          return mergeFrom((RecommendMonster)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(RecommendMonster other) {
+        if (other == RecommendMonster.getDefaultInstance()) return this;
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        if (other.hasRates()) {
+          setRates(other.getRates());
+        }
+        if (other.hasContinuous()) {
+          setContinuous(other.getContinuous());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonsterId()) {
+
+          return false;
+        }
+        if (!hasRates()) {
+
+          return false;
+        }
+        if (!hasContinuous()) {
+
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        RecommendMonster parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (RecommendMonster) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 monsterId = 1;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000001;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 1;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 rates = 2;
+      private int rates_ ;
+      /**
+       * <code>required int32 rates = 2;</code>
+       *
+       * <pre>
+       *出现概率 万分之
+       * </pre>
+       */
+      public boolean hasRates() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 rates = 2;</code>
+       *
+       * <pre>
+       *出现概率 万分之
+       * </pre>
+       */
+      public int getRates() {
+        return rates_;
+      }
+      /**
+       * <code>required int32 rates = 2;</code>
+       *
+       * <pre>
+       *出现概率 万分之
+       * </pre>
+       */
+      public Builder setRates(int value) {
+        bitField0_ |= 0x00000002;
+        rates_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 rates = 2;</code>
+       *
+       * <pre>
+       *出现概率 万分之
+       * </pre>
+       */
+      public Builder clearRates() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        rates_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 continuous = 3;
+      private int continuous_ ;
+      /**
+       * <code>required int32 continuous = 3;</code>
+       *
+       * <pre>
+       *连续的次数
+       * </pre>
+       */
+      public boolean hasContinuous() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 continuous = 3;</code>
+       *
+       * <pre>
+       *连续的次数
+       * </pre>
+       */
+      public int getContinuous() {
+        return continuous_;
+      }
+      /**
+       * <code>required int32 continuous = 3;</code>
+       *
+       * <pre>
+       *连续的次数
+       * </pre>
+       */
+      public Builder setContinuous(int value) {
+        bitField0_ |= 0x00000004;
+        continuous_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 continuous = 3;</code>
+       *
+       * <pre>
+       *连续的次数
+       * </pre>
+       */
+      public Builder clearContinuous() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        continuous_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.RecommendMonster)
+    }
+
+    static {
+      defaultInstance = new RecommendMonster(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.RecommendMonster)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
@@ -4501,6 +10329,36 @@ public final class Tower {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_src_UserInfoRes_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_RoomReq_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_RoomReq_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_RoomRes_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_RoomRes_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_RoomInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_RoomInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_MonsterInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_MonsterInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_AttackLog_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_AttackLog_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_RecommendMonster_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_RecommendMonster_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4516,12 +10374,24 @@ public final class Tower {
       "rror_msg\030\002 \002(\t\022\025\n\rerror_msg_ext\030\003 \001(\t\022\022\n" +
       "\nerror_code\030\004 \001(\t\"5\n\014HeartBeatRes\022\020\n\010req" +
       "_time\030\001 \001(\003\022\023\n\013server_time\030\002 \001(\003\"\031\n\010Logi" +
-      "nReq\022\r\n\005token\030\001 \002(\t\"I\n\010LoginRes\022\013\n\003suc\030\001" +
-      " \002(\010\022\013\n\003msg\030\002 \001(\t\022#\n\tuser_info\030\003 \001(\0132\020.s" +
-      "rc.UserInfoRes\"]\n\013UserInfoRes\022\n\n\002id\030\001 \001(" +
-      "\005\022\020\n\010nickname\030\002 \001(\t\022\017\n\007account\030\003 \001(\t\022\r\n\005",
-      "money\030\004 \001(\001\022\020\n\010safe_box\030\005 \001(\001B\017\n\rcom.tow" +
-      "er.msg"
+      "nReq\022\r\n\005token\030\001 \002(\t\"H\n\010LoginRes\022\013\n\003suc\030\001" +
+      " \002(\010\022\013\n\003msg\030\002 \001(\t\022\"\n\010userInfo\030\003 \001(\0132\020.sr" +
+      "c.UserInfoRes\"\\\n\013UserInfoRes\022\n\n\002id\030\001 \001(\005" +
+      "\022\020\n\010nickname\030\002 \001(\t\022\017\n\007account\030\003 \001(\t\022\r\n\005m",
+      "oney\030\004 \001(\001\022\017\n\007safeBox\030\005 \001(\001\"\026\n\007RoomReq\022\013" +
+      "\n\003cmd\030\001 \002(\005\"Q\n\007RoomRes\022\013\n\003cmd\030\001 \002(\005\022\013\n\003s" +
+      "uc\030\002 \002(\010\022\013\n\003msg\030\003 \001(\t\022\037\n\010roomInfo\030\004 \001(\0132" +
+      "\r.src.RoomInfo\"\205\001\n\010RoomInfo\022%\n\013monsterIn" +
+      "fo\030\001 \003(\0132\020.src.MonsterInfo\022!\n\tattackLog\030" +
+      "\002 \003(\0132\016.src.AttackLog\022/\n\020recommendMonste" +
+      "r\030\003 \003(\0132\025.src.RecommendMonster\"y\n\013Monste" +
+      "rInfo\022\021\n\tmonsterId\030\001 \002(\005\022\023\n\013monsterName\030" +
+      "\002 \002(\t\022\021\n\tappearNum\030\003 \002(\005\022\r\n\005rates\030\004 \002(\005\022" +
+      "\016\n\006maxBet\030\005 \002(\005\022\020\n\010multiple\030\006 \002(\005\"/\n\tAtt",
+      "ackLog\022\017\n\007orderId\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002" +
+      "(\t\"H\n\020RecommendMonster\022\021\n\tmonsterId\030\001 \002(" +
+      "\005\022\r\n\005rates\030\002 \002(\005\022\022\n\ncontinuous\030\003 \002(\005B\017\n\r" +
+      "com.tower.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4564,6 +10434,42 @@ public final class Tower {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_UserInfoRes_descriptor,
               new String[] { "Id", "Nickname", "Account", "Money", "SafeBox", });
+          internal_static_src_RoomReq_descriptor =
+            getDescriptor().getMessageTypes().get(6);
+          internal_static_src_RoomReq_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_RoomReq_descriptor,
+              new String[] { "Cmd", });
+          internal_static_src_RoomRes_descriptor =
+            getDescriptor().getMessageTypes().get(7);
+          internal_static_src_RoomRes_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_RoomRes_descriptor,
+              new String[] { "Cmd", "Suc", "Msg", "RoomInfo", });
+          internal_static_src_RoomInfo_descriptor =
+            getDescriptor().getMessageTypes().get(8);
+          internal_static_src_RoomInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_RoomInfo_descriptor,
+              new String[] { "MonsterInfo", "AttackLog", "RecommendMonster", });
+          internal_static_src_MonsterInfo_descriptor =
+            getDescriptor().getMessageTypes().get(9);
+          internal_static_src_MonsterInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_MonsterInfo_descriptor,
+              new String[] { "MonsterId", "MonsterName", "AppearNum", "Rates", "MaxBet", "Multiple", });
+          internal_static_src_AttackLog_descriptor =
+            getDescriptor().getMessageTypes().get(10);
+          internal_static_src_AttackLog_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_AttackLog_descriptor,
+              new String[] { "OrderId", "MonsterId", });
+          internal_static_src_RecommendMonster_descriptor =
+            getDescriptor().getMessageTypes().get(11);
+          internal_static_src_RecommendMonster_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_RecommendMonster_descriptor,
+              new String[] { "MonsterId", "Rates", "Continuous", });
           return null;
         }
       };

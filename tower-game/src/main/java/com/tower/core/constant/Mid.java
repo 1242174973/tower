@@ -25,6 +25,10 @@ public interface Mid {
      */
     int MID_RECORD_REQ = 1003;
     /**
+     * 房间相关请求
+     */
+    int MID_ROOM_REQ = 1004;
+    /**
      * 心跳相关请求
      */
     int MID_HEART_BEAT_RES = 2000;
@@ -40,6 +44,10 @@ public interface Mid {
      * 记录相关请求返回
      */
     int MID_RECORD_RES = 2003;
+    /**
+     * 房间相关返回
+     */
+    int MID_ROOM_RES = 2004;
     /**
      * 错误信息返回
      */

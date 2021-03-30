@@ -43,6 +43,7 @@ public class SnatchFeignController {
     @PostMapping("/start")
     @ApiOperation(value = "接收开始请求", notes = "参数 数据")
     public void start(@RequestBody String startStr) {
+        log.info("收到开始请求");
         startStr = startStr.substring(1, startStr.length() - 1).replace("\\\"", "\"");
         StartInfo startInfo = JsonUtils.jsonToPojo(startStr, StartInfo.class);
         if (startInfo.getStartTime() != towerGame.getStartTime() && startInfo.getStartTime() >= towerGame.getEndTime() && towerGame.isAward()) {
@@ -59,6 +60,7 @@ public class SnatchFeignController {
     @PostMapping("/attack")
     @ApiOperation(value = "接收出怪数据", notes = "参数 数据")
     public void attack(@RequestBody String attackStr) {
+        log.info("收到出怪请求");
         attackStr = attackStr.substring(1, attackStr.length() - 1).replace("\\\"", "\"");
         AttackInfo attackInfo = JsonUtils.jsonToPojo(attackStr, AttackInfo.class);
         if (towerGame.getMonsterId() != null) {

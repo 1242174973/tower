@@ -103,8 +103,8 @@ public class TowerGame {
      * 即将出怪
      */
     public void upcomingAward() {
-        log.info("5秒后出怪");
-        executeHashedWheelTimer.newTimeout(this::award, 5, TimeUnit.SECONDS);
+        log.info("6秒后出怪");
+        executeHashedWheelTimer.newTimeout(this::award, 6, TimeUnit.SECONDS);
     }
 
     /**
