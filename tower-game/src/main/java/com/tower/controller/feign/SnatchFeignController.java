@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -37,7 +38,6 @@ public class SnatchFeignController {
     public void dataLog(@RequestBody String dataStr) {
         dataStr = dataStr.substring(1, dataStr.length() - 1).replace("\\\"", "\"");
         JsonUtils.jsonToPojo(dataStr, DataLog.class);
-//        System.out.println("收到 记录数据 ");
     }
 
     @PostMapping("/start")
@@ -50,8 +50,9 @@ public class SnatchFeignController {
             towerGame.setAwardTime(startInfo.getAwardTime());
             towerGame.setEndTime(startInfo.getEndTime());
             towerGame.setMonsterId(null);
+            towerGame.setVer(startInfo.getVer());
             towerGame.gameStart();
-            System.err.println("游戏开始成功");
+            log.info("游戏开始成功");
         }
     }
 
@@ -66,7 +67,8 @@ public class SnatchFeignController {
         if (System.currentTimeMillis() > towerGame.getAwardTime() &&
                 System.currentTimeMillis() < towerGame.getEndTime()) {
             towerGame.setMonsterId(attackInfo.getMonsterId());
-            System.err.println("设置出怪成功");
+            towerGame.insertAttackLog();
+            log.info("设置出怪成功");
         }
     }
 }

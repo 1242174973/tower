@@ -1,10 +1,15 @@
 package com.tower;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.game.TowerGame;
+import com.tower.entity.AttackLog;
 import com.tower.entity.Player;
+import com.tower.service.AttackLogService;
 import com.tower.service.PlayerService;
 import com.tower.service.my.MyChallengeRewardService;
 import com.tower.service.my.MySalvageService;
+import com.tower.utils.DateUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -33,6 +38,22 @@ public class TowerApplication {
             challengeRewardService.insertToday(player.getId());
             salvageService.insertToday(player.getId());
         }
+        TowerGame towerGame = context.getBean(TowerGame.class);
+        AttackLogService attackLogService = context.getBean(AttackLogService.class);
+        LambdaQueryWrapper<AttackLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        logLambdaQueryWrapper.like(AttackLog::getOrderId, DateUtils.getYearAndMonthAndDay()).orderByDesc(AttackLog::getCreateTime);
+        Page<AttackLog> page = new Page<>(1, 1);
+        page = attackLogService.page(page, logLambdaQueryWrapper);
+        if (page.getRecords().size() <= 0) {
+            towerGame.setNum(0);
+        } else {
+            AttackLog attackLog = page.getRecords().get(0);
+            String replace = attackLog.getOrderId().replace(DateUtils.getYearAndMonthAndDay(), "");
+            towerGame.setNum(Integer.parseInt(replace));
+        }
+
+        towerGame.init();
+
       /*  MsgProducer msgProducer= context.getBean(MsgProducer.class);
         for (int i = 0; i <1000000 ; i++) {
             try {

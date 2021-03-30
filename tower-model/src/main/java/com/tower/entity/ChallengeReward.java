@@ -30,7 +30,7 @@ public class ChallengeReward implements Serializable {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "流水返利")
-      @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     @ApiModelProperty(value = "玩家ID")

@@ -31,7 +31,14 @@ public class DateUtils {
                 .append(now.getSecond() < 10 ? "0" + now.getSecond() : now.getSecond());
         return sb.toString();
     }
-
+    public static String getYearAndMonthAndDay() {
+        LocalDateTime now = LocalDateTime.now();
+        StringBuilder sb = new StringBuilder();
+        sb.append(now.getYear())
+                .append(now.getMonthValue() < 10 ? "0" + now.getMonthValue() : now.getMonthValue())
+                .append(now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth());
+        return sb.toString();
+    }
     public static long byDayTime(int day) {
         LocalDate localDate = LocalDate.now();
         localDate = localDate.plusDays(day);
