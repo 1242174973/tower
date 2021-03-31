@@ -1,29 +1,27 @@
-package com.tower.enums;
+package com.tower.core.constant;
 
 /**
  * @author 梦-屿-千-寻
  * @date 2021/3/30 14:33
  */
-public enum GameCmd {
+public enum GameStatus {
     //xxx
     NULL(0, "null"),
     GAME_START(1, "游戏开始"),
     UPCOMING_AWARD(2, "怪物即将进攻"),
     AWARD(3, "怪物进攻"),
-    BET(4,"下注"),
-    REPETITION_BET(5,"重复下注"),
     ;
     private Integer code;
 
     private String msg;
 
-    GameCmd(Integer code, String msg) {
+    GameStatus(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public static GameCmd parseCode(int cmd) {
-        for (GameCmd value : values()) {
+    public static GameStatus parseCode(int cmd) {
+        for (GameStatus value : values()) {
             if (value.getCode().equals(cmd)) {
                 return value;
             }

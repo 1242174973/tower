@@ -2,11 +2,13 @@ package com.tower.core.game;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.constant.GameStatus;
 import com.tower.core.constant.Mid;
 import com.tower.core.pipline.MsgBossHandler;
 import com.tower.core.thread.ExecuteHashedWheelTimer;
 import com.tower.core.utils.MsgUtil;
 import com.tower.entity.AttackLog;
+import com.tower.entity.BetLog;
 import com.tower.entity.Monster;
 import com.tower.enums.GameCmd;
 import com.tower.game.MonsterInfo;
@@ -84,6 +86,14 @@ public class TowerGame {
      * 开始局数
      */
     private int num;
+    /**
+     * 下注集合
+     */
+    private List<BetLog> betLogList;
+    /**
+     * 游戏状态
+     */
+    private GameStatus gameStatus;
 
     /**
      * 怪物信息
@@ -102,6 +112,7 @@ public class TowerGame {
      * 游戏初始化
      */
     public void init() {
+        gameStatus = GameStatus.NULL;
         executeHashedWheelTimer = new ExecuteHashedWheelTimer();
         LambdaQueryWrapper<AttackLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
         logLambdaQueryWrapper.like(AttackLog::getOrderId, DateUtils.getYearAndMonthAndDay()).orderByDesc(AttackLog::getCreateTime);
@@ -168,12 +179,13 @@ public class TowerGame {
      * 发送开始游戏
      */
     public void gameStart() {
+        gameStatus = GameStatus.GAME_START;
+        betLogList = new ArrayList<>();
         log.info("30秒后即将出怪");
         int countdown = 30000;
         currStartTime = System.currentTimeMillis();
         executeHashedWheelTimer.newTimeout(this::upcomingAward, countdown, TimeUnit.MILLISECONDS);
-        attackLog = new AttackLog();
-        attackLog.setCreateTime(LocalDateTime.now()).setVer(getVer()).setOrderId(DateUtils.getYearAndMonthAndDay() + getIndex());
+        attackLog = new AttackLog().setCreateTime(LocalDateTime.now()).setVer(getVer()).setOrderId(DateUtils.getYearAndMonthAndDay() + getIndex());
         Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
         gameRes.setCmd(GameCmd.GAME_START.getCode()).setCountdown(countdown);
         sendToAll(gameRes);
@@ -219,6 +231,7 @@ public class TowerGame {
      * 即将出怪
      */
     public void upcomingAward() {
+        gameStatus = GameStatus.UPCOMING_AWARD;
         log.info("6秒后出怪");
         int countdown = 6000;
         executeHashedWheelTimer.newTimeout(this::award, countdown, TimeUnit.MILLISECONDS);
@@ -246,6 +259,7 @@ public class TowerGame {
      * 出怪
      */
     public void award() {
+        gameStatus = GameStatus.AWARD;
         if (monsterId == null) {
             log.error("无法获取此局出怪信息，延迟4秒，等待开奖数据获取 ver:{}", getVer());
             executeHashedWheelTimer.newTimeout(this::awardDelay, 4, TimeUnit.SECONDS);
@@ -398,5 +412,17 @@ public class TowerGame {
             gameRes.setGameOverInfo(gameOverInfo);
             sendToId(gameRes, userId);
         }
+    }
+
+    public void bet(BetLog betLog) {
+        betLogList.add(betLog);
+        Tower.BetInfo.Builder builder = Tower.BetInfo.newBuilder();
+        builder.setCoin(betLog.getBetCoin().intValue());
+        builder.setMonsterId(betLog.getBetMonsterId());
+        builder.setUserId(betLog.getUserId());
+        Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
+        gameRes.setCmd(GameCmd.BET.getCode());
+        gameRes.setBetInfo(builder.build());
+        sendToAll(gameRes);
     }
 }

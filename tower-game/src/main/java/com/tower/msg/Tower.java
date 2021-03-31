@@ -5026,9 +5026,9 @@ public final class Tower {
     com.tower.msg.Tower.MonsterInfoOrBuilder getMonsterInfoOrBuilder(
         int index);
 
-    // required .src.AttackPageLog attackPageLog = 5;
+    // optional .src.AttackPageLog attackPageLog = 5;
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+     * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
      *
      * <pre>
      *记录分页信息
@@ -5036,7 +5036,7 @@ public final class Tower {
      */
     boolean hasAttackPageLog();
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+     * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
      *
      * <pre>
      *记录分页信息
@@ -5044,7 +5044,7 @@ public final class Tower {
      */
     com.tower.msg.Tower.AttackPageLog getAttackPageLog();
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+     * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
      *
      * <pre>
      *记录分页信息
@@ -5451,11 +5451,11 @@ public final class Tower {
       return monsterInfo_.get(index);
     }
 
-    // required .src.AttackPageLog attackPageLog = 5;
+    // optional .src.AttackPageLog attackPageLog = 5;
     public static final int ATTACKPAGELOG_FIELD_NUMBER = 5;
     private com.tower.msg.Tower.AttackPageLog attackPageLog_;
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+     * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
      *
      * <pre>
      *记录分页信息
@@ -5465,7 +5465,7 @@ public final class Tower {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+     * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
      *
      * <pre>
      *记录分页信息
@@ -5475,7 +5475,7 @@ public final class Tower {
       return attackPageLog_;
     }
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+     * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
      *
      * <pre>
      *记录分页信息
@@ -5598,19 +5598,17 @@ public final class Tower {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasAttackPageLog()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       for (int i = 0; i < getMonsterInfoCount(); i++) {
         if (!getMonsterInfo(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
       }
-      if (!getAttackPageLog().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
+      if (hasAttackPageLog()) {
+        if (!getAttackPageLog().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       for (int i = 0; i < getRecommendMonsterCount(); i++) {
         if (!getRecommendMonster(i).isInitialized()) {
@@ -6013,19 +6011,17 @@ public final class Tower {
           
           return false;
         }
-        if (!hasAttackPageLog()) {
-          
-          return false;
-        }
         for (int i = 0; i < getMonsterInfoCount(); i++) {
           if (!getMonsterInfo(i).isInitialized()) {
             
             return false;
           }
         }
-        if (!getAttackPageLog().isInitialized()) {
-          
-          return false;
+        if (hasAttackPageLog()) {
+          if (!getAttackPageLog().isInitialized()) {
+            
+            return false;
+          }
         }
         for (int i = 0; i < getRecommendMonsterCount(); i++) {
           if (!getRecommendMonster(i).isInitialized()) {
@@ -6563,12 +6559,12 @@ public final class Tower {
         return monsterInfoBuilder_;
       }
 
-      // required .src.AttackPageLog attackPageLog = 5;
+      // optional .src.AttackPageLog attackPageLog = 5;
       private com.tower.msg.Tower.AttackPageLog attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder> attackPageLogBuilder_;
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+       * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
        *
        * <pre>
        *记录分页信息
@@ -6578,7 +6574,7 @@ public final class Tower {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+       * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
        *
        * <pre>
        *记录分页信息
@@ -6592,7 +6588,7 @@ public final class Tower {
         }
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+       * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
        *
        * <pre>
        *记录分页信息
@@ -6612,7 +6608,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+       * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
        *
        * <pre>
        *记录分页信息
@@ -6630,7 +6626,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+       * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
        *
        * <pre>
        *记录分页信息
@@ -6653,7 +6649,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+       * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
        *
        * <pre>
        *记录分页信息
@@ -6670,7 +6666,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+       * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
        *
        * <pre>
        *记录分页信息
@@ -6682,7 +6678,7 @@ public final class Tower {
         return getAttackPageLogFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+       * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
        *
        * <pre>
        *记录分页信息
@@ -6696,7 +6692,7 @@ public final class Tower {
         }
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 5;</code>
+       * <code>optional .src.AttackPageLog attackPageLog = 5;</code>
        *
        * <pre>
        *记录分页信息
@@ -10666,6 +10662,714 @@ public final class Tower {
     // @@protoc_insertion_point(class_scope:src.RecommendMonster)
   }
 
+  public interface GameReqOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 cmd = 1;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmd指令
+     * </pre>
+     */
+    boolean hasCmd();
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmd指令
+     * </pre>
+     */
+    int getCmd();
+
+    // optional .src.BetInfo betInfo = 2;
+    /**
+     * <code>optional .src.BetInfo betInfo = 2;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    boolean hasBetInfo();
+    /**
+     * <code>optional .src.BetInfo betInfo = 2;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    com.tower.msg.Tower.BetInfo getBetInfo();
+    /**
+     * <code>optional .src.BetInfo betInfo = 2;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    com.tower.msg.Tower.BetInfoOrBuilder getBetInfoOrBuilder();
+  }
+  /**
+   * Protobuf type {@code src.GameReq}
+   *
+   * <pre>
+   * 游戏请求			
+   * </pre>
+   */
+  public static final class GameReq extends
+      com.google.protobuf.GeneratedMessage
+      implements GameReqOrBuilder {
+    // Use GameReq.newBuilder() to construct.
+    private GameReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GameReq(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GameReq defaultInstance;
+    public static GameReq getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GameReq getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GameReq(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              cmd_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              com.tower.msg.Tower.BetInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = betInfo_.toBuilder();
+              }
+              betInfo_ = input.readMessage(com.tower.msg.Tower.BetInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(betInfo_);
+                betInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.tower.msg.Tower.internal_static_src_GameReq_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.tower.msg.Tower.internal_static_src_GameReq_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.tower.msg.Tower.GameReq.class, com.tower.msg.Tower.GameReq.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GameReq> PARSER =
+        new com.google.protobuf.AbstractParser<GameReq>() {
+      public GameReq parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GameReq(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GameReq> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 cmd = 1;
+    public static final int CMD_FIELD_NUMBER = 1;
+    private int cmd_;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmd指令
+     * </pre>
+     */
+    public boolean hasCmd() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmd指令
+     * </pre>
+     */
+    public int getCmd() {
+      return cmd_;
+    }
+
+    // optional .src.BetInfo betInfo = 2;
+    public static final int BETINFO_FIELD_NUMBER = 2;
+    private com.tower.msg.Tower.BetInfo betInfo_;
+    /**
+     * <code>optional .src.BetInfo betInfo = 2;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    public boolean hasBetInfo() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .src.BetInfo betInfo = 2;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetInfo getBetInfo() {
+      return betInfo_;
+    }
+    /**
+     * <code>optional .src.BetInfo betInfo = 2;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetInfoOrBuilder getBetInfoOrBuilder() {
+      return betInfo_;
+    }
+
+    private void initFields() {
+      cmd_ = 0;
+      betInfo_ = com.tower.msg.Tower.BetInfo.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasCmd()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasBetInfo()) {
+        if (!getBetInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, betInfo_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, betInfo_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.tower.msg.Tower.GameReq parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.GameReq parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameReq parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.GameReq parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameReq parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.GameReq parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameReq parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.tower.msg.Tower.GameReq parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameReq parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.GameReq parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.tower.msg.Tower.GameReq prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.GameReq}
+     *
+     * <pre>
+     * 游戏请求			
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.tower.msg.Tower.GameReqOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tower.msg.Tower.internal_static_src_GameReq_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tower.msg.Tower.internal_static_src_GameReq_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tower.msg.Tower.GameReq.class, com.tower.msg.Tower.GameReq.Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.GameReq.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getBetInfoFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        cmd_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (betInfoBuilder_ == null) {
+          betInfo_ = com.tower.msg.Tower.BetInfo.getDefaultInstance();
+        } else {
+          betInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.tower.msg.Tower.internal_static_src_GameReq_descriptor;
+      }
+
+      public com.tower.msg.Tower.GameReq getDefaultInstanceForType() {
+        return com.tower.msg.Tower.GameReq.getDefaultInstance();
+      }
+
+      public com.tower.msg.Tower.GameReq build() {
+        com.tower.msg.Tower.GameReq result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.tower.msg.Tower.GameReq buildPartial() {
+        com.tower.msg.Tower.GameReq result = new com.tower.msg.Tower.GameReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.cmd_ = cmd_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (betInfoBuilder_ == null) {
+          result.betInfo_ = betInfo_;
+        } else {
+          result.betInfo_ = betInfoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.tower.msg.Tower.GameReq) {
+          return mergeFrom((com.tower.msg.Tower.GameReq)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.tower.msg.Tower.GameReq other) {
+        if (other == com.tower.msg.Tower.GameReq.getDefaultInstance()) return this;
+        if (other.hasCmd()) {
+          setCmd(other.getCmd());
+        }
+        if (other.hasBetInfo()) {
+          mergeBetInfo(other.getBetInfo());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCmd()) {
+          
+          return false;
+        }
+        if (hasBetInfo()) {
+          if (!getBetInfo().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.tower.msg.Tower.GameReq parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.tower.msg.Tower.GameReq) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 cmd = 1;
+      private int cmd_ ;
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmd指令
+       * </pre>
+       */
+      public boolean hasCmd() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmd指令
+       * </pre>
+       */
+      public int getCmd() {
+        return cmd_;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmd指令
+       * </pre>
+       */
+      public Builder setCmd(int value) {
+        bitField0_ |= 0x00000001;
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmd指令
+       * </pre>
+       */
+      public Builder clearCmd() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cmd_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional .src.BetInfo betInfo = 2;
+      private com.tower.msg.Tower.BetInfo betInfo_ = com.tower.msg.Tower.BetInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.BetInfo, com.tower.msg.Tower.BetInfo.Builder, com.tower.msg.Tower.BetInfoOrBuilder> betInfoBuilder_;
+      /**
+       * <code>optional .src.BetInfo betInfo = 2;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public boolean hasBetInfo() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 2;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfo getBetInfo() {
+        if (betInfoBuilder_ == null) {
+          return betInfo_;
+        } else {
+          return betInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 2;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public Builder setBetInfo(com.tower.msg.Tower.BetInfo value) {
+        if (betInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          betInfo_ = value;
+          onChanged();
+        } else {
+          betInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 2;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public Builder setBetInfo(
+          com.tower.msg.Tower.BetInfo.Builder builderForValue) {
+        if (betInfoBuilder_ == null) {
+          betInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          betInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 2;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public Builder mergeBetInfo(com.tower.msg.Tower.BetInfo value) {
+        if (betInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              betInfo_ != com.tower.msg.Tower.BetInfo.getDefaultInstance()) {
+            betInfo_ =
+              com.tower.msg.Tower.BetInfo.newBuilder(betInfo_).mergeFrom(value).buildPartial();
+          } else {
+            betInfo_ = value;
+          }
+          onChanged();
+        } else {
+          betInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 2;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public Builder clearBetInfo() {
+        if (betInfoBuilder_ == null) {
+          betInfo_ = com.tower.msg.Tower.BetInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          betInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 2;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfo.Builder getBetInfoBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getBetInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 2;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfoOrBuilder getBetInfoOrBuilder() {
+        if (betInfoBuilder_ != null) {
+          return betInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return betInfo_;
+        }
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 2;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.BetInfo, com.tower.msg.Tower.BetInfo.Builder, com.tower.msg.Tower.BetInfoOrBuilder> 
+          getBetInfoFieldBuilder() {
+        if (betInfoBuilder_ == null) {
+          betInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.tower.msg.Tower.BetInfo, com.tower.msg.Tower.BetInfo.Builder, com.tower.msg.Tower.BetInfoOrBuilder>(
+                  betInfo_,
+                  getParentForChildren(),
+                  isClean());
+          betInfo_ = null;
+        }
+        return betInfoBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.GameReq)
+    }
+
+    static {
+      defaultInstance = new GameReq(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.GameReq)
+  }
+
   public interface GameResOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -10687,9 +11391,9 @@ public final class Tower {
      */
     int getCmd();
 
-    // required int32 countdown = 2;
+    // optional int32 countdown = 2;
     /**
-     * <code>required int32 countdown = 2;</code>
+     * <code>optional int32 countdown = 2;</code>
      *
      * <pre>
      *倒计时
@@ -10697,7 +11401,7 @@ public final class Tower {
      */
     boolean hasCountdown();
     /**
-     * <code>required int32 countdown = 2;</code>
+     * <code>optional int32 countdown = 2;</code>
      *
      * <pre>
      *倒计时
@@ -10730,6 +11434,32 @@ public final class Tower {
      * </pre>
      */
     com.tower.msg.Tower.GameOverInfoOrBuilder getGameOverInfoOrBuilder();
+
+    // optional .src.BetInfo betInfo = 4;
+    /**
+     * <code>optional .src.BetInfo betInfo = 4;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    boolean hasBetInfo();
+    /**
+     * <code>optional .src.BetInfo betInfo = 4;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    com.tower.msg.Tower.BetInfo getBetInfo();
+    /**
+     * <code>optional .src.BetInfo betInfo = 4;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    com.tower.msg.Tower.BetInfoOrBuilder getBetInfoOrBuilder();
   }
   /**
    * Protobuf type {@code src.GameRes}
@@ -10809,6 +11539,19 @@ public final class Tower {
               bitField0_ |= 0x00000004;
               break;
             }
+            case 34: {
+              com.tower.msg.Tower.BetInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = betInfo_.toBuilder();
+              }
+              betInfo_ = input.readMessage(com.tower.msg.Tower.BetInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(betInfo_);
+                betInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -10873,11 +11616,11 @@ public final class Tower {
       return cmd_;
     }
 
-    // required int32 countdown = 2;
+    // optional int32 countdown = 2;
     public static final int COUNTDOWN_FIELD_NUMBER = 2;
     private int countdown_;
     /**
-     * <code>required int32 countdown = 2;</code>
+     * <code>optional int32 countdown = 2;</code>
      *
      * <pre>
      *倒计时
@@ -10887,7 +11630,7 @@ public final class Tower {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 countdown = 2;</code>
+     * <code>optional int32 countdown = 2;</code>
      *
      * <pre>
      *倒计时
@@ -10931,10 +11674,45 @@ public final class Tower {
       return gameOverInfo_;
     }
 
+    // optional .src.BetInfo betInfo = 4;
+    public static final int BETINFO_FIELD_NUMBER = 4;
+    private com.tower.msg.Tower.BetInfo betInfo_;
+    /**
+     * <code>optional .src.BetInfo betInfo = 4;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    public boolean hasBetInfo() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .src.BetInfo betInfo = 4;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetInfo getBetInfo() {
+      return betInfo_;
+    }
+    /**
+     * <code>optional .src.BetInfo betInfo = 4;</code>
+     *
+     * <pre>
+     *下注信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetInfoOrBuilder getBetInfoOrBuilder() {
+      return betInfo_;
+    }
+
     private void initFields() {
       cmd_ = 0;
       countdown_ = 0;
       gameOverInfo_ = com.tower.msg.Tower.GameOverInfo.getDefaultInstance();
+      betInfo_ = com.tower.msg.Tower.BetInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -10945,12 +11723,14 @@ public final class Tower {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasCountdown()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (hasGameOverInfo()) {
         if (!getGameOverInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasBetInfo()) {
+        if (!getBetInfo().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -10970,6 +11750,9 @@ public final class Tower {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(3, gameOverInfo_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, betInfo_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -10991,6 +11774,10 @@ public final class Tower {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, gameOverInfo_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, betInfo_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11105,6 +11892,7 @@ public final class Tower {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getGameOverInfoFieldBuilder();
+          getBetInfoFieldBuilder();
         }
       }
       private static Builder create() {
@@ -11123,6 +11911,12 @@ public final class Tower {
           gameOverInfoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
+        if (betInfoBuilder_ == null) {
+          betInfo_ = com.tower.msg.Tower.BetInfo.getDefaultInstance();
+        } else {
+          betInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -11167,6 +11961,14 @@ public final class Tower {
         } else {
           result.gameOverInfo_ = gameOverInfoBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (betInfoBuilder_ == null) {
+          result.betInfo_ = betInfo_;
+        } else {
+          result.betInfo_ = betInfoBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11192,6 +11994,9 @@ public final class Tower {
         if (other.hasGameOverInfo()) {
           mergeGameOverInfo(other.getGameOverInfo());
         }
+        if (other.hasBetInfo()) {
+          mergeBetInfo(other.getBetInfo());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -11201,12 +12006,14 @@ public final class Tower {
           
           return false;
         }
-        if (!hasCountdown()) {
-          
-          return false;
-        }
         if (hasGameOverInfo()) {
           if (!getGameOverInfo().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasBetInfo()) {
+          if (!getBetInfo().isInitialized()) {
             
             return false;
           }
@@ -11282,10 +12089,10 @@ public final class Tower {
         return this;
       }
 
-      // required int32 countdown = 2;
+      // optional int32 countdown = 2;
       private int countdown_ ;
       /**
-       * <code>required int32 countdown = 2;</code>
+       * <code>optional int32 countdown = 2;</code>
        *
        * <pre>
        *倒计时
@@ -11295,7 +12102,7 @@ public final class Tower {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 countdown = 2;</code>
+       * <code>optional int32 countdown = 2;</code>
        *
        * <pre>
        *倒计时
@@ -11305,7 +12112,7 @@ public final class Tower {
         return countdown_;
       }
       /**
-       * <code>required int32 countdown = 2;</code>
+       * <code>optional int32 countdown = 2;</code>
        *
        * <pre>
        *倒计时
@@ -11318,7 +12125,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>required int32 countdown = 2;</code>
+       * <code>optional int32 countdown = 2;</code>
        *
        * <pre>
        *倒计时
@@ -11484,6 +12291,159 @@ public final class Tower {
         return gameOverInfoBuilder_;
       }
 
+      // optional .src.BetInfo betInfo = 4;
+      private com.tower.msg.Tower.BetInfo betInfo_ = com.tower.msg.Tower.BetInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.BetInfo, com.tower.msg.Tower.BetInfo.Builder, com.tower.msg.Tower.BetInfoOrBuilder> betInfoBuilder_;
+      /**
+       * <code>optional .src.BetInfo betInfo = 4;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public boolean hasBetInfo() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 4;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfo getBetInfo() {
+        if (betInfoBuilder_ == null) {
+          return betInfo_;
+        } else {
+          return betInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 4;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public Builder setBetInfo(com.tower.msg.Tower.BetInfo value) {
+        if (betInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          betInfo_ = value;
+          onChanged();
+        } else {
+          betInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 4;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public Builder setBetInfo(
+          com.tower.msg.Tower.BetInfo.Builder builderForValue) {
+        if (betInfoBuilder_ == null) {
+          betInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          betInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 4;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public Builder mergeBetInfo(com.tower.msg.Tower.BetInfo value) {
+        if (betInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              betInfo_ != com.tower.msg.Tower.BetInfo.getDefaultInstance()) {
+            betInfo_ =
+              com.tower.msg.Tower.BetInfo.newBuilder(betInfo_).mergeFrom(value).buildPartial();
+          } else {
+            betInfo_ = value;
+          }
+          onChanged();
+        } else {
+          betInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 4;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public Builder clearBetInfo() {
+        if (betInfoBuilder_ == null) {
+          betInfo_ = com.tower.msg.Tower.BetInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          betInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 4;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfo.Builder getBetInfoBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getBetInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 4;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfoOrBuilder getBetInfoOrBuilder() {
+        if (betInfoBuilder_ != null) {
+          return betInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return betInfo_;
+        }
+      }
+      /**
+       * <code>optional .src.BetInfo betInfo = 4;</code>
+       *
+       * <pre>
+       *下注信息
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.BetInfo, com.tower.msg.Tower.BetInfo.Builder, com.tower.msg.Tower.BetInfoOrBuilder> 
+          getBetInfoFieldBuilder() {
+        if (betInfoBuilder_ == null) {
+          betInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.tower.msg.Tower.BetInfo, com.tower.msg.Tower.BetInfo.Builder, com.tower.msg.Tower.BetInfoOrBuilder>(
+                  betInfo_,
+                  getParentForChildren(),
+                  isClean());
+          betInfo_ = null;
+        }
+        return betInfoBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:src.GameRes)
     }
 
@@ -11493,6 +12453,676 @@ public final class Tower {
     }
 
     // @@protoc_insertion_point(class_scope:src.GameRes)
+  }
+
+  public interface BetInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 userId = 1;
+    /**
+     * <code>optional int32 userId = 1;</code>
+     *
+     * <pre>
+     *下注玩家
+     * </pre>
+     */
+    boolean hasUserId();
+    /**
+     * <code>optional int32 userId = 1;</code>
+     *
+     * <pre>
+     *下注玩家
+     * </pre>
+     */
+    int getUserId();
+
+    // required int32 monsterId = 2;
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     *
+     * <pre>
+     *下注怪物
+     * </pre>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     *
+     * <pre>
+     *下注怪物
+     * </pre>
+     */
+    int getMonsterId();
+
+    // required int32 coin = 3;
+    /**
+     * <code>required int32 coin = 3;</code>
+     *
+     * <pre>
+     *下注金额
+     * </pre>
+     */
+    boolean hasCoin();
+    /**
+     * <code>required int32 coin = 3;</code>
+     *
+     * <pre>
+     *下注金额
+     * </pre>
+     */
+    int getCoin();
+  }
+  /**
+   * Protobuf type {@code src.BetInfo}
+   */
+  public static final class BetInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements BetInfoOrBuilder {
+    // Use BetInfo.newBuilder() to construct.
+    private BetInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private BetInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final BetInfo defaultInstance;
+    public static BetInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public BetInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private BetInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              userId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              monsterId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              coin_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.tower.msg.Tower.internal_static_src_BetInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.tower.msg.Tower.internal_static_src_BetInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.tower.msg.Tower.BetInfo.class, com.tower.msg.Tower.BetInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<BetInfo> PARSER =
+        new com.google.protobuf.AbstractParser<BetInfo>() {
+      public BetInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new BetInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<BetInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 userId = 1;
+    public static final int USERID_FIELD_NUMBER = 1;
+    private int userId_;
+    /**
+     * <code>optional int32 userId = 1;</code>
+     *
+     * <pre>
+     *下注玩家
+     * </pre>
+     */
+    public boolean hasUserId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 userId = 1;</code>
+     *
+     * <pre>
+     *下注玩家
+     * </pre>
+     */
+    public int getUserId() {
+      return userId_;
+    }
+
+    // required int32 monsterId = 2;
+    public static final int MONSTERID_FIELD_NUMBER = 2;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     *
+     * <pre>
+     *下注怪物
+     * </pre>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     *
+     * <pre>
+     *下注怪物
+     * </pre>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // required int32 coin = 3;
+    public static final int COIN_FIELD_NUMBER = 3;
+    private int coin_;
+    /**
+     * <code>required int32 coin = 3;</code>
+     *
+     * <pre>
+     *下注金额
+     * </pre>
+     */
+    public boolean hasCoin() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 coin = 3;</code>
+     *
+     * <pre>
+     *下注金额
+     * </pre>
+     */
+    public int getCoin() {
+      return coin_;
+    }
+
+    private void initFields() {
+      userId_ = 0;
+      monsterId_ = 0;
+      coin_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCoin()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, userId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, monsterId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, coin_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, userId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, monsterId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, coin_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.tower.msg.Tower.BetInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.BetInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.BetInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.BetInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.tower.msg.Tower.BetInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.BetInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.tower.msg.Tower.BetInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.BetInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.tower.msg.Tower.BetInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tower.msg.Tower.internal_static_src_BetInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tower.msg.Tower.internal_static_src_BetInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tower.msg.Tower.BetInfo.class, com.tower.msg.Tower.BetInfo.Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.BetInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        userId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        coin_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.tower.msg.Tower.internal_static_src_BetInfo_descriptor;
+      }
+
+      public com.tower.msg.Tower.BetInfo getDefaultInstanceForType() {
+        return com.tower.msg.Tower.BetInfo.getDefaultInstance();
+      }
+
+      public com.tower.msg.Tower.BetInfo build() {
+        com.tower.msg.Tower.BetInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.tower.msg.Tower.BetInfo buildPartial() {
+        com.tower.msg.Tower.BetInfo result = new com.tower.msg.Tower.BetInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.userId_ = userId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.coin_ = coin_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.tower.msg.Tower.BetInfo) {
+          return mergeFrom((com.tower.msg.Tower.BetInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.tower.msg.Tower.BetInfo other) {
+        if (other == com.tower.msg.Tower.BetInfo.getDefaultInstance()) return this;
+        if (other.hasUserId()) {
+          setUserId(other.getUserId());
+        }
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        if (other.hasCoin()) {
+          setCoin(other.getCoin());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMonsterId()) {
+          
+          return false;
+        }
+        if (!hasCoin()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.tower.msg.Tower.BetInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.tower.msg.Tower.BetInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 userId = 1;
+      private int userId_ ;
+      /**
+       * <code>optional int32 userId = 1;</code>
+       *
+       * <pre>
+       *下注玩家
+       * </pre>
+       */
+      public boolean hasUserId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 userId = 1;</code>
+       *
+       * <pre>
+       *下注玩家
+       * </pre>
+       */
+      public int getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>optional int32 userId = 1;</code>
+       *
+       * <pre>
+       *下注玩家
+       * </pre>
+       */
+      public Builder setUserId(int value) {
+        bitField0_ |= 0x00000001;
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 userId = 1;</code>
+       *
+       * <pre>
+       *下注玩家
+       * </pre>
+       */
+      public Builder clearUserId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        userId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 monsterId = 2;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       *
+       * <pre>
+       *下注怪物
+       * </pre>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       *
+       * <pre>
+       *下注怪物
+       * </pre>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       *
+       * <pre>
+       *下注怪物
+       * </pre>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000002;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       *
+       * <pre>
+       *下注怪物
+       * </pre>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 coin = 3;
+      private int coin_ ;
+      /**
+       * <code>required int32 coin = 3;</code>
+       *
+       * <pre>
+       *下注金额
+       * </pre>
+       */
+      public boolean hasCoin() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 coin = 3;</code>
+       *
+       * <pre>
+       *下注金额
+       * </pre>
+       */
+      public int getCoin() {
+        return coin_;
+      }
+      /**
+       * <code>required int32 coin = 3;</code>
+       *
+       * <pre>
+       *下注金额
+       * </pre>
+       */
+      public Builder setCoin(int value) {
+        bitField0_ |= 0x00000004;
+        coin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 coin = 3;</code>
+       *
+       * <pre>
+       *下注金额
+       * </pre>
+       */
+      public Builder clearCoin() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        coin_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.BetInfo)
+    }
+
+    static {
+      defaultInstance = new BetInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.BetInfo)
   }
 
   public interface GameOverInfoOrBuilder
@@ -15907,10 +17537,20 @@ public final class Tower {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_src_RecommendMonster_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_GameReq_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_GameReq_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_src_GameRes_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_src_GameRes_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_BetInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_BetInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_src_GameOverInfo_descriptor;
   private static
@@ -15954,7 +17594,7 @@ public final class Tower {
       "\n\003cmd\030\001 \002(\005\"\310\001\n\007RoomRes\022\013\n\003cmd\030\001 \002(\005\022\013\n\003" +
       "suc\030\002 \002(\010\022\013\n\003msg\030\003 \001(\t\022%\n\013monsterInfo\030\004 " +
       "\003(\0132\020.src.MonsterInfo\022)\n\rattackPageLog\030\005" +
-      " \002(\0132\022.src.AttackPageLog\022/\n\020recommendMon" +
+      " \001(\0132\022.src.AttackPageLog\022/\n\020recommendMon" +
       "ster\030\006 \003(\0132\025.src.RecommendMonster\022\023\n\013rec" +
       "ommendId\030\007 \003(\005\"y\n\013MonsterInfo\022\021\n\tmonster" +
       "Id\030\001 \002(\005\022\023\n\013monsterName\030\002 \002(\t\022\021\n\tappearN" +
@@ -15964,20 +17604,23 @@ public final class Tower {
       "\002(\005\022\014\n\004size\030\003 \002(\005\"/\n\tAttackLog\022\017\n\007orderI" +
       "d\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\"H\n\020RecommendM" +
       "onster\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005rates\030\002 \002(\005" +
-      "\022\022\n\ncontinuous\030\003 \002(\005\"R\n\007GameRes\022\013\n\003cmd\030\001" +
-      " \002(\005\022\021\n\tcountdown\030\002 \002(\005\022\'\n\014gameOverInfo\030" +
-      "\003 \001(\0132\021.src.GameOverInfo\"w\n\014GameOverInfo" +
-      "\022!\n\tattackLog\030\001 \002(\0132\016.src.AttackLog\022/\n\020r" +
-      "ecommendMonster\030\002 \003(\0132\025.src.RecommendMon" +
-      "ster\022\023\n\013recommendId\030\003 \003(\005\"4\n\tRecordReq\022\013",
-      "\n\003cmd\030\001 \002(\005\022\014\n\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\"" +
-      "v\n\tRecordRes\022\013\n\003cmd\030\001 \002(\005\022)\n\rattackPageL" +
-      "og\030\002 \001(\0132\022.src.AttackPageLog\0221\n\021detailed" +
-      "AttackLog\030\003 \003(\0132\026.src.DetailedAttackLog\"" +
-      "t\n\021DetailedAttackLog\022\017\n\007orderId\030\001 \002(\t\022\021\n" +
-      "\tmonsterId\030\002 \002(\005\022\022\n\nattackTime\030\003 \002(\003\022\023\n\013" +
-      "monsterName\030\004 \002(\t\022\022\n\nturretName\030\005 \002(\tB\017\n" +
-      "\rcom.tower.msg"
+      "\022\022\n\ncontinuous\030\003 \002(\005\"5\n\007GameReq\022\013\n\003cmd\030\001" +
+      " \002(\005\022\035\n\007betInfo\030\002 \001(\0132\014.src.BetInfo\"q\n\007G" +
+      "ameRes\022\013\n\003cmd\030\001 \002(\005\022\021\n\tcountdown\030\002 \001(\005\022\'" +
+      "\n\014gameOverInfo\030\003 \001(\0132\021.src.GameOverInfo\022" +
+      "\035\n\007betInfo\030\004 \001(\0132\014.src.BetInfo\":\n\007BetInf" +
+      "o\022\016\n\006userId\030\001 \001(\005\022\021\n\tmonsterId\030\002 \002(\005\022\014\n\004",
+      "coin\030\003 \002(\005\"w\n\014GameOverInfo\022!\n\tattackLog\030" +
+      "\001 \002(\0132\016.src.AttackLog\022/\n\020recommendMonste" +
+      "r\030\002 \003(\0132\025.src.RecommendMonster\022\023\n\013recomm" +
+      "endId\030\003 \003(\005\"4\n\tRecordReq\022\013\n\003cmd\030\001 \002(\005\022\014\n" +
+      "\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\"v\n\tRecordRes\022\013" +
+      "\n\003cmd\030\001 \002(\005\022)\n\rattackPageLog\030\002 \001(\0132\022.src" +
+      ".AttackPageLog\0221\n\021detailedAttackLog\030\003 \003(" +
+      "\0132\026.src.DetailedAttackLog\"t\n\021DetailedAtt" +
+      "ackLog\022\017\n\007orderId\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002" +
+      "(\005\022\022\n\nattackTime\030\003 \002(\003\022\023\n\013monsterName\030\004 ",
+      "\002(\t\022\022\n\nturretName\030\005 \002(\tB\017\n\rcom.tower.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -16056,32 +17699,44 @@ public final class Tower {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_RecommendMonster_descriptor,
               new java.lang.String[] { "MonsterId", "Rates", "Continuous", });
-          internal_static_src_GameRes_descriptor =
+          internal_static_src_GameReq_descriptor =
             getDescriptor().getMessageTypes().get(12);
+          internal_static_src_GameReq_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_GameReq_descriptor,
+              new java.lang.String[] { "Cmd", "BetInfo", });
+          internal_static_src_GameRes_descriptor =
+            getDescriptor().getMessageTypes().get(13);
           internal_static_src_GameRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_GameRes_descriptor,
-              new java.lang.String[] { "Cmd", "Countdown", "GameOverInfo", });
+              new java.lang.String[] { "Cmd", "Countdown", "GameOverInfo", "BetInfo", });
+          internal_static_src_BetInfo_descriptor =
+            getDescriptor().getMessageTypes().get(14);
+          internal_static_src_BetInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_BetInfo_descriptor,
+              new java.lang.String[] { "UserId", "MonsterId", "Coin", });
           internal_static_src_GameOverInfo_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_src_GameOverInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_GameOverInfo_descriptor,
               new java.lang.String[] { "AttackLog", "RecommendMonster", "RecommendId", });
           internal_static_src_RecordReq_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_src_RecordReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_RecordReq_descriptor,
               new java.lang.String[] { "Cmd", "Page", "Size", });
           internal_static_src_RecordRes_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_src_RecordRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_RecordRes_descriptor,
               new java.lang.String[] { "Cmd", "AttackPageLog", "DetailedAttackLog", });
           internal_static_src_DetailedAttackLog_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_src_DetailedAttackLog_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_DetailedAttackLog_descriptor,

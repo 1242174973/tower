@@ -20,8 +20,6 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.Attribute;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -35,10 +33,12 @@ import java.util.concurrent.*;
  */
 @Slf4j
 public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> {
-    private static final ExecutorService executeLogin = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
-    private static final ExecutorService executeGame = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
-    private static final ExecutorService executeRecord = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
-    private static final ExecutorService executeRoom = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
+    private static final ExecutorService EXECUTE_LOGIN = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
+    private static final ExecutorService EXECUTE_GAME = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
+    private static final ExecutorService EXECUTE_RECORD = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
+    private static final ExecutorService EXECUTE_ROOM = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
+
+    public static final ExecutorService EXECUTE_BET_LOG_SAVE = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
 
 
     private static Map<Integer, Channel> playerIdChannel = new ConcurrentHashMap<>();
@@ -89,13 +89,13 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
         if (MidTypeUtil.isHeartBeat(msg)) {
             MsgUtil.sendMsg(ctx.channel(), Mid.MID_HEART_BEAT_RES, Tower.HeartBeatRes.getDefaultInstance());
         } else if (MidTypeUtil.isLogin(msg)) {
-            executeLogin.execute(() -> doIt(ctx, msg));
+            EXECUTE_LOGIN.execute(() -> doIt(ctx, msg));
         } else if (MidTypeUtil.isGame(msg)) {
-            executeGame.execute(() -> doIt(ctx, msg));
+            EXECUTE_GAME.execute(() -> doIt(ctx, msg));
         } else if (MidTypeUtil.isRecord(msg)) {
-            executeRecord.execute(() -> doIt(ctx, msg));
+            EXECUTE_RECORD.execute(() -> doIt(ctx, msg));
         } else if (MidTypeUtil.isRoom(msg)) {
-            executeRoom.execute(() -> doIt(ctx, msg));
+            EXECUTE_ROOM.execute(() -> doIt(ctx, msg));
         }
     }
 
@@ -159,7 +159,7 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
      */
     public static int bytesToInt(byte[] src, int offset) {
         int value;
-        value = (int) ((src[offset] & 0xFF)
+        value =  ((src[offset] & 0xFF)
                 | ((src[offset + 1] & 0xFF) << 8)
                 | ((src[offset + 2] & 0xFF) << 16)
                 | ((src[offset + 3] & 0xFF) << 24));
@@ -191,7 +191,7 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
         if (userId != null) {
             log.info("用户{}连接[{}]断开,清空channel的ATTR_USER_ID", userId, ctx.channel().id());
             userIdAttr.set(null);
-            executeLogin.execute(() -> {
+            EXECUTE_LOGIN.execute(() -> {
                 //TODO 处理玩家断开连接
                 roomUserIds.remove(userId.intValue());
                 playerIdChannel.remove(userId.intValue());
