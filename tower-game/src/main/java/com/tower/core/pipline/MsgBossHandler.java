@@ -38,6 +38,8 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
     private static final ExecutorService executeLogin = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
     private static final ExecutorService executeGame = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
     private static final ExecutorService executeRecord = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
+    private static final ExecutorService executeRoom = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new LogDefThreadFactory());
+
 
     private static Map<Integer, Channel> playerIdChannel = new ConcurrentHashMap<>();
     private static Set<Integer> roomUserIds = new CopyOnWriteArraySet<>();
@@ -84,7 +86,6 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
     }
 
     private void doing(ChannelHandlerContext ctx, Tower.MsgCtn msg) {
-        MsgUtil.sendMsg(ctx.channel(), msg);
         if (MidTypeUtil.isHeartBeat(msg)) {
             MsgUtil.sendMsg(ctx.channel(), Mid.MID_HEART_BEAT_RES, Tower.HeartBeatRes.getDefaultInstance());
         } else if (MidTypeUtil.isLogin(msg)) {
@@ -93,6 +94,8 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
             executeGame.execute(() -> doIt(ctx, msg));
         } else if (MidTypeUtil.isRecord(msg)) {
             executeRecord.execute(() -> doIt(ctx, msg));
+        }else if(MidTypeUtil.isRoom(msg)){
+            executeRoom.execute(() -> doIt(ctx, msg));
         }
     }
 

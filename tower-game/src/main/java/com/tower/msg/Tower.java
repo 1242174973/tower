@@ -10666,6 +10666,1292 @@ public final class Tower {
     // @@protoc_insertion_point(class_scope:src.RecommendMonster)
   }
 
+  public interface GameOverResOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .src.AttackPageLog attackPageLog = 1;
+    /**
+     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     *
+     * <pre>
+     *记录分页信息 
+     * </pre>
+     */
+    boolean hasAttackPageLog();
+    /**
+     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     *
+     * <pre>
+     *记录分页信息 
+     * </pre>
+     */
+    com.tower.msg.Tower.AttackPageLog getAttackPageLog();
+    /**
+     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     *
+     * <pre>
+     *记录分页信息 
+     * </pre>
+     */
+    com.tower.msg.Tower.AttackPageLogOrBuilder getAttackPageLogOrBuilder();
+
+    // repeated .src.RecommendMonster recommendMonster = 2;
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    java.util.List<com.tower.msg.Tower.RecommendMonster> 
+        getRecommendMonsterList();
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    com.tower.msg.Tower.RecommendMonster getRecommendMonster(int index);
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    int getRecommendMonsterCount();
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    java.util.List<? extends com.tower.msg.Tower.RecommendMonsterOrBuilder> 
+        getRecommendMonsterOrBuilderList();
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    com.tower.msg.Tower.RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
+        int index);
+
+    // repeated int32 recommendId = 3;
+    /**
+     * <code>repeated int32 recommendId = 3;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    java.util.List<java.lang.Integer> getRecommendIdList();
+    /**
+     * <code>repeated int32 recommendId = 3;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    int getRecommendIdCount();
+    /**
+     * <code>repeated int32 recommendId = 3;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    int getRecommendId(int index);
+  }
+  /**
+   * Protobuf type {@code src.GameOverRes}
+   *
+   * <pre>
+   * 游戏结束返回			
+   * </pre>
+   */
+  public static final class GameOverRes extends
+      com.google.protobuf.GeneratedMessage
+      implements GameOverResOrBuilder {
+    // Use GameOverRes.newBuilder() to construct.
+    private GameOverRes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GameOverRes(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GameOverRes defaultInstance;
+    public static GameOverRes getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GameOverRes getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GameOverRes(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.tower.msg.Tower.AttackPageLog.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = attackPageLog_.toBuilder();
+              }
+              attackPageLog_ = input.readMessage(com.tower.msg.Tower.AttackPageLog.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attackPageLog_);
+                attackPageLog_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                recommendMonster_ = new java.util.ArrayList<com.tower.msg.Tower.RecommendMonster>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              recommendMonster_.add(input.readMessage(com.tower.msg.Tower.RecommendMonster.PARSER, extensionRegistry));
+              break;
+            }
+            case 24: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                recommendId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              recommendId_.add(input.readInt32());
+              break;
+            }
+            case 26: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004) && input.getBytesUntilLimit() > 0) {
+                recommendId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                recommendId_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          recommendMonster_ = java.util.Collections.unmodifiableList(recommendMonster_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          recommendId_ = java.util.Collections.unmodifiableList(recommendId_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.tower.msg.Tower.internal_static_src_GameOverRes_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.tower.msg.Tower.internal_static_src_GameOverRes_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.tower.msg.Tower.GameOverRes.class, com.tower.msg.Tower.GameOverRes.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GameOverRes> PARSER =
+        new com.google.protobuf.AbstractParser<GameOverRes>() {
+      public GameOverRes parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GameOverRes(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GameOverRes> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .src.AttackPageLog attackPageLog = 1;
+    public static final int ATTACKPAGELOG_FIELD_NUMBER = 1;
+    private com.tower.msg.Tower.AttackPageLog attackPageLog_;
+    /**
+     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     *
+     * <pre>
+     *记录分页信息 
+     * </pre>
+     */
+    public boolean hasAttackPageLog() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     *
+     * <pre>
+     *记录分页信息 
+     * </pre>
+     */
+    public com.tower.msg.Tower.AttackPageLog getAttackPageLog() {
+      return attackPageLog_;
+    }
+    /**
+     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     *
+     * <pre>
+     *记录分页信息 
+     * </pre>
+     */
+    public com.tower.msg.Tower.AttackPageLogOrBuilder getAttackPageLogOrBuilder() {
+      return attackPageLog_;
+    }
+
+    // repeated .src.RecommendMonster recommendMonster = 2;
+    public static final int RECOMMENDMONSTER_FIELD_NUMBER = 2;
+    private java.util.List<com.tower.msg.Tower.RecommendMonster> recommendMonster_;
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public java.util.List<com.tower.msg.Tower.RecommendMonster> getRecommendMonsterList() {
+      return recommendMonster_;
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public java.util.List<? extends com.tower.msg.Tower.RecommendMonsterOrBuilder> 
+        getRecommendMonsterOrBuilderList() {
+      return recommendMonster_;
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public int getRecommendMonsterCount() {
+      return recommendMonster_.size();
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public com.tower.msg.Tower.RecommendMonster getRecommendMonster(int index) {
+      return recommendMonster_.get(index);
+    }
+    /**
+     * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+     *
+     * <pre>
+     *推荐怪物概率
+     * </pre>
+     */
+    public com.tower.msg.Tower.RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
+        int index) {
+      return recommendMonster_.get(index);
+    }
+
+    // repeated int32 recommendId = 3;
+    public static final int RECOMMENDID_FIELD_NUMBER = 3;
+    private java.util.List<java.lang.Integer> recommendId_;
+    /**
+     * <code>repeated int32 recommendId = 3;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    public java.util.List<java.lang.Integer>
+        getRecommendIdList() {
+      return recommendId_;
+    }
+    /**
+     * <code>repeated int32 recommendId = 3;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    public int getRecommendIdCount() {
+      return recommendId_.size();
+    }
+    /**
+     * <code>repeated int32 recommendId = 3;</code>
+     *
+     * <pre>
+     *推荐怪物号码
+     * </pre>
+     */
+    public int getRecommendId(int index) {
+      return recommendId_.get(index);
+    }
+
+    private void initFields() {
+      attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+      recommendMonster_ = java.util.Collections.emptyList();
+      recommendId_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasAttackPageLog()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getAttackPageLog().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getRecommendMonsterCount(); i++) {
+        if (!getRecommendMonster(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, attackPageLog_);
+      }
+      for (int i = 0; i < recommendMonster_.size(); i++) {
+        output.writeMessage(2, recommendMonster_.get(i));
+      }
+      for (int i = 0; i < recommendId_.size(); i++) {
+        output.writeInt32(3, recommendId_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, attackPageLog_);
+      }
+      for (int i = 0; i < recommendMonster_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, recommendMonster_.get(i));
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < recommendId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(recommendId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getRecommendIdList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.tower.msg.Tower.GameOverRes parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.GameOverRes parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameOverRes parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.GameOverRes parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameOverRes parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.GameOverRes parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameOverRes parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.tower.msg.Tower.GameOverRes parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameOverRes parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.GameOverRes parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.tower.msg.Tower.GameOverRes prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.GameOverRes}
+     *
+     * <pre>
+     * 游戏结束返回			
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.tower.msg.Tower.GameOverResOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tower.msg.Tower.internal_static_src_GameOverRes_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tower.msg.Tower.internal_static_src_GameOverRes_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tower.msg.Tower.GameOverRes.class, com.tower.msg.Tower.GameOverRes.Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.GameOverRes.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getAttackPageLogFieldBuilder();
+          getRecommendMonsterFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (attackPageLogBuilder_ == null) {
+          attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+        } else {
+          attackPageLogBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (recommendMonsterBuilder_ == null) {
+          recommendMonster_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          recommendMonsterBuilder_.clear();
+        }
+        recommendId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.tower.msg.Tower.internal_static_src_GameOverRes_descriptor;
+      }
+
+      public com.tower.msg.Tower.GameOverRes getDefaultInstanceForType() {
+        return com.tower.msg.Tower.GameOverRes.getDefaultInstance();
+      }
+
+      public com.tower.msg.Tower.GameOverRes build() {
+        com.tower.msg.Tower.GameOverRes result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.tower.msg.Tower.GameOverRes buildPartial() {
+        com.tower.msg.Tower.GameOverRes result = new com.tower.msg.Tower.GameOverRes(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (attackPageLogBuilder_ == null) {
+          result.attackPageLog_ = attackPageLog_;
+        } else {
+          result.attackPageLog_ = attackPageLogBuilder_.build();
+        }
+        if (recommendMonsterBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            recommendMonster_ = java.util.Collections.unmodifiableList(recommendMonster_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.recommendMonster_ = recommendMonster_;
+        } else {
+          result.recommendMonster_ = recommendMonsterBuilder_.build();
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          recommendId_ = java.util.Collections.unmodifiableList(recommendId_);
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.recommendId_ = recommendId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.tower.msg.Tower.GameOverRes) {
+          return mergeFrom((com.tower.msg.Tower.GameOverRes)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.tower.msg.Tower.GameOverRes other) {
+        if (other == com.tower.msg.Tower.GameOverRes.getDefaultInstance()) return this;
+        if (other.hasAttackPageLog()) {
+          mergeAttackPageLog(other.getAttackPageLog());
+        }
+        if (recommendMonsterBuilder_ == null) {
+          if (!other.recommendMonster_.isEmpty()) {
+            if (recommendMonster_.isEmpty()) {
+              recommendMonster_ = other.recommendMonster_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureRecommendMonsterIsMutable();
+              recommendMonster_.addAll(other.recommendMonster_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.recommendMonster_.isEmpty()) {
+            if (recommendMonsterBuilder_.isEmpty()) {
+              recommendMonsterBuilder_.dispose();
+              recommendMonsterBuilder_ = null;
+              recommendMonster_ = other.recommendMonster_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              recommendMonsterBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRecommendMonsterFieldBuilder() : null;
+            } else {
+              recommendMonsterBuilder_.addAllMessages(other.recommendMonster_);
+            }
+          }
+        }
+        if (!other.recommendId_.isEmpty()) {
+          if (recommendId_.isEmpty()) {
+            recommendId_ = other.recommendId_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureRecommendIdIsMutable();
+            recommendId_.addAll(other.recommendId_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasAttackPageLog()) {
+          
+          return false;
+        }
+        if (!getAttackPageLog().isInitialized()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getRecommendMonsterCount(); i++) {
+          if (!getRecommendMonster(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.tower.msg.Tower.GameOverRes parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.tower.msg.Tower.GameOverRes) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .src.AttackPageLog attackPageLog = 1;
+      private com.tower.msg.Tower.AttackPageLog attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder> attackPageLogBuilder_;
+      /**
+       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       *
+       * <pre>
+       *记录分页信息 
+       * </pre>
+       */
+      public boolean hasAttackPageLog() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       *
+       * <pre>
+       *记录分页信息 
+       * </pre>
+       */
+      public com.tower.msg.Tower.AttackPageLog getAttackPageLog() {
+        if (attackPageLogBuilder_ == null) {
+          return attackPageLog_;
+        } else {
+          return attackPageLogBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       *
+       * <pre>
+       *记录分页信息 
+       * </pre>
+       */
+      public Builder setAttackPageLog(com.tower.msg.Tower.AttackPageLog value) {
+        if (attackPageLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attackPageLog_ = value;
+          onChanged();
+        } else {
+          attackPageLogBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       *
+       * <pre>
+       *记录分页信息 
+       * </pre>
+       */
+      public Builder setAttackPageLog(
+          com.tower.msg.Tower.AttackPageLog.Builder builderForValue) {
+        if (attackPageLogBuilder_ == null) {
+          attackPageLog_ = builderForValue.build();
+          onChanged();
+        } else {
+          attackPageLogBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       *
+       * <pre>
+       *记录分页信息 
+       * </pre>
+       */
+      public Builder mergeAttackPageLog(com.tower.msg.Tower.AttackPageLog value) {
+        if (attackPageLogBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              attackPageLog_ != com.tower.msg.Tower.AttackPageLog.getDefaultInstance()) {
+            attackPageLog_ =
+              com.tower.msg.Tower.AttackPageLog.newBuilder(attackPageLog_).mergeFrom(value).buildPartial();
+          } else {
+            attackPageLog_ = value;
+          }
+          onChanged();
+        } else {
+          attackPageLogBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       *
+       * <pre>
+       *记录分页信息 
+       * </pre>
+       */
+      public Builder clearAttackPageLog() {
+        if (attackPageLogBuilder_ == null) {
+          attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+          onChanged();
+        } else {
+          attackPageLogBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       *
+       * <pre>
+       *记录分页信息 
+       * </pre>
+       */
+      public com.tower.msg.Tower.AttackPageLog.Builder getAttackPageLogBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getAttackPageLogFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       *
+       * <pre>
+       *记录分页信息 
+       * </pre>
+       */
+      public com.tower.msg.Tower.AttackPageLogOrBuilder getAttackPageLogOrBuilder() {
+        if (attackPageLogBuilder_ != null) {
+          return attackPageLogBuilder_.getMessageOrBuilder();
+        } else {
+          return attackPageLog_;
+        }
+      }
+      /**
+       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       *
+       * <pre>
+       *记录分页信息 
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder> 
+          getAttackPageLogFieldBuilder() {
+        if (attackPageLogBuilder_ == null) {
+          attackPageLogBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder>(
+                  attackPageLog_,
+                  getParentForChildren(),
+                  isClean());
+          attackPageLog_ = null;
+        }
+        return attackPageLogBuilder_;
+      }
+
+      // repeated .src.RecommendMonster recommendMonster = 2;
+      private java.util.List<com.tower.msg.Tower.RecommendMonster> recommendMonster_ =
+        java.util.Collections.emptyList();
+      private void ensureRecommendMonsterIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          recommendMonster_ = new java.util.ArrayList<com.tower.msg.Tower.RecommendMonster>(recommendMonster_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tower.msg.Tower.RecommendMonster, com.tower.msg.Tower.RecommendMonster.Builder, com.tower.msg.Tower.RecommendMonsterOrBuilder> recommendMonsterBuilder_;
+
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public java.util.List<com.tower.msg.Tower.RecommendMonster> getRecommendMonsterList() {
+        if (recommendMonsterBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(recommendMonster_);
+        } else {
+          return recommendMonsterBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public int getRecommendMonsterCount() {
+        if (recommendMonsterBuilder_ == null) {
+          return recommendMonster_.size();
+        } else {
+          return recommendMonsterBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public com.tower.msg.Tower.RecommendMonster getRecommendMonster(int index) {
+        if (recommendMonsterBuilder_ == null) {
+          return recommendMonster_.get(index);
+        } else {
+          return recommendMonsterBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public Builder setRecommendMonster(
+          int index, com.tower.msg.Tower.RecommendMonster value) {
+        if (recommendMonsterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.set(index, value);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public Builder setRecommendMonster(
+          int index, com.tower.msg.Tower.RecommendMonster.Builder builderForValue) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public Builder addRecommendMonster(com.tower.msg.Tower.RecommendMonster value) {
+        if (recommendMonsterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.add(value);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public Builder addRecommendMonster(
+          int index, com.tower.msg.Tower.RecommendMonster value) {
+        if (recommendMonsterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.add(index, value);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public Builder addRecommendMonster(
+          com.tower.msg.Tower.RecommendMonster.Builder builderForValue) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.add(builderForValue.build());
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public Builder addRecommendMonster(
+          int index, com.tower.msg.Tower.RecommendMonster.Builder builderForValue) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public Builder addAllRecommendMonster(
+          java.lang.Iterable<? extends com.tower.msg.Tower.RecommendMonster> values) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          super.addAll(values, recommendMonster_);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public Builder clearRecommendMonster() {
+        if (recommendMonsterBuilder_ == null) {
+          recommendMonster_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public Builder removeRecommendMonster(int index) {
+        if (recommendMonsterBuilder_ == null) {
+          ensureRecommendMonsterIsMutable();
+          recommendMonster_.remove(index);
+          onChanged();
+        } else {
+          recommendMonsterBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public com.tower.msg.Tower.RecommendMonster.Builder getRecommendMonsterBuilder(
+          int index) {
+        return getRecommendMonsterFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public com.tower.msg.Tower.RecommendMonsterOrBuilder getRecommendMonsterOrBuilder(
+          int index) {
+        if (recommendMonsterBuilder_ == null) {
+          return recommendMonster_.get(index);  } else {
+          return recommendMonsterBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public java.util.List<? extends com.tower.msg.Tower.RecommendMonsterOrBuilder> 
+           getRecommendMonsterOrBuilderList() {
+        if (recommendMonsterBuilder_ != null) {
+          return recommendMonsterBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(recommendMonster_);
+        }
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public com.tower.msg.Tower.RecommendMonster.Builder addRecommendMonsterBuilder() {
+        return getRecommendMonsterFieldBuilder().addBuilder(
+            com.tower.msg.Tower.RecommendMonster.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public com.tower.msg.Tower.RecommendMonster.Builder addRecommendMonsterBuilder(
+          int index) {
+        return getRecommendMonsterFieldBuilder().addBuilder(
+            index, com.tower.msg.Tower.RecommendMonster.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.RecommendMonster recommendMonster = 2;</code>
+       *
+       * <pre>
+       *推荐怪物概率
+       * </pre>
+       */
+      public java.util.List<com.tower.msg.Tower.RecommendMonster.Builder> 
+           getRecommendMonsterBuilderList() {
+        return getRecommendMonsterFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tower.msg.Tower.RecommendMonster, com.tower.msg.Tower.RecommendMonster.Builder, com.tower.msg.Tower.RecommendMonsterOrBuilder> 
+          getRecommendMonsterFieldBuilder() {
+        if (recommendMonsterBuilder_ == null) {
+          recommendMonsterBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.tower.msg.Tower.RecommendMonster, com.tower.msg.Tower.RecommendMonster.Builder, com.tower.msg.Tower.RecommendMonsterOrBuilder>(
+                  recommendMonster_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          recommendMonster_ = null;
+        }
+        return recommendMonsterBuilder_;
+      }
+
+      // repeated int32 recommendId = 3;
+      private java.util.List<java.lang.Integer> recommendId_ = java.util.Collections.emptyList();
+      private void ensureRecommendIdIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          recommendId_ = new java.util.ArrayList<java.lang.Integer>(recommendId_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      /**
+       * <code>repeated int32 recommendId = 3;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public java.util.List<java.lang.Integer>
+          getRecommendIdList() {
+        return java.util.Collections.unmodifiableList(recommendId_);
+      }
+      /**
+       * <code>repeated int32 recommendId = 3;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public int getRecommendIdCount() {
+        return recommendId_.size();
+      }
+      /**
+       * <code>repeated int32 recommendId = 3;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public int getRecommendId(int index) {
+        return recommendId_.get(index);
+      }
+      /**
+       * <code>repeated int32 recommendId = 3;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public Builder setRecommendId(
+          int index, int value) {
+        ensureRecommendIdIsMutable();
+        recommendId_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 recommendId = 3;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public Builder addRecommendId(int value) {
+        ensureRecommendIdIsMutable();
+        recommendId_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 recommendId = 3;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public Builder addAllRecommendId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRecommendIdIsMutable();
+        super.addAll(values, recommendId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 recommendId = 3;</code>
+       *
+       * <pre>
+       *推荐怪物号码
+       * </pre>
+       */
+      public Builder clearRecommendId() {
+        recommendId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.GameOverRes)
+    }
+
+    static {
+      defaultInstance = new GameOverRes(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.GameOverRes)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_src_MsgCtn_descriptor;
   private static
@@ -10726,6 +12012,11 @@ public final class Tower {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_src_RecommendMonster_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_GameOverRes_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_GameOverRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -10759,7 +12050,11 @@ public final class Tower {
       "\002(\005\022\014\n\004size\030\003 \002(\005\"/\n\tAttackLog\022\017\n\007orderI" +
       "d\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\"H\n\020RecommendM" +
       "onster\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005rates\030\002 \002(\005" +
-      "\022\022\n\ncontinuous\030\003 \002(\005B\017\n\rcom.tower.msg"
+      "\022\022\n\ncontinuous\030\003 \002(\005\"~\n\013GameOverRes\022)\n\ra" +
+      "ttackPageLog\030\001 \002(\0132\022.src.AttackPageLog\022/" +
+      "\n\020recommendMonster\030\002 \003(\0132\025.src.Recommend" +
+      "Monster\022\023\n\013recommendId\030\003 \003(\005B\017\n\rcom.towe" +
+      "r.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -10838,6 +12133,12 @@ public final class Tower {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_RecommendMonster_descriptor,
               new java.lang.String[] { "MonsterId", "Rates", "Continuous", });
+          internal_static_src_GameOverRes_descriptor =
+            getDescriptor().getMessageTypes().get(12);
+          internal_static_src_GameOverRes_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_GameOverRes_descriptor,
+              new java.lang.String[] { "AttackPageLog", "RecommendMonster", "RecommendId", });
           return null;
         }
       };
