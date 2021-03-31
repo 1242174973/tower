@@ -2,14 +2,20 @@ package com.tower.core.game;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.constant.Mid;
+import com.tower.core.pipline.MsgBossHandler;
 import com.tower.core.thread.ExecuteHashedWheelTimer;
+import com.tower.core.utils.MsgUtil;
 import com.tower.entity.AttackLog;
 import com.tower.entity.Monster;
+import com.tower.enums.GameCmd;
 import com.tower.game.MonsterInfo;
+import com.tower.msg.Tower;
 import com.tower.service.AttackLogService;
 import com.tower.service.MonsterService;
 import com.tower.utils.CopyUtil;
 import com.tower.utils.DateUtils;
+import io.netty.channel.Channel;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
@@ -42,6 +48,10 @@ public class TowerGame {
      * 开始时间
      */
     private long startTime;
+    /**
+     * 正在开始的时间
+     */
+    private long currStartTime;
     /**
      * 进攻时间
      */
@@ -158,9 +168,25 @@ public class TowerGame {
      */
     public void gameStart() {
         log.info("30秒后即将出怪");
-        executeHashedWheelTimer.newTimeout(this::upcomingAward, 30, TimeUnit.SECONDS);
+        int countdown = 30000;
+        executeHashedWheelTimer.newTimeout(this::upcomingAward, countdown, TimeUnit.MILLISECONDS);
         attackLog = new AttackLog();
         attackLog.setCreateTime(LocalDateTime.now()).setVer(getVer()).setOrderId(DateUtils.getYearAndMonthAndDay() + getIndex());
+        Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
+        gameRes.setCmd(GameCmd.GAME_START.getCode()).setCountdown(countdown);
+        sendToAll(gameRes);
+    }
+
+    private void sendToAll(Tower.GameRes.Builder gameRes) {
+        Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
+        msgCtn.setDatas(gameRes.build().toByteString());
+        msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
+        msgCtn.setType(Mid.MID_GAME_RES);
+        Set<Integer> roomUserIds = MsgBossHandler.getRoomUserIds();
+        roomUserIds.forEach(roomUserId -> {
+            Channel channel = MsgBossHandler.getPlayerIdChannel(roomUserId);
+            MsgUtil.sendMsg(channel, msgCtn.build());
+        });
     }
 
     private String getIndex() {
@@ -177,6 +203,7 @@ public class TowerGame {
     public void insertAttackLog() {
         attackLog.setAttackTime(LocalDateTime.now()).setMonsterId(getMonsterId());
         attackLogService.save(attackLog);
+        attackLog = null;
     }
 
     /**
@@ -184,7 +211,27 @@ public class TowerGame {
      */
     public void upcomingAward() {
         log.info("6秒后出怪");
-        executeHashedWheelTimer.newTimeout(this::award, 6, TimeUnit.SECONDS);
+        int countdown = 6000;
+        executeHashedWheelTimer.newTimeout(this::award, countdown, TimeUnit.MILLISECONDS);
+        Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
+        gameRes.setCmd(GameCmd.UPCOMING_AWARD.getCode()).setCountdown(countdown);
+        sendToAll(gameRes);
+    }
+
+    /**
+     * 延迟开奖
+     */
+    public void awardDelay() {
+        setAward(true);
+        if (monsterId == null) {
+            log.error("开奖失败，放弃此次开奖，交由后台开奖");
+            attackLog.setAttackTime(LocalDateTime.now());
+            attackLogService.save(attackLog);
+            attackLog = null;
+            return;
+        }
+        int countdown = 10000;
+        sendGameOver(countdown);
     }
 
     /**
@@ -192,12 +239,30 @@ public class TowerGame {
      */
     public void award() {
         if (monsterId == null) {
-            log.error("无法获取此局出怪信息，游戏停止，等待开奖数据获取 ver:{}", getVer());
-            executeHashedWheelTimer.newTimeout(this::award, 5, TimeUnit.SECONDS);
+            log.error("无法获取此局出怪信息，延迟4秒，等待开奖数据获取 ver:{}", getVer());
+            executeHashedWheelTimer.newTimeout(this::awardDelay, 4, TimeUnit.SECONDS);
             return;
         }
+        int countdown = 14000;
+        sendGameOver(countdown);
+    }
+
+    public void sendGameOver(int countdown) {
         log.info("完成出怪");
         setAward(true);
+        initMonsterInfoList();
+        initRecommendIds();
+        Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
+        gameRes.setCmd(GameCmd.AWARD.getCode()).setCountdown(countdown);
+        Tower.GameOverInfo.Builder gameOverInfo = Tower.GameOverInfo.newBuilder();
+        Tower.AttackLog.Builder attackLog = Tower.AttackLog.newBuilder();
+        attackLog.setOrderId(attackLog.getOrderId());
+        attackLog.setMonsterId(attackLog.getMonsterId());
+        gameOverInfo.setAttackLog(attackLog);
+        gameOverInfo.addAllRecommendId(getRecommendIds());
+        gameOverInfo.addAllRecommendMonster(getRecommendMonster());
+        gameRes.setGameOverInfo(gameOverInfo);
+        sendToAll(gameRes);
     }
 
     public List<AttackLog> getPageAttackLog(int page, int size) {
@@ -210,4 +275,24 @@ public class TowerGame {
             return num >= start && num < end;
         }).collect(Collectors.toList());
     }
+
+
+    /**
+     * 获得推荐信息
+     *
+     * @return 返回给客户端的记录信息
+     */
+    public List<Tower.RecommendMonster> getRecommendMonster() {
+        List<MonsterInfo> monsterInfoList = getMonsterInfoList();
+        List<Tower.RecommendMonster> infoList = new ArrayList<>();
+        for (MonsterInfo monsterInfo : monsterInfoList) {
+            Tower.RecommendMonster.Builder recommendMonster = Tower.RecommendMonster.newBuilder();
+            recommendMonster.setMonsterId(monsterInfo.getId());
+            recommendMonster.setContinuous(monsterInfo.getContinuous());
+            recommendMonster.setRates(monsterInfo.getCurrRates());
+            infoList.add(recommendMonster.build());
+        }
+        return infoList;
+    }
+
 }

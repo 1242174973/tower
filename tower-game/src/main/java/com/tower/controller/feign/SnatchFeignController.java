@@ -68,9 +68,11 @@ public class SnatchFeignController {
         }
         if (System.currentTimeMillis() > towerGame.getAwardTime() &&
                 System.currentTimeMillis() < towerGame.getEndTime()) {
-            towerGame.setMonsterId(attackInfo.getMonsterId());
-            towerGame.insertAttackLog();
-            log.info("设置出怪成功");
+            if(towerGame.getAttackLog()!=null){
+                towerGame.insertAttackLog();
+                towerGame.setMonsterId(attackInfo.getMonsterId());
+                log.info("设置出怪成功");
+            }
         }
     }
 }

@@ -94,7 +94,7 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
             executeGame.execute(() -> doIt(ctx, msg));
         } else if (MidTypeUtil.isRecord(msg)) {
             executeRecord.execute(() -> doIt(ctx, msg));
-        }else if(MidTypeUtil.isRoom(msg)){
+        } else if (MidTypeUtil.isRoom(msg)) {
             executeRoom.execute(() -> doIt(ctx, msg));
         }
     }
@@ -193,6 +193,7 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
             userIdAttr.set(null);
             executeLogin.execute(() -> {
                 //TODO 处理玩家断开连接
+                roomUserIds.remove(userId.intValue());
                 playerIdChannel.remove(userId.intValue());
             });
 

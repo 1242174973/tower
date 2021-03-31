@@ -10666,34 +10666,863 @@ public final class Tower {
     // @@protoc_insertion_point(class_scope:src.RecommendMonster)
   }
 
-  public interface GameOverResOrBuilder
+  public interface GameResOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .src.AttackPageLog attackPageLog = 1;
+    // required int32 cmd = 1;
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     * <code>required int32 cmd = 1;</code>
      *
      * <pre>
-     *记录分页信息 
+     *cmd指令
      * </pre>
      */
-    boolean hasAttackPageLog();
+    boolean hasCmd();
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     * <code>required int32 cmd = 1;</code>
      *
      * <pre>
-     *记录分页信息 
+     *cmd指令
      * </pre>
      */
-    com.tower.msg.Tower.AttackPageLog getAttackPageLog();
+    int getCmd();
+
+    // required int32 countdown = 2;
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     * <code>required int32 countdown = 2;</code>
      *
      * <pre>
-     *记录分页信息 
+     *倒计时
      * </pre>
      */
-    com.tower.msg.Tower.AttackPageLogOrBuilder getAttackPageLogOrBuilder();
+    boolean hasCountdown();
+    /**
+     * <code>required int32 countdown = 2;</code>
+     *
+     * <pre>
+     *倒计时
+     * </pre>
+     */
+    int getCountdown();
+
+    // optional .src.GameOverInfo gameOverInfo = 3;
+    /**
+     * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+     *
+     * <pre>
+     *游戏结束信息
+     * </pre>
+     */
+    boolean hasGameOverInfo();
+    /**
+     * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+     *
+     * <pre>
+     *游戏结束信息
+     * </pre>
+     */
+    com.tower.msg.Tower.GameOverInfo getGameOverInfo();
+    /**
+     * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+     *
+     * <pre>
+     *游戏结束信息
+     * </pre>
+     */
+    com.tower.msg.Tower.GameOverInfoOrBuilder getGameOverInfoOrBuilder();
+  }
+  /**
+   * Protobuf type {@code src.GameRes}
+   *
+   * <pre>
+   * 游戏结束返回			
+   * </pre>
+   */
+  public static final class GameRes extends
+      com.google.protobuf.GeneratedMessage
+      implements GameResOrBuilder {
+    // Use GameRes.newBuilder() to construct.
+    private GameRes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GameRes(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GameRes defaultInstance;
+    public static GameRes getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GameRes getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GameRes(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              cmd_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              countdown_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              com.tower.msg.Tower.GameOverInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = gameOverInfo_.toBuilder();
+              }
+              gameOverInfo_ = input.readMessage(com.tower.msg.Tower.GameOverInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(gameOverInfo_);
+                gameOverInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.tower.msg.Tower.internal_static_src_GameRes_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.tower.msg.Tower.internal_static_src_GameRes_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.tower.msg.Tower.GameRes.class, com.tower.msg.Tower.GameRes.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GameRes> PARSER =
+        new com.google.protobuf.AbstractParser<GameRes>() {
+      public GameRes parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GameRes(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GameRes> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 cmd = 1;
+    public static final int CMD_FIELD_NUMBER = 1;
+    private int cmd_;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmd指令
+     * </pre>
+     */
+    public boolean hasCmd() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmd指令
+     * </pre>
+     */
+    public int getCmd() {
+      return cmd_;
+    }
+
+    // required int32 countdown = 2;
+    public static final int COUNTDOWN_FIELD_NUMBER = 2;
+    private int countdown_;
+    /**
+     * <code>required int32 countdown = 2;</code>
+     *
+     * <pre>
+     *倒计时
+     * </pre>
+     */
+    public boolean hasCountdown() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 countdown = 2;</code>
+     *
+     * <pre>
+     *倒计时
+     * </pre>
+     */
+    public int getCountdown() {
+      return countdown_;
+    }
+
+    // optional .src.GameOverInfo gameOverInfo = 3;
+    public static final int GAMEOVERINFO_FIELD_NUMBER = 3;
+    private com.tower.msg.Tower.GameOverInfo gameOverInfo_;
+    /**
+     * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+     *
+     * <pre>
+     *游戏结束信息
+     * </pre>
+     */
+    public boolean hasGameOverInfo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+     *
+     * <pre>
+     *游戏结束信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.GameOverInfo getGameOverInfo() {
+      return gameOverInfo_;
+    }
+    /**
+     * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+     *
+     * <pre>
+     *游戏结束信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.GameOverInfoOrBuilder getGameOverInfoOrBuilder() {
+      return gameOverInfo_;
+    }
+
+    private void initFields() {
+      cmd_ = 0;
+      countdown_ = 0;
+      gameOverInfo_ = com.tower.msg.Tower.GameOverInfo.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasCmd()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCountdown()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasGameOverInfo()) {
+        if (!getGameOverInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, countdown_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, gameOverInfo_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, countdown_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, gameOverInfo_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.tower.msg.Tower.GameRes parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.GameRes parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameRes parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.GameRes parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameRes parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.GameRes parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameRes parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.tower.msg.Tower.GameRes parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.GameRes parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.GameRes parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.tower.msg.Tower.GameRes prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.GameRes}
+     *
+     * <pre>
+     * 游戏结束返回			
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.tower.msg.Tower.GameResOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tower.msg.Tower.internal_static_src_GameRes_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tower.msg.Tower.internal_static_src_GameRes_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tower.msg.Tower.GameRes.class, com.tower.msg.Tower.GameRes.Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.GameRes.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getGameOverInfoFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        cmd_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        countdown_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (gameOverInfoBuilder_ == null) {
+          gameOverInfo_ = com.tower.msg.Tower.GameOverInfo.getDefaultInstance();
+        } else {
+          gameOverInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.tower.msg.Tower.internal_static_src_GameRes_descriptor;
+      }
+
+      public com.tower.msg.Tower.GameRes getDefaultInstanceForType() {
+        return com.tower.msg.Tower.GameRes.getDefaultInstance();
+      }
+
+      public com.tower.msg.Tower.GameRes build() {
+        com.tower.msg.Tower.GameRes result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.tower.msg.Tower.GameRes buildPartial() {
+        com.tower.msg.Tower.GameRes result = new com.tower.msg.Tower.GameRes(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.cmd_ = cmd_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.countdown_ = countdown_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (gameOverInfoBuilder_ == null) {
+          result.gameOverInfo_ = gameOverInfo_;
+        } else {
+          result.gameOverInfo_ = gameOverInfoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.tower.msg.Tower.GameRes) {
+          return mergeFrom((com.tower.msg.Tower.GameRes)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.tower.msg.Tower.GameRes other) {
+        if (other == com.tower.msg.Tower.GameRes.getDefaultInstance()) return this;
+        if (other.hasCmd()) {
+          setCmd(other.getCmd());
+        }
+        if (other.hasCountdown()) {
+          setCountdown(other.getCountdown());
+        }
+        if (other.hasGameOverInfo()) {
+          mergeGameOverInfo(other.getGameOverInfo());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCmd()) {
+          
+          return false;
+        }
+        if (!hasCountdown()) {
+          
+          return false;
+        }
+        if (hasGameOverInfo()) {
+          if (!getGameOverInfo().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.tower.msg.Tower.GameRes parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.tower.msg.Tower.GameRes) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 cmd = 1;
+      private int cmd_ ;
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmd指令
+       * </pre>
+       */
+      public boolean hasCmd() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmd指令
+       * </pre>
+       */
+      public int getCmd() {
+        return cmd_;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmd指令
+       * </pre>
+       */
+      public Builder setCmd(int value) {
+        bitField0_ |= 0x00000001;
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmd指令
+       * </pre>
+       */
+      public Builder clearCmd() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cmd_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 countdown = 2;
+      private int countdown_ ;
+      /**
+       * <code>required int32 countdown = 2;</code>
+       *
+       * <pre>
+       *倒计时
+       * </pre>
+       */
+      public boolean hasCountdown() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 countdown = 2;</code>
+       *
+       * <pre>
+       *倒计时
+       * </pre>
+       */
+      public int getCountdown() {
+        return countdown_;
+      }
+      /**
+       * <code>required int32 countdown = 2;</code>
+       *
+       * <pre>
+       *倒计时
+       * </pre>
+       */
+      public Builder setCountdown(int value) {
+        bitField0_ |= 0x00000002;
+        countdown_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 countdown = 2;</code>
+       *
+       * <pre>
+       *倒计时
+       * </pre>
+       */
+      public Builder clearCountdown() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        countdown_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional .src.GameOverInfo gameOverInfo = 3;
+      private com.tower.msg.Tower.GameOverInfo gameOverInfo_ = com.tower.msg.Tower.GameOverInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.GameOverInfo, com.tower.msg.Tower.GameOverInfo.Builder, com.tower.msg.Tower.GameOverInfoOrBuilder> gameOverInfoBuilder_;
+      /**
+       * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+       *
+       * <pre>
+       *游戏结束信息
+       * </pre>
+       */
+      public boolean hasGameOverInfo() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+       *
+       * <pre>
+       *游戏结束信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.GameOverInfo getGameOverInfo() {
+        if (gameOverInfoBuilder_ == null) {
+          return gameOverInfo_;
+        } else {
+          return gameOverInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+       *
+       * <pre>
+       *游戏结束信息
+       * </pre>
+       */
+      public Builder setGameOverInfo(com.tower.msg.Tower.GameOverInfo value) {
+        if (gameOverInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          gameOverInfo_ = value;
+          onChanged();
+        } else {
+          gameOverInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+       *
+       * <pre>
+       *游戏结束信息
+       * </pre>
+       */
+      public Builder setGameOverInfo(
+          com.tower.msg.Tower.GameOverInfo.Builder builderForValue) {
+        if (gameOverInfoBuilder_ == null) {
+          gameOverInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          gameOverInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+       *
+       * <pre>
+       *游戏结束信息
+       * </pre>
+       */
+      public Builder mergeGameOverInfo(com.tower.msg.Tower.GameOverInfo value) {
+        if (gameOverInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              gameOverInfo_ != com.tower.msg.Tower.GameOverInfo.getDefaultInstance()) {
+            gameOverInfo_ =
+              com.tower.msg.Tower.GameOverInfo.newBuilder(gameOverInfo_).mergeFrom(value).buildPartial();
+          } else {
+            gameOverInfo_ = value;
+          }
+          onChanged();
+        } else {
+          gameOverInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+       *
+       * <pre>
+       *游戏结束信息
+       * </pre>
+       */
+      public Builder clearGameOverInfo() {
+        if (gameOverInfoBuilder_ == null) {
+          gameOverInfo_ = com.tower.msg.Tower.GameOverInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          gameOverInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+       *
+       * <pre>
+       *游戏结束信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.GameOverInfo.Builder getGameOverInfoBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getGameOverInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+       *
+       * <pre>
+       *游戏结束信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.GameOverInfoOrBuilder getGameOverInfoOrBuilder() {
+        if (gameOverInfoBuilder_ != null) {
+          return gameOverInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return gameOverInfo_;
+        }
+      }
+      /**
+       * <code>optional .src.GameOverInfo gameOverInfo = 3;</code>
+       *
+       * <pre>
+       *游戏结束信息
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.GameOverInfo, com.tower.msg.Tower.GameOverInfo.Builder, com.tower.msg.Tower.GameOverInfoOrBuilder> 
+          getGameOverInfoFieldBuilder() {
+        if (gameOverInfoBuilder_ == null) {
+          gameOverInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.tower.msg.Tower.GameOverInfo, com.tower.msg.Tower.GameOverInfo.Builder, com.tower.msg.Tower.GameOverInfoOrBuilder>(
+                  gameOverInfo_,
+                  getParentForChildren(),
+                  isClean());
+          gameOverInfo_ = null;
+        }
+        return gameOverInfoBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.GameRes)
+    }
+
+    static {
+      defaultInstance = new GameRes(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.GameRes)
+  }
+
+  public interface GameOverInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .src.AttackLog attackLog = 1;
+    /**
+     * <code>required .src.AttackLog attackLog = 1;</code>
+     *
+     * <pre>
+     *记录单条信息 
+     * </pre>
+     */
+    boolean hasAttackLog();
+    /**
+     * <code>required .src.AttackLog attackLog = 1;</code>
+     *
+     * <pre>
+     *记录单条信息 
+     * </pre>
+     */
+    com.tower.msg.Tower.AttackLog getAttackLog();
+    /**
+     * <code>required .src.AttackLog attackLog = 1;</code>
+     *
+     * <pre>
+     *记录单条信息 
+     * </pre>
+     */
+    com.tower.msg.Tower.AttackLogOrBuilder getAttackLogOrBuilder();
 
     // repeated .src.RecommendMonster recommendMonster = 2;
     /**
@@ -10767,28 +11596,28 @@ public final class Tower {
     int getRecommendId(int index);
   }
   /**
-   * Protobuf type {@code src.GameOverRes}
+   * Protobuf type {@code src.GameOverInfo}
    *
    * <pre>
-   * 游戏结束返回			
+   *游戏结束
    * </pre>
    */
-  public static final class GameOverRes extends
+  public static final class GameOverInfo extends
       com.google.protobuf.GeneratedMessage
-      implements GameOverResOrBuilder {
-    // Use GameOverRes.newBuilder() to construct.
-    private GameOverRes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GameOverInfoOrBuilder {
+    // Use GameOverInfo.newBuilder() to construct.
+    private GameOverInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private GameOverRes(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private GameOverInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final GameOverRes defaultInstance;
-    public static GameOverRes getDefaultInstance() {
+    private static final GameOverInfo defaultInstance;
+    public static GameOverInfo getDefaultInstance() {
       return defaultInstance;
     }
 
-    public GameOverRes getDefaultInstanceForType() {
+    public GameOverInfo getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -10798,7 +11627,7 @@ public final class Tower {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private GameOverRes(
+    private GameOverInfo(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10822,14 +11651,14 @@ public final class Tower {
               break;
             }
             case 10: {
-              com.tower.msg.Tower.AttackPageLog.Builder subBuilder = null;
+              com.tower.msg.Tower.AttackLog.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = attackPageLog_.toBuilder();
+                subBuilder = attackLog_.toBuilder();
               }
-              attackPageLog_ = input.readMessage(com.tower.msg.Tower.AttackPageLog.PARSER, extensionRegistry);
+              attackLog_ = input.readMessage(com.tower.msg.Tower.AttackLog.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(attackPageLog_);
-                attackPageLog_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(attackLog_);
+                attackLog_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000001;
               break;
@@ -10883,64 +11712,64 @@ public final class Tower {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tower.msg.Tower.internal_static_src_GameOverRes_descriptor;
+      return com.tower.msg.Tower.internal_static_src_GameOverInfo_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tower.msg.Tower.internal_static_src_GameOverRes_fieldAccessorTable
+      return com.tower.msg.Tower.internal_static_src_GameOverInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.tower.msg.Tower.GameOverRes.class, com.tower.msg.Tower.GameOverRes.Builder.class);
+              com.tower.msg.Tower.GameOverInfo.class, com.tower.msg.Tower.GameOverInfo.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<GameOverRes> PARSER =
-        new com.google.protobuf.AbstractParser<GameOverRes>() {
-      public GameOverRes parsePartialFrom(
+    public static com.google.protobuf.Parser<GameOverInfo> PARSER =
+        new com.google.protobuf.AbstractParser<GameOverInfo>() {
+      public GameOverInfo parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GameOverRes(input, extensionRegistry);
+        return new GameOverInfo(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GameOverRes> getParserForType() {
+    public com.google.protobuf.Parser<GameOverInfo> getParserForType() {
       return PARSER;
     }
 
     private int bitField0_;
-    // required .src.AttackPageLog attackPageLog = 1;
-    public static final int ATTACKPAGELOG_FIELD_NUMBER = 1;
-    private com.tower.msg.Tower.AttackPageLog attackPageLog_;
+    // required .src.AttackLog attackLog = 1;
+    public static final int ATTACKLOG_FIELD_NUMBER = 1;
+    private com.tower.msg.Tower.AttackLog attackLog_;
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     * <code>required .src.AttackLog attackLog = 1;</code>
      *
      * <pre>
-     *记录分页信息 
+     *记录单条信息 
      * </pre>
      */
-    public boolean hasAttackPageLog() {
+    public boolean hasAttackLog() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     * <code>required .src.AttackLog attackLog = 1;</code>
      *
      * <pre>
-     *记录分页信息 
+     *记录单条信息 
      * </pre>
      */
-    public com.tower.msg.Tower.AttackPageLog getAttackPageLog() {
-      return attackPageLog_;
+    public com.tower.msg.Tower.AttackLog getAttackLog() {
+      return attackLog_;
     }
     /**
-     * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+     * <code>required .src.AttackLog attackLog = 1;</code>
      *
      * <pre>
-     *记录分页信息 
+     *记录单条信息 
      * </pre>
      */
-    public com.tower.msg.Tower.AttackPageLogOrBuilder getAttackPageLogOrBuilder() {
-      return attackPageLog_;
+    public com.tower.msg.Tower.AttackLogOrBuilder getAttackLogOrBuilder() {
+      return attackLog_;
     }
 
     // repeated .src.RecommendMonster recommendMonster = 2;
@@ -11035,7 +11864,7 @@ public final class Tower {
     }
 
     private void initFields() {
-      attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+      attackLog_ = com.tower.msg.Tower.AttackLog.getDefaultInstance();
       recommendMonster_ = java.util.Collections.emptyList();
       recommendId_ = java.util.Collections.emptyList();
     }
@@ -11044,11 +11873,11 @@ public final class Tower {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasAttackPageLog()) {
+      if (!hasAttackLog()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!getAttackPageLog().isInitialized()) {
+      if (!getAttackLog().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -11066,7 +11895,7 @@ public final class Tower {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, attackPageLog_);
+        output.writeMessage(1, attackLog_);
       }
       for (int i = 0; i < recommendMonster_.size(); i++) {
         output.writeMessage(2, recommendMonster_.get(i));
@@ -11085,7 +11914,7 @@ public final class Tower {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, attackPageLog_);
+          .computeMessageSize(1, attackLog_);
       }
       for (int i = 0; i < recommendMonster_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -11112,53 +11941,53 @@ public final class Tower {
       return super.writeReplace();
     }
 
-    public static com.tower.msg.Tower.GameOverRes parseFrom(
+    public static com.tower.msg.Tower.GameOverInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.tower.msg.Tower.GameOverRes parseFrom(
+    public static com.tower.msg.Tower.GameOverInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.tower.msg.Tower.GameOverRes parseFrom(byte[] data)
+    public static com.tower.msg.Tower.GameOverInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.tower.msg.Tower.GameOverRes parseFrom(
+    public static com.tower.msg.Tower.GameOverInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.tower.msg.Tower.GameOverRes parseFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.GameOverInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.tower.msg.Tower.GameOverRes parseFrom(
+    public static com.tower.msg.Tower.GameOverInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.tower.msg.Tower.GameOverRes parseDelimitedFrom(java.io.InputStream input)
+    public static com.tower.msg.Tower.GameOverInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.tower.msg.Tower.GameOverRes parseDelimitedFrom(
+    public static com.tower.msg.Tower.GameOverInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.tower.msg.Tower.GameOverRes parseFrom(
+    public static com.tower.msg.Tower.GameOverInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.tower.msg.Tower.GameOverRes parseFrom(
+    public static com.tower.msg.Tower.GameOverInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -11167,7 +11996,7 @@ public final class Tower {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.tower.msg.Tower.GameOverRes prototype) {
+    public static Builder newBuilder(com.tower.msg.Tower.GameOverInfo prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -11179,28 +12008,28 @@ public final class Tower {
       return builder;
     }
     /**
-     * Protobuf type {@code src.GameOverRes}
+     * Protobuf type {@code src.GameOverInfo}
      *
      * <pre>
-     * 游戏结束返回			
+     *游戏结束
      * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.tower.msg.Tower.GameOverResOrBuilder {
+       implements com.tower.msg.Tower.GameOverInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tower.msg.Tower.internal_static_src_GameOverRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_GameOverInfo_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tower.msg.Tower.internal_static_src_GameOverRes_fieldAccessorTable
+        return com.tower.msg.Tower.internal_static_src_GameOverInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.tower.msg.Tower.GameOverRes.class, com.tower.msg.Tower.GameOverRes.Builder.class);
+                com.tower.msg.Tower.GameOverInfo.class, com.tower.msg.Tower.GameOverInfo.Builder.class);
       }
 
-      // Construct using com.tower.msg.Tower.GameOverRes.newBuilder()
+      // Construct using com.tower.msg.Tower.GameOverInfo.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -11212,7 +12041,7 @@ public final class Tower {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getAttackPageLogFieldBuilder();
+          getAttackLogFieldBuilder();
           getRecommendMonsterFieldBuilder();
         }
       }
@@ -11222,10 +12051,10 @@ public final class Tower {
 
       public Builder clear() {
         super.clear();
-        if (attackPageLogBuilder_ == null) {
-          attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+        if (attackLogBuilder_ == null) {
+          attackLog_ = com.tower.msg.Tower.AttackLog.getDefaultInstance();
         } else {
-          attackPageLogBuilder_.clear();
+          attackLogBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         if (recommendMonsterBuilder_ == null) {
@@ -11245,32 +12074,32 @@ public final class Tower {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.tower.msg.Tower.internal_static_src_GameOverRes_descriptor;
+        return com.tower.msg.Tower.internal_static_src_GameOverInfo_descriptor;
       }
 
-      public com.tower.msg.Tower.GameOverRes getDefaultInstanceForType() {
-        return com.tower.msg.Tower.GameOverRes.getDefaultInstance();
+      public com.tower.msg.Tower.GameOverInfo getDefaultInstanceForType() {
+        return com.tower.msg.Tower.GameOverInfo.getDefaultInstance();
       }
 
-      public com.tower.msg.Tower.GameOverRes build() {
-        com.tower.msg.Tower.GameOverRes result = buildPartial();
+      public com.tower.msg.Tower.GameOverInfo build() {
+        com.tower.msg.Tower.GameOverInfo result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.tower.msg.Tower.GameOverRes buildPartial() {
-        com.tower.msg.Tower.GameOverRes result = new com.tower.msg.Tower.GameOverRes(this);
+      public com.tower.msg.Tower.GameOverInfo buildPartial() {
+        com.tower.msg.Tower.GameOverInfo result = new com.tower.msg.Tower.GameOverInfo(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        if (attackPageLogBuilder_ == null) {
-          result.attackPageLog_ = attackPageLog_;
+        if (attackLogBuilder_ == null) {
+          result.attackLog_ = attackLog_;
         } else {
-          result.attackPageLog_ = attackPageLogBuilder_.build();
+          result.attackLog_ = attackLogBuilder_.build();
         }
         if (recommendMonsterBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002)) {
@@ -11292,18 +12121,18 @@ public final class Tower {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.tower.msg.Tower.GameOverRes) {
-          return mergeFrom((com.tower.msg.Tower.GameOverRes)other);
+        if (other instanceof com.tower.msg.Tower.GameOverInfo) {
+          return mergeFrom((com.tower.msg.Tower.GameOverInfo)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.tower.msg.Tower.GameOverRes other) {
-        if (other == com.tower.msg.Tower.GameOverRes.getDefaultInstance()) return this;
-        if (other.hasAttackPageLog()) {
-          mergeAttackPageLog(other.getAttackPageLog());
+      public Builder mergeFrom(com.tower.msg.Tower.GameOverInfo other) {
+        if (other == com.tower.msg.Tower.GameOverInfo.getDefaultInstance()) return this;
+        if (other.hasAttackLog()) {
+          mergeAttackLog(other.getAttackLog());
         }
         if (recommendMonsterBuilder_ == null) {
           if (!other.recommendMonster_.isEmpty()) {
@@ -11346,11 +12175,11 @@ public final class Tower {
       }
 
       public final boolean isInitialized() {
-        if (!hasAttackPageLog()) {
+        if (!hasAttackLog()) {
           
           return false;
         }
-        if (!getAttackPageLog().isInitialized()) {
+        if (!getAttackLog().isInitialized()) {
           
           return false;
         }
@@ -11367,11 +12196,11 @@ public final class Tower {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.tower.msg.Tower.GameOverRes parsedMessage = null;
+        com.tower.msg.Tower.GameOverInfo parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.tower.msg.Tower.GameOverRes) e.getUnfinishedMessage();
+          parsedMessage = (com.tower.msg.Tower.GameOverInfo) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -11382,157 +12211,157 @@ public final class Tower {
       }
       private int bitField0_;
 
-      // required .src.AttackPageLog attackPageLog = 1;
-      private com.tower.msg.Tower.AttackPageLog attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+      // required .src.AttackLog attackLog = 1;
+      private com.tower.msg.Tower.AttackLog attackLog_ = com.tower.msg.Tower.AttackLog.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder> attackPageLogBuilder_;
+          com.tower.msg.Tower.AttackLog, com.tower.msg.Tower.AttackLog.Builder, com.tower.msg.Tower.AttackLogOrBuilder> attackLogBuilder_;
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       * <code>required .src.AttackLog attackLog = 1;</code>
        *
        * <pre>
-       *记录分页信息 
+       *记录单条信息 
        * </pre>
        */
-      public boolean hasAttackPageLog() {
+      public boolean hasAttackLog() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       * <code>required .src.AttackLog attackLog = 1;</code>
        *
        * <pre>
-       *记录分页信息 
+       *记录单条信息 
        * </pre>
        */
-      public com.tower.msg.Tower.AttackPageLog getAttackPageLog() {
-        if (attackPageLogBuilder_ == null) {
-          return attackPageLog_;
+      public com.tower.msg.Tower.AttackLog getAttackLog() {
+        if (attackLogBuilder_ == null) {
+          return attackLog_;
         } else {
-          return attackPageLogBuilder_.getMessage();
+          return attackLogBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       * <code>required .src.AttackLog attackLog = 1;</code>
        *
        * <pre>
-       *记录分页信息 
+       *记录单条信息 
        * </pre>
        */
-      public Builder setAttackPageLog(com.tower.msg.Tower.AttackPageLog value) {
-        if (attackPageLogBuilder_ == null) {
+      public Builder setAttackLog(com.tower.msg.Tower.AttackLog value) {
+        if (attackLogBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          attackPageLog_ = value;
+          attackLog_ = value;
           onChanged();
         } else {
-          attackPageLogBuilder_.setMessage(value);
+          attackLogBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       * <code>required .src.AttackLog attackLog = 1;</code>
        *
        * <pre>
-       *记录分页信息 
+       *记录单条信息 
        * </pre>
        */
-      public Builder setAttackPageLog(
-          com.tower.msg.Tower.AttackPageLog.Builder builderForValue) {
-        if (attackPageLogBuilder_ == null) {
-          attackPageLog_ = builderForValue.build();
+      public Builder setAttackLog(
+          com.tower.msg.Tower.AttackLog.Builder builderForValue) {
+        if (attackLogBuilder_ == null) {
+          attackLog_ = builderForValue.build();
           onChanged();
         } else {
-          attackPageLogBuilder_.setMessage(builderForValue.build());
+          attackLogBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       * <code>required .src.AttackLog attackLog = 1;</code>
        *
        * <pre>
-       *记录分页信息 
+       *记录单条信息 
        * </pre>
        */
-      public Builder mergeAttackPageLog(com.tower.msg.Tower.AttackPageLog value) {
-        if (attackPageLogBuilder_ == null) {
+      public Builder mergeAttackLog(com.tower.msg.Tower.AttackLog value) {
+        if (attackLogBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              attackPageLog_ != com.tower.msg.Tower.AttackPageLog.getDefaultInstance()) {
-            attackPageLog_ =
-              com.tower.msg.Tower.AttackPageLog.newBuilder(attackPageLog_).mergeFrom(value).buildPartial();
+              attackLog_ != com.tower.msg.Tower.AttackLog.getDefaultInstance()) {
+            attackLog_ =
+              com.tower.msg.Tower.AttackLog.newBuilder(attackLog_).mergeFrom(value).buildPartial();
           } else {
-            attackPageLog_ = value;
+            attackLog_ = value;
           }
           onChanged();
         } else {
-          attackPageLogBuilder_.mergeFrom(value);
+          attackLogBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       * <code>required .src.AttackLog attackLog = 1;</code>
        *
        * <pre>
-       *记录分页信息 
+       *记录单条信息 
        * </pre>
        */
-      public Builder clearAttackPageLog() {
-        if (attackPageLogBuilder_ == null) {
-          attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+      public Builder clearAttackLog() {
+        if (attackLogBuilder_ == null) {
+          attackLog_ = com.tower.msg.Tower.AttackLog.getDefaultInstance();
           onChanged();
         } else {
-          attackPageLogBuilder_.clear();
+          attackLogBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       * <code>required .src.AttackLog attackLog = 1;</code>
        *
        * <pre>
-       *记录分页信息 
+       *记录单条信息 
        * </pre>
        */
-      public com.tower.msg.Tower.AttackPageLog.Builder getAttackPageLogBuilder() {
+      public com.tower.msg.Tower.AttackLog.Builder getAttackLogBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
-        return getAttackPageLogFieldBuilder().getBuilder();
+        return getAttackLogFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       * <code>required .src.AttackLog attackLog = 1;</code>
        *
        * <pre>
-       *记录分页信息 
+       *记录单条信息 
        * </pre>
        */
-      public com.tower.msg.Tower.AttackPageLogOrBuilder getAttackPageLogOrBuilder() {
-        if (attackPageLogBuilder_ != null) {
-          return attackPageLogBuilder_.getMessageOrBuilder();
+      public com.tower.msg.Tower.AttackLogOrBuilder getAttackLogOrBuilder() {
+        if (attackLogBuilder_ != null) {
+          return attackLogBuilder_.getMessageOrBuilder();
         } else {
-          return attackPageLog_;
+          return attackLog_;
         }
       }
       /**
-       * <code>required .src.AttackPageLog attackPageLog = 1;</code>
+       * <code>required .src.AttackLog attackLog = 1;</code>
        *
        * <pre>
-       *记录分页信息 
+       *记录单条信息 
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder> 
-          getAttackPageLogFieldBuilder() {
-        if (attackPageLogBuilder_ == null) {
-          attackPageLogBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder>(
-                  attackPageLog_,
+          com.tower.msg.Tower.AttackLog, com.tower.msg.Tower.AttackLog.Builder, com.tower.msg.Tower.AttackLogOrBuilder> 
+          getAttackLogFieldBuilder() {
+        if (attackLogBuilder_ == null) {
+          attackLogBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.tower.msg.Tower.AttackLog, com.tower.msg.Tower.AttackLog.Builder, com.tower.msg.Tower.AttackLogOrBuilder>(
+                  attackLog_,
                   getParentForChildren(),
                   isClean());
-          attackPageLog_ = null;
+          attackLog_ = null;
         }
-        return attackPageLogBuilder_;
+        return attackLogBuilder_;
       }
 
       // repeated .src.RecommendMonster recommendMonster = 2;
@@ -11941,15 +12770,15 @@ public final class Tower {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:src.GameOverRes)
+      // @@protoc_insertion_point(builder_scope:src.GameOverInfo)
     }
 
     static {
-      defaultInstance = new GameOverRes(true);
+      defaultInstance = new GameOverInfo(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:src.GameOverRes)
+    // @@protoc_insertion_point(class_scope:src.GameOverInfo)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
@@ -12013,10 +12842,15 @@ public final class Tower {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_src_RecommendMonster_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_src_GameOverRes_descriptor;
+    internal_static_src_GameRes_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_src_GameOverRes_fieldAccessorTable;
+      internal_static_src_GameRes_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_GameOverInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_GameOverInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12050,11 +12884,13 @@ public final class Tower {
       "\002(\005\022\014\n\004size\030\003 \002(\005\"/\n\tAttackLog\022\017\n\007orderI" +
       "d\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\"H\n\020RecommendM" +
       "onster\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005rates\030\002 \002(\005" +
-      "\022\022\n\ncontinuous\030\003 \002(\005\"~\n\013GameOverRes\022)\n\ra" +
-      "ttackPageLog\030\001 \002(\0132\022.src.AttackPageLog\022/" +
-      "\n\020recommendMonster\030\002 \003(\0132\025.src.Recommend" +
-      "Monster\022\023\n\013recommendId\030\003 \003(\005B\017\n\rcom.towe" +
-      "r.msg"
+      "\022\022\n\ncontinuous\030\003 \002(\005\"R\n\007GameRes\022\013\n\003cmd\030\001" +
+      " \002(\005\022\021\n\tcountdown\030\002 \002(\005\022\'\n\014gameOverInfo\030" +
+      "\003 \001(\0132\021.src.GameOverInfo\"w\n\014GameOverInfo" +
+      "\022!\n\tattackLog\030\001 \002(\0132\016.src.AttackLog\022/\n\020r" +
+      "ecommendMonster\030\002 \003(\0132\025.src.RecommendMon" +
+      "ster\022\023\n\013recommendId\030\003 \003(\005B\017\n\rcom.tower.m",
+      "sg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12133,12 +12969,18 @@ public final class Tower {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_RecommendMonster_descriptor,
               new java.lang.String[] { "MonsterId", "Rates", "Continuous", });
-          internal_static_src_GameOverRes_descriptor =
+          internal_static_src_GameRes_descriptor =
             getDescriptor().getMessageTypes().get(12);
-          internal_static_src_GameOverRes_fieldAccessorTable = new
+          internal_static_src_GameRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_src_GameOverRes_descriptor,
-              new java.lang.String[] { "AttackPageLog", "RecommendMonster", "RecommendId", });
+              internal_static_src_GameRes_descriptor,
+              new java.lang.String[] { "Cmd", "Countdown", "GameOverInfo", });
+          internal_static_src_GameOverInfo_descriptor =
+            getDescriptor().getMessageTypes().get(13);
+          internal_static_src_GameOverInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_GameOverInfo_descriptor,
+              new java.lang.String[] { "AttackLog", "RecommendMonster", "RecommendId", });
           return null;
         }
       };

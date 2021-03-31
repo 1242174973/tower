@@ -99,27 +99,9 @@ public class RoomHandler extends AbsLogicHandler<Tower.RoomReq> implements Mid, 
         Tower.RoomRes.Builder roomRes = Tower.RoomRes.newBuilder();
         roomRes.addAllMonsterInfo(getMonsterInfoList());
         roomRes.setAttackPageLog(getAttackLogPageList());
-        roomRes.addAllRecommendMonster(getRecommendMonster());
+        roomRes.addAllRecommendMonster(towerGame.getRecommendMonster());
         roomRes.addAllRecommendId(towerGame.getRecommendIds());
         return roomRes;
-    }
-
-    /**
-     * 获得推荐信息
-     *
-     * @return 返回给客户端的记录信息
-     */
-    private List<Tower.RecommendMonster> getRecommendMonster() {
-        List<MonsterInfo> monsterInfoList = towerGame.getMonsterInfoList();
-        List<Tower.RecommendMonster> infoList = new ArrayList<>();
-        for (MonsterInfo monsterInfo : monsterInfoList) {
-            Tower.RecommendMonster.Builder recommendMonster = Tower.RecommendMonster.newBuilder();
-            recommendMonster.setMonsterId(monsterInfo.getId());
-            recommendMonster.setContinuous(monsterInfo.getContinuous());
-            recommendMonster.setRates(monsterInfo.getCurrRates());
-            infoList.add(recommendMonster.build());
-        }
-        return infoList;
     }
 
     /**
