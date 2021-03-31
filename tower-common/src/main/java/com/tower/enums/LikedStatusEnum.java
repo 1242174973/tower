@@ -6,6 +6,7 @@ package com.tower.enums;
  * @Version 1.0
  */
 public enum LikedStatusEnum {
+    //ss
     LIKE(1, "点赞"),
     UNLIKE(0, "取消点赞/未点赞");
 

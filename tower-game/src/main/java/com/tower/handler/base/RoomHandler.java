@@ -6,6 +6,7 @@ import com.tower.core.constant.Mid;
 import com.tower.core.game.TowerGame;
 import com.tower.core.pipline.MsgBossHandler;
 import com.tower.core.utils.MsgUtil;
+import com.tower.entity.AttackLog;
 import com.tower.entity.Monster;
 import com.tower.enums.RoomCmd;
 import com.tower.game.MonsterInfo;
@@ -97,7 +98,7 @@ public class RoomHandler extends AbsLogicHandler<Tower.RoomReq> implements Mid, 
     private Tower.RoomRes.Builder getRoomRes() {
         Tower.RoomRes.Builder roomRes = Tower.RoomRes.newBuilder();
         roomRes.addAllMonsterInfo(getMonsterInfoList());
-        roomRes.addAllAttackLog(getAttackLogList());
+        roomRes.setAttackPageLog(getAttackLogPageList());
         roomRes.addAllRecommendMonster(getRecommendMonster());
         roomRes.addAllRecommendId(towerGame.getRecommendIds());
         return roomRes;
@@ -126,8 +127,25 @@ public class RoomHandler extends AbsLogicHandler<Tower.RoomReq> implements Mid, 
      *
      * @return 返回给客户端的记录信息
      */
-    private List<Tower.AttackLog> getAttackLogList() {
-        return null;
+    private Tower.AttackPageLog getAttackLogPageList() {
+        //查询最近的100条记录
+        int page = towerGame.getAttackLogList().size();
+        int size = 100;
+        page /= size;
+        page += 1;
+        List<AttackLog> attackLogs = towerGame.getPageAttackLog(page, size);
+        List<Tower.AttackLog> logList = new ArrayList<>();
+        for (AttackLog attackLog : attackLogs) {
+            Tower.AttackLog.Builder log = Tower.AttackLog.newBuilder();
+            log.setMonsterId(attackLog.getMonsterId());
+            log.setOrderId(attackLog.getOrderId());
+            logList.add(log.build());
+        }
+        Tower.AttackPageLog.Builder pageLog = Tower.AttackPageLog.newBuilder();
+        pageLog.setPage(page);
+        pageLog.setSize(size);
+        pageLog.addAllAttackLog(logList);
+        return pageLog.build();
     }
 
     /**

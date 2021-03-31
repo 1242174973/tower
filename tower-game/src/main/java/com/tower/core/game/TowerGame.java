@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 /**
  * @author 梦-屿-千-寻
@@ -197,5 +198,16 @@ public class TowerGame {
         }
         log.info("完成出怪");
         setAward(true);
+    }
+
+    public List<AttackLog> getPageAttackLog(int page, int size) {
+        page -= 1;
+        int start = page * size;
+        int end = (page + 1) * size;
+        return attackLogList.stream().filter(attackLog -> {
+            String replace = attackLog.getOrderId().replace(DateUtils.getYearAndMonthAndDay(), "");
+            int num = Integer.parseInt(replace);
+            return num >= start && num < end;
+        }).collect(Collectors.toList());
     }
 }
