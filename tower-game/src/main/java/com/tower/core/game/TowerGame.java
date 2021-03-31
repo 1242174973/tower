@@ -23,6 +23,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -169,6 +170,7 @@ public class TowerGame {
     public void gameStart() {
         log.info("30秒后即将出怪");
         int countdown = 30000;
+        currStartTime = System.currentTimeMillis();
         executeHashedWheelTimer.newTimeout(this::upcomingAward, countdown, TimeUnit.MILLISECONDS);
         attackLog = new AttackLog();
         attackLog.setCreateTime(LocalDateTime.now()).setVer(getVer()).setOrderId(DateUtils.getYearAndMonthAndDay() + getIndex());
@@ -189,6 +191,14 @@ public class TowerGame {
         });
     }
 
+    private void sendToId(Tower.GameRes.Builder gameRes, int userId) {
+        Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
+        msgCtn.setDatas(gameRes.build().toByteString());
+        msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
+        msgCtn.setType(Mid.MID_GAME_RES);
+        MsgUtil.sendMsg(MsgBossHandler.getPlayerIdChannel(userId), msgCtn.build());
+    }
+
     private String getIndex() {
         StringBuilder stringBuilder = new StringBuilder();
         int currNum = ++num;
@@ -202,8 +212,7 @@ public class TowerGame {
 
     public void insertAttackLog() {
         attackLog.setAttackTime(LocalDateTime.now()).setMonsterId(getMonsterId());
-        attackLogService.save(attackLog);
-        attackLog = null;
+        attackLogService.saveOrUpdate(attackLog);
     }
 
     /**
@@ -227,7 +236,6 @@ public class TowerGame {
             log.error("开奖失败，放弃此次开奖，交由后台开奖");
             attackLog.setAttackTime(LocalDateTime.now());
             attackLogService.save(attackLog);
-            attackLog = null;
             return;
         }
         int countdown = 10000;
@@ -256,13 +264,14 @@ public class TowerGame {
         gameRes.setCmd(GameCmd.AWARD.getCode()).setCountdown(countdown);
         Tower.GameOverInfo.Builder gameOverInfo = Tower.GameOverInfo.newBuilder();
         Tower.AttackLog.Builder attackLog = Tower.AttackLog.newBuilder();
-        attackLog.setOrderId(attackLog.getOrderId());
-        attackLog.setMonsterId(attackLog.getMonsterId());
+        attackLog.setOrderId(this.attackLog.getOrderId());
+        attackLog.setMonsterId(this.attackLog.getMonsterId());
         gameOverInfo.setAttackLog(attackLog);
         gameOverInfo.addAllRecommendId(getRecommendIds());
         gameOverInfo.addAllRecommendMonster(getRecommendMonster());
         gameRes.setGameOverInfo(gameOverInfo);
         sendToAll(gameRes);
+        attackLogList.add(0, this.attackLog);
     }
 
     public List<AttackLog> getPageAttackLog(int page, int size) {
@@ -295,4 +304,99 @@ public class TowerGame {
         return infoList;
     }
 
+    /**
+     * 获得记录信息
+     *
+     * @return 返回给客户端的记录信息
+     */
+    public Tower.AttackPageLog getAttackLogPageList(int page, int size) {
+        List<AttackLog> attackLogs = getPageAttackLog(page, size);
+        List<Tower.AttackLog> logList = new ArrayList<>();
+        for (AttackLog attackLog : attackLogs) {
+            Tower.AttackLog.Builder log = Tower.AttackLog.newBuilder();
+            log.setMonsterId(attackLog.getMonsterId());
+            log.setOrderId(attackLog.getOrderId());
+            logList.add(log.build());
+        }
+        Tower.AttackPageLog.Builder pageLog = Tower.AttackPageLog.newBuilder();
+        pageLog.setPage(page);
+        pageLog.setSize(size);
+        pageLog.addAllAttackLog(logList);
+        return pageLog.build();
+    }
+
+    /**
+     * 获得记录信息
+     *
+     * @return 返回给客户端的记录信息
+     */
+    public List<Tower.DetailedAttackLog> getDetailedAttackLogList() {
+        List<AttackLog> attackLogs = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            attackLogs.add(attackLogList.get(i));
+        }
+        List<Tower.DetailedAttackLog> list = new ArrayList<>();
+        attackLogs.forEach(attackLog -> {
+            MonsterInfo monsterInfo = getMonsterInfoById(attackLog.getMonsterId());
+            Tower.DetailedAttackLog.Builder builder = Tower.DetailedAttackLog.newBuilder();
+            builder.setAttackTime(attackLog.getAttackTime().toInstant(ZoneOffset.of("+8")).toEpochMilli());
+            builder.setMonsterId(attackLog.getMonsterId());
+            builder.setOrderId(attackLog.getOrderId());
+            builder.setMonsterName(monsterInfo.getMonsterName());
+            builder.setTurretName(monsterInfo.getTurretName());
+            list.add(builder.build());
+        });
+        return list;
+    }
+
+    /**
+     * 根据怪物id获得怪物信息
+     *
+     * @param monsterId 怪物id
+     * @return 怪物信息
+     */
+    private MonsterInfo getMonsterInfoById(int monsterId) {
+        for (MonsterInfo monsterInfo : monsterInfoList) {
+            if (monsterInfo.getId().equals(monsterId)) {
+                return monsterInfo;
+            }
+        }
+        return new MonsterInfo();
+    }
+
+    /**
+     * 发送当前状态id
+     *
+     * @param userId 玩家id
+     */
+    public void sendStatus(int userId) {
+        if (currStartTime <= 0) {
+            return;
+        }
+        long time = System.currentTimeMillis() - currStartTime;
+        if (time < 30000) {
+            //开始时间
+            Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
+            gameRes.setCmd(GameCmd.GAME_START.getCode()).setCountdown((int) (30000 - time));
+            sendToId(gameRes, userId);
+        } else if (time < 36000) {
+            //怪物即将到来
+            Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
+            gameRes.setCmd(GameCmd.UPCOMING_AWARD.getCode()).setCountdown((int) (36000 - time));
+            sendToId(gameRes, userId);
+        } else {
+            //怪物已经进攻
+            Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
+            gameRes.setCmd(GameCmd.AWARD.getCode()).setCountdown((int) (50000 - time));
+            Tower.GameOverInfo.Builder gameOverInfo = Tower.GameOverInfo.newBuilder();
+            Tower.AttackLog.Builder attackLog = Tower.AttackLog.newBuilder();
+            attackLog.setOrderId(this.attackLog.getOrderId());
+            attackLog.setMonsterId(this.attackLog.getMonsterId());
+            gameOverInfo.setAttackLog(attackLog);
+            gameOverInfo.addAllRecommendId(getRecommendIds());
+            gameOverInfo.addAllRecommendMonster(getRecommendMonster());
+            gameRes.setGameOverInfo(gameOverInfo);
+            sendToId(gameRes, userId);
+        }
+    }
 }

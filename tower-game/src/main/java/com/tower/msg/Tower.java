@@ -10735,7 +10735,7 @@ public final class Tower {
    * Protobuf type {@code src.GameRes}
    *
    * <pre>
-   * 游戏结束返回			
+   * 游戏信息返回			
    * </pre>
    */
   public static final class GameRes extends
@@ -11074,7 +11074,7 @@ public final class Tower {
      * Protobuf type {@code src.GameRes}
      *
      * <pre>
-     * 游戏结束返回			
+     * 游戏信息返回			
      * </pre>
      */
     public static final class Builder extends
@@ -12781,6 +12781,3071 @@ public final class Tower {
     // @@protoc_insertion_point(class_scope:src.GameOverInfo)
   }
 
+  public interface RecordReqOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 cmd = 1;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    boolean hasCmd();
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    int getCmd();
+
+    // optional int32 page = 2;
+    /**
+     * <code>optional int32 page = 2;</code>
+     *
+     * <pre>
+     *页数
+     * </pre>
+     */
+    boolean hasPage();
+    /**
+     * <code>optional int32 page = 2;</code>
+     *
+     * <pre>
+     *页数
+     * </pre>
+     */
+    int getPage();
+
+    // optional int32 size = 3;
+    /**
+     * <code>optional int32 size = 3;</code>
+     *
+     * <pre>
+     *每页多少条
+     * </pre>
+     */
+    boolean hasSize();
+    /**
+     * <code>optional int32 size = 3;</code>
+     *
+     * <pre>
+     *每页多少条
+     * </pre>
+     */
+    int getSize();
+  }
+  /**
+   * Protobuf type {@code src.RecordReq}
+   *
+   * <pre>
+   *记录请求
+   * </pre>
+   */
+  public static final class RecordReq extends
+      com.google.protobuf.GeneratedMessage
+      implements RecordReqOrBuilder {
+    // Use RecordReq.newBuilder() to construct.
+    private RecordReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RecordReq(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RecordReq defaultInstance;
+    public static RecordReq getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RecordReq getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RecordReq(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              cmd_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              page_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              size_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.tower.msg.Tower.internal_static_src_RecordReq_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.tower.msg.Tower.internal_static_src_RecordReq_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.tower.msg.Tower.RecordReq.class, com.tower.msg.Tower.RecordReq.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RecordReq> PARSER =
+        new com.google.protobuf.AbstractParser<RecordReq>() {
+      public RecordReq parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RecordReq(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RecordReq> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 cmd = 1;
+    public static final int CMD_FIELD_NUMBER = 1;
+    private int cmd_;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    public boolean hasCmd() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    public int getCmd() {
+      return cmd_;
+    }
+
+    // optional int32 page = 2;
+    public static final int PAGE_FIELD_NUMBER = 2;
+    private int page_;
+    /**
+     * <code>optional int32 page = 2;</code>
+     *
+     * <pre>
+     *页数
+     * </pre>
+     */
+    public boolean hasPage() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 page = 2;</code>
+     *
+     * <pre>
+     *页数
+     * </pre>
+     */
+    public int getPage() {
+      return page_;
+    }
+
+    // optional int32 size = 3;
+    public static final int SIZE_FIELD_NUMBER = 3;
+    private int size_;
+    /**
+     * <code>optional int32 size = 3;</code>
+     *
+     * <pre>
+     *每页多少条
+     * </pre>
+     */
+    public boolean hasSize() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 size = 3;</code>
+     *
+     * <pre>
+     *每页多少条
+     * </pre>
+     */
+    public int getSize() {
+      return size_;
+    }
+
+    private void initFields() {
+      cmd_ = 0;
+      page_ = 0;
+      size_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasCmd()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, page_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, size_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, page_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, size_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.tower.msg.Tower.RecordReq parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.RecordReq parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.RecordReq parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.RecordReq parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.RecordReq parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.RecordReq parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.RecordReq parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.tower.msg.Tower.RecordReq parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.RecordReq parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.RecordReq parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.tower.msg.Tower.RecordReq prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.RecordReq}
+     *
+     * <pre>
+     *记录请求
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.tower.msg.Tower.RecordReqOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tower.msg.Tower.internal_static_src_RecordReq_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tower.msg.Tower.internal_static_src_RecordReq_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tower.msg.Tower.RecordReq.class, com.tower.msg.Tower.RecordReq.Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.RecordReq.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        cmd_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        page_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        size_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.tower.msg.Tower.internal_static_src_RecordReq_descriptor;
+      }
+
+      public com.tower.msg.Tower.RecordReq getDefaultInstanceForType() {
+        return com.tower.msg.Tower.RecordReq.getDefaultInstance();
+      }
+
+      public com.tower.msg.Tower.RecordReq build() {
+        com.tower.msg.Tower.RecordReq result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.tower.msg.Tower.RecordReq buildPartial() {
+        com.tower.msg.Tower.RecordReq result = new com.tower.msg.Tower.RecordReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.cmd_ = cmd_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.page_ = page_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.size_ = size_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.tower.msg.Tower.RecordReq) {
+          return mergeFrom((com.tower.msg.Tower.RecordReq)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.tower.msg.Tower.RecordReq other) {
+        if (other == com.tower.msg.Tower.RecordReq.getDefaultInstance()) return this;
+        if (other.hasCmd()) {
+          setCmd(other.getCmd());
+        }
+        if (other.hasPage()) {
+          setPage(other.getPage());
+        }
+        if (other.hasSize()) {
+          setSize(other.getSize());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCmd()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.tower.msg.Tower.RecordReq parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.tower.msg.Tower.RecordReq) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 cmd = 1;
+      private int cmd_ ;
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public boolean hasCmd() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public int getCmd() {
+        return cmd_;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public Builder setCmd(int value) {
+        bitField0_ |= 0x00000001;
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public Builder clearCmd() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cmd_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 page = 2;
+      private int page_ ;
+      /**
+       * <code>optional int32 page = 2;</code>
+       *
+       * <pre>
+       *页数
+       * </pre>
+       */
+      public boolean hasPage() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 page = 2;</code>
+       *
+       * <pre>
+       *页数
+       * </pre>
+       */
+      public int getPage() {
+        return page_;
+      }
+      /**
+       * <code>optional int32 page = 2;</code>
+       *
+       * <pre>
+       *页数
+       * </pre>
+       */
+      public Builder setPage(int value) {
+        bitField0_ |= 0x00000002;
+        page_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 page = 2;</code>
+       *
+       * <pre>
+       *页数
+       * </pre>
+       */
+      public Builder clearPage() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        page_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 size = 3;
+      private int size_ ;
+      /**
+       * <code>optional int32 size = 3;</code>
+       *
+       * <pre>
+       *每页多少条
+       * </pre>
+       */
+      public boolean hasSize() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 size = 3;</code>
+       *
+       * <pre>
+       *每页多少条
+       * </pre>
+       */
+      public int getSize() {
+        return size_;
+      }
+      /**
+       * <code>optional int32 size = 3;</code>
+       *
+       * <pre>
+       *每页多少条
+       * </pre>
+       */
+      public Builder setSize(int value) {
+        bitField0_ |= 0x00000004;
+        size_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 size = 3;</code>
+       *
+       * <pre>
+       *每页多少条
+       * </pre>
+       */
+      public Builder clearSize() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        size_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.RecordReq)
+    }
+
+    static {
+      defaultInstance = new RecordReq(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.RecordReq)
+  }
+
+  public interface RecordResOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int32 cmd = 1;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    boolean hasCmd();
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    int getCmd();
+
+    // optional .src.AttackPageLog attackPageLog = 2;
+    /**
+     * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+     *
+     * <pre>
+     *粗略怪物进攻记录
+     * </pre>
+     */
+    boolean hasAttackPageLog();
+    /**
+     * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+     *
+     * <pre>
+     *粗略怪物进攻记录
+     * </pre>
+     */
+    com.tower.msg.Tower.AttackPageLog getAttackPageLog();
+    /**
+     * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+     *
+     * <pre>
+     *粗略怪物进攻记录
+     * </pre>
+     */
+    com.tower.msg.Tower.AttackPageLogOrBuilder getAttackPageLogOrBuilder();
+
+    // repeated .src.DetailedAttackLog detailedAttackLog = 3;
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    java.util.List<com.tower.msg.Tower.DetailedAttackLog> 
+        getDetailedAttackLogList();
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    com.tower.msg.Tower.DetailedAttackLog getDetailedAttackLog(int index);
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    int getDetailedAttackLogCount();
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    java.util.List<? extends com.tower.msg.Tower.DetailedAttackLogOrBuilder> 
+        getDetailedAttackLogOrBuilderList();
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    com.tower.msg.Tower.DetailedAttackLogOrBuilder getDetailedAttackLogOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code src.RecordRes}
+   *
+   * <pre>
+   *记录请求返回
+   * </pre>
+   */
+  public static final class RecordRes extends
+      com.google.protobuf.GeneratedMessage
+      implements RecordResOrBuilder {
+    // Use RecordRes.newBuilder() to construct.
+    private RecordRes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RecordRes(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RecordRes defaultInstance;
+    public static RecordRes getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RecordRes getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RecordRes(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              cmd_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              com.tower.msg.Tower.AttackPageLog.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = attackPageLog_.toBuilder();
+              }
+              attackPageLog_ = input.readMessage(com.tower.msg.Tower.AttackPageLog.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(attackPageLog_);
+                attackPageLog_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                detailedAttackLog_ = new java.util.ArrayList<com.tower.msg.Tower.DetailedAttackLog>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              detailedAttackLog_.add(input.readMessage(com.tower.msg.Tower.DetailedAttackLog.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          detailedAttackLog_ = java.util.Collections.unmodifiableList(detailedAttackLog_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.tower.msg.Tower.internal_static_src_RecordRes_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.tower.msg.Tower.internal_static_src_RecordRes_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.tower.msg.Tower.RecordRes.class, com.tower.msg.Tower.RecordRes.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RecordRes> PARSER =
+        new com.google.protobuf.AbstractParser<RecordRes>() {
+      public RecordRes parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RecordRes(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RecordRes> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 cmd = 1;
+    public static final int CMD_FIELD_NUMBER = 1;
+    private int cmd_;
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    public boolean hasCmd() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 cmd = 1;</code>
+     *
+     * <pre>
+     *cmdCode
+     * </pre>
+     */
+    public int getCmd() {
+      return cmd_;
+    }
+
+    // optional .src.AttackPageLog attackPageLog = 2;
+    public static final int ATTACKPAGELOG_FIELD_NUMBER = 2;
+    private com.tower.msg.Tower.AttackPageLog attackPageLog_;
+    /**
+     * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+     *
+     * <pre>
+     *粗略怪物进攻记录
+     * </pre>
+     */
+    public boolean hasAttackPageLog() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+     *
+     * <pre>
+     *粗略怪物进攻记录
+     * </pre>
+     */
+    public com.tower.msg.Tower.AttackPageLog getAttackPageLog() {
+      return attackPageLog_;
+    }
+    /**
+     * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+     *
+     * <pre>
+     *粗略怪物进攻记录
+     * </pre>
+     */
+    public com.tower.msg.Tower.AttackPageLogOrBuilder getAttackPageLogOrBuilder() {
+      return attackPageLog_;
+    }
+
+    // repeated .src.DetailedAttackLog detailedAttackLog = 3;
+    public static final int DETAILEDATTACKLOG_FIELD_NUMBER = 3;
+    private java.util.List<com.tower.msg.Tower.DetailedAttackLog> detailedAttackLog_;
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    public java.util.List<com.tower.msg.Tower.DetailedAttackLog> getDetailedAttackLogList() {
+      return detailedAttackLog_;
+    }
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    public java.util.List<? extends com.tower.msg.Tower.DetailedAttackLogOrBuilder> 
+        getDetailedAttackLogOrBuilderList() {
+      return detailedAttackLog_;
+    }
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    public int getDetailedAttackLogCount() {
+      return detailedAttackLog_.size();
+    }
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    public com.tower.msg.Tower.DetailedAttackLog getDetailedAttackLog(int index) {
+      return detailedAttackLog_.get(index);
+    }
+    /**
+     * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+     *
+     * <pre>
+     *详细怪物进攻记录
+     * </pre>
+     */
+    public com.tower.msg.Tower.DetailedAttackLogOrBuilder getDetailedAttackLogOrBuilder(
+        int index) {
+      return detailedAttackLog_.get(index);
+    }
+
+    private void initFields() {
+      cmd_ = 0;
+      attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+      detailedAttackLog_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasCmd()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasAttackPageLog()) {
+        if (!getAttackPageLog().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getDetailedAttackLogCount(); i++) {
+        if (!getDetailedAttackLog(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, attackPageLog_);
+      }
+      for (int i = 0; i < detailedAttackLog_.size(); i++) {
+        output.writeMessage(3, detailedAttackLog_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, cmd_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, attackPageLog_);
+      }
+      for (int i = 0; i < detailedAttackLog_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, detailedAttackLog_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.tower.msg.Tower.RecordRes parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.RecordRes parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.RecordRes parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.RecordRes parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.RecordRes parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.RecordRes parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.RecordRes parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.tower.msg.Tower.RecordRes parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.RecordRes parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.RecordRes parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.tower.msg.Tower.RecordRes prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.RecordRes}
+     *
+     * <pre>
+     *记录请求返回
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.tower.msg.Tower.RecordResOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tower.msg.Tower.internal_static_src_RecordRes_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tower.msg.Tower.internal_static_src_RecordRes_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tower.msg.Tower.RecordRes.class, com.tower.msg.Tower.RecordRes.Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.RecordRes.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getAttackPageLogFieldBuilder();
+          getDetailedAttackLogFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        cmd_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (attackPageLogBuilder_ == null) {
+          attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+        } else {
+          attackPageLogBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (detailedAttackLogBuilder_ == null) {
+          detailedAttackLog_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          detailedAttackLogBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.tower.msg.Tower.internal_static_src_RecordRes_descriptor;
+      }
+
+      public com.tower.msg.Tower.RecordRes getDefaultInstanceForType() {
+        return com.tower.msg.Tower.RecordRes.getDefaultInstance();
+      }
+
+      public com.tower.msg.Tower.RecordRes build() {
+        com.tower.msg.Tower.RecordRes result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.tower.msg.Tower.RecordRes buildPartial() {
+        com.tower.msg.Tower.RecordRes result = new com.tower.msg.Tower.RecordRes(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.cmd_ = cmd_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (attackPageLogBuilder_ == null) {
+          result.attackPageLog_ = attackPageLog_;
+        } else {
+          result.attackPageLog_ = attackPageLogBuilder_.build();
+        }
+        if (detailedAttackLogBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            detailedAttackLog_ = java.util.Collections.unmodifiableList(detailedAttackLog_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.detailedAttackLog_ = detailedAttackLog_;
+        } else {
+          result.detailedAttackLog_ = detailedAttackLogBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.tower.msg.Tower.RecordRes) {
+          return mergeFrom((com.tower.msg.Tower.RecordRes)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.tower.msg.Tower.RecordRes other) {
+        if (other == com.tower.msg.Tower.RecordRes.getDefaultInstance()) return this;
+        if (other.hasCmd()) {
+          setCmd(other.getCmd());
+        }
+        if (other.hasAttackPageLog()) {
+          mergeAttackPageLog(other.getAttackPageLog());
+        }
+        if (detailedAttackLogBuilder_ == null) {
+          if (!other.detailedAttackLog_.isEmpty()) {
+            if (detailedAttackLog_.isEmpty()) {
+              detailedAttackLog_ = other.detailedAttackLog_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureDetailedAttackLogIsMutable();
+              detailedAttackLog_.addAll(other.detailedAttackLog_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.detailedAttackLog_.isEmpty()) {
+            if (detailedAttackLogBuilder_.isEmpty()) {
+              detailedAttackLogBuilder_.dispose();
+              detailedAttackLogBuilder_ = null;
+              detailedAttackLog_ = other.detailedAttackLog_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              detailedAttackLogBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDetailedAttackLogFieldBuilder() : null;
+            } else {
+              detailedAttackLogBuilder_.addAllMessages(other.detailedAttackLog_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCmd()) {
+          
+          return false;
+        }
+        if (hasAttackPageLog()) {
+          if (!getAttackPageLog().isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getDetailedAttackLogCount(); i++) {
+          if (!getDetailedAttackLog(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.tower.msg.Tower.RecordRes parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.tower.msg.Tower.RecordRes) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int32 cmd = 1;
+      private int cmd_ ;
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public boolean hasCmd() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public int getCmd() {
+        return cmd_;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public Builder setCmd(int value) {
+        bitField0_ |= 0x00000001;
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 cmd = 1;</code>
+       *
+       * <pre>
+       *cmdCode
+       * </pre>
+       */
+      public Builder clearCmd() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cmd_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional .src.AttackPageLog attackPageLog = 2;
+      private com.tower.msg.Tower.AttackPageLog attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder> attackPageLogBuilder_;
+      /**
+       * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+       *
+       * <pre>
+       *粗略怪物进攻记录
+       * </pre>
+       */
+      public boolean hasAttackPageLog() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+       *
+       * <pre>
+       *粗略怪物进攻记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.AttackPageLog getAttackPageLog() {
+        if (attackPageLogBuilder_ == null) {
+          return attackPageLog_;
+        } else {
+          return attackPageLogBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+       *
+       * <pre>
+       *粗略怪物进攻记录
+       * </pre>
+       */
+      public Builder setAttackPageLog(com.tower.msg.Tower.AttackPageLog value) {
+        if (attackPageLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          attackPageLog_ = value;
+          onChanged();
+        } else {
+          attackPageLogBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+       *
+       * <pre>
+       *粗略怪物进攻记录
+       * </pre>
+       */
+      public Builder setAttackPageLog(
+          com.tower.msg.Tower.AttackPageLog.Builder builderForValue) {
+        if (attackPageLogBuilder_ == null) {
+          attackPageLog_ = builderForValue.build();
+          onChanged();
+        } else {
+          attackPageLogBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+       *
+       * <pre>
+       *粗略怪物进攻记录
+       * </pre>
+       */
+      public Builder mergeAttackPageLog(com.tower.msg.Tower.AttackPageLog value) {
+        if (attackPageLogBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              attackPageLog_ != com.tower.msg.Tower.AttackPageLog.getDefaultInstance()) {
+            attackPageLog_ =
+              com.tower.msg.Tower.AttackPageLog.newBuilder(attackPageLog_).mergeFrom(value).buildPartial();
+          } else {
+            attackPageLog_ = value;
+          }
+          onChanged();
+        } else {
+          attackPageLogBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+       *
+       * <pre>
+       *粗略怪物进攻记录
+       * </pre>
+       */
+      public Builder clearAttackPageLog() {
+        if (attackPageLogBuilder_ == null) {
+          attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
+          onChanged();
+        } else {
+          attackPageLogBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+       *
+       * <pre>
+       *粗略怪物进攻记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.AttackPageLog.Builder getAttackPageLogBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getAttackPageLogFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+       *
+       * <pre>
+       *粗略怪物进攻记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.AttackPageLogOrBuilder getAttackPageLogOrBuilder() {
+        if (attackPageLogBuilder_ != null) {
+          return attackPageLogBuilder_.getMessageOrBuilder();
+        } else {
+          return attackPageLog_;
+        }
+      }
+      /**
+       * <code>optional .src.AttackPageLog attackPageLog = 2;</code>
+       *
+       * <pre>
+       *粗略怪物进攻记录
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder> 
+          getAttackPageLogFieldBuilder() {
+        if (attackPageLogBuilder_ == null) {
+          attackPageLogBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.tower.msg.Tower.AttackPageLog, com.tower.msg.Tower.AttackPageLog.Builder, com.tower.msg.Tower.AttackPageLogOrBuilder>(
+                  attackPageLog_,
+                  getParentForChildren(),
+                  isClean());
+          attackPageLog_ = null;
+        }
+        return attackPageLogBuilder_;
+      }
+
+      // repeated .src.DetailedAttackLog detailedAttackLog = 3;
+      private java.util.List<com.tower.msg.Tower.DetailedAttackLog> detailedAttackLog_ =
+        java.util.Collections.emptyList();
+      private void ensureDetailedAttackLogIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          detailedAttackLog_ = new java.util.ArrayList<com.tower.msg.Tower.DetailedAttackLog>(detailedAttackLog_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tower.msg.Tower.DetailedAttackLog, com.tower.msg.Tower.DetailedAttackLog.Builder, com.tower.msg.Tower.DetailedAttackLogOrBuilder> detailedAttackLogBuilder_;
+
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public java.util.List<com.tower.msg.Tower.DetailedAttackLog> getDetailedAttackLogList() {
+        if (detailedAttackLogBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(detailedAttackLog_);
+        } else {
+          return detailedAttackLogBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public int getDetailedAttackLogCount() {
+        if (detailedAttackLogBuilder_ == null) {
+          return detailedAttackLog_.size();
+        } else {
+          return detailedAttackLogBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.DetailedAttackLog getDetailedAttackLog(int index) {
+        if (detailedAttackLogBuilder_ == null) {
+          return detailedAttackLog_.get(index);
+        } else {
+          return detailedAttackLogBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public Builder setDetailedAttackLog(
+          int index, com.tower.msg.Tower.DetailedAttackLog value) {
+        if (detailedAttackLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDetailedAttackLogIsMutable();
+          detailedAttackLog_.set(index, value);
+          onChanged();
+        } else {
+          detailedAttackLogBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public Builder setDetailedAttackLog(
+          int index, com.tower.msg.Tower.DetailedAttackLog.Builder builderForValue) {
+        if (detailedAttackLogBuilder_ == null) {
+          ensureDetailedAttackLogIsMutable();
+          detailedAttackLog_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          detailedAttackLogBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public Builder addDetailedAttackLog(com.tower.msg.Tower.DetailedAttackLog value) {
+        if (detailedAttackLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDetailedAttackLogIsMutable();
+          detailedAttackLog_.add(value);
+          onChanged();
+        } else {
+          detailedAttackLogBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public Builder addDetailedAttackLog(
+          int index, com.tower.msg.Tower.DetailedAttackLog value) {
+        if (detailedAttackLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDetailedAttackLogIsMutable();
+          detailedAttackLog_.add(index, value);
+          onChanged();
+        } else {
+          detailedAttackLogBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public Builder addDetailedAttackLog(
+          com.tower.msg.Tower.DetailedAttackLog.Builder builderForValue) {
+        if (detailedAttackLogBuilder_ == null) {
+          ensureDetailedAttackLogIsMutable();
+          detailedAttackLog_.add(builderForValue.build());
+          onChanged();
+        } else {
+          detailedAttackLogBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public Builder addDetailedAttackLog(
+          int index, com.tower.msg.Tower.DetailedAttackLog.Builder builderForValue) {
+        if (detailedAttackLogBuilder_ == null) {
+          ensureDetailedAttackLogIsMutable();
+          detailedAttackLog_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          detailedAttackLogBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public Builder addAllDetailedAttackLog(
+          java.lang.Iterable<? extends com.tower.msg.Tower.DetailedAttackLog> values) {
+        if (detailedAttackLogBuilder_ == null) {
+          ensureDetailedAttackLogIsMutable();
+          super.addAll(values, detailedAttackLog_);
+          onChanged();
+        } else {
+          detailedAttackLogBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public Builder clearDetailedAttackLog() {
+        if (detailedAttackLogBuilder_ == null) {
+          detailedAttackLog_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          detailedAttackLogBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public Builder removeDetailedAttackLog(int index) {
+        if (detailedAttackLogBuilder_ == null) {
+          ensureDetailedAttackLogIsMutable();
+          detailedAttackLog_.remove(index);
+          onChanged();
+        } else {
+          detailedAttackLogBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.DetailedAttackLog.Builder getDetailedAttackLogBuilder(
+          int index) {
+        return getDetailedAttackLogFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.DetailedAttackLogOrBuilder getDetailedAttackLogOrBuilder(
+          int index) {
+        if (detailedAttackLogBuilder_ == null) {
+          return detailedAttackLog_.get(index);  } else {
+          return detailedAttackLogBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public java.util.List<? extends com.tower.msg.Tower.DetailedAttackLogOrBuilder> 
+           getDetailedAttackLogOrBuilderList() {
+        if (detailedAttackLogBuilder_ != null) {
+          return detailedAttackLogBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(detailedAttackLog_);
+        }
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.DetailedAttackLog.Builder addDetailedAttackLogBuilder() {
+        return getDetailedAttackLogFieldBuilder().addBuilder(
+            com.tower.msg.Tower.DetailedAttackLog.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.DetailedAttackLog.Builder addDetailedAttackLogBuilder(
+          int index) {
+        return getDetailedAttackLogFieldBuilder().addBuilder(
+            index, com.tower.msg.Tower.DetailedAttackLog.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.DetailedAttackLog detailedAttackLog = 3;</code>
+       *
+       * <pre>
+       *详细怪物进攻记录
+       * </pre>
+       */
+      public java.util.List<com.tower.msg.Tower.DetailedAttackLog.Builder> 
+           getDetailedAttackLogBuilderList() {
+        return getDetailedAttackLogFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tower.msg.Tower.DetailedAttackLog, com.tower.msg.Tower.DetailedAttackLog.Builder, com.tower.msg.Tower.DetailedAttackLogOrBuilder> 
+          getDetailedAttackLogFieldBuilder() {
+        if (detailedAttackLogBuilder_ == null) {
+          detailedAttackLogBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.tower.msg.Tower.DetailedAttackLog, com.tower.msg.Tower.DetailedAttackLog.Builder, com.tower.msg.Tower.DetailedAttackLogOrBuilder>(
+                  detailedAttackLog_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          detailedAttackLog_ = null;
+        }
+        return detailedAttackLogBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.RecordRes)
+    }
+
+    static {
+      defaultInstance = new RecordRes(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.RecordRes)
+  }
+
+  public interface DetailedAttackLogOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string orderId = 1;
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    boolean hasOrderId();
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    java.lang.String getOrderId();
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getOrderIdBytes();
+
+    // required int32 monsterId = 2;
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    boolean hasMonsterId();
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    int getMonsterId();
+
+    // required int64 attackTime = 3;
+    /**
+     * <code>required int64 attackTime = 3;</code>
+     *
+     * <pre>
+     *进攻时间
+     * </pre>
+     */
+    boolean hasAttackTime();
+    /**
+     * <code>required int64 attackTime = 3;</code>
+     *
+     * <pre>
+     *进攻时间
+     * </pre>
+     */
+    long getAttackTime();
+
+    // required string monsterName = 4;
+    /**
+     * <code>required string monsterName = 4;</code>
+     *
+     * <pre>
+     *怪物名字
+     * </pre>
+     */
+    boolean hasMonsterName();
+    /**
+     * <code>required string monsterName = 4;</code>
+     *
+     * <pre>
+     *怪物名字
+     * </pre>
+     */
+    java.lang.String getMonsterName();
+    /**
+     * <code>required string monsterName = 4;</code>
+     *
+     * <pre>
+     *怪物名字
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMonsterNameBytes();
+
+    // required string turretName = 5;
+    /**
+     * <code>required string turretName = 5;</code>
+     *
+     * <pre>
+     *炮塔名字
+     * </pre>
+     */
+    boolean hasTurretName();
+    /**
+     * <code>required string turretName = 5;</code>
+     *
+     * <pre>
+     *炮塔名字
+     * </pre>
+     */
+    java.lang.String getTurretName();
+    /**
+     * <code>required string turretName = 5;</code>
+     *
+     * <pre>
+     *炮塔名字
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getTurretNameBytes();
+  }
+  /**
+   * Protobuf type {@code src.DetailedAttackLog}
+   *
+   * <pre>
+   *详细进攻信息
+   * </pre>
+   */
+  public static final class DetailedAttackLog extends
+      com.google.protobuf.GeneratedMessage
+      implements DetailedAttackLogOrBuilder {
+    // Use DetailedAttackLog.newBuilder() to construct.
+    private DetailedAttackLog(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DetailedAttackLog(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DetailedAttackLog defaultInstance;
+    public static DetailedAttackLog getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DetailedAttackLog getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DetailedAttackLog(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              orderId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              monsterId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              attackTime_ = input.readInt64();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              monsterName_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              turretName_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.tower.msg.Tower.internal_static_src_DetailedAttackLog_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.tower.msg.Tower.internal_static_src_DetailedAttackLog_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.tower.msg.Tower.DetailedAttackLog.class, com.tower.msg.Tower.DetailedAttackLog.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DetailedAttackLog> PARSER =
+        new com.google.protobuf.AbstractParser<DetailedAttackLog>() {
+      public DetailedAttackLog parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DetailedAttackLog(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DetailedAttackLog> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string orderId = 1;
+    public static final int ORDERID_FIELD_NUMBER = 1;
+    private java.lang.Object orderId_;
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    public boolean hasOrderId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    public java.lang.String getOrderId() {
+      java.lang.Object ref = orderId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          orderId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *期号
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getOrderIdBytes() {
+      java.lang.Object ref = orderId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        orderId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 monsterId = 2;
+    public static final int MONSTERID_FIELD_NUMBER = 2;
+    private int monsterId_;
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    public boolean hasMonsterId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 monsterId = 2;</code>
+     *
+     * <pre>
+     *怪物ID
+     * </pre>
+     */
+    public int getMonsterId() {
+      return monsterId_;
+    }
+
+    // required int64 attackTime = 3;
+    public static final int ATTACKTIME_FIELD_NUMBER = 3;
+    private long attackTime_;
+    /**
+     * <code>required int64 attackTime = 3;</code>
+     *
+     * <pre>
+     *进攻时间
+     * </pre>
+     */
+    public boolean hasAttackTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int64 attackTime = 3;</code>
+     *
+     * <pre>
+     *进攻时间
+     * </pre>
+     */
+    public long getAttackTime() {
+      return attackTime_;
+    }
+
+    // required string monsterName = 4;
+    public static final int MONSTERNAME_FIELD_NUMBER = 4;
+    private java.lang.Object monsterName_;
+    /**
+     * <code>required string monsterName = 4;</code>
+     *
+     * <pre>
+     *怪物名字
+     * </pre>
+     */
+    public boolean hasMonsterName() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required string monsterName = 4;</code>
+     *
+     * <pre>
+     *怪物名字
+     * </pre>
+     */
+    public java.lang.String getMonsterName() {
+      java.lang.Object ref = monsterName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          monsterName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string monsterName = 4;</code>
+     *
+     * <pre>
+     *怪物名字
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMonsterNameBytes() {
+      java.lang.Object ref = monsterName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        monsterName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required string turretName = 5;
+    public static final int TURRETNAME_FIELD_NUMBER = 5;
+    private java.lang.Object turretName_;
+    /**
+     * <code>required string turretName = 5;</code>
+     *
+     * <pre>
+     *炮塔名字
+     * </pre>
+     */
+    public boolean hasTurretName() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required string turretName = 5;</code>
+     *
+     * <pre>
+     *炮塔名字
+     * </pre>
+     */
+    public java.lang.String getTurretName() {
+      java.lang.Object ref = turretName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          turretName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string turretName = 5;</code>
+     *
+     * <pre>
+     *炮塔名字
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getTurretNameBytes() {
+      java.lang.Object ref = turretName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        turretName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      orderId_ = "";
+      monsterId_ = 0;
+      attackTime_ = 0L;
+      monsterName_ = "";
+      turretName_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasOrderId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAttackTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMonsterName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTurretName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getOrderIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, monsterId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt64(3, attackTime_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getMonsterNameBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getTurretNameBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getOrderIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, monsterId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, attackTime_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getMonsterNameBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getTurretNameBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.tower.msg.Tower.DetailedAttackLog parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.DetailedAttackLog parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.DetailedAttackLog parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.DetailedAttackLog parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.DetailedAttackLog parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.DetailedAttackLog parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.DetailedAttackLog parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.tower.msg.Tower.DetailedAttackLog parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.DetailedAttackLog parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.DetailedAttackLog parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.tower.msg.Tower.DetailedAttackLog prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.DetailedAttackLog}
+     *
+     * <pre>
+     *详细进攻信息
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.tower.msg.Tower.DetailedAttackLogOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tower.msg.Tower.internal_static_src_DetailedAttackLog_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tower.msg.Tower.internal_static_src_DetailedAttackLog_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tower.msg.Tower.DetailedAttackLog.class, com.tower.msg.Tower.DetailedAttackLog.Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.DetailedAttackLog.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        orderId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        monsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        attackTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        monsterName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        turretName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.tower.msg.Tower.internal_static_src_DetailedAttackLog_descriptor;
+      }
+
+      public com.tower.msg.Tower.DetailedAttackLog getDefaultInstanceForType() {
+        return com.tower.msg.Tower.DetailedAttackLog.getDefaultInstance();
+      }
+
+      public com.tower.msg.Tower.DetailedAttackLog build() {
+        com.tower.msg.Tower.DetailedAttackLog result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.tower.msg.Tower.DetailedAttackLog buildPartial() {
+        com.tower.msg.Tower.DetailedAttackLog result = new com.tower.msg.Tower.DetailedAttackLog(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.orderId_ = orderId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.monsterId_ = monsterId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.attackTime_ = attackTime_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.monsterName_ = monsterName_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.turretName_ = turretName_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.tower.msg.Tower.DetailedAttackLog) {
+          return mergeFrom((com.tower.msg.Tower.DetailedAttackLog)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.tower.msg.Tower.DetailedAttackLog other) {
+        if (other == com.tower.msg.Tower.DetailedAttackLog.getDefaultInstance()) return this;
+        if (other.hasOrderId()) {
+          bitField0_ |= 0x00000001;
+          orderId_ = other.orderId_;
+          onChanged();
+        }
+        if (other.hasMonsterId()) {
+          setMonsterId(other.getMonsterId());
+        }
+        if (other.hasAttackTime()) {
+          setAttackTime(other.getAttackTime());
+        }
+        if (other.hasMonsterName()) {
+          bitField0_ |= 0x00000008;
+          monsterName_ = other.monsterName_;
+          onChanged();
+        }
+        if (other.hasTurretName()) {
+          bitField0_ |= 0x00000010;
+          turretName_ = other.turretName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasOrderId()) {
+          
+          return false;
+        }
+        if (!hasMonsterId()) {
+          
+          return false;
+        }
+        if (!hasAttackTime()) {
+          
+          return false;
+        }
+        if (!hasMonsterName()) {
+          
+          return false;
+        }
+        if (!hasTurretName()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.tower.msg.Tower.DetailedAttackLog parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.tower.msg.Tower.DetailedAttackLog) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string orderId = 1;
+      private java.lang.Object orderId_ = "";
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public boolean hasOrderId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public java.lang.String getOrderId() {
+        java.lang.Object ref = orderId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          orderId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getOrderIdBytes() {
+        java.lang.Object ref = orderId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          orderId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public Builder setOrderId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        orderId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public Builder clearOrderId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        orderId_ = getDefaultInstance().getOrderId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *期号
+       * </pre>
+       */
+      public Builder setOrderIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        orderId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 monsterId = 2;
+      private int monsterId_ ;
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public boolean hasMonsterId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public int getMonsterId() {
+        return monsterId_;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public Builder setMonsterId(int value) {
+        bitField0_ |= 0x00000002;
+        monsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 monsterId = 2;</code>
+       *
+       * <pre>
+       *怪物ID
+       * </pre>
+       */
+      public Builder clearMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        monsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int64 attackTime = 3;
+      private long attackTime_ ;
+      /**
+       * <code>required int64 attackTime = 3;</code>
+       *
+       * <pre>
+       *进攻时间
+       * </pre>
+       */
+      public boolean hasAttackTime() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int64 attackTime = 3;</code>
+       *
+       * <pre>
+       *进攻时间
+       * </pre>
+       */
+      public long getAttackTime() {
+        return attackTime_;
+      }
+      /**
+       * <code>required int64 attackTime = 3;</code>
+       *
+       * <pre>
+       *进攻时间
+       * </pre>
+       */
+      public Builder setAttackTime(long value) {
+        bitField0_ |= 0x00000004;
+        attackTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 attackTime = 3;</code>
+       *
+       * <pre>
+       *进攻时间
+       * </pre>
+       */
+      public Builder clearAttackTime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        attackTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required string monsterName = 4;
+      private java.lang.Object monsterName_ = "";
+      /**
+       * <code>required string monsterName = 4;</code>
+       *
+       * <pre>
+       *怪物名字
+       * </pre>
+       */
+      public boolean hasMonsterName() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required string monsterName = 4;</code>
+       *
+       * <pre>
+       *怪物名字
+       * </pre>
+       */
+      public java.lang.String getMonsterName() {
+        java.lang.Object ref = monsterName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          monsterName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string monsterName = 4;</code>
+       *
+       * <pre>
+       *怪物名字
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getMonsterNameBytes() {
+        java.lang.Object ref = monsterName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          monsterName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string monsterName = 4;</code>
+       *
+       * <pre>
+       *怪物名字
+       * </pre>
+       */
+      public Builder setMonsterName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        monsterName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string monsterName = 4;</code>
+       *
+       * <pre>
+       *怪物名字
+       * </pre>
+       */
+      public Builder clearMonsterName() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        monsterName_ = getDefaultInstance().getMonsterName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string monsterName = 4;</code>
+       *
+       * <pre>
+       *怪物名字
+       * </pre>
+       */
+      public Builder setMonsterNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        monsterName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required string turretName = 5;
+      private java.lang.Object turretName_ = "";
+      /**
+       * <code>required string turretName = 5;</code>
+       *
+       * <pre>
+       *炮塔名字
+       * </pre>
+       */
+      public boolean hasTurretName() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required string turretName = 5;</code>
+       *
+       * <pre>
+       *炮塔名字
+       * </pre>
+       */
+      public java.lang.String getTurretName() {
+        java.lang.Object ref = turretName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          turretName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string turretName = 5;</code>
+       *
+       * <pre>
+       *炮塔名字
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getTurretNameBytes() {
+        java.lang.Object ref = turretName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          turretName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string turretName = 5;</code>
+       *
+       * <pre>
+       *炮塔名字
+       * </pre>
+       */
+      public Builder setTurretName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        turretName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string turretName = 5;</code>
+       *
+       * <pre>
+       *炮塔名字
+       * </pre>
+       */
+      public Builder clearTurretName() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        turretName_ = getDefaultInstance().getTurretName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string turretName = 5;</code>
+       *
+       * <pre>
+       *炮塔名字
+       * </pre>
+       */
+      public Builder setTurretNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        turretName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.DetailedAttackLog)
+    }
+
+    static {
+      defaultInstance = new DetailedAttackLog(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.DetailedAttackLog)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_src_MsgCtn_descriptor;
   private static
@@ -12851,6 +15916,21 @@ public final class Tower {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_src_GameOverInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_RecordReq_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_RecordReq_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_RecordRes_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_RecordRes_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_DetailedAttackLog_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_DetailedAttackLog_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12889,8 +15969,15 @@ public final class Tower {
       "\003 \001(\0132\021.src.GameOverInfo\"w\n\014GameOverInfo" +
       "\022!\n\tattackLog\030\001 \002(\0132\016.src.AttackLog\022/\n\020r" +
       "ecommendMonster\030\002 \003(\0132\025.src.RecommendMon" +
-      "ster\022\023\n\013recommendId\030\003 \003(\005B\017\n\rcom.tower.m",
-      "sg"
+      "ster\022\023\n\013recommendId\030\003 \003(\005\"4\n\tRecordReq\022\013",
+      "\n\003cmd\030\001 \002(\005\022\014\n\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\"" +
+      "v\n\tRecordRes\022\013\n\003cmd\030\001 \002(\005\022)\n\rattackPageL" +
+      "og\030\002 \001(\0132\022.src.AttackPageLog\0221\n\021detailed" +
+      "AttackLog\030\003 \003(\0132\026.src.DetailedAttackLog\"" +
+      "t\n\021DetailedAttackLog\022\017\n\007orderId\030\001 \002(\t\022\021\n" +
+      "\tmonsterId\030\002 \002(\005\022\022\n\nattackTime\030\003 \002(\003\022\023\n\013" +
+      "monsterName\030\004 \002(\t\022\022\n\nturretName\030\005 \002(\tB\017\n" +
+      "\rcom.tower.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -12981,6 +16068,24 @@ public final class Tower {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_GameOverInfo_descriptor,
               new java.lang.String[] { "AttackLog", "RecommendMonster", "RecommendId", });
+          internal_static_src_RecordReq_descriptor =
+            getDescriptor().getMessageTypes().get(14);
+          internal_static_src_RecordReq_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_RecordReq_descriptor,
+              new java.lang.String[] { "Cmd", "Page", "Size", });
+          internal_static_src_RecordRes_descriptor =
+            getDescriptor().getMessageTypes().get(15);
+          internal_static_src_RecordRes_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_RecordRes_descriptor,
+              new java.lang.String[] { "Cmd", "AttackPageLog", "DetailedAttackLog", });
+          internal_static_src_DetailedAttackLog_descriptor =
+            getDescriptor().getMessageTypes().get(16);
+          internal_static_src_DetailedAttackLog_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_DetailedAttackLog_descriptor,
+              new java.lang.String[] { "OrderId", "MonsterId", "AttackTime", "MonsterName", "TurretName", });
           return null;
         }
       };

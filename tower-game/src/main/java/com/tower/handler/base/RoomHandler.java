@@ -42,15 +42,17 @@ public class RoomHandler extends AbsLogicHandler<Tower.RoomReq> implements Mid, 
         switch (roomCmd) {
             case ENTER_ROOM:
                 enterRoom(userId.intValue());
+                towerGame.sendStatus(userId.intValue());
                 break;
             case EXIT_ROOM:
                 exitRoom(userId.intValue());
                 break;
             case ROOM_INFO:
                 roomInfo(userId.intValue());
+                towerGame.sendStatus(userId.intValue());
                 break;
             default:
-                log.error("未找到对应命令");
+                log.error("未知指令{}",roomCmd.getCode());
                 break;
         }
     }

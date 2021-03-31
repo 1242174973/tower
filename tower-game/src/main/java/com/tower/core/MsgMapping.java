@@ -1,6 +1,7 @@
 package com.tower.core;
 
 import com.tower.handler.base.LoginHandler;
+import com.tower.handler.base.RecordHandler;
 import com.tower.handler.base.RoomHandler;
 import com.tower.utils.MyApplicationContextUti;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,7 @@ public class MsgMapping {
         List<Class<?>> list = new ArrayList<>();
         list.add(LoginHandler.class);
         list.add(RoomHandler.class);
+        list.add(RecordHandler.class);
         // 赋值
         handleMap = genMapBySpring(list);
         log.info("Init Msg Mapping... End");
