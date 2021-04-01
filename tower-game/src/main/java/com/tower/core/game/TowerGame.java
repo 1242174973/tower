@@ -8,17 +8,17 @@ import com.tower.core.pipline.MsgBossHandler;
 import com.tower.core.thread.ExecuteHashedWheelTimer;
 import com.tower.core.utils.MsgUtil;
 import com.tower.core.utils.PlayerUtils;
-import com.tower.entity.AttackLog;
-import com.tower.entity.BetLog;
-import com.tower.entity.Monster;
-import com.tower.entity.Player;
+import com.tower.entity.*;
 import com.tower.enums.GameCmd;
 import com.tower.enums.ResultEnum;
+import com.tower.enums.WelfareModelEnum;
+import com.tower.enums.WelfareTypeEnum;
 import com.tower.game.MonsterInfo;
 import com.tower.msg.Tower;
 import com.tower.service.AttackLogService;
 import com.tower.service.BetLogService;
 import com.tower.service.MonsterService;
+import com.tower.service.WelfareLogService;
 import com.tower.utils.CopyUtil;
 import com.tower.utils.DateUtils;
 import io.netty.channel.Channel;
@@ -50,6 +50,9 @@ public class TowerGame {
     private AttackLogService attackLogService;
     @Resource
     private MonsterService monsterService;
+
+    @Resource
+    private WelfareLogService welfareLogService;
 
     @Resource
     private BetLogService betLogService;
@@ -232,6 +235,16 @@ public class TowerGame {
         stringBuilder.append(num);
         return stringBuilder.toString();
     }
+    private String getLastIndex() {
+        StringBuilder stringBuilder = new StringBuilder();
+        int currNum = num-1;
+        int length = 4 - String.valueOf(currNum).length();
+        for (int i = 0; i < length; i++) {
+            stringBuilder.append("0");
+        }
+        stringBuilder.append(num);
+        return stringBuilder.toString();
+    }
 
     public void insertAttackLog() {
         attackLog.setAttackTime(LocalDateTime.now()).setMonsterId(getMonsterId());
@@ -315,6 +328,10 @@ public class TowerGame {
             betLog.setResultCoin(betLog.getBetCoin().multiply(BigDecimal.valueOf(multiple)));
             Player player = PlayerUtils.getPlayer(betLog.getUserId());
             player.setMoney(player.getMoney().add(betLog.getResultCoin()));
+            WelfareLog welfareLog = new WelfareLog().setCreateTime(LocalDateTime.now()).setUserId(player.getId())
+                    .setWelfareType(WelfareTypeEnum.GOLD.getCode()).setMode(WelfareModelEnum.BET_WIN.getCode())
+                    .setWelfare(betLog.getResultCoin());
+            welfareLogService.save(welfareLog);
         } else {
             betLog.setResultCoin(BigDecimal.ZERO);
         }
@@ -494,5 +511,40 @@ public class TowerGame {
         gameRes.setCmd(GameCmd.BET.getCode());
         gameRes.setBetInfo(builder.build());
         sendToAll(gameRes);
+    }
+
+    /**
+     * 判断能否下注
+     *
+     * @param userId 玩家id
+     * @param coin   下注分数
+     * @return 是否可以下注
+     */
+    public boolean canBet(int userId, int coin, int monsterId) {
+        double betCoin = betLogList.stream()
+                .filter(betLog -> betLog.getUserId().equals(userId) && betLog.getBetMonsterId().equals(monsterId))
+                .mapToDouble(betLog -> betLog.getBetCoin().doubleValue())
+                .sum();
+        MonsterInfo monsterInfo = getMonsterInfoById(monsterId);
+        return betCoin + coin <= monsterInfo.getMaxBet().doubleValue();
+    }
+
+    /**
+     * 获得本局下注
+     *
+     * @param userId 玩家id
+     * @return 返回数据
+     */
+    public List<BetLog> getBetLog(int userId) {
+        return betLogList.stream()
+                .filter(betLog -> betLog.getUserId().equals(userId))
+                .collect(Collectors.toList());
+    }
+
+    public List<BetLog> getLastBetLog(int userId) {
+        LambdaQueryWrapper<BetLog> logLambdaQueryWrapper=new LambdaQueryWrapper<>();
+        String orderId=DateUtils.getYearAndMonthAndDay()+getLastIndex();
+        logLambdaQueryWrapper.eq(BetLog::getUserId,userId).eq(BetLog::getOrderId,orderId);
+        return betLogService.getBaseMapper().selectList(logLambdaQueryWrapper);
     }
 }

@@ -12514,6 +12514,10 @@ public final class Tower {
   }
   /**
    * Protobuf type {@code src.BetInfo}
+   *
+   * <pre>
+   *下注信息
+   * </pre>
    */
   public static final class BetInfo extends
       com.google.protobuf.GeneratedMessage
@@ -12825,6 +12829,10 @@ public final class Tower {
     }
     /**
      * Protobuf type {@code src.BetInfo}
+     *
+     * <pre>
+     *下注信息
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -15172,6 +15180,32 @@ public final class Tower {
      */
     com.tower.msg.Tower.DetailedAttackLogOrBuilder getDetailedAttackLogOrBuilder(
         int index);
+
+    // optional .src.BetPageLog betPageLog = 4;
+    /**
+     * <code>optional .src.BetPageLog betPageLog = 4;</code>
+     *
+     * <pre>
+     *下注分页记录
+     * </pre>
+     */
+    boolean hasBetPageLog();
+    /**
+     * <code>optional .src.BetPageLog betPageLog = 4;</code>
+     *
+     * <pre>
+     *下注分页记录
+     * </pre>
+     */
+    com.tower.msg.Tower.BetPageLog getBetPageLog();
+    /**
+     * <code>optional .src.BetPageLog betPageLog = 4;</code>
+     *
+     * <pre>
+     *下注分页记录
+     * </pre>
+     */
+    com.tower.msg.Tower.BetPageLogOrBuilder getBetPageLogOrBuilder();
   }
   /**
    * Protobuf type {@code src.RecordRes}
@@ -15252,6 +15286,19 @@ public final class Tower {
                 mutable_bitField0_ |= 0x00000004;
               }
               detailedAttackLog_.add(input.readMessage(com.tower.msg.Tower.DetailedAttackLog.PARSER, extensionRegistry));
+              break;
+            }
+            case 34: {
+              com.tower.msg.Tower.BetPageLog.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = betPageLog_.toBuilder();
+              }
+              betPageLog_ = input.readMessage(com.tower.msg.Tower.BetPageLog.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(betPageLog_);
+                betPageLog_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
               break;
             }
           }
@@ -15411,10 +15458,45 @@ public final class Tower {
       return detailedAttackLog_.get(index);
     }
 
+    // optional .src.BetPageLog betPageLog = 4;
+    public static final int BETPAGELOG_FIELD_NUMBER = 4;
+    private com.tower.msg.Tower.BetPageLog betPageLog_;
+    /**
+     * <code>optional .src.BetPageLog betPageLog = 4;</code>
+     *
+     * <pre>
+     *下注分页记录
+     * </pre>
+     */
+    public boolean hasBetPageLog() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .src.BetPageLog betPageLog = 4;</code>
+     *
+     * <pre>
+     *下注分页记录
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetPageLog getBetPageLog() {
+      return betPageLog_;
+    }
+    /**
+     * <code>optional .src.BetPageLog betPageLog = 4;</code>
+     *
+     * <pre>
+     *下注分页记录
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetPageLogOrBuilder getBetPageLogOrBuilder() {
+      return betPageLog_;
+    }
+
     private void initFields() {
       cmd_ = 0;
       attackPageLog_ = com.tower.msg.Tower.AttackPageLog.getDefaultInstance();
       detailedAttackLog_ = java.util.Collections.emptyList();
+      betPageLog_ = com.tower.msg.Tower.BetPageLog.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -15437,6 +15519,12 @@ public final class Tower {
           return false;
         }
       }
+      if (hasBetPageLog()) {
+        if (!getBetPageLog().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -15452,6 +15540,9 @@ public final class Tower {
       }
       for (int i = 0; i < detailedAttackLog_.size(); i++) {
         output.writeMessage(3, detailedAttackLog_.get(i));
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(4, betPageLog_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -15473,6 +15564,10 @@ public final class Tower {
       for (int i = 0; i < detailedAttackLog_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, detailedAttackLog_.get(i));
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, betPageLog_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -15588,6 +15683,7 @@ public final class Tower {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getAttackPageLogFieldBuilder();
           getDetailedAttackLogFieldBuilder();
+          getBetPageLogFieldBuilder();
         }
       }
       private static Builder create() {
@@ -15610,6 +15706,12 @@ public final class Tower {
         } else {
           detailedAttackLogBuilder_.clear();
         }
+        if (betPageLogBuilder_ == null) {
+          betPageLog_ = com.tower.msg.Tower.BetPageLog.getDefaultInstance();
+        } else {
+          betPageLogBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -15659,6 +15761,14 @@ public final class Tower {
         } else {
           result.detailedAttackLog_ = detailedAttackLogBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (betPageLogBuilder_ == null) {
+          result.betPageLog_ = betPageLog_;
+        } else {
+          result.betPageLog_ = betPageLogBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -15707,6 +15817,9 @@ public final class Tower {
             }
           }
         }
+        if (other.hasBetPageLog()) {
+          mergeBetPageLog(other.getBetPageLog());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -15724,6 +15837,12 @@ public final class Tower {
         }
         for (int i = 0; i < getDetailedAttackLogCount(); i++) {
           if (!getDetailedAttackLog(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasBetPageLog()) {
+          if (!getBetPageLog().isInitialized()) {
             
             return false;
           }
@@ -16264,6 +16383,159 @@ public final class Tower {
         return detailedAttackLogBuilder_;
       }
 
+      // optional .src.BetPageLog betPageLog = 4;
+      private com.tower.msg.Tower.BetPageLog betPageLog_ = com.tower.msg.Tower.BetPageLog.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.BetPageLog, com.tower.msg.Tower.BetPageLog.Builder, com.tower.msg.Tower.BetPageLogOrBuilder> betPageLogBuilder_;
+      /**
+       * <code>optional .src.BetPageLog betPageLog = 4;</code>
+       *
+       * <pre>
+       *下注分页记录
+       * </pre>
+       */
+      public boolean hasBetPageLog() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .src.BetPageLog betPageLog = 4;</code>
+       *
+       * <pre>
+       *下注分页记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetPageLog getBetPageLog() {
+        if (betPageLogBuilder_ == null) {
+          return betPageLog_;
+        } else {
+          return betPageLogBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .src.BetPageLog betPageLog = 4;</code>
+       *
+       * <pre>
+       *下注分页记录
+       * </pre>
+       */
+      public Builder setBetPageLog(com.tower.msg.Tower.BetPageLog value) {
+        if (betPageLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          betPageLog_ = value;
+          onChanged();
+        } else {
+          betPageLogBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .src.BetPageLog betPageLog = 4;</code>
+       *
+       * <pre>
+       *下注分页记录
+       * </pre>
+       */
+      public Builder setBetPageLog(
+          com.tower.msg.Tower.BetPageLog.Builder builderForValue) {
+        if (betPageLogBuilder_ == null) {
+          betPageLog_ = builderForValue.build();
+          onChanged();
+        } else {
+          betPageLogBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .src.BetPageLog betPageLog = 4;</code>
+       *
+       * <pre>
+       *下注分页记录
+       * </pre>
+       */
+      public Builder mergeBetPageLog(com.tower.msg.Tower.BetPageLog value) {
+        if (betPageLogBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              betPageLog_ != com.tower.msg.Tower.BetPageLog.getDefaultInstance()) {
+            betPageLog_ =
+              com.tower.msg.Tower.BetPageLog.newBuilder(betPageLog_).mergeFrom(value).buildPartial();
+          } else {
+            betPageLog_ = value;
+          }
+          onChanged();
+        } else {
+          betPageLogBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .src.BetPageLog betPageLog = 4;</code>
+       *
+       * <pre>
+       *下注分页记录
+       * </pre>
+       */
+      public Builder clearBetPageLog() {
+        if (betPageLogBuilder_ == null) {
+          betPageLog_ = com.tower.msg.Tower.BetPageLog.getDefaultInstance();
+          onChanged();
+        } else {
+          betPageLogBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .src.BetPageLog betPageLog = 4;</code>
+       *
+       * <pre>
+       *下注分页记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetPageLog.Builder getBetPageLogBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getBetPageLogFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .src.BetPageLog betPageLog = 4;</code>
+       *
+       * <pre>
+       *下注分页记录
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetPageLogOrBuilder getBetPageLogOrBuilder() {
+        if (betPageLogBuilder_ != null) {
+          return betPageLogBuilder_.getMessageOrBuilder();
+        } else {
+          return betPageLog_;
+        }
+      }
+      /**
+       * <code>optional .src.BetPageLog betPageLog = 4;</code>
+       *
+       * <pre>
+       *下注分页记录
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.tower.msg.Tower.BetPageLog, com.tower.msg.Tower.BetPageLog.Builder, com.tower.msg.Tower.BetPageLogOrBuilder> 
+          getBetPageLogFieldBuilder() {
+        if (betPageLogBuilder_ == null) {
+          betPageLogBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.tower.msg.Tower.BetPageLog, com.tower.msg.Tower.BetPageLog.Builder, com.tower.msg.Tower.BetPageLogOrBuilder>(
+                  betPageLog_,
+                  getParentForChildren(),
+                  isClean());
+          betPageLog_ = null;
+        }
+        return betPageLogBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:src.RecordRes)
     }
 
@@ -16273,6 +16545,2536 @@ public final class Tower {
     }
 
     // @@protoc_insertion_point(class_scope:src.RecordRes)
+  }
+
+  public interface BetPageLogOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .src.BetLog betLog = 1;
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    java.util.List<com.tower.msg.Tower.BetLog> 
+        getBetLogList();
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    com.tower.msg.Tower.BetLog getBetLog(int index);
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    int getBetLogCount();
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    java.util.List<? extends com.tower.msg.Tower.BetLogOrBuilder> 
+        getBetLogOrBuilderList();
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    com.tower.msg.Tower.BetLogOrBuilder getBetLogOrBuilder(
+        int index);
+
+    // optional int32 page = 2;
+    /**
+     * <code>optional int32 page = 2;</code>
+     *
+     * <pre>
+     *页数
+     * </pre>
+     */
+    boolean hasPage();
+    /**
+     * <code>optional int32 page = 2;</code>
+     *
+     * <pre>
+     *页数
+     * </pre>
+     */
+    int getPage();
+
+    // optional int32 size = 3;
+    /**
+     * <code>optional int32 size = 3;</code>
+     *
+     * <pre>
+     *每页多少条
+     * </pre>
+     */
+    boolean hasSize();
+    /**
+     * <code>optional int32 size = 3;</code>
+     *
+     * <pre>
+     *每页多少条
+     * </pre>
+     */
+    int getSize();
+
+    // optional int32 count = 4;
+    /**
+     * <code>optional int32 count = 4;</code>
+     *
+     * <pre>
+     *总条数	
+     * </pre>
+     */
+    boolean hasCount();
+    /**
+     * <code>optional int32 count = 4;</code>
+     *
+     * <pre>
+     *总条数	
+     * </pre>
+     */
+    int getCount();
+  }
+  /**
+   * Protobuf type {@code src.BetPageLog}
+   *
+   * <pre>
+   *下注分页记录
+   * </pre>
+   */
+  public static final class BetPageLog extends
+      com.google.protobuf.GeneratedMessage
+      implements BetPageLogOrBuilder {
+    // Use BetPageLog.newBuilder() to construct.
+    private BetPageLog(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private BetPageLog(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final BetPageLog defaultInstance;
+    public static BetPageLog getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public BetPageLog getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private BetPageLog(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                betLog_ = new java.util.ArrayList<com.tower.msg.Tower.BetLog>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              betLog_.add(input.readMessage(com.tower.msg.Tower.BetLog.PARSER, extensionRegistry));
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000001;
+              page_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000002;
+              size_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000004;
+              count_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          betLog_ = java.util.Collections.unmodifiableList(betLog_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.tower.msg.Tower.internal_static_src_BetPageLog_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.tower.msg.Tower.internal_static_src_BetPageLog_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.tower.msg.Tower.BetPageLog.class, com.tower.msg.Tower.BetPageLog.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<BetPageLog> PARSER =
+        new com.google.protobuf.AbstractParser<BetPageLog>() {
+      public BetPageLog parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new BetPageLog(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<BetPageLog> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // repeated .src.BetLog betLog = 1;
+    public static final int BETLOG_FIELD_NUMBER = 1;
+    private java.util.List<com.tower.msg.Tower.BetLog> betLog_;
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    public java.util.List<com.tower.msg.Tower.BetLog> getBetLogList() {
+      return betLog_;
+    }
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    public java.util.List<? extends com.tower.msg.Tower.BetLogOrBuilder> 
+        getBetLogOrBuilderList() {
+      return betLog_;
+    }
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    public int getBetLogCount() {
+      return betLog_.size();
+    }
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetLog getBetLog(int index) {
+      return betLog_.get(index);
+    }
+    /**
+     * <code>repeated .src.BetLog betLog = 1;</code>
+     *
+     * <pre>
+     *下注记录		
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetLogOrBuilder getBetLogOrBuilder(
+        int index) {
+      return betLog_.get(index);
+    }
+
+    // optional int32 page = 2;
+    public static final int PAGE_FIELD_NUMBER = 2;
+    private int page_;
+    /**
+     * <code>optional int32 page = 2;</code>
+     *
+     * <pre>
+     *页数
+     * </pre>
+     */
+    public boolean hasPage() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 page = 2;</code>
+     *
+     * <pre>
+     *页数
+     * </pre>
+     */
+    public int getPage() {
+      return page_;
+    }
+
+    // optional int32 size = 3;
+    public static final int SIZE_FIELD_NUMBER = 3;
+    private int size_;
+    /**
+     * <code>optional int32 size = 3;</code>
+     *
+     * <pre>
+     *每页多少条
+     * </pre>
+     */
+    public boolean hasSize() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 size = 3;</code>
+     *
+     * <pre>
+     *每页多少条
+     * </pre>
+     */
+    public int getSize() {
+      return size_;
+    }
+
+    // optional int32 count = 4;
+    public static final int COUNT_FIELD_NUMBER = 4;
+    private int count_;
+    /**
+     * <code>optional int32 count = 4;</code>
+     *
+     * <pre>
+     *总条数	
+     * </pre>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 count = 4;</code>
+     *
+     * <pre>
+     *总条数	
+     * </pre>
+     */
+    public int getCount() {
+      return count_;
+    }
+
+    private void initFields() {
+      betLog_ = java.util.Collections.emptyList();
+      page_ = 0;
+      size_ = 0;
+      count_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getBetLogCount(); i++) {
+        if (!getBetLog(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < betLog_.size(); i++) {
+        output.writeMessage(1, betLog_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(2, page_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(3, size_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(4, count_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < betLog_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, betLog_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, page_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, size_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, count_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.tower.msg.Tower.BetPageLog parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.BetPageLog parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetPageLog parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.BetPageLog parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetPageLog parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.BetPageLog parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetPageLog parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.tower.msg.Tower.BetPageLog parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetPageLog parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.BetPageLog parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.tower.msg.Tower.BetPageLog prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.BetPageLog}
+     *
+     * <pre>
+     *下注分页记录
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.tower.msg.Tower.BetPageLogOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tower.msg.Tower.internal_static_src_BetPageLog_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tower.msg.Tower.internal_static_src_BetPageLog_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tower.msg.Tower.BetPageLog.class, com.tower.msg.Tower.BetPageLog.Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.BetPageLog.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getBetLogFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (betLogBuilder_ == null) {
+          betLog_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          betLogBuilder_.clear();
+        }
+        page_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        size_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.tower.msg.Tower.internal_static_src_BetPageLog_descriptor;
+      }
+
+      public com.tower.msg.Tower.BetPageLog getDefaultInstanceForType() {
+        return com.tower.msg.Tower.BetPageLog.getDefaultInstance();
+      }
+
+      public com.tower.msg.Tower.BetPageLog build() {
+        com.tower.msg.Tower.BetPageLog result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.tower.msg.Tower.BetPageLog buildPartial() {
+        com.tower.msg.Tower.BetPageLog result = new com.tower.msg.Tower.BetPageLog(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (betLogBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            betLog_ = java.util.Collections.unmodifiableList(betLog_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.betLog_ = betLog_;
+        } else {
+          result.betLog_ = betLogBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.page_ = page_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.size_ = size_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.count_ = count_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.tower.msg.Tower.BetPageLog) {
+          return mergeFrom((com.tower.msg.Tower.BetPageLog)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.tower.msg.Tower.BetPageLog other) {
+        if (other == com.tower.msg.Tower.BetPageLog.getDefaultInstance()) return this;
+        if (betLogBuilder_ == null) {
+          if (!other.betLog_.isEmpty()) {
+            if (betLog_.isEmpty()) {
+              betLog_ = other.betLog_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureBetLogIsMutable();
+              betLog_.addAll(other.betLog_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.betLog_.isEmpty()) {
+            if (betLogBuilder_.isEmpty()) {
+              betLogBuilder_.dispose();
+              betLogBuilder_ = null;
+              betLog_ = other.betLog_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              betLogBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getBetLogFieldBuilder() : null;
+            } else {
+              betLogBuilder_.addAllMessages(other.betLog_);
+            }
+          }
+        }
+        if (other.hasPage()) {
+          setPage(other.getPage());
+        }
+        if (other.hasSize()) {
+          setSize(other.getSize());
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getBetLogCount(); i++) {
+          if (!getBetLog(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.tower.msg.Tower.BetPageLog parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.tower.msg.Tower.BetPageLog) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .src.BetLog betLog = 1;
+      private java.util.List<com.tower.msg.Tower.BetLog> betLog_ =
+        java.util.Collections.emptyList();
+      private void ensureBetLogIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          betLog_ = new java.util.ArrayList<com.tower.msg.Tower.BetLog>(betLog_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tower.msg.Tower.BetLog, com.tower.msg.Tower.BetLog.Builder, com.tower.msg.Tower.BetLogOrBuilder> betLogBuilder_;
+
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public java.util.List<com.tower.msg.Tower.BetLog> getBetLogList() {
+        if (betLogBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(betLog_);
+        } else {
+          return betLogBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public int getBetLogCount() {
+        if (betLogBuilder_ == null) {
+          return betLog_.size();
+        } else {
+          return betLogBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetLog getBetLog(int index) {
+        if (betLogBuilder_ == null) {
+          return betLog_.get(index);
+        } else {
+          return betLogBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public Builder setBetLog(
+          int index, com.tower.msg.Tower.BetLog value) {
+        if (betLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBetLogIsMutable();
+          betLog_.set(index, value);
+          onChanged();
+        } else {
+          betLogBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public Builder setBetLog(
+          int index, com.tower.msg.Tower.BetLog.Builder builderForValue) {
+        if (betLogBuilder_ == null) {
+          ensureBetLogIsMutable();
+          betLog_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          betLogBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public Builder addBetLog(com.tower.msg.Tower.BetLog value) {
+        if (betLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBetLogIsMutable();
+          betLog_.add(value);
+          onChanged();
+        } else {
+          betLogBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public Builder addBetLog(
+          int index, com.tower.msg.Tower.BetLog value) {
+        if (betLogBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBetLogIsMutable();
+          betLog_.add(index, value);
+          onChanged();
+        } else {
+          betLogBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public Builder addBetLog(
+          com.tower.msg.Tower.BetLog.Builder builderForValue) {
+        if (betLogBuilder_ == null) {
+          ensureBetLogIsMutable();
+          betLog_.add(builderForValue.build());
+          onChanged();
+        } else {
+          betLogBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public Builder addBetLog(
+          int index, com.tower.msg.Tower.BetLog.Builder builderForValue) {
+        if (betLogBuilder_ == null) {
+          ensureBetLogIsMutable();
+          betLog_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          betLogBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public Builder addAllBetLog(
+          java.lang.Iterable<? extends com.tower.msg.Tower.BetLog> values) {
+        if (betLogBuilder_ == null) {
+          ensureBetLogIsMutable();
+          super.addAll(values, betLog_);
+          onChanged();
+        } else {
+          betLogBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public Builder clearBetLog() {
+        if (betLogBuilder_ == null) {
+          betLog_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          betLogBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public Builder removeBetLog(int index) {
+        if (betLogBuilder_ == null) {
+          ensureBetLogIsMutable();
+          betLog_.remove(index);
+          onChanged();
+        } else {
+          betLogBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetLog.Builder getBetLogBuilder(
+          int index) {
+        return getBetLogFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetLogOrBuilder getBetLogOrBuilder(
+          int index) {
+        if (betLogBuilder_ == null) {
+          return betLog_.get(index);  } else {
+          return betLogBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public java.util.List<? extends com.tower.msg.Tower.BetLogOrBuilder> 
+           getBetLogOrBuilderList() {
+        if (betLogBuilder_ != null) {
+          return betLogBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(betLog_);
+        }
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetLog.Builder addBetLogBuilder() {
+        return getBetLogFieldBuilder().addBuilder(
+            com.tower.msg.Tower.BetLog.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetLog.Builder addBetLogBuilder(
+          int index) {
+        return getBetLogFieldBuilder().addBuilder(
+            index, com.tower.msg.Tower.BetLog.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.BetLog betLog = 1;</code>
+       *
+       * <pre>
+       *下注记录		
+       * </pre>
+       */
+      public java.util.List<com.tower.msg.Tower.BetLog.Builder> 
+           getBetLogBuilderList() {
+        return getBetLogFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tower.msg.Tower.BetLog, com.tower.msg.Tower.BetLog.Builder, com.tower.msg.Tower.BetLogOrBuilder> 
+          getBetLogFieldBuilder() {
+        if (betLogBuilder_ == null) {
+          betLogBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.tower.msg.Tower.BetLog, com.tower.msg.Tower.BetLog.Builder, com.tower.msg.Tower.BetLogOrBuilder>(
+                  betLog_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          betLog_ = null;
+        }
+        return betLogBuilder_;
+      }
+
+      // optional int32 page = 2;
+      private int page_ ;
+      /**
+       * <code>optional int32 page = 2;</code>
+       *
+       * <pre>
+       *页数
+       * </pre>
+       */
+      public boolean hasPage() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 page = 2;</code>
+       *
+       * <pre>
+       *页数
+       * </pre>
+       */
+      public int getPage() {
+        return page_;
+      }
+      /**
+       * <code>optional int32 page = 2;</code>
+       *
+       * <pre>
+       *页数
+       * </pre>
+       */
+      public Builder setPage(int value) {
+        bitField0_ |= 0x00000002;
+        page_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 page = 2;</code>
+       *
+       * <pre>
+       *页数
+       * </pre>
+       */
+      public Builder clearPage() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        page_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 size = 3;
+      private int size_ ;
+      /**
+       * <code>optional int32 size = 3;</code>
+       *
+       * <pre>
+       *每页多少条
+       * </pre>
+       */
+      public boolean hasSize() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 size = 3;</code>
+       *
+       * <pre>
+       *每页多少条
+       * </pre>
+       */
+      public int getSize() {
+        return size_;
+      }
+      /**
+       * <code>optional int32 size = 3;</code>
+       *
+       * <pre>
+       *每页多少条
+       * </pre>
+       */
+      public Builder setSize(int value) {
+        bitField0_ |= 0x00000004;
+        size_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 size = 3;</code>
+       *
+       * <pre>
+       *每页多少条
+       * </pre>
+       */
+      public Builder clearSize() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        size_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 count = 4;
+      private int count_ ;
+      /**
+       * <code>optional int32 count = 4;</code>
+       *
+       * <pre>
+       *总条数	
+       * </pre>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 count = 4;</code>
+       *
+       * <pre>
+       *总条数	
+       * </pre>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>optional int32 count = 4;</code>
+       *
+       * <pre>
+       *总条数	
+       * </pre>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000008;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count = 4;</code>
+       *
+       * <pre>
+       *总条数	
+       * </pre>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.BetPageLog)
+    }
+
+    static {
+      defaultInstance = new BetPageLog(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.BetPageLog)
+  }
+
+  public interface BetLogOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string orderId = 1;
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *下注期号，下的哪一期
+     * </pre>
+     */
+    boolean hasOrderId();
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *下注期号，下的哪一期
+     * </pre>
+     */
+    java.lang.String getOrderId();
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *下注期号，下的哪一期
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getOrderIdBytes();
+
+    // required int32 betMonsterId = 2;
+    /**
+     * <code>required int32 betMonsterId = 2;</code>
+     *
+     * <pre>
+     *下注的怪物id
+     * </pre>
+     */
+    boolean hasBetMonsterId();
+    /**
+     * <code>required int32 betMonsterId = 2;</code>
+     *
+     * <pre>
+     *下注的怪物id
+     * </pre>
+     */
+    int getBetMonsterId();
+
+    // required int32 betCoin = 3;
+    /**
+     * <code>required int32 betCoin = 3;</code>
+     *
+     * <pre>
+     *下注的分数
+     * </pre>
+     */
+    boolean hasBetCoin();
+    /**
+     * <code>required int32 betCoin = 3;</code>
+     *
+     * <pre>
+     *下注的分数
+     * </pre>
+     */
+    int getBetCoin();
+
+    // required int32 resultMonsterId = 4;
+    /**
+     * <code>required int32 resultMonsterId = 4;</code>
+     *
+     * <pre>
+     *开奖的怪物id
+     * </pre>
+     */
+    boolean hasResultMonsterId();
+    /**
+     * <code>required int32 resultMonsterId = 4;</code>
+     *
+     * <pre>
+     *开奖的怪物id
+     * </pre>
+     */
+    int getResultMonsterId();
+
+    // required int32 resultCoin = 5;
+    /**
+     * <code>required int32 resultCoin = 5;</code>
+     *
+     * <pre>
+     *得分
+     * </pre>
+     */
+    boolean hasResultCoin();
+    /**
+     * <code>required int32 resultCoin = 5;</code>
+     *
+     * <pre>
+     *得分
+     * </pre>
+     */
+    int getResultCoin();
+
+    // required int32 status = 6;
+    /**
+     * <code>required int32 status = 6;</code>
+     *
+     * <pre>
+     *状态（1、未开奖、2、已开奖 3、撤销下注）
+     * </pre>
+     */
+    boolean hasStatus();
+    /**
+     * <code>required int32 status = 6;</code>
+     *
+     * <pre>
+     *状态（1、未开奖、2、已开奖 3、撤销下注）
+     * </pre>
+     */
+    int getStatus();
+
+    // required int64 createTime = 7;
+    /**
+     * <code>required int64 createTime = 7;</code>
+     *
+     * <pre>
+     *下注时间
+     * </pre>
+     */
+    boolean hasCreateTime();
+    /**
+     * <code>required int64 createTime = 7;</code>
+     *
+     * <pre>
+     *下注时间
+     * </pre>
+     */
+    long getCreateTime();
+
+    // required int64 resultTime = 8;
+    /**
+     * <code>required int64 resultTime = 8;</code>
+     *
+     * <pre>
+     *开奖时间
+     * </pre>
+     */
+    boolean hasResultTime();
+    /**
+     * <code>required int64 resultTime = 8;</code>
+     *
+     * <pre>
+     *开奖时间
+     * </pre>
+     */
+    long getResultTime();
+  }
+  /**
+   * Protobuf type {@code src.BetLog}
+   *
+   * <pre>
+   *下注记录
+   * </pre>
+   */
+  public static final class BetLog extends
+      com.google.protobuf.GeneratedMessage
+      implements BetLogOrBuilder {
+    // Use BetLog.newBuilder() to construct.
+    private BetLog(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private BetLog(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final BetLog defaultInstance;
+    public static BetLog getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public BetLog getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private BetLog(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              orderId_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              betMonsterId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              betCoin_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              resultMonsterId_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              resultCoin_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              status_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              createTime_ = input.readInt64();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
+              resultTime_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.tower.msg.Tower.internal_static_src_BetLog_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.tower.msg.Tower.internal_static_src_BetLog_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.tower.msg.Tower.BetLog.class, com.tower.msg.Tower.BetLog.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<BetLog> PARSER =
+        new com.google.protobuf.AbstractParser<BetLog>() {
+      public BetLog parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new BetLog(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<BetLog> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string orderId = 1;
+    public static final int ORDERID_FIELD_NUMBER = 1;
+    private java.lang.Object orderId_;
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *下注期号，下的哪一期
+     * </pre>
+     */
+    public boolean hasOrderId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *下注期号，下的哪一期
+     * </pre>
+     */
+    public java.lang.String getOrderId() {
+      java.lang.Object ref = orderId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          orderId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string orderId = 1;</code>
+     *
+     * <pre>
+     *下注期号，下的哪一期
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getOrderIdBytes() {
+      java.lang.Object ref = orderId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        orderId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 betMonsterId = 2;
+    public static final int BETMONSTERID_FIELD_NUMBER = 2;
+    private int betMonsterId_;
+    /**
+     * <code>required int32 betMonsterId = 2;</code>
+     *
+     * <pre>
+     *下注的怪物id
+     * </pre>
+     */
+    public boolean hasBetMonsterId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 betMonsterId = 2;</code>
+     *
+     * <pre>
+     *下注的怪物id
+     * </pre>
+     */
+    public int getBetMonsterId() {
+      return betMonsterId_;
+    }
+
+    // required int32 betCoin = 3;
+    public static final int BETCOIN_FIELD_NUMBER = 3;
+    private int betCoin_;
+    /**
+     * <code>required int32 betCoin = 3;</code>
+     *
+     * <pre>
+     *下注的分数
+     * </pre>
+     */
+    public boolean hasBetCoin() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 betCoin = 3;</code>
+     *
+     * <pre>
+     *下注的分数
+     * </pre>
+     */
+    public int getBetCoin() {
+      return betCoin_;
+    }
+
+    // required int32 resultMonsterId = 4;
+    public static final int RESULTMONSTERID_FIELD_NUMBER = 4;
+    private int resultMonsterId_;
+    /**
+     * <code>required int32 resultMonsterId = 4;</code>
+     *
+     * <pre>
+     *开奖的怪物id
+     * </pre>
+     */
+    public boolean hasResultMonsterId() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required int32 resultMonsterId = 4;</code>
+     *
+     * <pre>
+     *开奖的怪物id
+     * </pre>
+     */
+    public int getResultMonsterId() {
+      return resultMonsterId_;
+    }
+
+    // required int32 resultCoin = 5;
+    public static final int RESULTCOIN_FIELD_NUMBER = 5;
+    private int resultCoin_;
+    /**
+     * <code>required int32 resultCoin = 5;</code>
+     *
+     * <pre>
+     *得分
+     * </pre>
+     */
+    public boolean hasResultCoin() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 resultCoin = 5;</code>
+     *
+     * <pre>
+     *得分
+     * </pre>
+     */
+    public int getResultCoin() {
+      return resultCoin_;
+    }
+
+    // required int32 status = 6;
+    public static final int STATUS_FIELD_NUMBER = 6;
+    private int status_;
+    /**
+     * <code>required int32 status = 6;</code>
+     *
+     * <pre>
+     *状态（1、未开奖、2、已开奖 3、撤销下注）
+     * </pre>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required int32 status = 6;</code>
+     *
+     * <pre>
+     *状态（1、未开奖、2、已开奖 3、撤销下注）
+     * </pre>
+     */
+    public int getStatus() {
+      return status_;
+    }
+
+    // required int64 createTime = 7;
+    public static final int CREATETIME_FIELD_NUMBER = 7;
+    private long createTime_;
+    /**
+     * <code>required int64 createTime = 7;</code>
+     *
+     * <pre>
+     *下注时间
+     * </pre>
+     */
+    public boolean hasCreateTime() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required int64 createTime = 7;</code>
+     *
+     * <pre>
+     *下注时间
+     * </pre>
+     */
+    public long getCreateTime() {
+      return createTime_;
+    }
+
+    // required int64 resultTime = 8;
+    public static final int RESULTTIME_FIELD_NUMBER = 8;
+    private long resultTime_;
+    /**
+     * <code>required int64 resultTime = 8;</code>
+     *
+     * <pre>
+     *开奖时间
+     * </pre>
+     */
+    public boolean hasResultTime() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required int64 resultTime = 8;</code>
+     *
+     * <pre>
+     *开奖时间
+     * </pre>
+     */
+    public long getResultTime() {
+      return resultTime_;
+    }
+
+    private void initFields() {
+      orderId_ = "";
+      betMonsterId_ = 0;
+      betCoin_ = 0;
+      resultMonsterId_ = 0;
+      resultCoin_ = 0;
+      status_ = 0;
+      createTime_ = 0L;
+      resultTime_ = 0L;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasOrderId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBetMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBetCoin()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasResultMonsterId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasResultCoin()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStatus()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCreateTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasResultTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getOrderIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, betMonsterId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, betCoin_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, resultMonsterId_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, resultCoin_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, status_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt64(7, createTime_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt64(8, resultTime_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getOrderIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, betMonsterId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, betCoin_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, resultMonsterId_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, resultCoin_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, status_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(7, createTime_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(8, resultTime_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.tower.msg.Tower.BetLog parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.BetLog parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetLog parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.tower.msg.Tower.BetLog parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetLog parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.BetLog parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetLog parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.tower.msg.Tower.BetLog parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.tower.msg.Tower.BetLog parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.tower.msg.Tower.BetLog parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.tower.msg.Tower.BetLog prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code src.BetLog}
+     *
+     * <pre>
+     *下注记录
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.tower.msg.Tower.BetLogOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tower.msg.Tower.internal_static_src_BetLog_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tower.msg.Tower.internal_static_src_BetLog_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tower.msg.Tower.BetLog.class, com.tower.msg.Tower.BetLog.Builder.class);
+      }
+
+      // Construct using com.tower.msg.Tower.BetLog.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        orderId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        betMonsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        betCoin_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        resultMonsterId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        resultCoin_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        status_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        createTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        resultTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.tower.msg.Tower.internal_static_src_BetLog_descriptor;
+      }
+
+      public com.tower.msg.Tower.BetLog getDefaultInstanceForType() {
+        return com.tower.msg.Tower.BetLog.getDefaultInstance();
+      }
+
+      public com.tower.msg.Tower.BetLog build() {
+        com.tower.msg.Tower.BetLog result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.tower.msg.Tower.BetLog buildPartial() {
+        com.tower.msg.Tower.BetLog result = new com.tower.msg.Tower.BetLog(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.orderId_ = orderId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.betMonsterId_ = betMonsterId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.betCoin_ = betCoin_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.resultMonsterId_ = resultMonsterId_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.resultCoin_ = resultCoin_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.status_ = status_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.createTime_ = createTime_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.resultTime_ = resultTime_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.tower.msg.Tower.BetLog) {
+          return mergeFrom((com.tower.msg.Tower.BetLog)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.tower.msg.Tower.BetLog other) {
+        if (other == com.tower.msg.Tower.BetLog.getDefaultInstance()) return this;
+        if (other.hasOrderId()) {
+          bitField0_ |= 0x00000001;
+          orderId_ = other.orderId_;
+          onChanged();
+        }
+        if (other.hasBetMonsterId()) {
+          setBetMonsterId(other.getBetMonsterId());
+        }
+        if (other.hasBetCoin()) {
+          setBetCoin(other.getBetCoin());
+        }
+        if (other.hasResultMonsterId()) {
+          setResultMonsterId(other.getResultMonsterId());
+        }
+        if (other.hasResultCoin()) {
+          setResultCoin(other.getResultCoin());
+        }
+        if (other.hasStatus()) {
+          setStatus(other.getStatus());
+        }
+        if (other.hasCreateTime()) {
+          setCreateTime(other.getCreateTime());
+        }
+        if (other.hasResultTime()) {
+          setResultTime(other.getResultTime());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasOrderId()) {
+          
+          return false;
+        }
+        if (!hasBetMonsterId()) {
+          
+          return false;
+        }
+        if (!hasBetCoin()) {
+          
+          return false;
+        }
+        if (!hasResultMonsterId()) {
+          
+          return false;
+        }
+        if (!hasResultCoin()) {
+          
+          return false;
+        }
+        if (!hasStatus()) {
+          
+          return false;
+        }
+        if (!hasCreateTime()) {
+          
+          return false;
+        }
+        if (!hasResultTime()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.tower.msg.Tower.BetLog parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.tower.msg.Tower.BetLog) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string orderId = 1;
+      private java.lang.Object orderId_ = "";
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *下注期号，下的哪一期
+       * </pre>
+       */
+      public boolean hasOrderId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *下注期号，下的哪一期
+       * </pre>
+       */
+      public java.lang.String getOrderId() {
+        java.lang.Object ref = orderId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          orderId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *下注期号，下的哪一期
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getOrderIdBytes() {
+        java.lang.Object ref = orderId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          orderId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *下注期号，下的哪一期
+       * </pre>
+       */
+      public Builder setOrderId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        orderId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *下注期号，下的哪一期
+       * </pre>
+       */
+      public Builder clearOrderId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        orderId_ = getDefaultInstance().getOrderId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string orderId = 1;</code>
+       *
+       * <pre>
+       *下注期号，下的哪一期
+       * </pre>
+       */
+      public Builder setOrderIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        orderId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 betMonsterId = 2;
+      private int betMonsterId_ ;
+      /**
+       * <code>required int32 betMonsterId = 2;</code>
+       *
+       * <pre>
+       *下注的怪物id
+       * </pre>
+       */
+      public boolean hasBetMonsterId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 betMonsterId = 2;</code>
+       *
+       * <pre>
+       *下注的怪物id
+       * </pre>
+       */
+      public int getBetMonsterId() {
+        return betMonsterId_;
+      }
+      /**
+       * <code>required int32 betMonsterId = 2;</code>
+       *
+       * <pre>
+       *下注的怪物id
+       * </pre>
+       */
+      public Builder setBetMonsterId(int value) {
+        bitField0_ |= 0x00000002;
+        betMonsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 betMonsterId = 2;</code>
+       *
+       * <pre>
+       *下注的怪物id
+       * </pre>
+       */
+      public Builder clearBetMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        betMonsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 betCoin = 3;
+      private int betCoin_ ;
+      /**
+       * <code>required int32 betCoin = 3;</code>
+       *
+       * <pre>
+       *下注的分数
+       * </pre>
+       */
+      public boolean hasBetCoin() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 betCoin = 3;</code>
+       *
+       * <pre>
+       *下注的分数
+       * </pre>
+       */
+      public int getBetCoin() {
+        return betCoin_;
+      }
+      /**
+       * <code>required int32 betCoin = 3;</code>
+       *
+       * <pre>
+       *下注的分数
+       * </pre>
+       */
+      public Builder setBetCoin(int value) {
+        bitField0_ |= 0x00000004;
+        betCoin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 betCoin = 3;</code>
+       *
+       * <pre>
+       *下注的分数
+       * </pre>
+       */
+      public Builder clearBetCoin() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        betCoin_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 resultMonsterId = 4;
+      private int resultMonsterId_ ;
+      /**
+       * <code>required int32 resultMonsterId = 4;</code>
+       *
+       * <pre>
+       *开奖的怪物id
+       * </pre>
+       */
+      public boolean hasResultMonsterId() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 resultMonsterId = 4;</code>
+       *
+       * <pre>
+       *开奖的怪物id
+       * </pre>
+       */
+      public int getResultMonsterId() {
+        return resultMonsterId_;
+      }
+      /**
+       * <code>required int32 resultMonsterId = 4;</code>
+       *
+       * <pre>
+       *开奖的怪物id
+       * </pre>
+       */
+      public Builder setResultMonsterId(int value) {
+        bitField0_ |= 0x00000008;
+        resultMonsterId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 resultMonsterId = 4;</code>
+       *
+       * <pre>
+       *开奖的怪物id
+       * </pre>
+       */
+      public Builder clearResultMonsterId() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        resultMonsterId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 resultCoin = 5;
+      private int resultCoin_ ;
+      /**
+       * <code>required int32 resultCoin = 5;</code>
+       *
+       * <pre>
+       *得分
+       * </pre>
+       */
+      public boolean hasResultCoin() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 resultCoin = 5;</code>
+       *
+       * <pre>
+       *得分
+       * </pre>
+       */
+      public int getResultCoin() {
+        return resultCoin_;
+      }
+      /**
+       * <code>required int32 resultCoin = 5;</code>
+       *
+       * <pre>
+       *得分
+       * </pre>
+       */
+      public Builder setResultCoin(int value) {
+        bitField0_ |= 0x00000010;
+        resultCoin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 resultCoin = 5;</code>
+       *
+       * <pre>
+       *得分
+       * </pre>
+       */
+      public Builder clearResultCoin() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        resultCoin_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 status = 6;
+      private int status_ ;
+      /**
+       * <code>required int32 status = 6;</code>
+       *
+       * <pre>
+       *状态（1、未开奖、2、已开奖 3、撤销下注）
+       * </pre>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required int32 status = 6;</code>
+       *
+       * <pre>
+       *状态（1、未开奖、2、已开奖 3、撤销下注）
+       * </pre>
+       */
+      public int getStatus() {
+        return status_;
+      }
+      /**
+       * <code>required int32 status = 6;</code>
+       *
+       * <pre>
+       *状态（1、未开奖、2、已开奖 3、撤销下注）
+       * </pre>
+       */
+      public Builder setStatus(int value) {
+        bitField0_ |= 0x00000020;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 status = 6;</code>
+       *
+       * <pre>
+       *状态（1、未开奖、2、已开奖 3、撤销下注）
+       * </pre>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int64 createTime = 7;
+      private long createTime_ ;
+      /**
+       * <code>required int64 createTime = 7;</code>
+       *
+       * <pre>
+       *下注时间
+       * </pre>
+       */
+      public boolean hasCreateTime() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required int64 createTime = 7;</code>
+       *
+       * <pre>
+       *下注时间
+       * </pre>
+       */
+      public long getCreateTime() {
+        return createTime_;
+      }
+      /**
+       * <code>required int64 createTime = 7;</code>
+       *
+       * <pre>
+       *下注时间
+       * </pre>
+       */
+      public Builder setCreateTime(long value) {
+        bitField0_ |= 0x00000040;
+        createTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 createTime = 7;</code>
+       *
+       * <pre>
+       *下注时间
+       * </pre>
+       */
+      public Builder clearCreateTime() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        createTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required int64 resultTime = 8;
+      private long resultTime_ ;
+      /**
+       * <code>required int64 resultTime = 8;</code>
+       *
+       * <pre>
+       *开奖时间
+       * </pre>
+       */
+      public boolean hasResultTime() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required int64 resultTime = 8;</code>
+       *
+       * <pre>
+       *开奖时间
+       * </pre>
+       */
+      public long getResultTime() {
+        return resultTime_;
+      }
+      /**
+       * <code>required int64 resultTime = 8;</code>
+       *
+       * <pre>
+       *开奖时间
+       * </pre>
+       */
+      public Builder setResultTime(long value) {
+        bitField0_ |= 0x00000080;
+        resultTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 resultTime = 8;</code>
+       *
+       * <pre>
+       *开奖时间
+       * </pre>
+       */
+      public Builder clearResultTime() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        resultTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:src.BetLog)
+    }
+
+    static {
+      defaultInstance = new BetLog(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:src.BetLog)
   }
 
   public interface DetailedAttackLogOrBuilder
@@ -17567,6 +20369,16 @@ public final class Tower {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_src_RecordRes_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_BetPageLog_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_BetPageLog_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_src_BetLog_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_src_BetLog_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_src_DetailedAttackLog_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -17614,13 +20426,21 @@ public final class Tower {
       "\001 \002(\0132\016.src.AttackLog\022/\n\020recommendMonste" +
       "r\030\002 \003(\0132\025.src.RecommendMonster\022\023\n\013recomm" +
       "endId\030\003 \003(\005\"4\n\tRecordReq\022\013\n\003cmd\030\001 \002(\005\022\014\n" +
-      "\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\"v\n\tRecordRes\022\013" +
-      "\n\003cmd\030\001 \002(\005\022)\n\rattackPageLog\030\002 \001(\0132\022.src" +
-      ".AttackPageLog\0221\n\021detailedAttackLog\030\003 \003(" +
-      "\0132\026.src.DetailedAttackLog\"t\n\021DetailedAtt" +
-      "ackLog\022\017\n\007orderId\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002" +
-      "(\005\022\022\n\nattackTime\030\003 \002(\003\022\023\n\013monsterName\030\004 ",
-      "\002(\t\022\022\n\nturretName\030\005 \002(\tB\017\n\rcom.tower.msg"
+      "\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\"\233\001\n\tRecordRes\022" +
+      "\013\n\003cmd\030\001 \002(\005\022)\n\rattackPageLog\030\002 \001(\0132\022.sr" +
+      "c.AttackPageLog\0221\n\021detailedAttackLog\030\003 \003" +
+      "(\0132\026.src.DetailedAttackLog\022#\n\nbetPageLog" +
+      "\030\004 \001(\0132\017.src.BetPageLog\"T\n\nBetPageLog\022\033\n" +
+      "\006betLog\030\001 \003(\0132\013.src.BetLog\022\014\n\004page\030\002 \001(\005",
+      "\022\014\n\004size\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\"\245\001\n\006BetLog" +
+      "\022\017\n\007orderId\030\001 \002(\t\022\024\n\014betMonsterId\030\002 \002(\005\022" +
+      "\017\n\007betCoin\030\003 \002(\005\022\027\n\017resultMonsterId\030\004 \002(" +
+      "\005\022\022\n\nresultCoin\030\005 \002(\005\022\016\n\006status\030\006 \002(\005\022\022\n" +
+      "\ncreateTime\030\007 \002(\003\022\022\n\nresultTime\030\010 \002(\003\"t\n" +
+      "\021DetailedAttackLog\022\017\n\007orderId\030\001 \002(\t\022\021\n\tm" +
+      "onsterId\030\002 \002(\005\022\022\n\nattackTime\030\003 \002(\003\022\023\n\013mo" +
+      "nsterName\030\004 \002(\t\022\022\n\nturretName\030\005 \002(\tB\017\n\rc" +
+      "om.tower.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17734,9 +20554,21 @@ public final class Tower {
           internal_static_src_RecordRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_RecordRes_descriptor,
-              new java.lang.String[] { "Cmd", "AttackPageLog", "DetailedAttackLog", });
-          internal_static_src_DetailedAttackLog_descriptor =
+              new java.lang.String[] { "Cmd", "AttackPageLog", "DetailedAttackLog", "BetPageLog", });
+          internal_static_src_BetPageLog_descriptor =
             getDescriptor().getMessageTypes().get(18);
+          internal_static_src_BetPageLog_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_BetPageLog_descriptor,
+              new java.lang.String[] { "BetLog", "Page", "Size", "Count", });
+          internal_static_src_BetLog_descriptor =
+            getDescriptor().getMessageTypes().get(19);
+          internal_static_src_BetLog_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_src_BetLog_descriptor,
+              new java.lang.String[] { "OrderId", "BetMonsterId", "BetCoin", "ResultMonsterId", "ResultCoin", "Status", "CreateTime", "ResultTime", });
+          internal_static_src_DetailedAttackLog_descriptor =
+            getDescriptor().getMessageTypes().get(20);
           internal_static_src_DetailedAttackLog_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_DetailedAttackLog_descriptor,

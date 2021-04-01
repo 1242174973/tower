@@ -1,19 +1,25 @@
 package com.tower.handler.base;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.core.AbsLogicHandler;
 import com.tower.core.ILogicHandler;
 import com.tower.core.constant.Mid;
 import com.tower.core.game.TowerGame;
 import com.tower.core.pipline.MsgBossHandler;
 import com.tower.core.utils.MsgUtil;
+import com.tower.entity.BetLog;
 import com.tower.enums.RecordCmd;
 import com.tower.msg.Tower;
+import com.tower.service.BetLogService;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +32,9 @@ public class RecordHandler extends AbsLogicHandler<Tower.RecordReq> implements M
 
     @Resource
     private TowerGame towerGame;
+
+    @Resource
+    private BetLogService betLogService;
 
     @Override
     public int getMid() {
@@ -43,6 +52,7 @@ public class RecordHandler extends AbsLogicHandler<Tower.RecordReq> implements M
                 detailedAttackLog(userId.intValue());
                 break;
             case BET_LOG:
+                betLog(reqMsg, userId.intValue());
                 break;
             default:
                 log.error("未知指令{}", recordCmd.getCode());
@@ -51,7 +61,44 @@ public class RecordHandler extends AbsLogicHandler<Tower.RecordReq> implements M
     }
 
     /**
+     * 粗略记录
+     *
+     * @param reqMsg 请求
+     * @param userId 玩家id
+     */
+    private void betLog(Tower.RecordReq reqMsg, int userId) {
+        LambdaQueryWrapper<BetLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        logLambdaQueryWrapper.eq(BetLog::getUserId, userId).orderByDesc(BetLog::getCreateTime);
+        Page<BetLog> page = new Page<>(reqMsg.getPage(), reqMsg.getSize());
+        page = betLogService.page(page);
+        Tower.RecordRes.Builder recordRes = Tower.RecordRes.newBuilder();
+        recordRes.setCmd(RecordCmd.BET_LOG.getCode());
+        Tower.BetPageLog.Builder betInfoBuilder = Tower.BetPageLog.newBuilder();
+        betInfoBuilder.setPage((int) page.getPages());
+        betInfoBuilder.setSize((int) page.getSize());
+        betInfoBuilder.setCount((int) page.getTotal());
+        List<BetLog> records = page.getRecords();
+        List<Tower.BetLog> betLogList = new ArrayList<>();
+        records.forEach(record -> {
+            Tower.BetLog.Builder betLog = Tower.BetLog.newBuilder();
+            betLog.setBetCoin(record.getBetCoin().intValue());
+            betLog.setOrderId(record.getOrderId());
+            betLog.setBetMonsterId(record.getBetMonsterId());
+            betLog.setResultMonsterId(record.getResultMonsterId());
+            betLog.setResultCoin(record.getResultCoin().intValue());
+            betLog.setStatus(record.getStatus());
+            betLog.setCreateTime(record.getCreateTime().toInstant(ZoneOffset.of("+8")).toEpochMilli());
+            betLog.setResultTime(record.getResultTime().toInstant(ZoneOffset.of("+8")).toEpochMilli());
+            betLogList.add(betLog.build());
+        });
+        betInfoBuilder.addAllBetLog(betLogList);
+        recordRes.setBetPageLog(betInfoBuilder);
+        sendMsg(recordRes, userId);
+    }
+
+    /**
      * 详细记录
+     *
      * @param userId 玩家id
      */
     private void detailedAttackLog(int userId) {

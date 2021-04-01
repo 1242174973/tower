@@ -15,9 +15,10 @@ public class ServerUtil {
      */
     public static void require(Object str, BusinessExceptionCode code) throws ServerException {
         if (StringUtils.isEmpty(str)) {
-            throw new ServerException(code.getDesc()+"不能为空");
+            throw new ServerException(code.getDesc() + "不能为空");
         }
     }
+
     /**
      * 断言判断，false则抛出异常
      */
@@ -26,6 +27,7 @@ public class ServerUtil {
             throw new ServerException(message);
         }
     }
+
     /**
      * 长度校验
      */
@@ -38,9 +40,10 @@ public class ServerUtil {
             length = str.length();
         }
         if (length < min || length > max) {
-            throw new ServerException(code.getDesc()+"长度在"+min+"-"+max);
+            throw new ServerException(code.getDesc() + "长度在" + min + "-" + max);
         }
     }
+
     /**
      * 长度校验
      */
@@ -52,8 +55,8 @@ public class ServerUtil {
         if (!StringUtils.isEmpty(str)) {
             length = str.length();
         }
-        if (length != min ) {
-            throw new ServerException(code.getDesc()+"长度是"+min);
+        if (length != min) {
+            throw new ServerException(code.getDesc() + "长度是" + min);
         }
     }
 }

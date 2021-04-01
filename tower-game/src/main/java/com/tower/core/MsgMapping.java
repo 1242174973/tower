@@ -1,5 +1,6 @@
 package com.tower.core;
 
+import com.tower.handler.base.GameHandler;
 import com.tower.handler.base.LoginHandler;
 import com.tower.handler.base.RecordHandler;
 import com.tower.handler.base.RoomHandler;
@@ -27,6 +28,7 @@ public class MsgMapping {
         list.add(LoginHandler.class);
         list.add(RoomHandler.class);
         list.add(RecordHandler.class);
+        list.add(GameHandler.class);
         // 赋值
         handleMap = genMapBySpring(list);
         log.info("Init Msg Mapping... End");
