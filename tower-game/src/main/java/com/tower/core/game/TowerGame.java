@@ -7,13 +7,17 @@ import com.tower.core.constant.Mid;
 import com.tower.core.pipline.MsgBossHandler;
 import com.tower.core.thread.ExecuteHashedWheelTimer;
 import com.tower.core.utils.MsgUtil;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.entity.AttackLog;
 import com.tower.entity.BetLog;
 import com.tower.entity.Monster;
+import com.tower.entity.Player;
 import com.tower.enums.GameCmd;
+import com.tower.enums.ResultEnum;
 import com.tower.game.MonsterInfo;
 import com.tower.msg.Tower;
 import com.tower.service.AttackLogService;
+import com.tower.service.BetLogService;
 import com.tower.service.MonsterService;
 import com.tower.utils.CopyUtil;
 import com.tower.utils.DateUtils;
@@ -22,8 +26,11 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
@@ -43,6 +50,10 @@ public class TowerGame {
     private AttackLogService attackLogService;
     @Resource
     private MonsterService monsterService;
+
+    @Resource
+    private BetLogService betLogService;
+
     /**
      * 此局版本号
      */
@@ -267,8 +278,55 @@ public class TowerGame {
         }
         int countdown = 14000;
         sendGameOver(countdown);
+        settleBetInfo();
     }
 
+    private void settleBetInfo() {
+        List<BetLog> currBetList = new ArrayList<>(betLogList);
+        LocalDateTime now = LocalDateTime.now();
+        LambdaQueryWrapper<AttackLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        if (currBetList.size() <= 0) {
+            return;
+        }
+        logLambdaQueryWrapper.eq(AttackLog::getOrderId, currBetList.get(0).getOrderId());
+        AttackLog one = attackLogService.getOne(logLambdaQueryWrapper);
+        if (one != null && one.getMonsterId() != null) {
+            for (BetLog betLog : currBetList) {
+                MsgBossHandler.EXECUTE_BET_LOG_SAVE.execute(() ->
+                        updateBetLog(now, one, betLog)
+                );
+            }
+        }
+    }
+
+    /**
+     * 计算开奖结果
+     *
+     * @param now    开奖时间
+     * @param one    开奖期数据
+     * @param betLog 下注记录
+     */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void updateBetLog(LocalDateTime now, AttackLog one, BetLog betLog) {
+        betLog.setResultTime(now);
+        betLog.setResultMonsterId(one.getMonsterId());
+        if (betLog.getBetMonsterId().equals(one.getMonsterId())) {
+            int multiple = getMonsterInfoById(one.getMonsterId()).getMultiple();
+            betLog.setResultCoin(betLog.getBetCoin().multiply(BigDecimal.valueOf(multiple)));
+            Player player = PlayerUtils.getPlayer(betLog.getUserId());
+            player.setMoney(player.getMoney().add(betLog.getResultCoin()));
+        } else {
+            betLog.setResultCoin(BigDecimal.ZERO);
+        }
+        betLog.setStatus(ResultEnum.ALREADY_RESULT.getCode());
+        betLogService.saveOrUpdate(betLog);
+    }
+
+    /**
+     * 发送游戏结束
+     *
+     * @param countdown 倒计时
+     */
     public void sendGameOver(int countdown) {
         log.info("完成出怪");
         setAward(true);
@@ -345,8 +403,9 @@ public class TowerGame {
      * @return 返回给客户端的记录信息
      */
     public List<Tower.DetailedAttackLog> getDetailedAttackLogList() {
+        int size = 10;
         List<AttackLog> attackLogs = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < size; i++) {
             attackLogs.add(attackLogList.get(i));
         }
         List<Tower.DetailedAttackLog> list = new ArrayList<>();
@@ -384,24 +443,30 @@ public class TowerGame {
      * @param userId 玩家id
      */
     public void sendStatus(int userId) {
+        int maxTime = 50000;
+        int startTime = 30000;
+        int startAndAttackTime = 36000;
         if (currStartTime <= 0) {
             return;
         }
         long time = System.currentTimeMillis() - currStartTime;
-        if (time < 30000) {
+        if (time < 0 || time > maxTime) {
+            time = 0;
+        }
+        if (time < startTime) {
             //开始时间
             Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
-            gameRes.setCmd(GameCmd.GAME_START.getCode()).setCountdown((int) (30000 - time));
+            gameRes.setCmd(GameCmd.GAME_START.getCode()).setCountdown((int) (startTime - time));
             sendToId(gameRes, userId);
-        } else if (time < 36000) {
+        } else if (time < startAndAttackTime) {
             //怪物即将到来
             Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
-            gameRes.setCmd(GameCmd.UPCOMING_AWARD.getCode()).setCountdown((int) (36000 - time));
+            gameRes.setCmd(GameCmd.UPCOMING_AWARD.getCode()).setCountdown((int) (startAndAttackTime - time));
             sendToId(gameRes, userId);
         } else {
             //怪物已经进攻
             Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
-            gameRes.setCmd(GameCmd.AWARD.getCode()).setCountdown((int) (50000 - time));
+            gameRes.setCmd(GameCmd.AWARD.getCode()).setCountdown((int) (maxTime - time));
             Tower.GameOverInfo.Builder gameOverInfo = Tower.GameOverInfo.newBuilder();
             Tower.AttackLog.Builder attackLog = Tower.AttackLog.newBuilder();
             attackLog.setOrderId(this.attackLog.getOrderId());
@@ -414,6 +479,11 @@ public class TowerGame {
         }
     }
 
+    /**
+     * 玩家下注
+     *
+     * @param betLog 下注记录
+     */
     public void bet(BetLog betLog) {
         betLogList.add(betLog);
         Tower.BetInfo.Builder builder = Tower.BetInfo.newBuilder();

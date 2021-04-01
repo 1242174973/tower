@@ -17,6 +17,8 @@ import com.tower.utils.ServerUtil;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -61,10 +63,13 @@ public class GameHandler extends AbsLogicHandler<Tower.GameReq> implements Mid, 
 
     }
 
-    private void bet(Tower.BetInfo betInfo, int userId) {
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void bet(Tower.BetInfo betInfo, int userId) {
         Player player = PlayerUtils.getPlayer(userId);
         ServerUtil.assertParam(towerGame.getGameStatus().equals(GameStatus.GAME_START), "游戏不在下注状态");
         ServerUtil.assertParam(player.getMoney().doubleValue() > betInfo.getCoin(), "玩家分数不足");
+        player.setMoney(player.getMoney().subtract(BigDecimal.valueOf(betInfo.getCoin())));
+        PlayerUtils.savePlayer(player);
         BetLog betLog = new BetLog();
         betLog.setBetCoin(BigDecimal.valueOf(betInfo.getCoin()));
         betLog.setOrderId(towerGame.getAttackLog().getOrderId());
@@ -72,9 +77,9 @@ public class GameHandler extends AbsLogicHandler<Tower.GameReq> implements Mid, 
         betLog.setBetMonsterId(betInfo.getMonsterId());
         betLog.setStatus(ResultEnum.NOT_RESULT.getCode());
         betLog.setCreateTime(LocalDateTime.now());
-        towerGame.bet(betLog);
         MsgBossHandler.EXECUTE_BET_LOG_SAVE.execute(() -> {
             betLogService.saveOrUpdate(betLog);
         });
+        towerGame.bet(betLog);
     }
 }
