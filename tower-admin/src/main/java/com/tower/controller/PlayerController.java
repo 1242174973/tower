@@ -74,11 +74,11 @@ public class PlayerController {
         Player player = playerService.getById(playerDto.getId());
         BusinessUtil.assertParam(player != null, "玩家没找到");
         player.setVip(playerDto.getVip());
-        player.setExperience(player.getExperience());
-        player.setMoney(player.getMoney());
-        player.setSafeBox(player.getSafeBox());
-        player.setSignIn(player.getSignIn());
-        player.setTotalSignIn(player.getTotalSignIn());
+        player.setExperience(playerDto.getExperience());
+        player.setMoney(playerDto.getMoney());
+        player.setSafeBox(playerDto.getSafeBox());
+        player.setSignIn(playerDto.getSignIn());
+        player.setTotalSignIn(playerDto.getTotalSignIn());
         playerFeign.save(player);
         return new ResponseDto<>();
     }

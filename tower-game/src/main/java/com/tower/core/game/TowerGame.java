@@ -326,9 +326,10 @@ public class TowerGame {
         if (betLog.getBetMonsterId().equals(one.getMonsterId())) {
             int multiple = getMonsterInfoById(one.getMonsterId()).getMultiple();
             betLog.setResultCoin(betLog.getBetCoin().multiply(BigDecimal.valueOf(multiple)));
-            Player player = PlayerUtils.getPlayer(betLog.getUserId());
-            player.setMoney(player.getMoney().add(betLog.getResultCoin()));
-            WelfareLog welfareLog = new WelfareLog().setCreateTime(LocalDateTime.now()).setUserId(player.getId())
+            Player playerInfo = PlayerUtils.getPlayer(betLog.getUserId());
+            playerInfo.setMoney(playerInfo.getMoney().add(betLog.getResultCoin()));
+            PlayerUtils.savePlayer(playerInfo);
+            WelfareLog welfareLog = new WelfareLog().setCreateTime(LocalDateTime.now()).setUserId(playerInfo.getId())
                     .setWelfareType(WelfareTypeEnum.GOLD.getCode()).setMode(WelfareModelEnum.BET_WIN.getCode())
                     .setWelfare(betLog.getResultCoin());
             welfareLogService.save(welfareLog);
