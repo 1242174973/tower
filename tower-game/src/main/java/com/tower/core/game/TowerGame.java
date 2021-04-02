@@ -126,6 +126,7 @@ public class TowerGame {
      * 游戏初始化
      */
     public void init() {
+        betLogList = new ArrayList<>();
         gameStatus = GameStatus.NULL;
         executeHashedWheelTimer = new ExecuteHashedWheelTimer();
         LambdaQueryWrapper<AttackLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -380,7 +381,7 @@ public class TowerGame {
             Channel channel = MsgBossHandler.getPlayerIdChannel(roomUserId);
             MsgUtil.sendMsg(channel, msgCtn.build());
         });
-        sendToAll(gameRes);
+//        sendToAll(gameRes);
         attackLogList.add(0, this.attackLog);
     }
 

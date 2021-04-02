@@ -16,5 +16,4 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ChallengeRewardServiceImpl extends ServiceImpl<ChallengeRewardMapper, ChallengeReward> implements ChallengeRewardService {
-
 }

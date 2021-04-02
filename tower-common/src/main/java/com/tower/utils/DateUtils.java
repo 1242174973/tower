@@ -60,7 +60,7 @@ public class DateUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(getPeriod());
+        System.out.println(getLastPeriod());
     }
 
     public static String getPeriod() {
@@ -75,6 +75,24 @@ public class DateUtils {
         } else {
             sj.add("21");
         }
+        return sj.toString();
+    }
+
+    public static String getLastPeriod() {
+        LocalDateTime now = LocalDateTime.now();
+        String day;
+        String month = now.getMonthValue() < 10 ? "0" + now.getMonthValue() : String.valueOf(now.getMonthValue());
+        if (now.getDayOfMonth() - 10 <= 10 && now.getDayOfMonth() - 10 > 0) {
+            day = "01";
+        } else if (now.getDayOfMonth() - 10 <= 20 && now.getDayOfMonth() - 10 > 0) {
+            day = "11";
+        } else {
+            day = "21";
+            month = now.getMonthValue() - 1 < 10 ? "0" + (now.getMonthValue() - 1) : String.valueOf(now.getMonthValue() - 1);
+        }
+        StringJoiner sj = new StringJoiner("-");
+        sj.add(String.valueOf(now.getYear()));
+        sj.add(month).add(day);
         return sj.toString();
     }
 }
