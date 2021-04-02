@@ -2,15 +2,14 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.*;
 import com.tower.dto.page.game.AgentTeamPageDto;
-import com.tower.entity.AgentRebate;
-import com.tower.entity.ChallengeReward;
-import com.tower.entity.Player;
-import com.tower.entity.Salvage;
+import com.tower.entity.*;
+import com.tower.exception.BusinessException;
 import com.tower.exception.BusinessExceptionCode;
-import com.tower.service.AgentRebateService;
 import com.tower.service.ChallengeRewardService;
+import com.tower.service.ExtracLogService;
 import com.tower.service.PlayerService;
 import com.tower.service.SalvageService;
 import com.tower.service.my.MyAgentRebateService;
@@ -50,6 +49,9 @@ public class AgentController {
 
     @Resource
     private SalvageService salvageService;
+
+    @Resource
+    private ExtracLogService extracLogService;
 
 
     @GetMapping("/agentIndex")
@@ -217,4 +219,32 @@ public class AgentController {
         playerList.forEach(player -> getAllLower(player.getId(), players));
     }
 
+    @GetMapping("/extractReward{money}")
+    @ApiOperation(value = "提取奖励", notes = "参数 提取金额")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = BusinessException.class)
+    public ResponseDto<String> extractReward(Player player, @PathVariable double money) {
+        try {
+            BusinessUtil.assertParam(player.getCanAward().doubleValue() >= money, "可提现金额不足");
+            player.setMoney(player.getMoney().add(BigDecimal.valueOf(money)));
+            player.setCanAward(player.getCanAward().subtract(BigDecimal.valueOf(money)));
+            ExtracLog extracLog = new ExtracLog()
+                    .setExtracCoin(BigDecimal.valueOf(money))
+                    .setExtracId(player.getId())
+                    .setSuccess(1)
+                    .setCreateTime(LocalDateTime.now());
+            extracLogService.save(extracLog);
+            PlayerUtils.savePlayer(player);
+            ResponseDto<String> responseDto = new ResponseDto<>();
+            responseDto.setContent("提取成功");
+            return responseDto;
+        } catch (BusinessException e) {
+            ExtracLog extracLog = new ExtracLog()
+                    .setExtracCoin(BigDecimal.valueOf(money))
+                    .setExtracId(player.getId())
+                    .setSuccess(0)
+                    .setCreateTime(LocalDateTime.now());
+            extracLogService.save(extracLog);
+            throw e;
+        }
+    }
 }

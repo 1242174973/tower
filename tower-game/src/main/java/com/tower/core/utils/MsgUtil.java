@@ -23,7 +23,9 @@ public class MsgUtil {
      * @param sendMsg
      */
     public static ChannelFuture sendMsg(Channel ch, int mid, MessageLite sendMsg, int reqMsgId) {
-        log.info("发送消息给{},mid:{},id:{}", ch.attr(GameConst.ATTR_USER_ID).get(), mid, reqMsgId);
+        if(mid!=2000){
+            log.info("发送消息给{},mid:{},id:{}", ch.attr(GameConst.ATTR_USER_ID).get(), mid, reqMsgId);
+        }
         return sendMsg(ch, buildRes(mid, sendMsg, reqMsgId));
     }
 
