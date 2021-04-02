@@ -12,6 +12,7 @@ public enum GameCmd {
     AWARD(3, "怪物进攻"),
     BET(4,"下注"),
     REPETITION_BET(5,"重复下注"),
+    BET_INFO(6,"下注信息"),
     ;
     private Integer code;
 

@@ -235,14 +235,15 @@ public class TowerGame {
         stringBuilder.append(num);
         return stringBuilder.toString();
     }
+
     private String getLastIndex() {
         StringBuilder stringBuilder = new StringBuilder();
-        int currNum = num-1;
+        int currNum = num - 1;
         int length = 4 - String.valueOf(currNum).length();
         for (int i = 0; i < length; i++) {
             stringBuilder.append("0");
         }
-        stringBuilder.append(num);
+        stringBuilder.append(currNum);
         return stringBuilder.toString();
     }
 
@@ -359,7 +360,26 @@ public class TowerGame {
         gameOverInfo.setAttackLog(attackLog);
         gameOverInfo.addAllRecommendId(getRecommendIds());
         gameOverInfo.addAllRecommendMonster(getRecommendMonster());
-        gameRes.setGameOverInfo(gameOverInfo);
+
+        Set<Integer> roomUserIds = MsgBossHandler.getRoomUserIds();
+        roomUserIds.forEach(roomUserId -> {
+
+            double sum = betLogList.stream().filter(betLog -> betLog.getUserId().equals(roomUserId) && betLog.getBetMonsterId().equals(monsterId))
+                    .mapToDouble(betLog -> betLog.getBetCoin().doubleValue())
+                    .sum();
+            MonsterInfo monsterInfo = getMonsterInfoById(roomUserId);
+            gameOverInfo.setWinCoin((int) (sum * monsterInfo.getMultiple()));
+
+            gameRes.setGameOverInfo(gameOverInfo);
+
+            Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
+            msgCtn.setDatas(gameRes.build().toByteString());
+            msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
+            msgCtn.setType(Mid.MID_GAME_RES);
+
+            Channel channel = MsgBossHandler.getPlayerIdChannel(roomUserId);
+            MsgUtil.sendMsg(channel, msgCtn.build());
+        });
         sendToAll(gameRes);
         attackLogList.add(0, this.attackLog);
     }
@@ -543,9 +563,30 @@ public class TowerGame {
     }
 
     public List<BetLog> getLastBetLog(int userId) {
-        LambdaQueryWrapper<BetLog> logLambdaQueryWrapper=new LambdaQueryWrapper<>();
-        String orderId=DateUtils.getYearAndMonthAndDay()+getLastIndex();
-        logLambdaQueryWrapper.eq(BetLog::getUserId,userId).eq(BetLog::getOrderId,orderId);
+        LambdaQueryWrapper<BetLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        String orderId = DateUtils.getYearAndMonthAndDay() + getLastIndex();
+        logLambdaQueryWrapper.eq(BetLog::getUserId, userId).eq(BetLog::getOrderId, orderId);
         return betLogService.getBaseMapper().selectList(logLambdaQueryWrapper);
+    }
+
+    /**
+     * 发送下注信息
+     *
+     * @param userId 玩家id
+     */
+    public void sendBetInfos(int userId) {
+        List<BetLog> betLogs = getBetLog(userId);
+        Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
+        gameRes.setCmd(GameCmd.BET_INFO.getCode());
+        List<Tower.BetInfo> betList = new ArrayList<>();
+        for (BetLog betLog : betLogs) {
+            Tower.BetInfo.Builder builder = Tower.BetInfo.newBuilder();
+            builder.setCoin(betLog.getBetCoin().intValue());
+            builder.setUserId(betLog.getUserId());
+            builder.setMonsterId(betLog.getBetMonsterId());
+            betList.add(builder.build());
+        }
+        gameRes.addAllBetInfos(betList);
+        sendToId(gameRes, userId);
     }
 }

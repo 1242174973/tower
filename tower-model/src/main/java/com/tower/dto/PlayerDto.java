@@ -28,6 +28,19 @@ public class PlayerDto {
     @ApiModelProperty(value = "验证码token")
     private String codeToken;
 
+    @ApiModelProperty(value = "返利比例")
+    private BigDecimal rebate;
+
+    @ApiModelProperty(value = "税点")
+    private BigDecimal tax;
+
+    @ApiModelProperty(value = "总奖励")
+    private BigDecimal totalAward;
+
+    @ApiModelProperty(value = "可提现奖励")
+    private BigDecimal canAward;
+
+
     @ApiModelProperty(value = "密码")
     private String password;
 

@@ -62,7 +62,7 @@ public class AccountController {
         BusinessUtil.require(playerDto.getAccount(), BusinessExceptionCode.ACCOUNT);
         BusinessUtil.length(playerDto.getAccount(), BusinessExceptionCode.ACCOUNT, 6, 20);
         BusinessUtil.require(playerDto.getNickName(), BusinessExceptionCode.NICK_NAME);
-        BusinessUtil.length(playerDto.getNickName(), BusinessExceptionCode.NICK_NAME, 6, 20);
+        BusinessUtil.length(playerDto.getNickName(), BusinessExceptionCode.NICK_NAME, 1, 20);
         BusinessUtil.require(playerDto.getPicCode(), BusinessExceptionCode.PIC_CODE);
         BusinessUtil.length(playerDto.getPicCode(), BusinessExceptionCode.PIC_CODE, 4);
         BusinessUtil.require(playerDto.getCodeToken(), BusinessExceptionCode.CODE_TOKEN);
@@ -75,7 +75,8 @@ public class AccountController {
                 playerDto.getPicCode().equals(redisOperator.get(playerDto.getCodeToken())),
                 "验证码错误");
         LambdaQueryWrapper<Player> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Player::getAccount, playerDto.getAccount());
+        queryWrapper.or(wrapper -> wrapper.eq(Player::getAccount, playerDto.getAccount()))
+                .or(wrapper -> wrapper.eq(Player::getNickName, playerDto.getNickName()));
         Player player = playerService.getOne(queryWrapper);
         BusinessUtil.assertParam(player == null, "用户已存在");
         LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -114,7 +115,7 @@ public class AccountController {
                                         @ApiParam(value = "密码", required = true)
                                         @PathVariable String password) {
         BusinessUtil.require(account, BusinessExceptionCode.ACCOUNT);
-        BusinessUtil.length(account, BusinessExceptionCode.ACCOUNT, 6, 20);
+        BusinessUtil.length(account, BusinessExceptionCode.ACCOUNT, 5, 20);
         BusinessUtil.require(password, BusinessExceptionCode.PASSWORD);
         BusinessUtil.length(password, BusinessExceptionCode.PASSWORD, 6, 20);
         LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -178,7 +179,7 @@ public class AccountController {
         ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
         responseDto.setContent(userDto);
         Channel channel = MsgBossHandler.getPlayerIdChannel(player.getId());
-        if(channel!=null){
+        if (channel != null) {
             Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
             msgCtn.setType(Mid.PLAYER_INFO_RES);
             msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));

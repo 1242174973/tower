@@ -11460,6 +11460,51 @@ public final class Tower {
      * </pre>
      */
     com.tower.msg.Tower.BetInfoOrBuilder getBetInfoOrBuilder();
+
+    // repeated .src.BetInfo betInfos = 5;
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    java.util.List<com.tower.msg.Tower.BetInfo> 
+        getBetInfosList();
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    com.tower.msg.Tower.BetInfo getBetInfos(int index);
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    int getBetInfosCount();
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    java.util.List<? extends com.tower.msg.Tower.BetInfoOrBuilder> 
+        getBetInfosOrBuilderList();
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    com.tower.msg.Tower.BetInfoOrBuilder getBetInfosOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code src.GameRes}
@@ -11552,6 +11597,14 @@ public final class Tower {
               bitField0_ |= 0x00000008;
               break;
             }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                betInfos_ = new java.util.ArrayList<com.tower.msg.Tower.BetInfo>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              betInfos_.add(input.readMessage(com.tower.msg.Tower.BetInfo.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -11560,6 +11613,9 @@ public final class Tower {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          betInfos_ = java.util.Collections.unmodifiableList(betInfos_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -11708,11 +11764,68 @@ public final class Tower {
       return betInfo_;
     }
 
+    // repeated .src.BetInfo betInfos = 5;
+    public static final int BETINFOS_FIELD_NUMBER = 5;
+    private java.util.List<com.tower.msg.Tower.BetInfo> betInfos_;
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    public java.util.List<com.tower.msg.Tower.BetInfo> getBetInfosList() {
+      return betInfos_;
+    }
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    public java.util.List<? extends com.tower.msg.Tower.BetInfoOrBuilder> 
+        getBetInfosOrBuilderList() {
+      return betInfos_;
+    }
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    public int getBetInfosCount() {
+      return betInfos_.size();
+    }
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetInfo getBetInfos(int index) {
+      return betInfos_.get(index);
+    }
+    /**
+     * <code>repeated .src.BetInfo betInfos = 5;</code>
+     *
+     * <pre>
+     *进入房间时返回自己的下注信息
+     * </pre>
+     */
+    public com.tower.msg.Tower.BetInfoOrBuilder getBetInfosOrBuilder(
+        int index) {
+      return betInfos_.get(index);
+    }
+
     private void initFields() {
       cmd_ = 0;
       countdown_ = 0;
       gameOverInfo_ = com.tower.msg.Tower.GameOverInfo.getDefaultInstance();
       betInfo_ = com.tower.msg.Tower.BetInfo.getDefaultInstance();
+      betInfos_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11735,6 +11848,12 @@ public final class Tower {
           return false;
         }
       }
+      for (int i = 0; i < getBetInfosCount(); i++) {
+        if (!getBetInfos(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -11753,6 +11872,9 @@ public final class Tower {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(4, betInfo_);
+      }
+      for (int i = 0; i < betInfos_.size(); i++) {
+        output.writeMessage(5, betInfos_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -11778,6 +11900,10 @@ public final class Tower {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, betInfo_);
+      }
+      for (int i = 0; i < betInfos_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, betInfos_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11893,6 +12019,7 @@ public final class Tower {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getGameOverInfoFieldBuilder();
           getBetInfoFieldBuilder();
+          getBetInfosFieldBuilder();
         }
       }
       private static Builder create() {
@@ -11917,6 +12044,12 @@ public final class Tower {
           betInfoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000008);
+        if (betInfosBuilder_ == null) {
+          betInfos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          betInfosBuilder_.clear();
+        }
         return this;
       }
 
@@ -11969,6 +12102,15 @@ public final class Tower {
         } else {
           result.betInfo_ = betInfoBuilder_.build();
         }
+        if (betInfosBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            betInfos_ = java.util.Collections.unmodifiableList(betInfos_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.betInfos_ = betInfos_;
+        } else {
+          result.betInfos_ = betInfosBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11997,6 +12139,32 @@ public final class Tower {
         if (other.hasBetInfo()) {
           mergeBetInfo(other.getBetInfo());
         }
+        if (betInfosBuilder_ == null) {
+          if (!other.betInfos_.isEmpty()) {
+            if (betInfos_.isEmpty()) {
+              betInfos_ = other.betInfos_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureBetInfosIsMutable();
+              betInfos_.addAll(other.betInfos_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.betInfos_.isEmpty()) {
+            if (betInfosBuilder_.isEmpty()) {
+              betInfosBuilder_.dispose();
+              betInfosBuilder_ = null;
+              betInfos_ = other.betInfos_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              betInfosBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getBetInfosFieldBuilder() : null;
+            } else {
+              betInfosBuilder_.addAllMessages(other.betInfos_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -12014,6 +12182,12 @@ public final class Tower {
         }
         if (hasBetInfo()) {
           if (!getBetInfo().isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getBetInfosCount(); i++) {
+          if (!getBetInfos(i).isInitialized()) {
             
             return false;
           }
@@ -12442,6 +12616,318 @@ public final class Tower {
           betInfo_ = null;
         }
         return betInfoBuilder_;
+      }
+
+      // repeated .src.BetInfo betInfos = 5;
+      private java.util.List<com.tower.msg.Tower.BetInfo> betInfos_ =
+        java.util.Collections.emptyList();
+      private void ensureBetInfosIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          betInfos_ = new java.util.ArrayList<com.tower.msg.Tower.BetInfo>(betInfos_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tower.msg.Tower.BetInfo, com.tower.msg.Tower.BetInfo.Builder, com.tower.msg.Tower.BetInfoOrBuilder> betInfosBuilder_;
+
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public java.util.List<com.tower.msg.Tower.BetInfo> getBetInfosList() {
+        if (betInfosBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(betInfos_);
+        } else {
+          return betInfosBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public int getBetInfosCount() {
+        if (betInfosBuilder_ == null) {
+          return betInfos_.size();
+        } else {
+          return betInfosBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfo getBetInfos(int index) {
+        if (betInfosBuilder_ == null) {
+          return betInfos_.get(index);
+        } else {
+          return betInfosBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public Builder setBetInfos(
+          int index, com.tower.msg.Tower.BetInfo value) {
+        if (betInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBetInfosIsMutable();
+          betInfos_.set(index, value);
+          onChanged();
+        } else {
+          betInfosBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public Builder setBetInfos(
+          int index, com.tower.msg.Tower.BetInfo.Builder builderForValue) {
+        if (betInfosBuilder_ == null) {
+          ensureBetInfosIsMutable();
+          betInfos_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          betInfosBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public Builder addBetInfos(com.tower.msg.Tower.BetInfo value) {
+        if (betInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBetInfosIsMutable();
+          betInfos_.add(value);
+          onChanged();
+        } else {
+          betInfosBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public Builder addBetInfos(
+          int index, com.tower.msg.Tower.BetInfo value) {
+        if (betInfosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBetInfosIsMutable();
+          betInfos_.add(index, value);
+          onChanged();
+        } else {
+          betInfosBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public Builder addBetInfos(
+          com.tower.msg.Tower.BetInfo.Builder builderForValue) {
+        if (betInfosBuilder_ == null) {
+          ensureBetInfosIsMutable();
+          betInfos_.add(builderForValue.build());
+          onChanged();
+        } else {
+          betInfosBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public Builder addBetInfos(
+          int index, com.tower.msg.Tower.BetInfo.Builder builderForValue) {
+        if (betInfosBuilder_ == null) {
+          ensureBetInfosIsMutable();
+          betInfos_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          betInfosBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public Builder addAllBetInfos(
+          java.lang.Iterable<? extends com.tower.msg.Tower.BetInfo> values) {
+        if (betInfosBuilder_ == null) {
+          ensureBetInfosIsMutable();
+          super.addAll(values, betInfos_);
+          onChanged();
+        } else {
+          betInfosBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public Builder clearBetInfos() {
+        if (betInfosBuilder_ == null) {
+          betInfos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          betInfosBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public Builder removeBetInfos(int index) {
+        if (betInfosBuilder_ == null) {
+          ensureBetInfosIsMutable();
+          betInfos_.remove(index);
+          onChanged();
+        } else {
+          betInfosBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfo.Builder getBetInfosBuilder(
+          int index) {
+        return getBetInfosFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfoOrBuilder getBetInfosOrBuilder(
+          int index) {
+        if (betInfosBuilder_ == null) {
+          return betInfos_.get(index);  } else {
+          return betInfosBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public java.util.List<? extends com.tower.msg.Tower.BetInfoOrBuilder> 
+           getBetInfosOrBuilderList() {
+        if (betInfosBuilder_ != null) {
+          return betInfosBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(betInfos_);
+        }
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfo.Builder addBetInfosBuilder() {
+        return getBetInfosFieldBuilder().addBuilder(
+            com.tower.msg.Tower.BetInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public com.tower.msg.Tower.BetInfo.Builder addBetInfosBuilder(
+          int index) {
+        return getBetInfosFieldBuilder().addBuilder(
+            index, com.tower.msg.Tower.BetInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .src.BetInfo betInfos = 5;</code>
+       *
+       * <pre>
+       *进入房间时返回自己的下注信息
+       * </pre>
+       */
+      public java.util.List<com.tower.msg.Tower.BetInfo.Builder> 
+           getBetInfosBuilderList() {
+        return getBetInfosFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tower.msg.Tower.BetInfo, com.tower.msg.Tower.BetInfo.Builder, com.tower.msg.Tower.BetInfoOrBuilder> 
+          getBetInfosFieldBuilder() {
+        if (betInfosBuilder_ == null) {
+          betInfosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.tower.msg.Tower.BetInfo, com.tower.msg.Tower.BetInfo.Builder, com.tower.msg.Tower.BetInfoOrBuilder>(
+                  betInfos_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          betInfos_ = null;
+        }
+        return betInfosBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:src.GameRes)
@@ -13232,6 +13718,24 @@ public final class Tower {
      * </pre>
      */
     int getRecommendId(int index);
+
+    // optional int32 winCoin = 4;
+    /**
+     * <code>optional int32 winCoin = 4;</code>
+     *
+     * <pre>
+     *回报分数
+     * </pre>
+     */
+    boolean hasWinCoin();
+    /**
+     * <code>optional int32 winCoin = 4;</code>
+     *
+     * <pre>
+     *回报分数
+     * </pre>
+     */
+    int getWinCoin();
   }
   /**
    * Protobuf type {@code src.GameOverInfo}
@@ -13328,6 +13832,11 @@ public final class Tower {
                 recommendId_.add(input.readInt32());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000002;
+              winCoin_ = input.readInt32();
               break;
             }
           }
@@ -13501,10 +14010,35 @@ public final class Tower {
       return recommendId_.get(index);
     }
 
+    // optional int32 winCoin = 4;
+    public static final int WINCOIN_FIELD_NUMBER = 4;
+    private int winCoin_;
+    /**
+     * <code>optional int32 winCoin = 4;</code>
+     *
+     * <pre>
+     *回报分数
+     * </pre>
+     */
+    public boolean hasWinCoin() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 winCoin = 4;</code>
+     *
+     * <pre>
+     *回报分数
+     * </pre>
+     */
+    public int getWinCoin() {
+      return winCoin_;
+    }
+
     private void initFields() {
       attackLog_ = com.tower.msg.Tower.AttackLog.getDefaultInstance();
       recommendMonster_ = java.util.Collections.emptyList();
       recommendId_ = java.util.Collections.emptyList();
+      winCoin_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -13541,6 +14075,9 @@ public final class Tower {
       for (int i = 0; i < recommendId_.size(); i++) {
         output.writeInt32(3, recommendId_.get(i));
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(4, winCoin_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -13566,6 +14103,10 @@ public final class Tower {
         }
         size += dataSize;
         size += 1 * getRecommendIdList().size();
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, winCoin_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -13703,6 +14244,8 @@ public final class Tower {
         }
         recommendId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000004);
+        winCoin_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -13753,6 +14296,10 @@ public final class Tower {
           bitField0_ = (bitField0_ & ~0x00000004);
         }
         result.recommendId_ = recommendId_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.winCoin_ = winCoin_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -13807,6 +14354,9 @@ public final class Tower {
             recommendId_.addAll(other.recommendId_);
           }
           onChanged();
+        }
+        if (other.hasWinCoin()) {
+          setWinCoin(other.getWinCoin());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -14404,6 +14954,55 @@ public final class Tower {
       public Builder clearRecommendId() {
         recommendId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+
+      // optional int32 winCoin = 4;
+      private int winCoin_ ;
+      /**
+       * <code>optional int32 winCoin = 4;</code>
+       *
+       * <pre>
+       *回报分数
+       * </pre>
+       */
+      public boolean hasWinCoin() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 winCoin = 4;</code>
+       *
+       * <pre>
+       *回报分数
+       * </pre>
+       */
+      public int getWinCoin() {
+        return winCoin_;
+      }
+      /**
+       * <code>optional int32 winCoin = 4;</code>
+       *
+       * <pre>
+       *回报分数
+       * </pre>
+       */
+      public Builder setWinCoin(int value) {
+        bitField0_ |= 0x00000008;
+        winCoin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 winCoin = 4;</code>
+       *
+       * <pre>
+       *回报分数
+       * </pre>
+       */
+      public Builder clearWinCoin() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        winCoin_ = 0;
         onChanged();
         return this;
       }
@@ -20417,30 +21016,31 @@ public final class Tower {
       "d\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\"H\n\020RecommendM" +
       "onster\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005rates\030\002 \002(\005" +
       "\022\022\n\ncontinuous\030\003 \002(\005\"5\n\007GameReq\022\013\n\003cmd\030\001" +
-      " \002(\005\022\035\n\007betInfo\030\002 \001(\0132\014.src.BetInfo\"q\n\007G" +
-      "ameRes\022\013\n\003cmd\030\001 \002(\005\022\021\n\tcountdown\030\002 \001(\005\022\'" +
-      "\n\014gameOverInfo\030\003 \001(\0132\021.src.GameOverInfo\022" +
-      "\035\n\007betInfo\030\004 \001(\0132\014.src.BetInfo\":\n\007BetInf" +
-      "o\022\016\n\006userId\030\001 \001(\005\022\021\n\tmonsterId\030\002 \002(\005\022\014\n\004",
-      "coin\030\003 \002(\005\"w\n\014GameOverInfo\022!\n\tattackLog\030" +
-      "\001 \002(\0132\016.src.AttackLog\022/\n\020recommendMonste" +
-      "r\030\002 \003(\0132\025.src.RecommendMonster\022\023\n\013recomm" +
-      "endId\030\003 \003(\005\"4\n\tRecordReq\022\013\n\003cmd\030\001 \002(\005\022\014\n" +
-      "\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\"\233\001\n\tRecordRes\022" +
-      "\013\n\003cmd\030\001 \002(\005\022)\n\rattackPageLog\030\002 \001(\0132\022.sr" +
-      "c.AttackPageLog\0221\n\021detailedAttackLog\030\003 \003" +
-      "(\0132\026.src.DetailedAttackLog\022#\n\nbetPageLog" +
-      "\030\004 \001(\0132\017.src.BetPageLog\"T\n\nBetPageLog\022\033\n" +
-      "\006betLog\030\001 \003(\0132\013.src.BetLog\022\014\n\004page\030\002 \001(\005",
-      "\022\014\n\004size\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\"\245\001\n\006BetLog" +
-      "\022\017\n\007orderId\030\001 \002(\t\022\024\n\014betMonsterId\030\002 \002(\005\022" +
-      "\017\n\007betCoin\030\003 \002(\005\022\027\n\017resultMonsterId\030\004 \002(" +
-      "\005\022\022\n\nresultCoin\030\005 \002(\005\022\016\n\006status\030\006 \002(\005\022\022\n" +
-      "\ncreateTime\030\007 \002(\003\022\022\n\nresultTime\030\010 \002(\003\"t\n" +
-      "\021DetailedAttackLog\022\017\n\007orderId\030\001 \002(\t\022\021\n\tm" +
-      "onsterId\030\002 \002(\005\022\022\n\nattackTime\030\003 \002(\003\022\023\n\013mo" +
-      "nsterName\030\004 \002(\t\022\022\n\nturretName\030\005 \002(\tB\017\n\rc" +
-      "om.tower.msg"
+      " \002(\005\022\035\n\007betInfo\030\002 \001(\0132\014.src.BetInfo\"\221\001\n\007" +
+      "GameRes\022\013\n\003cmd\030\001 \002(\005\022\021\n\tcountdown\030\002 \001(\005\022" +
+      "\'\n\014gameOverInfo\030\003 \001(\0132\021.src.GameOverInfo" +
+      "\022\035\n\007betInfo\030\004 \001(\0132\014.src.BetInfo\022\036\n\010betIn" +
+      "fos\030\005 \003(\0132\014.src.BetInfo\":\n\007BetInfo\022\016\n\006us",
+      "erId\030\001 \001(\005\022\021\n\tmonsterId\030\002 \002(\005\022\014\n\004coin\030\003 " +
+      "\002(\005\"\210\001\n\014GameOverInfo\022!\n\tattackLog\030\001 \002(\0132" +
+      "\016.src.AttackLog\022/\n\020recommendMonster\030\002 \003(" +
+      "\0132\025.src.RecommendMonster\022\023\n\013recommendId\030" +
+      "\003 \003(\005\022\017\n\007winCoin\030\004 \001(\005\"4\n\tRecordReq\022\013\n\003c" +
+      "md\030\001 \002(\005\022\014\n\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\"\233\001\n" +
+      "\tRecordRes\022\013\n\003cmd\030\001 \002(\005\022)\n\rattackPageLog" +
+      "\030\002 \001(\0132\022.src.AttackPageLog\0221\n\021detailedAt" +
+      "tackLog\030\003 \003(\0132\026.src.DetailedAttackLog\022#\n" +
+      "\nbetPageLog\030\004 \001(\0132\017.src.BetPageLog\"T\n\nBe",
+      "tPageLog\022\033\n\006betLog\030\001 \003(\0132\013.src.BetLog\022\014\n" +
+      "\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\022\r\n\005count\030\004 \001(\005" +
+      "\"\245\001\n\006BetLog\022\017\n\007orderId\030\001 \002(\t\022\024\n\014betMonst" +
+      "erId\030\002 \002(\005\022\017\n\007betCoin\030\003 \002(\005\022\027\n\017resultMon" +
+      "sterId\030\004 \002(\005\022\022\n\nresultCoin\030\005 \002(\005\022\016\n\006stat" +
+      "us\030\006 \002(\005\022\022\n\ncreateTime\030\007 \002(\003\022\022\n\nresultTi" +
+      "me\030\010 \002(\003\"t\n\021DetailedAttackLog\022\017\n\007orderId" +
+      "\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\022\022\n\nattackTime\030" +
+      "\003 \002(\003\022\023\n\013monsterName\030\004 \002(\t\022\022\n\nturretName" +
+      "\030\005 \002(\tB\017\n\rcom.tower.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -20530,7 +21130,7 @@ public final class Tower {
           internal_static_src_GameRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_GameRes_descriptor,
-              new java.lang.String[] { "Cmd", "Countdown", "GameOverInfo", "BetInfo", });
+              new java.lang.String[] { "Cmd", "Countdown", "GameOverInfo", "BetInfo", "BetInfos", });
           internal_static_src_BetInfo_descriptor =
             getDescriptor().getMessageTypes().get(14);
           internal_static_src_BetInfo_fieldAccessorTable = new
@@ -20542,7 +21142,7 @@ public final class Tower {
           internal_static_src_GameOverInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_GameOverInfo_descriptor,
-              new java.lang.String[] { "AttackLog", "RecommendMonster", "RecommendId", });
+              new java.lang.String[] { "AttackLog", "RecommendMonster", "RecommendId", "WinCoin", });
           internal_static_src_RecordReq_descriptor =
             getDescriptor().getMessageTypes().get(16);
           internal_static_src_RecordReq_fieldAccessorTable = new

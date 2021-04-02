@@ -88,7 +88,7 @@ public class PlayerController {
             return responseDto;
         }
         BusinessUtil.require(nickName, BusinessExceptionCode.NICK_NAME);
-        BusinessUtil.length(nickName, BusinessExceptionCode.NICK_NAME, 6, 20);
+        BusinessUtil.length(nickName, BusinessExceptionCode.NICK_NAME, 1, 20);
         player.setNickName(nickName);
         playerService.updateById(player);
         return AccountController.getPlayerDtoResponseDto(player);

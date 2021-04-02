@@ -1,8 +1,10 @@
 package com.tower.entity;
 
 import java.math.BigDecimal;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
@@ -29,13 +31,13 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Player对象", description="")
+@ApiModel(value = "Player对象", description = "")
 public class Player implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "玩家ID")
-      @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     @ApiModelProperty(value = "昵称")
@@ -61,6 +63,18 @@ public class Player implements Serializable {
 
     @ApiModelProperty(value = "保险柜余额")
     private BigDecimal safeBox;
+
+    @ApiModelProperty(value = "返利比例")
+    private BigDecimal rebate;
+
+    @ApiModelProperty(value = "税点")
+    private BigDecimal tax;
+
+    @ApiModelProperty(value = "总奖励")
+    private BigDecimal totalAward;
+
+    @ApiModelProperty(value = "可提现奖励")
+    private BigDecimal canAward;
 
     @ApiModelProperty(value = "保险柜密码")
     private String safeBoxPassword;

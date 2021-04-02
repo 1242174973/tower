@@ -43,6 +43,7 @@ public class RoomHandler extends AbsLogicHandler<Tower.RoomReq> implements Mid, 
             case ENTER_ROOM:
                 enterRoom(userId.intValue());
                 towerGame.sendStatus(userId.intValue());
+                towerGame.sendBetInfos(userId.intValue());
                 break;
             case EXIT_ROOM:
                 exitRoom(userId.intValue());
@@ -50,6 +51,7 @@ public class RoomHandler extends AbsLogicHandler<Tower.RoomReq> implements Mid, 
             case ROOM_INFO:
                 roomInfo(userId.intValue());
                 towerGame.sendStatus(userId.intValue());
+                towerGame.sendBetInfos(userId.intValue());
                 break;
             default:
                 log.error("未知指令{}",roomCmd.getCode());

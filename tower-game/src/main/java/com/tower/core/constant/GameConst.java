@@ -121,14 +121,7 @@ public interface GameConst {
 
 	public static class SysErrorCode{
 		public static String LOGIN_NULL = "LOGIN_NULL";
-		public static String NOT_DIMEN = "NOT_DIMEN";
-		public static String NOT_GOLD = "NOT_GOLD";
-		public static String NOT_GOLD_JIUJI = "NOT_GOLD_JIUJI";
-		public static String GOLD_TOO_MORE = "GOLD_TOO_MORE";
-		public static String GOLD_TOO_MORE_JUMP = "GOLD_TOO_MORE_JUMP";
-		public static String TIP_SHOW = "TIP_SHOW";
-		public static String ALREADY_IN_ROOM = "ALREADY_IN_ROOM";
-		public static String NOT_FKTIME = "NOT_FKTIME";
+		public static String LOGIN_TOP = "LOGIN_TOP";
 
 	}
 

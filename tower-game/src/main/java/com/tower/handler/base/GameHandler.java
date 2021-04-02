@@ -72,8 +72,9 @@ public class GameHandler extends AbsLogicHandler<Tower.GameReq> implements Mid, 
      * @param userId 下注玩家id
      */
     private void repetitionBet(int userId) {
+        ServerUtil.assertParam(towerGame.getGameStatus().equals(GameStatus.GAME_START), "游戏不在下注状态");
         List<BetLog> betLogs = towerGame.getBetLog(userId);
-        ServerUtil.assertParam(betLogs.size() > 0, "下注后不能重复下注");
+        ServerUtil.assertParam(betLogs.size() <= 0, "下注后不能重复下注");
         betLogs = towerGame.getLastBetLog(userId);
         ServerUtil.assertParam(betLogs.size() > 0, "上局没有下注");
         double sum = betLogs.stream().mapToDouble(betLog -> betLog.getBetCoin().doubleValue()).sum();
