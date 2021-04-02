@@ -55,11 +55,11 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
             return;
         }
         ch.attr(GameConst.ATTR_USER_ID).set(player.getId().longValue());
-        sendLoginSuccess(ch, player);
         Channel channel = MsgBossHandler.getPlayerIdChannel(player.getId());
-        if(channel!=null){
+        if (channel != null) {
             sendLoginTop(channel);
         }
+        sendLoginSuccess(ch, player);
         MsgBossHandler.putPlayerIdChannel(player.getId(), ch);
     }
 
@@ -69,6 +69,7 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
         errRes.setErrorMsg("账号在异地登录");
         errRes.setErrorCode(GameConst.SysErrorCode.LOGIN_TOP);
         MsgUtil.sendMsg(channel, Mid.MID_SERVER_ERROR_RES, errRes.build());
+        channel.close();
     }
 
     @Override

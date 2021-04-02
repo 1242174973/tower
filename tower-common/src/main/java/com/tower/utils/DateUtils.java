@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.StringJoiner;
 
 /**
  * @author 梦-屿-千-寻
@@ -31,6 +32,7 @@ public class DateUtils {
                 .append(now.getSecond() < 10 ? "0" + now.getSecond() : now.getSecond());
         return sb.toString();
     }
+
     public static String getYearAndMonthAndDay() {
         LocalDateTime now = LocalDateTime.now();
         StringBuilder sb = new StringBuilder();
@@ -39,6 +41,7 @@ public class DateUtils {
                 .append(now.getDayOfMonth() < 10 ? "0" + now.getDayOfMonth() : now.getDayOfMonth());
         return sb.toString();
     }
+
     public static long byDayTime(int day) {
         LocalDate localDate = LocalDate.now();
         localDate = localDate.plusDays(day);
@@ -57,10 +60,21 @@ public class DateUtils {
     }
 
     public static void main(String[] args) {
-        long l = byDayTime(0);
-        long currentTimeMillis = System.currentTimeMillis();
-        System.out.println(l);
-        System.out.println(currentTimeMillis);
-        System.out.println(currentTimeMillis - l);
+        System.out.println(getPeriod());
+    }
+
+    public static String getPeriod() {
+        LocalDateTime now = LocalDateTime.now();
+        StringJoiner sj = new StringJoiner("-");
+        sj.add(String.valueOf(now.getYear()));
+        sj.add(now.getMonthValue() < 10 ? "0" + now.getMonthValue() : String.valueOf(now.getMonthValue()));
+        if (now.getDayOfMonth() <= 10) {
+            sj.add("01");
+        } else if (now.getDayOfMonth() <= 20) {
+            sj.add("11");
+        } else {
+            sj.add("21");
+        }
+        return sj.toString();
     }
 }

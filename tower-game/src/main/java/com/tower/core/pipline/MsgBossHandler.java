@@ -159,7 +159,7 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
      */
     public static int bytesToInt(byte[] src, int offset) {
         int value;
-        value =  ((src[offset] & 0xFF)
+        value = ((src[offset] & 0xFF)
                 | ((src[offset + 1] & 0xFF) << 8)
                 | ((src[offset + 2] & 0xFF) << 16)
                 | ((src[offset + 3] & 0xFF) << 24));
@@ -189,31 +189,17 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
         }
         final Long userId = userIdAttr.get();
         if (userId != null) {
-            log.info("用户{}连接[{}]断开,清空channel的ATTR_USER_ID", userId, ctx.channel().id());
-            userIdAttr.set(null);
-            EXECUTE_LOGIN.execute(() -> {
-                //TODO 处理玩家断开连接
-                roomUserIds.remove(userId.intValue());
+            Channel channel = playerIdChannel.get(userId.intValue());
+            if (!channel.isActive()) {
+                log.info("用户{}连接[{}]断开,清空channel的ATTR_USER_ID", userId, ctx.channel().id());
+                userIdAttr.set(null);
                 playerIdChannel.remove(userId.intValue());
-            });
-
+                roomUserIds.remove(userId.intValue());
+            } else {
+                log.info("顶号");
+            }
         } else {
             log.info("用户连接[{}]断开", ctx.channel().id());
-        }
-
-        // 断线  再次关闭,防止断的不干净
-        if (ctx.channel() != null) {
-            try {
-                if (ctx.channel().isActive()
-                        || ctx.channel().isOpen()
-                        || ctx.channel().isRegistered()
-                        || ctx.channel().isWritable()) {
-                    log.info("再次主动关闭用户Ch[{}],UID[{}]", ctx.channel().id(), userId);
-                    ctx.channel().close();
-                }
-            } catch (Exception e) {
-                log.error("关闭ch[{}]异常[" + userId + "]", ctx.channel().id(), e);
-            }
         }
         super.channelUnregistered(ctx);
     }

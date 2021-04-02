@@ -18360,9 +18360,9 @@ public final class Tower {
      */
     int getBetCoin();
 
-    // required int32 resultMonsterId = 4;
+    // optional int32 resultMonsterId = 4;
     /**
-     * <code>required int32 resultMonsterId = 4;</code>
+     * <code>optional int32 resultMonsterId = 4;</code>
      *
      * <pre>
      *开奖的怪物id
@@ -18370,7 +18370,7 @@ public final class Tower {
      */
     boolean hasResultMonsterId();
     /**
-     * <code>required int32 resultMonsterId = 4;</code>
+     * <code>optional int32 resultMonsterId = 4;</code>
      *
      * <pre>
      *开奖的怪物id
@@ -18378,9 +18378,9 @@ public final class Tower {
      */
     int getResultMonsterId();
 
-    // required int32 resultCoin = 5;
+    // optional int32 resultCoin = 5;
     /**
-     * <code>required int32 resultCoin = 5;</code>
+     * <code>optional int32 resultCoin = 5;</code>
      *
      * <pre>
      *得分
@@ -18388,7 +18388,7 @@ public final class Tower {
      */
     boolean hasResultCoin();
     /**
-     * <code>required int32 resultCoin = 5;</code>
+     * <code>optional int32 resultCoin = 5;</code>
      *
      * <pre>
      *得分
@@ -18432,9 +18432,9 @@ public final class Tower {
      */
     long getCreateTime();
 
-    // required int64 resultTime = 8;
+    // optional int64 resultTime = 8;
     /**
-     * <code>required int64 resultTime = 8;</code>
+     * <code>optional int64 resultTime = 8;</code>
      *
      * <pre>
      *开奖时间
@@ -18442,7 +18442,7 @@ public final class Tower {
      */
     boolean hasResultTime();
     /**
-     * <code>required int64 resultTime = 8;</code>
+     * <code>optional int64 resultTime = 8;</code>
      *
      * <pre>
      *开奖时间
@@ -18688,11 +18688,11 @@ public final class Tower {
       return betCoin_;
     }
 
-    // required int32 resultMonsterId = 4;
+    // optional int32 resultMonsterId = 4;
     public static final int RESULTMONSTERID_FIELD_NUMBER = 4;
     private int resultMonsterId_;
     /**
-     * <code>required int32 resultMonsterId = 4;</code>
+     * <code>optional int32 resultMonsterId = 4;</code>
      *
      * <pre>
      *开奖的怪物id
@@ -18702,7 +18702,7 @@ public final class Tower {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 resultMonsterId = 4;</code>
+     * <code>optional int32 resultMonsterId = 4;</code>
      *
      * <pre>
      *开奖的怪物id
@@ -18712,11 +18712,11 @@ public final class Tower {
       return resultMonsterId_;
     }
 
-    // required int32 resultCoin = 5;
+    // optional int32 resultCoin = 5;
     public static final int RESULTCOIN_FIELD_NUMBER = 5;
     private int resultCoin_;
     /**
-     * <code>required int32 resultCoin = 5;</code>
+     * <code>optional int32 resultCoin = 5;</code>
      *
      * <pre>
      *得分
@@ -18726,7 +18726,7 @@ public final class Tower {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 resultCoin = 5;</code>
+     * <code>optional int32 resultCoin = 5;</code>
      *
      * <pre>
      *得分
@@ -18784,11 +18784,11 @@ public final class Tower {
       return createTime_;
     }
 
-    // required int64 resultTime = 8;
+    // optional int64 resultTime = 8;
     public static final int RESULTTIME_FIELD_NUMBER = 8;
     private long resultTime_;
     /**
-     * <code>required int64 resultTime = 8;</code>
+     * <code>optional int64 resultTime = 8;</code>
      *
      * <pre>
      *开奖时间
@@ -18798,7 +18798,7 @@ public final class Tower {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>required int64 resultTime = 8;</code>
+     * <code>optional int64 resultTime = 8;</code>
      *
      * <pre>
      *开奖时间
@@ -18835,23 +18835,11 @@ public final class Tower {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasResultMonsterId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasResultCoin()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (!hasStatus()) {
         memoizedIsInitialized = 0;
         return false;
       }
       if (!hasCreateTime()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasResultTime()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -19182,23 +19170,11 @@ public final class Tower {
           
           return false;
         }
-        if (!hasResultMonsterId()) {
-          
-          return false;
-        }
-        if (!hasResultCoin()) {
-          
-          return false;
-        }
         if (!hasStatus()) {
           
           return false;
         }
         if (!hasCreateTime()) {
-          
-          return false;
-        }
-        if (!hasResultTime()) {
           
           return false;
         }
@@ -19420,10 +19396,10 @@ public final class Tower {
         return this;
       }
 
-      // required int32 resultMonsterId = 4;
+      // optional int32 resultMonsterId = 4;
       private int resultMonsterId_ ;
       /**
-       * <code>required int32 resultMonsterId = 4;</code>
+       * <code>optional int32 resultMonsterId = 4;</code>
        *
        * <pre>
        *开奖的怪物id
@@ -19433,7 +19409,7 @@ public final class Tower {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 resultMonsterId = 4;</code>
+       * <code>optional int32 resultMonsterId = 4;</code>
        *
        * <pre>
        *开奖的怪物id
@@ -19443,7 +19419,7 @@ public final class Tower {
         return resultMonsterId_;
       }
       /**
-       * <code>required int32 resultMonsterId = 4;</code>
+       * <code>optional int32 resultMonsterId = 4;</code>
        *
        * <pre>
        *开奖的怪物id
@@ -19456,7 +19432,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>required int32 resultMonsterId = 4;</code>
+       * <code>optional int32 resultMonsterId = 4;</code>
        *
        * <pre>
        *开奖的怪物id
@@ -19469,10 +19445,10 @@ public final class Tower {
         return this;
       }
 
-      // required int32 resultCoin = 5;
+      // optional int32 resultCoin = 5;
       private int resultCoin_ ;
       /**
-       * <code>required int32 resultCoin = 5;</code>
+       * <code>optional int32 resultCoin = 5;</code>
        *
        * <pre>
        *得分
@@ -19482,7 +19458,7 @@ public final class Tower {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 resultCoin = 5;</code>
+       * <code>optional int32 resultCoin = 5;</code>
        *
        * <pre>
        *得分
@@ -19492,7 +19468,7 @@ public final class Tower {
         return resultCoin_;
       }
       /**
-       * <code>required int32 resultCoin = 5;</code>
+       * <code>optional int32 resultCoin = 5;</code>
        *
        * <pre>
        *得分
@@ -19505,7 +19481,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>required int32 resultCoin = 5;</code>
+       * <code>optional int32 resultCoin = 5;</code>
        *
        * <pre>
        *得分
@@ -19616,10 +19592,10 @@ public final class Tower {
         return this;
       }
 
-      // required int64 resultTime = 8;
+      // optional int64 resultTime = 8;
       private long resultTime_ ;
       /**
-       * <code>required int64 resultTime = 8;</code>
+       * <code>optional int64 resultTime = 8;</code>
        *
        * <pre>
        *开奖时间
@@ -19629,7 +19605,7 @@ public final class Tower {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>required int64 resultTime = 8;</code>
+       * <code>optional int64 resultTime = 8;</code>
        *
        * <pre>
        *开奖时间
@@ -19639,7 +19615,7 @@ public final class Tower {
         return resultTime_;
       }
       /**
-       * <code>required int64 resultTime = 8;</code>
+       * <code>optional int64 resultTime = 8;</code>
        *
        * <pre>
        *开奖时间
@@ -19652,7 +19628,7 @@ public final class Tower {
         return this;
       }
       /**
-       * <code>required int64 resultTime = 8;</code>
+       * <code>optional int64 resultTime = 8;</code>
        *
        * <pre>
        *开奖时间
@@ -21035,9 +21011,9 @@ public final class Tower {
       "\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\022\r\n\005count\030\004 \001(\005" +
       "\"\245\001\n\006BetLog\022\017\n\007orderId\030\001 \002(\t\022\024\n\014betMonst" +
       "erId\030\002 \002(\005\022\017\n\007betCoin\030\003 \002(\005\022\027\n\017resultMon" +
-      "sterId\030\004 \002(\005\022\022\n\nresultCoin\030\005 \002(\005\022\016\n\006stat" +
+      "sterId\030\004 \001(\005\022\022\n\nresultCoin\030\005 \001(\005\022\016\n\006stat" +
       "us\030\006 \002(\005\022\022\n\ncreateTime\030\007 \002(\003\022\022\n\nresultTi" +
-      "me\030\010 \002(\003\"t\n\021DetailedAttackLog\022\017\n\007orderId" +
+      "me\030\010 \001(\003\"t\n\021DetailedAttackLog\022\017\n\007orderId" +
       "\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\022\022\n\nattackTime\030" +
       "\003 \002(\003\022\023\n\013monsterName\030\004 \002(\t\022\022\n\nturretName" +
       "\030\005 \002(\tB\017\n\rcom.tower.msg"

@@ -70,7 +70,7 @@ public class RecordHandler extends AbsLogicHandler<Tower.RecordReq> implements M
         LambdaQueryWrapper<BetLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
         logLambdaQueryWrapper.eq(BetLog::getUserId, userId).orderByDesc(BetLog::getCreateTime);
         Page<BetLog> page = new Page<>(reqMsg.getPage(), reqMsg.getSize());
-        page = betLogService.page(page);
+        page = betLogService.page(page, logLambdaQueryWrapper);
         Tower.RecordRes.Builder recordRes = Tower.RecordRes.newBuilder();
         recordRes.setCmd(RecordCmd.BET_LOG.getCode());
         Tower.BetPageLog.Builder betInfoBuilder = Tower.BetPageLog.newBuilder();
@@ -84,11 +84,13 @@ public class RecordHandler extends AbsLogicHandler<Tower.RecordReq> implements M
             betLog.setBetCoin(record.getBetCoin().intValue());
             betLog.setOrderId(record.getOrderId());
             betLog.setBetMonsterId(record.getBetMonsterId());
-            betLog.setResultMonsterId(record.getResultMonsterId());
-            betLog.setResultCoin(record.getResultCoin().intValue());
+            if (record.getResultMonsterId() != null) {
+                betLog.setResultMonsterId(record.getResultMonsterId());
+                betLog.setResultCoin(record.getResultCoin().intValue());
+                betLog.setResultTime(record.getResultTime().toInstant(ZoneOffset.of("+8")).toEpochMilli());
+            }
             betLog.setStatus(record.getStatus());
             betLog.setCreateTime(record.getCreateTime().toInstant(ZoneOffset.of("+8")).toEpochMilli());
-            betLog.setResultTime(record.getResultTime().toInstant(ZoneOffset.of("+8")).toEpochMilli());
             betLogList.add(betLog.build());
         });
         betInfoBuilder.addAllBetLog(betLogList);

@@ -33,8 +33,8 @@ public class AgentDto implements Serializable {
     private Integer newNum;
 
     @ApiModelProperty(value = "历史总奖励")
-    private Integer totalAward;
+    private BigDecimal totalAward;
 
     @ApiModelProperty(value = "可提现金额")
-    private Integer canAward;
+    private BigDecimal canAward;
 }
