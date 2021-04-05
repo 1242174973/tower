@@ -338,9 +338,9 @@ public class AgentController {
     @GetMapping("/lowerDetails/{userId}")
     @ApiOperation(value = "下级详情", notes = "参数 下级玩家id")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public ResponseDto<LowerDetailsDto> share(Player player,
-                                              @ApiParam(value = "下级玩家id", required = true)
-                                              @PathVariable int userId) {
+    public ResponseDto<LowerDetailsDto> lowerDetails(Player player,
+                                                     @ApiParam(value = "下级玩家id", required = true)
+                                                     @PathVariable int userId) {
         Player lowerPlayer = PlayerUtils.getPlayer(userId);
         BusinessUtil.assertParam(lowerPlayer != null, "下级玩家未找到");
         BusinessUtil.assertParam(lowerPlayer.getSuperId().equals(player.getId()), "该玩家不是玩家的直系下级");
@@ -355,7 +355,7 @@ public class AgentController {
         lowerDetailsDto.setNewNum(getNewNum(playerList));
         LowerDetailsDto.LowerDetails lowerDetails = getOwnDetails(lowerPlayer);
         lowerDetailsDto.setMyDetails(lowerDetails);
-        lowerDetails=getLowerDetails(lowerPlayer);
+        lowerDetails = getLowerDetails(lowerPlayer);
         lowerDetailsDto.setLowerDetails(lowerDetails);
         ResponseDto<LowerDetailsDto> responseDto = new ResponseDto<>();
         responseDto.setContent(lowerDetailsDto);
@@ -363,6 +363,42 @@ public class AgentController {
         return responseDto;
     }
 
+    @GetMapping("/rebateConfig/{userId}/{rebate}")
+    @ApiOperation(value = "下级返点配置", notes = "参数 下级玩家id  返点数额")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ResponseDto<LowerDetailsDto> rebateConfig(Player player,
+                                                     @ApiParam(value = "下级玩家id", required = true)
+                                                     @PathVariable int userId,
+                                                     @ApiParam(value = "返利比例", required = true)
+                                                     @PathVariable double rebate) {
+        BusinessUtil.assertParam(player.getRebate().doubleValue() > rebate, "不能设置比自己更高的返利");
+        Player lowerPlayer = PlayerUtils.getPlayer(userId);
+        BusinessUtil.assertParam(lowerPlayer != null, "下级玩家未找到");
+        BusinessUtil.assertParam(lowerPlayer.getSuperId().equals(player.getId()), "该玩家不是玩家的直系下级");
+        double oldRebate = lowerPlayer.getRebate().doubleValue();
+        lowerPlayer.setRebate(BigDecimal.valueOf(rebate));
+        PlayerUtils.savePlayer(lowerPlayer);
+        if (oldRebate > rebate) {
+            List<Player> playerList = new ArrayList<>();
+            getAllLower(userId, playerList);
+            playerList.forEach(p -> {
+                if (p.getRebate().doubleValue() > rebate) {
+                    p.setRebate(BigDecimal.valueOf(rebate));
+                    PlayerUtils.savePlayer(p);
+                }
+            });
+        }
+        ResponseDto<LowerDetailsDto> responseDto = new ResponseDto<>();
+        responseDto.setMessage("设置成功");
+        return responseDto;
+    }
+
+    /**
+     * 获得下级详情
+     *
+     * @param player 玩家id
+     * @return 下级详情
+     */
     private LowerDetailsDto.LowerDetails getLowerDetails(Player player) {
         LowerDetailsDto.LowerDetails lowerDetails = new LowerDetailsDto.LowerDetails();
         lowerDetails.setCoin(player.getMoney().doubleValue());
@@ -370,9 +406,15 @@ public class AgentController {
         return lowerDetails;
     }
 
-    private LowerDetailsDto.LowerDetails getOwnDetails(Player lowerPlayer) {
+    /**
+     * 获得自己详情
+     *
+     * @param player 玩家id
+     * @return 自己详情
+     */
+    private LowerDetailsDto.LowerDetails getOwnDetails(Player player) {
         LowerDetailsDto.LowerDetails lowerDetails = new LowerDetailsDto.LowerDetails();
-        lowerDetails.setCoin(lowerPlayer.getMoney().doubleValue());
+        lowerDetails.setCoin(player.getMoney().doubleValue());
         //TODO 未处理详细数据
         return lowerDetails;
     }
