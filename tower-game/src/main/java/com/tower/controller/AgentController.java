@@ -363,6 +363,33 @@ public class AgentController {
         return responseDto;
     }
 
+    @GetMapping("/statement/{period}")
+    @ApiOperation(value = "报表", notes = "参数 周期")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ResponseDto<StatementDto> statement(Player player,
+                                               @ApiParam(value = "周期 1今日、2昨日、10本周期、20上周期", required = true)
+                                               @PathVariable int period) {
+        StatementDto statementDto = new StatementDto();
+        statementDto.setPeriod(period);
+        LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(Player::getSuperId, player.getId());
+        //直系下级
+        List<Player> playerList = playerService.getBaseMapper().selectList(lambdaQueryWrapper);
+        statementDto.setActiveNum(getActiveNum(playerList));
+        statementDto.setNewNum(getNewNum(playerList));
+        statementDto.setTotalNum(playerList.size());
+        playerList=new ArrayList<>();
+        getAllLower(player.getId(),playerList);
+        statementDto.setOtherTotalNum(playerList.size()-statementDto.getTotalNum());
+        statementDto.setOtherNewNum(playerList.size()-statementDto.getNewNum());
+        statementDto.setOtherActiveNum(playerList.size()-statementDto.getActiveNum());
+        //TODO 其他的暂时先用空数据，先打包上传服务器运行
+        ResponseDto<StatementDto> responseDto = new ResponseDto<>();
+        responseDto.setContent(statementDto);
+        responseDto.setMessage("查询成功");
+        return responseDto;
+    }
+
     @GetMapping("/rebateConfig/{userId}/{rebate}")
     @ApiOperation(value = "下级返点配置", notes = "参数 下级玩家id  返点数额")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
