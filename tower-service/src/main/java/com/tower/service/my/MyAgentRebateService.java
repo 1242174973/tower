@@ -5,7 +5,7 @@ import com.tower.entity.AgentRebate;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author 梦屿千寻
@@ -14,9 +14,19 @@ import com.tower.entity.AgentRebate;
 public interface MyAgentRebateService extends IService<AgentRebate> {
     /**
      * 查询预计奖励
+     *
      * @param playerId 玩家id
-     * @param period 周期
+     * @param period   周期
      * @return 预计奖励
      */
     double selectExpectedReward(int playerId, String period);
+
+    /**
+     * 查询返利
+     *
+     * @param playerId  玩家id
+     * @param startTime 周期
+     * @return 预计奖励
+     */
+    double selectUserRewardByDay(int playerId, String startTime, String stopTime);
 }

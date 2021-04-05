@@ -23,4 +23,9 @@ public class MyAgentRebateServiceImpl extends ServiceImpl<MyAgentRebateMapper, A
     public double selectExpectedReward(int playerId, String period) {
         return baseMapper.selectExpectedReward(playerId,period);
     }
+
+    @Override
+    public double selectUserRewardByDay(int playerId, String startTime, String stopTime) {
+        return  baseMapper.selectUserRewardByDay(playerId,startTime,stopTime);
+    }
 }

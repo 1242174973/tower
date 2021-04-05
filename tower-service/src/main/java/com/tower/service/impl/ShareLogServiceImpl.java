@@ -17,4 +17,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShareLogServiceImpl extends ServiceImpl<ShareLogMapper, ShareLog> implements ShareLogService {
 
+    @Override
+    public double selectUserShareByDay(int userId, String startTime, String stopTime) {
+        return baseMapper.selectUserShareByDay(userId,startTime,stopTime);
+    }
+
+    @Override
+    public double selectUserYieldByDay(int userId, String startTime, String stopTime) {
+        return baseMapper.selectUserYieldByDay(userId,startTime,stopTime);
+    }
 }

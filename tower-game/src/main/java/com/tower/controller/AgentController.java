@@ -6,6 +6,7 @@ import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.*;
 import com.tower.dto.page.game.AgentTeamPageDto;
 import com.tower.dto.page.game.ExtracLogPageDto;
+import com.tower.dto.page.game.PromoteDetailsPageDto;
 import com.tower.entity.*;
 import com.tower.exception.BusinessException;
 import com.tower.exception.BusinessExceptionCode;
@@ -297,4 +298,40 @@ public class AgentController {
         responseDto.setMessage("分享成功");
         return responseDto;
     }
+
+    @GetMapping("/promoteDetails")
+    @ApiOperation(value = "推广明细", notes = "参数 分页参数 每页10条")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = BusinessException.class)
+    public ResponseDto<PromoteDetailsPageDto> promoteDetails(Player player, PromoteDetailsPageDto promoteDetailsPageDto) {
+        BusinessUtil.assertParam(promoteDetailsPageDto.getPage() > 0, "页数必须大于0");
+        BusinessUtil.assertParam(promoteDetailsPageDto.getSize() > 0, "条数必须大于0");
+
+        List<PromoteDetailsDto> promoteDetailsDtoList = new ArrayList<>();
+        int day = -(promoteDetailsPageDto.getPage() * promoteDetailsPageDto.getSize());
+        for (int i = 0; i < promoteDetailsPageDto.getSize(); i++) {
+            String startTime = DateUtils.getDate(-i - day);
+            String stopTime = DateUtils.getDate(-i - day + 1);
+            PromoteDetailsDto promoteDetailsDto = new PromoteDetailsDto();
+            promoteDetailsDto.setTotalAward(promoteDetailsDto.getExhibitRebate()
+                    + promoteDetailsDto.getRebate()
+                    + promoteDetailsDto.getSuperShare()
+                    + promoteDetailsDto.getShareLower());
+            promoteDetailsDto.setCreateTime(startTime);
+            double rebate = agentRebateService.selectUserRewardByDay(player.getId(), startTime, stopTime);
+            promoteDetailsDto.setRebate(rebate);
+            double share = shareLogService.selectUserShareByDay(player.getId(), startTime, stopTime);
+            promoteDetailsDto.setShareLower(-share);
+            share = shareLogService.selectUserYieldByDay(player.getId(), startTime, stopTime);
+            promoteDetailsDto.setSuperShare(share);
+            //TODO 负盈利赋值
+            promoteDetailsDtoList.add(promoteDetailsDto);
+        }
+        promoteDetailsPageDto.setTotal(100);
+        promoteDetailsPageDto.setList(promoteDetailsDtoList);
+        ResponseDto<PromoteDetailsPageDto> responseDto = new ResponseDto<>();
+        responseDto.setContent(promoteDetailsPageDto);
+        return responseDto;
+    }
+
+
 }
