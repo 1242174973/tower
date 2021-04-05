@@ -60,8 +60,8 @@ public class SalvageController {
         SalvageDto salvageDto = CopyUtil.copy(salvage, SalvageDto.class);
         lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Salvage::getUserId, player.getId())
-                .ge(Salvage::getCreateTime, DateUtils.getDate(-1))
-                .le(Salvage::getCreateTime, DateUtils.getDate(0));
+                .ge(Salvage::getCreateTime, DateUtils.getDate(0))
+                .le(Salvage::getCreateTime, DateUtils.getDate(1));
         salvage = salvageService.getOne(lambdaQueryWrapper);
         if (salvage != null) {
             salvageDto.setYesterdaySalvage(salvage.getSalvage());

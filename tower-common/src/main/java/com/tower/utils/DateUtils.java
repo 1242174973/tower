@@ -64,8 +64,8 @@ public class DateUtils {
         System.out.println(getLastPeriod());
         System.out.println(getDate(1));
         System.out.println(getDate(0));
-        System.out.println(getDate(-1));
-        System.out.println(DateUtils.byDayLocalDateTime(0).toInstant(ZoneOffset.of("+8")).toEpochMilli());
+//        System.out.println(getDate(-1));
+//        System.out.println(DateUtils.byDayLocalDateTime(0).toInstant(ZoneOffset.of("+8")).toEpochMilli());
     }
 
     public static String getPeriod() {

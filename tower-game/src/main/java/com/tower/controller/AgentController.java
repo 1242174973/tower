@@ -71,11 +71,12 @@ public class AgentController {
         agentDto.setRebate(player.getRebate());
         LambdaQueryWrapper<Player> playerLambdaQueryWrapper = new LambdaQueryWrapper<>();
         playerLambdaQueryWrapper.eq(Player::getSuperId, player.getId())
-                .ge(Player::getCreateTime, DateUtils.getDate(-1))
-                .le(Player::getCreateTime, DateUtils.getDate(0));
+                .ge(Player::getCreateTime, DateUtils.getDate(0))
+                .le(Player::getCreateTime, DateUtils.getDate(1));
         agentDto.setNewNum(playerService.count(playerLambdaQueryWrapper));
         double money = agentRebateService.selectExpectedReward(player.getId(), DateUtils.getPeriod());
-        agentDto.setExpectedReward(BigDecimal.valueOf(money));
+        double share = profitLogService.selectUserProfitByDay(player.getId(), DateUtils.getPeriod(), DateUtils.getDate(1));
+        agentDto.setExpectedReward(BigDecimal.valueOf(money+share));
         ResponseDto<AgentDto> responseDto = new ResponseDto<>();
         responseDto.setContent(agentDto);
         return responseDto;
@@ -140,13 +141,13 @@ public class AgentController {
         switch (agentTeamPageDto.getPeriod()) {
             case 1:
                 //今日
-                startTime = DateUtils.getDate(-1);
-                stopTime = DateUtils.getDate(0);
+                startTime = DateUtils.getDate(0);
+                stopTime = DateUtils.getDate(1);
                 break;
             case 2:
                 //昨日
-                startTime = DateUtils.getDate(-2);
-                stopTime = DateUtils.getDate(-1);
+                startTime = DateUtils.getDate(-1);
+                stopTime = DateUtils.getDate(0);
                 break;
             case 20:
                 //上周期
@@ -156,7 +157,7 @@ public class AgentController {
             case 10:
             default:
                 startTime = DateUtils.getPeriod();
-                stopTime = DateUtils.getDate(0);
+                stopTime = DateUtils.getDate(1);
                 //本周期
                 break;
         }
