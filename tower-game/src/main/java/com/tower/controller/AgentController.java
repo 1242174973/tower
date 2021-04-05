@@ -57,6 +57,9 @@ public class AgentController {
     @Resource
     private ShareLogService shareLogService;
 
+    @Resource
+    private ProfitLogService profitLogService;
+
     @GetMapping("/agentIndex")
     @ApiOperation(value = "代理首页", notes = "无需参数")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
@@ -314,10 +317,6 @@ public class AgentController {
             String startTime = DateUtils.getDate(-i - day);
             String stopTime = DateUtils.getDate(-i - day + 1);
             PromoteDetailsDto promoteDetailsDto = new PromoteDetailsDto();
-            promoteDetailsDto.setTotalAward(promoteDetailsDto.getExhibitRebate()
-                    + promoteDetailsDto.getRebate()
-                    + promoteDetailsDto.getSuperShare()
-                    + promoteDetailsDto.getShareLower());
             promoteDetailsDto.setCreateTime(startTime);
             double rebate = agentRebateService.selectUserRewardByDay(player.getId(), startTime, stopTime);
             promoteDetailsDto.setRebate(rebate);
@@ -325,7 +324,12 @@ public class AgentController {
             promoteDetailsDto.setShareLower(-share);
             share = shareLogService.selectUserYieldByDay(player.getId(), startTime, stopTime);
             promoteDetailsDto.setSuperShare(share);
-            //TODO 负盈利赋值
+            share = profitLogService.selectUserProfitByDay(player.getId(), startTime, stopTime);
+            promoteDetailsDto.setExhibitRebate(share);
+            promoteDetailsDto.setTotalAward(promoteDetailsDto.getExhibitRebate()
+                    + promoteDetailsDto.getRebate()
+                    + promoteDetailsDto.getSuperShare()
+                    + promoteDetailsDto.getShareLower());
             promoteDetailsDtoList.add(promoteDetailsDto);
         }
         promoteDetailsPageDto.setTotal(100);
