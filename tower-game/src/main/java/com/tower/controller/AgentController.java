@@ -169,12 +169,8 @@ public class AgentController {
             int[] ints = playerList.stream().mapToInt(Player::getId).toArray();
             List<Integer> ids = Arrays.stream(ints).boxed().collect(Collectors.toList());
             LambdaQueryWrapper<ChallengeReward> challengeRewardLambdaQueryWrapper = new LambdaQueryWrapper<>();
-            challengeRewardLambdaQueryWrapper.in(ChallengeReward::getUserId, ids)
-                    .ge(ChallengeReward::getCreateTime, startTime)
-                    .le(ChallengeReward::getCreateTime, stopTime);
-            double sum = challengeRewardService.getBaseMapper()
-                    .selectList(challengeRewardLambdaQueryWrapper)
-                    .stream()
+            challengeRewardLambdaQueryWrapper.in(ChallengeReward::getUserId, ids).ge(ChallengeReward::getCreateTime, startTime).le(ChallengeReward::getCreateTime, stopTime);
+            double sum = challengeRewardService.getBaseMapper().selectList(challengeRewardLambdaQueryWrapper).stream()
                     .mapToDouble(challengeReward -> challengeReward.getChallenge().doubleValue())
                     .sum();
             LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
