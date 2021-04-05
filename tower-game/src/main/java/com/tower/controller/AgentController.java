@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.*;
 import com.tower.dto.page.game.AgentTeamPageDto;
+import com.tower.dto.page.game.ExtracLogPageDto;
 import com.tower.entity.*;
 import com.tower.exception.BusinessException;
 import com.tower.exception.BusinessExceptionCode;
@@ -246,5 +247,25 @@ public class AgentController {
             extracLogService.save(extracLog);
             throw e;
         }
+    }
+
+    @GetMapping("/extractRewardLog")
+    @ApiOperation(value = "获得提取奖励记录", notes = "参数 分页参数")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = BusinessException.class)
+    public ResponseDto<ExtracLogPageDto> extractRewardLog(Player player, ExtracLogPageDto extracLogPageDto) {
+        BusinessUtil.assertParam(extracLogPageDto.getPage() > 0, "页数必须大于0");
+        BusinessUtil.assertParam(extracLogPageDto.getSize() > 0, "条数必须大于0");
+        ResponseDto<ExtracLogPageDto> responseDto = new ResponseDto<>();
+        Page<ExtracLog> page = new Page<>(extracLogPageDto.getPage(), extracLogPageDto.getSize());
+        LambdaQueryWrapper<ExtracLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        logLambdaQueryWrapper.eq(ExtracLog::getExtracId, player.getId()).orderByDesc(ExtracLog::getCreateTime);
+        page = extracLogService.page(page, logLambdaQueryWrapper);
+        extracLogPageDto.setTotal((int) page.getTotal());
+        List<ExtracLogDto> extracLogDtoList = CopyUtil.copyList(page.getRecords(), ExtracLogDto.class);
+        extracLogPageDto.setList(extracLogDtoList);
+        responseDto.setMessage("查询成功");
+        responseDto.setContent(extracLogPageDto);
+        return responseDto;
+
     }
 }

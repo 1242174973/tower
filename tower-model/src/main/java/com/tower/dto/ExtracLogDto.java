@@ -1,4 +1,4 @@
-package com.tower.dto.page;
+package com.tower.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
