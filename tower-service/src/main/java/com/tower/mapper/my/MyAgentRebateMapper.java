@@ -20,7 +20,7 @@ public interface MyAgentRebateMapper extends BaseMapper<AgentRebate> {
      * @param period 周期
      * @return 预计奖励
      */
-    double selectExpectedReward(@Param("playerId") int playerId,@Param("period") String period);
+    Double selectExpectedReward(@Param("playerId") int playerId,@Param("period") String period);
 
-    double selectUserRewardByDay(@Param("playerId")int playerId,@Param("startTime") String startTime,@Param("stopTime") String stopTime);
+    Double selectUserRewardByDay(@Param("playerId")int playerId,@Param("startTime") String startTime,@Param("stopTime") String stopTime);
 }

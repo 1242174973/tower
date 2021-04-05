@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author 梦屿千寻
@@ -19,11 +19,13 @@ public class ShareLogServiceImpl extends ServiceImpl<ShareLogMapper, ShareLog> i
 
     @Override
     public double selectUserShareByDay(int userId, String startTime, String stopTime) {
-        return baseMapper.selectUserShareByDay(userId,startTime,stopTime);
+        Double v = baseMapper.selectUserShareByDay(userId, startTime, stopTime);
+        return v == null ? 0 : v;
     }
 
     @Override
     public double selectUserYieldByDay(int userId, String startTime, String stopTime) {
-        return baseMapper.selectUserYieldByDay(userId,startTime,stopTime);
+        Double v = baseMapper.selectUserYieldByDay(userId, startTime, stopTime);
+        return v == null ? 0 : v;
     }
 }

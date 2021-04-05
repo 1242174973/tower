@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.StringJoiner;
@@ -64,6 +65,7 @@ public class DateUtils {
         System.out.println(getDate(1));
         System.out.println(getDate(0));
         System.out.println(getDate(-1));
+        System.out.println(DateUtils.byDayLocalDateTime(0).toInstant(ZoneOffset.of("+8")).toEpochMilli());
     }
 
     public static String getPeriod() {

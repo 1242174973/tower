@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 /**
@@ -77,14 +79,14 @@ public class AgentController {
     }
 
     @GetMapping("/addAgent/{account}/{password}/{rebate}")
-    @ApiOperation(value = "添加会员", notes = "无需参数")
+    @ApiOperation(value = "添加会员", notes = "参数 账号 密码 比例")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<String> addAgent(Player player,
                                         @ApiParam(value = "账号", required = true)
                                         @PathVariable String account,
                                         @ApiParam(value = "密码", required = true)
                                         @PathVariable String password,
-                                        @ApiParam(value = "密码", required = true)
+                                        @ApiParam(value = "比例", required = true)
                                         @PathVariable double rebate) {
         BusinessUtil.require(account, BusinessExceptionCode.ACCOUNT);
         BusinessUtil.length(account, BusinessExceptionCode.ACCOUNT, 6, 20);
@@ -117,7 +119,7 @@ public class AgentController {
         return responseDto;
     }
 
-    @GetMapping("/rebateLog")
+    @PostMapping("/rebateLog")
     @ApiOperation(value = "返利记录和代理报表通用查询接口", notes = "参数 分页信息 周期")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<AgentTeamPageDto> rebateLog(Player player,
@@ -247,7 +249,7 @@ public class AgentController {
         }
     }
 
-    @GetMapping("/extractRewardLog")
+    @PostMapping("/extractRewardLog")
     @ApiOperation(value = "获得提取奖励记录", notes = "参数 分页参数")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = BusinessException.class)
     public ResponseDto<ExtracLogPageDto> extractRewardLog(Player player, ExtracLogPageDto extracLogPageDto) {
@@ -299,7 +301,7 @@ public class AgentController {
         return responseDto;
     }
 
-    @GetMapping("/promoteDetails")
+    @PostMapping("/promoteDetails")
     @ApiOperation(value = "推广明细", notes = "参数 分页参数 每页10条")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = BusinessException.class)
     public ResponseDto<PromoteDetailsPageDto> promoteDetails(Player player, PromoteDetailsPageDto promoteDetailsPageDto) {
@@ -333,5 +335,86 @@ public class AgentController {
         return responseDto;
     }
 
+    @GetMapping("/lowerDetails/{userId}")
+    @ApiOperation(value = "下级详情", notes = "参数 下级玩家id")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ResponseDto<LowerDetailsDto> share(Player player,
+                                              @ApiParam(value = "下级玩家id", required = true)
+                                              @PathVariable int userId) {
+        Player lowerPlayer = PlayerUtils.getPlayer(userId);
+        BusinessUtil.assertParam(lowerPlayer != null, "下级玩家未找到");
+        BusinessUtil.assertParam(lowerPlayer.getSuperId().equals(player.getId()), "该玩家不是玩家的直系下级");
+        LowerDetailsDto lowerDetailsDto = new LowerDetailsDto();
+        lowerDetailsDto.setUserId(userId);
+        lowerDetailsDto.setRebate(lowerPlayer.getRebate().doubleValue());
+        List<Player> playerList = new ArrayList<>();
+        getAllLower(userId, playerList);
+        playerList.add(lowerPlayer);
+        lowerDetailsDto.setTotalNum(playerList.size());
+        lowerDetailsDto.setActiveNum(getActiveNum(playerList));
+        lowerDetailsDto.setNewNum(getNewNum(playerList));
+        LowerDetailsDto.LowerDetails lowerDetails = getOwnDetails(lowerPlayer);
+        lowerDetailsDto.setMyDetails(lowerDetails);
+        lowerDetails=getLowerDetails(lowerPlayer);
+        lowerDetailsDto.setLowerDetails(lowerDetails);
+        ResponseDto<LowerDetailsDto> responseDto = new ResponseDto<>();
+        responseDto.setContent(lowerDetailsDto);
+        responseDto.setMessage("查询成功");
+        return responseDto;
+    }
 
+    private LowerDetailsDto.LowerDetails getLowerDetails(Player player) {
+        LowerDetailsDto.LowerDetails lowerDetails = new LowerDetailsDto.LowerDetails();
+        lowerDetails.setCoin(player.getMoney().doubleValue());
+        //TODO 未处理详细数据
+        return lowerDetails;
+    }
+
+    private LowerDetailsDto.LowerDetails getOwnDetails(Player lowerPlayer) {
+        LowerDetailsDto.LowerDetails lowerDetails = new LowerDetailsDto.LowerDetails();
+        lowerDetails.setCoin(lowerPlayer.getMoney().doubleValue());
+        //TODO 未处理详细数据
+        return lowerDetails;
+    }
+
+    /**
+     * 查询活跃的玩家
+     *
+     * @param playerList 玩家数组
+     * @return 活跃人数
+     */
+    private int getActiveNum(List<Player> playerList) {
+        if (playerList.size() <= 0) {
+            return 0;
+        }
+        AtomicInteger num = new AtomicInteger();
+        playerList.forEach(player -> {
+            long time = DateUtils.byDayLocalDateTime(0).toInstant(ZoneOffset.of("+8")).toEpochMilli();
+            if (player.getSignInTime().toInstant(ZoneOffset.of("+8")).toEpochMilli() > time ||
+                    player.getCreateTime().toInstant(ZoneOffset.of("+8")).toEpochMilli() > time) {
+                num.getAndIncrement();
+            }
+        });
+        return num.get();
+    }
+
+    /**
+     * 查询新增的玩家
+     *
+     * @param playerList 玩家数组
+     * @return 新增的玩家
+     */
+    private int getNewNum(List<Player> playerList) {
+        if (playerList.size() <= 0) {
+            return 0;
+        }
+        AtomicInteger num = new AtomicInteger();
+        playerList.forEach(player -> {
+            long time = DateUtils.byDayLocalDateTime(0).toInstant(ZoneOffset.of("+8")).toEpochMilli();
+            if (player.getCreateTime().toInstant(ZoneOffset.of("+8")).toEpochMilli() > time) {
+                num.getAndIncrement();
+            }
+        });
+        return num.get();
+    }
 }

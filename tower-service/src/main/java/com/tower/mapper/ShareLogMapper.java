@@ -19,12 +19,12 @@ public interface ShareLogMapper extends BaseMapper<ShareLog> {
      * @param stopTime  结束时间
      * @return 分享金额
      */
-    double selectUserShareByDay(@Param("userId") int userId,@Param("startTime")  String startTime,@Param("stopTime") String stopTime);
+    Double selectUserShareByDay(@Param("userId") int userId,@Param("startTime")  String startTime,@Param("stopTime") String stopTime);
     /**
      * @param userId    玩家id
      * @param startTime 开始时间
      * @param stopTime  结束时间
      * @return 分享金额
      */
-    double selectUserYieldByDay(int userId, String startTime, String stopTime);
+    Double selectUserYieldByDay(@Param("userId")int userId,@Param("startTime") String startTime,@Param("stopTime") String stopTime);
 }

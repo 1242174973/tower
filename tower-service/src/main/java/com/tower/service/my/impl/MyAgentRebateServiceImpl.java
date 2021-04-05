@@ -21,11 +21,13 @@ public class MyAgentRebateServiceImpl extends ServiceImpl<MyAgentRebateMapper, A
 
     @Override
     public double selectExpectedReward(int playerId, String period) {
-        return baseMapper.selectExpectedReward(playerId,period);
+        Double v = baseMapper.selectExpectedReward(playerId, period);
+        return v==null?0:v;
     }
 
     @Override
     public double selectUserRewardByDay(int playerId, String startTime, String stopTime) {
-        return  baseMapper.selectUserRewardByDay(playerId,startTime,stopTime);
+        Double v = baseMapper.selectUserRewardByDay(playerId, startTime, stopTime);
+        return v==null?0:v;
     }
 }
