@@ -1,4 +1,4 @@
-package com.tower.dto;
+package com.tower.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -19,31 +19,31 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author 梦屿千寻
- * @since 2021-04-02
+ * @since 2021-04-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="ExtracLog对象", description="")
-public class ExtracLogDto implements Serializable {
+@ApiModel(value="ShareLog对象", description="")
+public class ShareLog implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "提取记录")
+    @ApiModelProperty(value = "分享返利表")
       @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "提取id")
-    private Integer extracId;
+    @ApiModelProperty(value = "分享人id")
+    private Integer shareId;
 
-    @ApiModelProperty(value = "提取分数")
-    private BigDecimal extracCoin;
+    @ApiModelProperty(value = "收益人id")
+    private Integer yieldId;
 
-    @ApiModelProperty(value = "是否成功")
-    private Integer success;
+    @ApiModelProperty(value = "分享金额")
+    private BigDecimal money;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @ApiModelProperty(value = "提取时间")
+    @ApiModelProperty(value = "分享时间")
     private LocalDateTime createTime;
 
 

@@ -9,10 +9,7 @@ import com.tower.dto.page.game.ExtracLogPageDto;
 import com.tower.entity.*;
 import com.tower.exception.BusinessException;
 import com.tower.exception.BusinessExceptionCode;
-import com.tower.service.ChallengeRewardService;
-import com.tower.service.ExtracLogService;
-import com.tower.service.PlayerService;
-import com.tower.service.SalvageService;
+import com.tower.service.*;
 import com.tower.service.my.MyAgentRebateService;
 import com.tower.utils.*;
 import io.swagger.annotations.Api;
@@ -54,6 +51,8 @@ public class AgentController {
     @Resource
     private ExtracLogService extracLogService;
 
+    @Resource
+    private ShareLogService shareLogService;
 
     @GetMapping("/agentIndex")
     @ApiOperation(value = "代理首页", notes = "无需参数")
@@ -118,7 +117,7 @@ public class AgentController {
     }
 
     @GetMapping("/rebateLog")
-    @ApiOperation(value = "返利记录和分享返利通用查询接口", notes = "参数 分页信息 周期")
+    @ApiOperation(value = "返利记录和代理报表通用查询接口", notes = "参数 分页信息 周期")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<AgentTeamPageDto> rebateLog(Player player,
                                                    @ApiParam(value = "分页信息", required = true)
@@ -216,12 +215,14 @@ public class AgentController {
         playerList.forEach(player -> getAllLower(player.getId(), players));
     }
 
-    @GetMapping("/extractReward{money}")
+    @GetMapping("/extractReward/{money}")
     @ApiOperation(value = "提取奖励", notes = "参数 提取金额")
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = BusinessException.class)
-    public ResponseDto<String> extractReward(Player player, @PathVariable double money) {
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, noRollbackFor = BusinessException.class)
+    public ResponseDto<String> extractReward(Player player,
+                                             @ApiParam(value = "提取金额", required = true)
+                                             @PathVariable double money) {
         try {
-            BusinessUtil.assertParam(player.getCanAward().doubleValue() >= money, "可提现金额不足");
+            BusinessUtil.assertParam(player.getCanAward().doubleValue() >= money, "可提取金额不足");
             player.setMoney(player.getMoney().add(BigDecimal.valueOf(money)));
             player.setCanAward(player.getCanAward().subtract(BigDecimal.valueOf(money)));
             ExtracLog extracLog = new ExtracLog()
@@ -262,6 +263,38 @@ public class AgentController {
         responseDto.setMessage("查询成功");
         responseDto.setContent(extracLogPageDto);
         return responseDto;
+    }
 
+    @GetMapping("/share/{yieldId}/{safeBoxPassword}/{money}")
+    @ApiOperation(value = "分享返利", notes = "参数 收益人id 保险柜密码 金额")
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public ResponseDto<String> share(Player player,
+                                     @ApiParam(value = "受益人id", required = true)
+                                     @PathVariable int yieldId,
+                                     @ApiParam(value = "保险柜密码", required = true)
+                                     @PathVariable String safeBoxPassword,
+                                     @ApiParam(value = "金额", required = true)
+                                     @PathVariable double money) {
+        BusinessUtil.assertParam(yieldId > 0, "受益人id不能小于等于0");
+        BusinessUtil.assertParam(safeBoxPassword != null, "保险柜密码不能为空");
+        BusinessUtil.assertParam(money > 0, "分享金额不能小于等于0");
+        Player yieldPlayer = PlayerUtils.getPlayer(yieldId);
+        BusinessUtil.assertParam(yieldPlayer != null, "收益玩家未找到");
+        BusinessUtil.assertParam(yieldPlayer.getSuperId().equals(player.getId()), "该收益玩家不是玩家的直系下级");
+        BusinessUtil.assertParam(player.getCanAward().doubleValue() >= money, "分享金额不能大于可提取金额");
+        BusinessUtil.assertParam(
+                MD5Utils.getMD5Str(MD5Utils.getMD5Str(safeBoxPassword + player.getSalt())).equals(player.getSafeBoxPassword()),
+                "保险柜密码错误");
+        ShareLog shareLog = new ShareLog()
+                .setShareId(player.getId())
+                .setMoney(BigDecimal.valueOf(money))
+                .setYieldId(yieldId)
+                .setCreateTime(LocalDateTime.now());
+        player.setCanAward(player.getCanAward().subtract(BigDecimal.valueOf(money)));
+        PlayerUtils.savePlayer(player);
+        shareLogService.save(shareLog);
+        ResponseDto<String> responseDto = new ResponseDto<>();
+        responseDto.setMessage("分享成功");
+        return responseDto;
     }
 }
