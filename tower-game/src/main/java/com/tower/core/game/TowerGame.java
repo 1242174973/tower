@@ -15,10 +15,7 @@ import com.tower.enums.WelfareModelEnum;
 import com.tower.enums.WelfareTypeEnum;
 import com.tower.game.MonsterInfo;
 import com.tower.msg.Tower;
-import com.tower.service.AttackLogService;
-import com.tower.service.BetLogService;
-import com.tower.service.MonsterService;
-import com.tower.service.WelfareLogService;
+import com.tower.service.*;
 import com.tower.utils.CopyUtil;
 import com.tower.utils.DateUtils;
 import io.netty.channel.Channel;
@@ -56,6 +53,18 @@ public class TowerGame {
 
     @Resource
     private BetLogService betLogService;
+
+    @Resource
+    private AgentRebateService agentRebateService;
+
+    @Resource
+    private ProfitLogService profitLogService;
+
+    @Resource
+    private ChallengeRewardService challengeRewardService;
+
+    @Resource
+    private SalvageService salvageService;
 
     /**
      * 此局版本号
@@ -306,12 +315,160 @@ public class TowerGame {
         logLambdaQueryWrapper.eq(AttackLog::getOrderId, currBetList.get(0).getOrderId());
         AttackLog one = attackLogService.getOne(logLambdaQueryWrapper);
         if (one != null && one.getMonsterId() != null) {
-            for (BetLog betLog : currBetList) {
-                MsgBossHandler.EXECUTE_BET_LOG_SAVE.execute(() ->
-                        updateBetLog(now, one, betLog)
-                );
+            MsgBossHandler.EXECUTE_BET_LOG_SAVE.execute(() -> {
+                Map<Integer, Double> playerWinCoinMap = new HashMap<>(16);
+                for (BetLog betLog : currBetList) {
+                    updateBetLog(now, one, betLog);
+                    List<Player> playerList = new ArrayList<>();
+                    Player player = PlayerUtils.getPlayer(betLog.getUserId());
+                    getAllSuper(player, playerList);
+                    saveChallengeReward(betLog);
+                    saveSalvage(betLog);
+                    double rebateCoin = rebate(betLog, playerList);
+                    double winCoin = betLog.getBetCoin().doubleValue() - betLog.getResultCoin().doubleValue() - rebateCoin;
+                    tax(playerList, winCoin, playerWinCoinMap);
+                    playerWinCoinMap.forEach((key, value) -> {
+                        ProfitLog profitLog = new ProfitLog()
+                                .setProfitCoin(value)
+                                .setUserId(key)
+                                .setOrderId(betLog.getOrderId())
+                                .setCreateTime(LocalDateTime.now());
+                        profitLogService.save(profitLog);
+                    });
+                }
+            });
+        }
+    }
+
+    /**
+     * 保存救助金记录
+     *
+     * @param betLog 下注信息
+     */
+    private void saveSalvage(BetLog betLog) {
+        LambdaQueryWrapper<Salvage> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Salvage::getUserId, betLog.getUserId())
+                .ge(Salvage::getCreateTime, DateUtils.getDate(0))
+                .le(Salvage::getCreateTime, DateUtils.getDate(1));
+        Salvage salvage = salvageService.getOne(queryWrapper);
+        Player player = PlayerUtils.getPlayer(betLog.getUserId());
+        if (player == null || salvage == null) {
+            return;
+        }
+        salvage.setProfit(salvage.getProfit() + betLog.getResultCoin().doubleValue());
+        salvageService.saveOrUpdate(salvage);
+    }
+
+    /**
+     * 保存挑战奖励
+     *
+     * @param betLog 下注信息
+     */
+    private void saveChallengeReward(BetLog betLog) {
+        LambdaQueryWrapper<ChallengeReward> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(ChallengeReward::getUserId, betLog.getUserId())
+                .ge(ChallengeReward::getCreateTime, DateUtils.getDate(0))
+                .le(ChallengeReward::getCreateTime, DateUtils.getDate(1));
+        ChallengeReward challengeReward = challengeRewardService.getOne(queryWrapper);
+        Player player = PlayerUtils.getPlayer(betLog.getUserId());
+        if (player == null || challengeReward == null) {
+            return;
+        }
+        double rebate = challengeReward.getRebate().doubleValue() +
+                ((betLog.getBetCoin().multiply(player.getRebate())).doubleValue() / 100);
+        challengeReward.setChallenge(challengeReward.getChallenge().add(betLog.getBetCoin()))
+                .setRebate(BigDecimal.valueOf(rebate));
+        challengeRewardService.saveOrUpdate(challengeReward);
+    }
+
+    /**
+     * 进行代理输赢记录保存
+     *
+     * @param playerWinCoinMap 玩家盈利信息
+     * @param playerList       玩家列表
+     * @param winCoin          输赢分
+     */
+    private void tax(List<Player> playerList, double winCoin, Map<Integer, Double> playerWinCoinMap) {
+        for (Player p : playerList) {
+            Player lower = getLower(p, playerList);
+            double tax;
+            if (lower == null) {
+                tax = p.getTax().doubleValue();
+            } else {
+                tax = p.getTax().doubleValue() - lower.getTax().doubleValue();
+            }
+            if (tax <= 0) {
+                continue;
+            }
+            double taxCoin = winCoin * tax / 100;
+            playerWinCoinMap.merge(p.getId(), taxCoin, Double::sum);
+        }
+    }
+
+
+    /**
+     * 返利给玩家
+     *
+     * @param betLog 下注记录
+     * @return 返利分数
+     */
+    private double rebate(BetLog betLog, List<Player> playerList) {
+        double resultCoin = 0;
+        double betCoin = betLog.getBetCoin().doubleValue();
+        for (Player p : playerList) {
+            Player lower = getLower(p, playerList);
+            double rebate;
+            if (lower == null) {
+                rebate = p.getRebate().doubleValue();
+            } else {
+                rebate = p.getRebate().doubleValue() - lower.getRebate().doubleValue();
+            }
+            if (rebate <= 0) {
+                continue;
+            }
+            double rebateCoin = betCoin * rebate / 100;
+            resultCoin += rebateCoin;
+            AgentRebate agentRebate = new AgentRebate()
+                    .setRebate(BigDecimal.valueOf(rebateCoin))
+                    .setAgentUserId(p.getId())
+                    .setUserId(betLog.getUserId())
+                    .setChallenge(betLog.getBetCoin())
+                    .setStatus(ResultEnum.ALREADY_RESULT.getCode())
+                    .setCreateTime(LocalDateTime.now());
+            agentRebateService.save(agentRebate);
+        }
+        return resultCoin;
+    }
+
+    /**
+     * 获得list中的下级
+     *
+     * @param p          玩家
+     * @param playerList 所有玩家列表
+     * @return 下级
+     */
+    private Player getLower(Player p, List<Player> playerList) {
+        for (Player player : playerList) {
+            if (player.getSuperId().equals(p.getId())) {
+                return player;
             }
         }
+        return null;
+    }
+
+    /**
+     * 获得所有上级
+     *
+     * @param player 玩家
+     */
+    private void getAllSuper(Player player, List<Player> playerList) {
+        if (player == null) {
+            return;
+        }
+        if (!player.getSuperId().equals(0)) {
+            getAllSuper(PlayerUtils.getPlayer(player.getSuperId()), playerList);
+        }
+        playerList.add(player);
     }
 
     /**
