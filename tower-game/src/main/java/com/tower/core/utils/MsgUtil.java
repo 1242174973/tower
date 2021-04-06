@@ -27,9 +27,9 @@ public class MsgUtil {
     public static ChannelFuture sendMsg(Channel ch, byte[] message) {
         try {
             Tower.MsgCtn msgCtn = Tower.MsgCtn.parseFrom(message);
-            int reqMsgId = msgCtn.toBuilder().getReqMsgId();
-            if(reqMsgId!=2000){
-                int type = msgCtn.toBuilder().getType();
+            int type = msgCtn.toBuilder().getType();
+            if(type!=2000){
+                int reqMsgId = msgCtn.toBuilder().getReqMsgId();
                 log.info("发送消息给:{},type:{},reqMsgId:{}",
                         ch.attr(GameConst.ATTR_USER_ID).get(), type, reqMsgId);
             }
