@@ -327,15 +327,15 @@ public class TowerGame {
                     double rebateCoin = rebate(betLog, playerList);
                     double winCoin = betLog.getBetCoin().doubleValue() - betLog.getResultCoin().doubleValue() - rebateCoin;
                     tax(playerList, winCoin, playerWinCoinMap);
-                    playerWinCoinMap.forEach((key, value) -> {
-                        ProfitLog profitLog = new ProfitLog()
-                                .setProfitCoin(value)
-                                .setUserId(key)
-                                .setOrderId(betLog.getOrderId())
-                                .setCreateTime(LocalDateTime.now());
-                        profitLogService.save(profitLog);
-                    });
                 }
+                playerWinCoinMap.forEach((key, value) -> {
+                    ProfitLog profitLog = new ProfitLog()
+                            .setProfitCoin(value)
+                            .setUserId(key)
+                            .setOrderId(currBetList.get(0).getOrderId())
+                            .setCreateTime(LocalDateTime.now());
+                    profitLogService.save(profitLog);
+                });
             });
         }
     }
@@ -374,12 +374,13 @@ public class TowerGame {
         if (player == null || challengeReward == null) {
             return;
         }
-        /*
-        这一段代码在以后可能会用到
-        double rebate = challengeReward.getRebate().doubleValue() +
-                ((betLog.getBetCoin().multiply(player.getRebate())).doubleValue() / 100);
-        challengeReward.setChallenge(challengeReward.getChallenge().add(betLog.getBetCoin()))
-                .setRebate(BigDecimal.valueOf(rebate));*/
+        /**
+         这一段代码在以后可能会用到
+         double rebate = challengeReward.getRebate().doubleValue() +
+         ((betLog.getBetCoin().multiply(player.getRebate())).doubleValue() / 100);
+         challengeReward.setChallenge(challengeReward.getChallenge().add(betLog.getBetCoin()))
+         .setRebate(BigDecimal.valueOf(rebate));
+         **/
         challengeReward.setChallenge(challengeReward.getChallenge().add(betLog.getBetCoin()));
         challengeRewardService.saveOrUpdate(challengeReward);
     }

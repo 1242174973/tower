@@ -397,6 +397,7 @@ public class AgentController {
         statementDto.setOtherTotalNum(playerList.size() - statementDto.getTotalNum());
         statementDto.setOtherNewNum(playerList.size() - statementDto.getNewNum());
         statementDto.setOtherActiveNum(playerList.size() - statementDto.getActiveNum());
+
         //TODO 其他的暂时先用空数据，先打包上传服务器运行
         ResponseDto<StatementDto> responseDto = new ResponseDto<>();
         responseDto.setContent(statementDto);
