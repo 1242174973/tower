@@ -355,7 +355,7 @@ public class TowerGame {
         if (player == null || salvage == null) {
             return;
         }
-        salvage.setProfit(salvage.getProfit() + betLog.getResultCoin().doubleValue());
+        salvage.setProfit(salvage.getProfit() + betLog.getResultCoin().doubleValue() - betLog.getBetCoin().doubleValue());
         salvageService.saveOrUpdate(salvage);
     }
 
