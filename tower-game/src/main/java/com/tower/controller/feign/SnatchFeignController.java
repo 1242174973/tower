@@ -66,6 +66,25 @@ public class SnatchFeignController {
         if (towerGame.getMonsterId() != null) {
             return;
         }
+        switch (attackInfo.getMonsterId()) {
+            case 4:
+                attackInfo.setMonsterId(5);
+                break;
+            case 5:
+                attackInfo.setMonsterId(7);
+                break;
+            case 6:
+                attackInfo.setMonsterId(8);
+                break;
+            case 7:
+                attackInfo.setMonsterId(4);
+                break;
+            case 8:
+                attackInfo.setMonsterId(6);
+                break;
+            default:
+                break;
+        }
         if (System.currentTimeMillis() > towerGame.getAwardTime() &&
                 System.currentTimeMillis() < towerGame.getEndTime()) {
             towerGame.setMonsterId(attackInfo.getMonsterId());
