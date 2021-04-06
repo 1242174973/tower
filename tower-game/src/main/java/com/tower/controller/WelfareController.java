@@ -135,6 +135,7 @@ public class WelfareController {
         welFareLogPageDto.setTotal((int) page.getTotal());
         List<WelfareLogDto> welfareLogDtoList = CopyUtil.copyList(page.getRecords(), WelfareLogDto.class);
         welFareLogPageDto.setList(welfareLogDtoList);
+        welFareLogPageDto.setTotal((int) page.getTotal());
         responseDto.setContent(welFareLogPageDto);
         return responseDto;
     }
