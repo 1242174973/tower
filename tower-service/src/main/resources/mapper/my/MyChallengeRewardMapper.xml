@@ -33,11 +33,12 @@
         WHERE user_id=#{userId}
         GROUP BY user_id
     </select>
-    <update id="getChallengeReward">
+    <select id="getChallengeReward">
         UPDATE challenge_reward
         SET get_rebate=rebate,
         status=2
-        WHERE id IN #{rewardIds}
-    </update>
+        WHERE id IN (#{rewardIds})
+    </select>
+
 
 </mapper>

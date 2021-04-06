@@ -374,10 +374,13 @@ public class TowerGame {
         if (player == null || challengeReward == null) {
             return;
         }
+        /*
+        这一段代码在以后可能会用到
         double rebate = challengeReward.getRebate().doubleValue() +
                 ((betLog.getBetCoin().multiply(player.getRebate())).doubleValue() / 100);
         challengeReward.setChallenge(challengeReward.getChallenge().add(betLog.getBetCoin()))
-                .setRebate(BigDecimal.valueOf(rebate));
+                .setRebate(BigDecimal.valueOf(rebate));*/
+        challengeReward.setChallenge(challengeReward.getChallenge().add(betLog.getBetCoin()));
         challengeRewardService.saveOrUpdate(challengeReward);
     }
 
@@ -525,7 +528,7 @@ public class TowerGame {
             double sum = betLogList.stream().filter(betLog -> betLog.getUserId().equals(roomUserId) && betLog.getBetMonsterId().equals(monsterId))
                     .mapToDouble(betLog -> betLog.getBetCoin().doubleValue())
                     .sum();
-            MonsterInfo monsterInfo = getMonsterInfoById(roomUserId);
+            MonsterInfo monsterInfo = getMonsterInfoById(monsterId);
             gameOverInfo.setWinCoin((int) (sum * monsterInfo.getMultiple()));
 
             gameRes.setGameOverInfo(gameOverInfo);

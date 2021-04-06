@@ -2,6 +2,7 @@ package com.tower.mapper.my;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.tower.entity.ChallengeReward;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,11 +16,11 @@ import java.util.List;
  */
 public interface MyChallengeRewardMapper extends BaseMapper<ChallengeReward> {
 
-    Integer selectTotalRebate(int userId);
+    Integer selectTotalRebate(@Param("userId")int userId);
 
-    Integer selectTotalGet(int userId);
+    Integer selectTotalGet(@Param("userId")int userId);
 
     void settlement();
 
-    void getChallengeReward(List<Integer> rewardIds);
+    void getChallengeReward(@Param("rewardIds") List<Integer> rewardIds);
 }

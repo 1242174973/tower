@@ -36,7 +36,7 @@
         UPDATE salvage
         SET get_salvage=salvage,
         status=2
-        WHERE id IN #{rewardIds}
+        WHERE id IN (#{rewardIds})
     </select>
 
 </mapper>

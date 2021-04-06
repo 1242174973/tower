@@ -60,6 +60,12 @@ public class AgentController {
     @Resource
     private ProfitLogService profitLogService;
 
+    @Resource
+    private WelfareLogService welfareLogService;
+
+    @Resource
+    private TopUpLogService topUpLogService;
+
     @GetMapping("/agentIndex")
     @ApiOperation(value = "代理首页", notes = "无需参数")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
@@ -76,7 +82,7 @@ public class AgentController {
         agentDto.setNewNum(playerService.count(playerLambdaQueryWrapper));
         double money = agentRebateService.selectExpectedReward(player.getId(), DateUtils.getPeriod());
         double share = profitLogService.selectUserProfitByDay(player.getId(), DateUtils.getPeriod(), DateUtils.getDate(1));
-        agentDto.setExpectedReward(BigDecimal.valueOf(money+share));
+        agentDto.setExpectedReward(BigDecimal.valueOf(money + share));
         ResponseDto<AgentDto> responseDto = new ResponseDto<>();
         responseDto.setContent(agentDto);
         return responseDto;
@@ -229,6 +235,7 @@ public class AgentController {
                                              @ApiParam(value = "提取金额", required = true)
                                              @PathVariable double money) {
         try {
+            BusinessUtil.assertParam(money > 0, "提取金额不能小于0");
             BusinessUtil.assertParam(player.getCanAward().doubleValue() >= money, "可提取金额不足");
             player.setMoney(player.getMoney().add(BigDecimal.valueOf(money)));
             player.setCanAward(player.getCanAward().subtract(BigDecimal.valueOf(money)));
@@ -256,7 +263,7 @@ public class AgentController {
     @PostMapping("/extractRewardLog")
     @ApiOperation(value = "获得提取奖励记录", notes = "参数 分页参数")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = BusinessException.class)
-    public ResponseDto<ExtracLogPageDto> extractRewardLog(Player player, ExtracLogPageDto extracLogPageDto) {
+    public ResponseDto<ExtracLogPageDto> extractRewardLog(Player player, @RequestBody ExtracLogPageDto extracLogPageDto) {
         BusinessUtil.assertParam(extracLogPageDto.getPage() > 0, "页数必须大于0");
         BusinessUtil.assertParam(extracLogPageDto.getSize() > 0, "条数必须大于0");
         ResponseDto<ExtracLogPageDto> responseDto = new ResponseDto<>();
@@ -308,7 +315,7 @@ public class AgentController {
     @PostMapping("/promoteDetails")
     @ApiOperation(value = "推广明细", notes = "参数 分页参数 每页10条")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = BusinessException.class)
-    public ResponseDto<PromoteDetailsPageDto> promoteDetails(Player player, PromoteDetailsPageDto promoteDetailsPageDto) {
+    public ResponseDto<PromoteDetailsPageDto> promoteDetails(Player player, @RequestBody PromoteDetailsPageDto promoteDetailsPageDto) {
         BusinessUtil.assertParam(promoteDetailsPageDto.getPage() > 0, "页数必须大于0");
         BusinessUtil.assertParam(promoteDetailsPageDto.getSize() > 0, "条数必须大于0");
 
@@ -340,12 +347,14 @@ public class AgentController {
         return responseDto;
     }
 
-    @GetMapping("/lowerDetails/{userId}")
-    @ApiOperation(value = "下级详情", notes = "参数 下级玩家id")
+    @GetMapping("/lowerDetails/{userId}/{period}")
+    @ApiOperation(value = "下级详情", notes = "参数 下级玩家id 周期")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<LowerDetailsDto> lowerDetails(Player player,
                                                      @ApiParam(value = "下级玩家id", required = true)
-                                                     @PathVariable int userId) {
+                                                     @PathVariable int userId,
+                                                     @ApiParam(value = "周期 1今日、2昨日、10本周期、20上周期", required = true)
+                                                     @PathVariable int period) {
         Player lowerPlayer = PlayerUtils.getPlayer(userId);
         BusinessUtil.assertParam(lowerPlayer != null, "下级玩家未找到");
         BusinessUtil.assertParam(lowerPlayer.getSuperId().equals(player.getId()), "该玩家不是玩家的直系下级");
@@ -358,9 +367,9 @@ public class AgentController {
         lowerDetailsDto.setTotalNum(playerList.size());
         lowerDetailsDto.setActiveNum(getActiveNum(playerList));
         lowerDetailsDto.setNewNum(getNewNum(playerList));
-        LowerDetailsDto.LowerDetails lowerDetails = getOwnDetails(lowerPlayer);
+        LowerDetailsDto.LowerDetails lowerDetails = getOwnDetails(lowerPlayer, period);
         lowerDetailsDto.setMyDetails(lowerDetails);
-        lowerDetails = getLowerDetails(lowerPlayer);
+        lowerDetails = getLowerDetails(lowerPlayer, period);
         lowerDetailsDto.setLowerDetails(lowerDetails);
         ResponseDto<LowerDetailsDto> responseDto = new ResponseDto<>();
         responseDto.setContent(lowerDetailsDto);
@@ -383,11 +392,11 @@ public class AgentController {
         statementDto.setActiveNum(getActiveNum(playerList));
         statementDto.setNewNum(getNewNum(playerList));
         statementDto.setTotalNum(playerList.size());
-        playerList=new ArrayList<>();
-        getAllLower(player.getId(),playerList);
-        statementDto.setOtherTotalNum(playerList.size()-statementDto.getTotalNum());
-        statementDto.setOtherNewNum(playerList.size()-statementDto.getNewNum());
-        statementDto.setOtherActiveNum(playerList.size()-statementDto.getActiveNum());
+        playerList = new ArrayList<>();
+        getAllLower(player.getId(), playerList);
+        statementDto.setOtherTotalNum(playerList.size() - statementDto.getTotalNum());
+        statementDto.setOtherNewNum(playerList.size() - statementDto.getNewNum());
+        statementDto.setOtherActiveNum(playerList.size() - statementDto.getActiveNum());
         //TODO 其他的暂时先用空数据，先打包上传服务器运行
         ResponseDto<StatementDto> responseDto = new ResponseDto<>();
         responseDto.setContent(statementDto);
@@ -431,10 +440,62 @@ public class AgentController {
      * @param player 玩家id
      * @return 下级详情
      */
-    private LowerDetailsDto.LowerDetails getLowerDetails(Player player) {
+    private LowerDetailsDto.LowerDetails getLowerDetails(Player player, int period) {
+        String startTime;
+        String stopTime;
+        switch (period) {
+            case 1:
+                //今日
+                startTime = DateUtils.getDate(0);
+                stopTime = DateUtils.getDate(1);
+                break;
+            case 2:
+                //昨日
+                startTime = DateUtils.getDate(-1);
+                stopTime = DateUtils.getDate(0);
+                break;
+            case 20:
+                //上周期
+                startTime = DateUtils.getLastPeriod();
+                stopTime = DateUtils.getPeriod();
+                break;
+            case 10:
+            default:
+                startTime = DateUtils.getPeriod();
+                stopTime = DateUtils.getDate(1);
+                //本周期
+                break;
+        }
+        List<Player> playerList = new ArrayList<>();
+        getAllLower(player.getId(), playerList);
+        List<Integer> ids = Arrays.stream(playerList.stream().mapToInt(Player::getId).toArray())
+                .boxed().collect(Collectors.toList());
         LowerDetailsDto.LowerDetails lowerDetails = new LowerDetailsDto.LowerDetails();
-        lowerDetails.setCoin(player.getMoney().doubleValue());
-        //TODO 未处理详细数据
+        LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        agentRebateLambdaQueryWrapper.in(AgentRebate::getAgentUserId, ids)
+                .ge(AgentRebate::getCreateTime, startTime)
+                .le(AgentRebate::getCreateTime, stopTime);
+        double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
+                .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
+        LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        salvageLambdaQueryWrapper.in(Salvage::getUserId, ids)
+                .ge(Salvage::getCreateTime, startTime)
+                .le(Salvage::getCreateTime, stopTime);
+        double profit = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
+                .stream().mapToDouble(Salvage::getProfit).sum();
+        LambdaQueryWrapper<WelfareLog> welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        welfareLogLambdaQueryWrapper.in(WelfareLog::getUserId, ids)
+                .ge(WelfareLog::getCreateTime, startTime)
+                .le(WelfareLog::getCreateTime, stopTime);
+        double welfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
+                .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
+        LambdaQueryWrapper<TopUpLog> topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        topUpLogLambdaQueryWrapper.in(TopUpLog::getUserId, ids)
+                .ge(TopUpLog::getCreateTime, startTime)
+                .le(TopUpLog::getCreateTime, stopTime);
+        double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
+                .stream().mapToDouble(topUpLog -> topUpLog.getCoin().doubleValue()).sum();
+        lowerDetails.setCoin(player.getMoney().doubleValue()).setRebate(rebate).setProfit(profit).setWelfare(welfare).setTopUp(topUp);
         return lowerDetails;
     }
 
@@ -444,10 +505,58 @@ public class AgentController {
      * @param player 玩家id
      * @return 自己详情
      */
-    private LowerDetailsDto.LowerDetails getOwnDetails(Player player) {
+    private LowerDetailsDto.LowerDetails getOwnDetails(Player player, int period) {
+        String startTime;
+        String stopTime;
+        switch (period) {
+            case 1:
+                //今日
+                startTime = DateUtils.getDate(0);
+                stopTime = DateUtils.getDate(1);
+                break;
+            case 2:
+                //昨日
+                startTime = DateUtils.getDate(-1);
+                stopTime = DateUtils.getDate(0);
+                break;
+            case 20:
+                //上周期
+                startTime = DateUtils.getLastPeriod();
+                stopTime = DateUtils.getPeriod();
+                break;
+            case 10:
+            default:
+                //本周期
+                startTime = DateUtils.getPeriod();
+                stopTime = DateUtils.getDate(1);
+                break;
+        }
         LowerDetailsDto.LowerDetails lowerDetails = new LowerDetailsDto.LowerDetails();
-        lowerDetails.setCoin(player.getMoney().doubleValue());
-        //TODO 未处理详细数据
+        LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId())
+                .ge(AgentRebate::getCreateTime, startTime)
+                .le(AgentRebate::getCreateTime, stopTime);
+        double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
+                .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
+        LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        salvageLambdaQueryWrapper.eq(Salvage::getUserId, player.getId())
+                .ge(Salvage::getCreateTime, startTime)
+                .le(Salvage::getCreateTime, stopTime);
+        double profit = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
+                .stream().mapToDouble(Salvage::getProfit).sum();
+        LambdaQueryWrapper<WelfareLog> welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        welfareLogLambdaQueryWrapper.eq(WelfareLog::getUserId, player.getId())
+                .ge(WelfareLog::getCreateTime, startTime)
+                .le(WelfareLog::getCreateTime, stopTime);
+        double welfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
+                .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
+        LambdaQueryWrapper<TopUpLog> topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        topUpLogLambdaQueryWrapper.eq(TopUpLog::getUserId, player.getId())
+                .ge(TopUpLog::getCreateTime, startTime)
+                .le(TopUpLog::getCreateTime, stopTime);
+        double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
+                .stream().mapToDouble(topUpLog -> topUpLog.getCoin().doubleValue()).sum();
+        lowerDetails.setCoin(player.getMoney().doubleValue()).setRebate(rebate).setProfit(profit).setWelfare(welfare).setTopUp(topUp);
         return lowerDetails;
     }
 

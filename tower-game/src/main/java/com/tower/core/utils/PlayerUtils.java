@@ -41,7 +41,7 @@ public class PlayerUtils {
             userInfoRes.setMoney(player.getMoney().doubleValue());
             userInfoRes.setSafeBox(player.getSafeBox().doubleValue());
             msgCtn.setDatas(userInfoRes.build().toByteString());
-            MsgUtil.sendMsg(channel, msgCtn.build().toByteArray());
+            MsgUtil.sendMsg(channel, msgCtn.build());
         }
     }
 

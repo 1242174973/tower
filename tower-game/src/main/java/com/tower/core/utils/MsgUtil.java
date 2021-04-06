@@ -1,5 +1,6 @@
 package com.tower.core.utils;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 import com.tower.core.constant.GameConst;
 import com.tower.msg.Tower;
@@ -15,17 +16,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class MsgUtil {
-    /**
-     * 向Ch发送消息
-     *
-     * @param ch
-     * @param mid
-     * @param sendMsg
-     */
     public static ChannelFuture sendMsg(Channel ch, int mid, MessageLite sendMsg, int reqMsgId) {
-        if(mid!=2000){
-            log.info("发送消息给{},mid:{},id:{}", ch.attr(GameConst.ATTR_USER_ID).get(), mid, reqMsgId);
-        }
         return sendMsg(ch, buildRes(mid, sendMsg, reqMsgId));
     }
 
@@ -34,7 +25,17 @@ public class MsgUtil {
     }
 
     public static ChannelFuture sendMsg(Channel ch, byte[] message) {
-        log.info("发送消息给{}", ch.attr(GameConst.ATTR_USER_ID).get());
+        try {
+            Tower.MsgCtn msgCtn = Tower.MsgCtn.parseFrom(message);
+            int reqMsgId = msgCtn.toBuilder().getReqMsgId();
+            if(reqMsgId!=2000){
+                int type = msgCtn.toBuilder().getType();
+                log.info("发送消息给:{},type:{},reqMsgId:{}",
+                        ch.attr(GameConst.ATTR_USER_ID).get(), type, reqMsgId);
+            }
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
         ByteBuf buf = null;
         if (message != null) {
             byte[] bytes = intToBytes(124512);

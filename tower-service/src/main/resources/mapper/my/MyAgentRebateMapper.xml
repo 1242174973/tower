@@ -25,7 +25,7 @@
     <select id="selectUserRewardByDay" resultType="java.lang.Double">
         SELECT SUM(rebate) FROM agent_rebate
         WHERE user_id=#{playerId}
-        AND create_time>#{createTime}
+        AND create_time>#{startTime}
         AND create_time &lt; #{stopTime}
         GROUP BY user_id
     </select>

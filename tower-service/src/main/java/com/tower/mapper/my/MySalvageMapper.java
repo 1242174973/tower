@@ -2,6 +2,7 @@ package com.tower.mapper.my;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.tower.entity.Salvage;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,11 +16,11 @@ import java.util.List;
  */
 public interface MySalvageMapper extends BaseMapper<Salvage> {
 
-    Integer selectTotalSalvage(int userId);
+    Integer selectTotalSalvage(@Param("userId")int userId);
 
-    Integer selectTotalGet(int userId);
+    Integer selectTotalGet(@Param("userId")int userId);
 
     void settlement();
 
-    void getSalvage(List<Integer> rewardIds);
+    void getSalvage(@Param("rewardIds") List<Integer> rewardIds);
 }
