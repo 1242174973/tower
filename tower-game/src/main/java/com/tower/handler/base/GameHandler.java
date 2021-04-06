@@ -28,6 +28,10 @@ import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @author 梦-屿-千-寻
@@ -37,6 +41,9 @@ import java.util.List;
 @Slf4j
 public class GameHandler extends AbsLogicHandler<Tower.GameReq> implements Mid, ILogicHandler<Tower.GameReq> {
 
+    private ReadWriteLock reentrantLock = new ReentrantReadWriteLock();
+
+    private Lock writeLock = reentrantLock.writeLock();
     @Resource
     private TowerGame towerGame;
 
@@ -69,6 +76,7 @@ public class GameHandler extends AbsLogicHandler<Tower.GameReq> implements Mid, 
 
     /**
      * 重复下注
+     *
      * @param userId 下注玩家id
      */
     private void repetitionBet(int userId) {
@@ -81,22 +89,27 @@ public class GameHandler extends AbsLogicHandler<Tower.GameReq> implements Mid, 
         Player player = PlayerUtils.getPlayer(userId);
         ServerUtil.assertParam(player.getMoney().doubleValue() >= sum, "下注后不能重复下注");
         for (BetLog betLog : betLogs) {
-            Tower.BetInfo.Builder builder=Tower.BetInfo.newBuilder();
+            Tower.BetInfo.Builder builder = Tower.BetInfo.newBuilder();
             builder.setMonsterId(betLog.getBetMonsterId());
             builder.setUserId(betLog.getUserId());
             builder.setCoin(betLog.getBetCoin().intValue());
-            bet(builder.build(),userId);
+            bet(builder.build(), userId);
         }
     }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void bet(Tower.BetInfo betInfo, int userId) {
-        ServerUtil.assertParam(towerGame.getGameStatus().equals(GameStatus.GAME_START), "游戏不在下注状态");
-        Player player = PlayerUtils.getPlayer(userId);
-        ServerUtil.assertParam(player.getMoney().doubleValue() >= betInfo.getCoin(), "玩家分数不足");
-        ServerUtil.assertParam(towerGame.canBet(player.getId(), betInfo.getCoin(), betInfo.getMonsterId()), "下注该怪物达到上限");
-        player.setMoney(player.getMoney().subtract(BigDecimal.valueOf(betInfo.getCoin())));
-        PlayerUtils.savePlayer(player);
+        writeLock.lock();
+        try {
+            ServerUtil.assertParam(towerGame.getGameStatus().equals(GameStatus.GAME_START), "游戏不在下注状态");
+            ServerUtil.assertParam(towerGame.canBet(userId, betInfo.getCoin(), betInfo.getMonsterId()), "下注该怪物达到上限");
+            Player player = PlayerUtils.getPlayer(userId);
+            ServerUtil.assertParam(player.getMoney().doubleValue() >= betInfo.getCoin(), "玩家分数不足");
+            player.setMoney(player.getMoney().subtract(BigDecimal.valueOf(betInfo.getCoin())));
+            PlayerUtils.savePlayer(player);
+        } finally {
+            writeLock.unlock();
+        }
         BetLog betLog = new BetLog();
         betLog.setBetCoin(BigDecimal.valueOf(betInfo.getCoin()));
         betLog.setOrderId(towerGame.getAttackLog().getOrderId());
@@ -106,7 +119,7 @@ public class GameHandler extends AbsLogicHandler<Tower.GameReq> implements Mid, 
         betLog.setCreateTime(LocalDateTime.now());
         MsgBossHandler.EXECUTE_BET_LOG_SAVE.execute(() -> {
             betLogService.saveOrUpdate(betLog);
-            WelfareLog welfareLog = new WelfareLog().setCreateTime(LocalDateTime.now()).setUserId(player.getId())
+            WelfareLog welfareLog = new WelfareLog().setCreateTime(LocalDateTime.now()).setUserId(userId)
                     .setWelfareType(WelfareTypeEnum.GOLD.getCode()).setMode(WelfareModelEnum.BET_COIN.getCode())
                     .setWelfare(BigDecimal.valueOf(-betLog.getBetCoin().doubleValue()));
             welfareLogService.save(welfareLog);

@@ -66,6 +66,9 @@ public class TowerGame {
     @Resource
     private SalvageService salvageService;
 
+    @Resource
+    private GameLogService gameLogService;
+
     /**
      * 此局版本号
      */
@@ -317,8 +320,11 @@ public class TowerGame {
         if (one != null && one.getMonsterId() != null) {
             MsgBossHandler.EXECUTE_BET_LOG_SAVE.execute(() -> {
                 Map<Integer, Double> playerWinCoinMap = new HashMap<>(16);
+                Map<Integer, Double> playerBetWinCoinMap = new HashMap<>(64);
                 for (BetLog betLog : currBetList) {
                     updateBetLog(now, one, betLog);
+                    playerBetWinCoinMap.merge(betLog.getUserId(), betLog.getBetCoin().doubleValue(), Double::sum);
+                    playerBetWinCoinMap.merge(betLog.getUserId(), betLog.getResultCoin().doubleValue(), Double::sum);
                     List<Player> playerList = new ArrayList<>();
                     Player player = PlayerUtils.getPlayer(betLog.getUserId());
                     getAllSuper(player, playerList);
@@ -335,6 +341,14 @@ public class TowerGame {
                             .setOrderId(currBetList.get(0).getOrderId())
                             .setCreateTime(LocalDateTime.now());
                     profitLogService.save(profitLog);
+                });
+                playerBetWinCoinMap.forEach((key, value) -> {
+                    GameLog gameLog = new GameLog()
+                            .setCreateTime(LocalDateTime.now())
+                            .setName("酷狗英雄塔防").setRoomId(1)
+                            .setOrderId(currBetList.get(0).getOrderId())
+                            .setUserId(key).setProfit(value);
+                    gameLogService.save(gameLog);
                 });
             });
         }
