@@ -103,10 +103,10 @@ public class AccountController {
         UserWithdrawConfig userWithdrawConfig = new UserWithdrawConfig();
         userWithdrawConfig.setUserId(userId).
                 setCreateTime(LocalDateTime.now()).
-                setTotalWithdrawMoney(100.00).
-                setTodayWithdrawMoney(100.00).
-                setTotalWithdrawSize(0).
-                setTodayWithdrawSize(0);
+                setTotalWithdrawMoney(1000.00).
+                setTodayWithdrawMoney(1000.00).
+                setTotalWithdrawSize(6).
+                setTodayWithdrawSize(6);
         userWithdrawConfigService.save(userWithdrawConfig);
         challengeRewardService.insertToday(userId);
         return playerDtoResponseDto;
