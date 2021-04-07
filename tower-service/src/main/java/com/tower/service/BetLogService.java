@@ -9,7 +9,7 @@ import com.tower.entity.BetLog;
  * </p>
  *
  * @author 梦屿千寻
- * @since 2021-03-31
+ * @since 2021-04-07
  */
 public interface BetLogService extends IService<BetLog> {
 

@@ -323,15 +323,23 @@ public class TowerGame {
                 Map<Integer, Double> playerBetWinCoinMap = new HashMap<>(64);
                 for (BetLog betLog : currBetList) {
                     updateBetLog(now, one, betLog);
-                    playerBetWinCoinMap.merge(betLog.getUserId(), betLog.getBetCoin().doubleValue(), Double::sum);
+                    double totalBet = betLog.getOneBet().doubleValue()
+                            + betLog.getTwoBet().doubleValue()
+                            + betLog.getThreeBet().doubleValue()
+                            + betLog.getFourBet().doubleValue()
+                            + betLog.getFiveBet().doubleValue()
+                            + betLog.getSixBet().doubleValue()
+                            + betLog.getSevenBet().doubleValue()
+                            + betLog.getEightBet().doubleValue();
+                    playerBetWinCoinMap.merge(betLog.getUserId(), -totalBet, Double::sum);
                     playerBetWinCoinMap.merge(betLog.getUserId(), betLog.getResultCoin().doubleValue(), Double::sum);
                     List<Player> playerList = new ArrayList<>();
                     Player player = PlayerUtils.getPlayer(betLog.getUserId());
                     getAllSuper(player, playerList);
-                    saveChallengeReward(betLog);
-                    saveSalvage(betLog);
-                    double rebateCoin = rebate(betLog, playerList);
-                    double winCoin = betLog.getBetCoin().doubleValue() - betLog.getResultCoin().doubleValue() - rebateCoin;
+                    saveChallengeReward(betLog, totalBet);
+                    saveSalvage(betLog, totalBet);
+                    double rebateCoin = rebate(betLog, playerList, totalBet);
+                    double winCoin = totalBet - betLog.getResultCoin().doubleValue() - rebateCoin;
                     tax(playerList, winCoin, playerWinCoinMap);
                 }
                 playerWinCoinMap.forEach((key, value) -> {
@@ -359,7 +367,7 @@ public class TowerGame {
      *
      * @param betLog 下注信息
      */
-    private void saveSalvage(BetLog betLog) {
+    private void saveSalvage(BetLog betLog, double totalBet) {
         LambdaQueryWrapper<Salvage> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Salvage::getUserId, betLog.getUserId())
                 .ge(Salvage::getCreateTime, DateUtils.getDate(0))
@@ -369,7 +377,7 @@ public class TowerGame {
         if (player == null || salvage == null) {
             return;
         }
-        salvage.setProfit(salvage.getProfit() + betLog.getResultCoin().doubleValue() - betLog.getBetCoin().doubleValue());
+        salvage.setProfit(salvage.getProfit() + betLog.getResultCoin().doubleValue() - totalBet);
         salvageService.saveOrUpdate(salvage);
     }
 
@@ -378,7 +386,7 @@ public class TowerGame {
      *
      * @param betLog 下注信息
      */
-    private void saveChallengeReward(BetLog betLog) {
+    private void saveChallengeReward(BetLog betLog, double totalBet) {
         LambdaQueryWrapper<ChallengeReward> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(ChallengeReward::getUserId, betLog.getUserId())
                 .ge(ChallengeReward::getCreateTime, DateUtils.getDate(0))
@@ -388,14 +396,7 @@ public class TowerGame {
         if (player == null || challengeReward == null) {
             return;
         }
-        /**
-         这一段代码在以后可能会用到
-         double rebate = challengeReward.getRebate().doubleValue() +
-         ((betLog.getBetCoin().multiply(player.getRebate())).doubleValue() / 100);
-         challengeReward.setChallenge(challengeReward.getChallenge().add(betLog.getBetCoin()))
-         .setRebate(BigDecimal.valueOf(rebate));
-         **/
-        challengeReward.setChallenge(challengeReward.getChallenge().add(betLog.getBetCoin()));
+        challengeReward.setChallenge(challengeReward.getChallenge().add(BigDecimal.valueOf(totalBet)));
         challengeRewardService.saveOrUpdate(challengeReward);
     }
 
@@ -430,9 +431,8 @@ public class TowerGame {
      * @param betLog 下注记录
      * @return 返利分数
      */
-    private double rebate(BetLog betLog, List<Player> playerList) {
+    private double rebate(BetLog betLog, List<Player> playerList, double totalBet) {
         double resultCoin = 0;
-        double betCoin = betLog.getBetCoin().doubleValue();
         for (Player p : playerList) {
             Player lower = getLower(p, playerList);
             double rebate;
@@ -444,13 +444,13 @@ public class TowerGame {
             if (rebate <= 0) {
                 continue;
             }
-            double rebateCoin = betCoin * rebate / 100;
+            double rebateCoin = totalBet * rebate / 100;
             resultCoin += rebateCoin;
             AgentRebate agentRebate = new AgentRebate()
                     .setRebate(BigDecimal.valueOf(rebateCoin))
                     .setAgentUserId(p.getId())
                     .setUserId(betLog.getUserId())
-                    .setChallenge(betLog.getBetCoin())
+                    .setChallenge(BigDecimal.valueOf(totalBet))
                     .setStatus(ResultEnum.ALREADY_RESULT.getCode())
                     .setCreateTime(LocalDateTime.now());
             agentRebateService.save(agentRebate);
@@ -499,10 +499,11 @@ public class TowerGame {
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void updateBetLog(LocalDateTime now, AttackLog one, BetLog betLog) {
         betLog.setResultTime(now);
-        betLog.setResultMonsterId(one.getMonsterId());
-        if (betLog.getBetMonsterId().equals(one.getMonsterId())) {
+        betLog.setResultMonster(one.getMonsterId());
+        double betCoin = getBetCoin(betLog, one);
+        if (betCoin > 0) {
             int multiple = getMonsterInfoById(one.getMonsterId()).getMultiple();
-            betLog.setResultCoin(betLog.getBetCoin().multiply(BigDecimal.valueOf(multiple)));
+            betLog.setResultCoin(BigDecimal.valueOf(betCoin).multiply(BigDecimal.valueOf(multiple)));
             Player playerInfo = PlayerUtils.getPlayer(betLog.getUserId());
             playerInfo.setMoney(playerInfo.getMoney().add(betLog.getResultCoin()));
             PlayerUtils.savePlayer(playerInfo);
@@ -515,6 +516,32 @@ public class TowerGame {
         }
         betLog.setStatus(ResultEnum.ALREADY_RESULT.getCode());
         betLogService.saveOrUpdate(betLog);
+    }
+
+    private double getBetCoin(BetLog betLog, AttackLog one) {
+        if (betLog == null) {
+            return 0.0;
+        }
+        switch (one.getMonsterId()) {
+            case 1:
+                return betLog.getOneBet().doubleValue();
+            case 2:
+                return betLog.getTwoBet().doubleValue();
+            case 3:
+                return betLog.getThreeBet().doubleValue();
+            case 4:
+                return betLog.getFourBet().doubleValue();
+            case 5:
+                return betLog.getFiveBet().doubleValue();
+            case 6:
+                return betLog.getSixBet().doubleValue();
+            case 7:
+                return betLog.getSevenBet().doubleValue();
+            case 8:
+                return betLog.getEightBet().doubleValue();
+            default:
+                return 0.0;
+        }
     }
 
     /**
@@ -539,10 +566,7 @@ public class TowerGame {
 
         Set<Integer> roomUserIds = MsgBossHandler.getRoomUserIds();
         roomUserIds.forEach(roomUserId -> {
-
-            double sum = betLogList.stream().filter(betLog -> betLog.getUserId().equals(roomUserId) && betLog.getBetMonsterId().equals(monsterId))
-                    .mapToDouble(betLog -> betLog.getBetCoin().doubleValue())
-                    .sum();
+            double sum = getBetCoin(getBetLog(roomUserId), this.attackLog);
             MonsterInfo monsterInfo = getMonsterInfoById(monsterId);
             gameOverInfo.setWinCoin((int) (sum * monsterInfo.getMultiple()));
 
@@ -556,7 +580,6 @@ public class TowerGame {
             Channel channel = MsgBossHandler.getPlayerIdChannel(roomUserId);
             MsgUtil.sendMsg(channel, msgCtn.build());
         });
-//        sendToAll(gameRes);
         attackLogList.add(0, this.attackLog);
     }
 
@@ -617,7 +640,7 @@ public class TowerGame {
      * @return 返回给客户端的记录信息
      */
     public List<Tower.DetailedAttackLog> getDetailedAttackLogList() {
-        int size = 10;
+        int size = Math.min(attackLogList.size(), 10);
         List<AttackLog> attackLogs = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             attackLogs.add(attackLogList.get(i));
@@ -695,15 +718,12 @@ public class TowerGame {
 
     /**
      * 玩家下注
-     *
-     * @param betLog 下注记录
      */
-    public void bet(BetLog betLog) {
-        betLogList.add(betLog);
+    public void bet(Tower.BetInfo betInfo, int userId) {
         Tower.BetInfo.Builder builder = Tower.BetInfo.newBuilder();
-        builder.setCoin(betLog.getBetCoin().intValue());
-        builder.setMonsterId(betLog.getBetMonsterId());
-        builder.setUserId(betLog.getUserId());
+        builder.setCoin(betInfo.getCoin());
+        builder.setMonsterId(betInfo.getMonsterId());
+        builder.setUserId(userId);
         Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
         gameRes.setCmd(GameCmd.BET.getCode());
         gameRes.setBetInfo(builder.build());
@@ -718,12 +738,30 @@ public class TowerGame {
      * @return 是否可以下注
      */
     public boolean canBet(int userId, int coin, int monsterId) {
-        double betCoin = betLogList.stream()
-                .filter(betLog -> betLog.getUserId().equals(userId) && betLog.getBetMonsterId().equals(monsterId))
-                .mapToDouble(betLog -> betLog.getBetCoin().doubleValue())
-                .sum();
+        BetLog betLog = getBetLog(userId);
+        if (betLog == null) {
+            return true;
+        }
         MonsterInfo monsterInfo = getMonsterInfoById(monsterId);
-        return betCoin + coin <= monsterInfo.getMaxBet().doubleValue();
+        switch (monsterInfo.getId()) {
+            case 1:
+                return betLog.getOneBet().doubleValue() + coin <= monsterInfo.getMaxBet().doubleValue();
+            case 2:
+                return betLog.getTwoBet().doubleValue() + coin <= monsterInfo.getMaxBet().doubleValue();
+            case 3:
+                return betLog.getThreeBet().doubleValue() + coin <= monsterInfo.getMaxBet().doubleValue();
+            case 4:
+                return betLog.getFourBet().doubleValue() + coin <= monsterInfo.getMaxBet().doubleValue();
+            case 5:
+                return betLog.getFiveBet().doubleValue() + coin <= monsterInfo.getMaxBet().doubleValue();
+            case 6:
+                return betLog.getSixBet().doubleValue() + coin <= monsterInfo.getMaxBet().doubleValue();
+            case 7:
+                return betLog.getSevenBet().doubleValue() + coin <= monsterInfo.getMaxBet().doubleValue();
+            case 8:
+                return betLog.getEightBet().doubleValue() + coin <= monsterInfo.getMaxBet().doubleValue();
+        }
+        return false;
     }
 
     /**
@@ -732,17 +770,18 @@ public class TowerGame {
      * @param userId 玩家id
      * @return 返回数据
      */
-    public List<BetLog> getBetLog(int userId) {
-        return betLogList.stream()
+    public BetLog getBetLog(int userId) {
+        List<BetLog> bets = betLogList.stream()
                 .filter(betLog -> betLog.getUserId().equals(userId))
                 .collect(Collectors.toList());
+        return bets.size() > 0 ? bets.get(0) : null;
     }
 
-    public List<BetLog> getLastBetLog(int userId) {
+    public BetLog getLastBetLog(int userId) {
         LambdaQueryWrapper<BetLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
         String orderId = DateUtils.getYearAndMonthAndDay() + getLastIndex();
         logLambdaQueryWrapper.eq(BetLog::getUserId, userId).eq(BetLog::getOrderId, orderId);
-        return betLogService.getBaseMapper().selectList(logLambdaQueryWrapper);
+        return betLogService.getOne(logLambdaQueryWrapper);
     }
 
     /**
@@ -751,18 +790,57 @@ public class TowerGame {
      * @param userId 玩家id
      */
     public void sendBetInfos(int userId) {
-        List<BetLog> betLogs = getBetLog(userId);
+        BetLog betLog = getBetLog(userId);
+        if (betLog == null) {
+            return;
+        }
+        sendBetCoin(betLog.getOneBet().intValue(), userId, 1);
+        sendBetCoin(betLog.getTwoBet().intValue(), userId, 2);
+        sendBetCoin(betLog.getThreeBet().intValue(), userId, 3);
+        sendBetCoin(betLog.getFourBet().intValue(), userId, 4);
+        sendBetCoin(betLog.getFiveBet().intValue(), userId, 5);
+        sendBetCoin(betLog.getSixBet().intValue(), userId, 6);
+        sendBetCoin(betLog.getSevenBet().intValue(), userId, 7);
+        sendBetCoin(betLog.getEightBet().intValue(), userId, 8);
+    }
+
+    private void sendBetCoin(int betCoin, int userId, int monsterId) {
+        if (betCoin <= 0) {
+            return;
+        }
         Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
         gameRes.setCmd(GameCmd.BET_INFO.getCode());
         List<Tower.BetInfo> betList = new ArrayList<>();
-        for (BetLog betLog : betLogs) {
-            Tower.BetInfo.Builder builder = Tower.BetInfo.newBuilder();
-            builder.setCoin(betLog.getBetCoin().intValue());
-            builder.setUserId(betLog.getUserId());
-            builder.setMonsterId(betLog.getBetMonsterId());
-            betList.add(builder.build());
-        }
+        Tower.BetInfo.Builder builder = Tower.BetInfo.newBuilder();
+        builder.setCoin(betCoin);
+        builder.setUserId(userId);
+        builder.setMonsterId(monsterId);
+        betList.add(builder.build());
         gameRes.addAllBetInfos(betList);
         sendToId(gameRes, userId);
+    }
+
+    public synchronized BetLog getBetLogOrNew(int userId) {
+        List<BetLog> bets = betLogList.stream()
+                .filter(betLog -> betLog.getUserId().equals(userId))
+                .collect(Collectors.toList());
+        if (bets.size() > 0) {
+            return bets.get(0);
+        }
+        BetLog betLog = new BetLog();
+        betLog.setUserId(userId)
+                .setOrderId(getAttackLog().getOrderId())
+                .setCreateTime(LocalDateTime.now())
+                .setOneBet(BigDecimal.ZERO)
+                .setTwoBet(BigDecimal.ZERO)
+                .setThreeBet(BigDecimal.ZERO)
+                .setFourBet(BigDecimal.ZERO)
+                .setFiveBet(BigDecimal.ZERO)
+                .setSixBet(BigDecimal.ZERO)
+                .setSevenBet(BigDecimal.ZERO)
+                .setEightBet(BigDecimal.ZERO)
+                .setStatus(ResultEnum.NOT_RESULT.getCode());
+        betLogList.add(betLog);
+        return betLog;
     }
 }

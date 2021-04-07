@@ -19,18 +19,18 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author 梦屿千寻
- * @since 2021-03-31
+ * @since 2021-04-07
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="BetLog对象", description="")
+@ApiModel(value = "BetLog对象", description = "")
 public class BetLogDto implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "下注记录")
-      @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "记录id")
@@ -39,23 +39,43 @@ public class BetLogDto implements Serializable {
     @ApiModelProperty(value = "玩家id")
     private Integer userId;
 
-    @ApiModelProperty(value = "下注怪物id")
-    private Integer betMonsterId;
+    @ApiModelProperty(value = "1号下注分数")
+    private BigDecimal oneBet;
 
-    @ApiModelProperty(value = "下注分数")
-    private BigDecimal betCoin;
+    @ApiModelProperty(value = "2号下注分数")
+    private BigDecimal twoBet;
 
-    @ApiModelProperty(value = "结果怪物id")
-    private Integer resultMonsterId;
+    @ApiModelProperty(value = "3号下注分数")
+    private BigDecimal threeBet;
 
-    @ApiModelProperty(value = "结果输赢分数")
+    @ApiModelProperty(value = "4号下注分数")
+    private BigDecimal fourBet;
+
+    @ApiModelProperty(value = "5号下注分数")
+    private BigDecimal fiveBet;
+
+    @ApiModelProperty(value = "6号下注分数")
+    private BigDecimal sixBet;
+
+    @ApiModelProperty(value = "7号下注分数")
+    private BigDecimal sevenBet;
+
+    @ApiModelProperty(value = "8号下注分数")
+    private BigDecimal eightBet;
+
+    @ApiModelProperty(value = "中奖分数")
     private BigDecimal resultCoin;
+
+    @ApiModelProperty(value = "中奖怪物")
+    private BigDecimal resultMonster;
 
     @ApiModelProperty(value = "状态（1、未开奖、2、已开奖 3、撤销下注）")
     private Integer status;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "下注时间")
     private LocalDateTime createTime;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "开奖时间")
     private LocalDateTime resultTime;

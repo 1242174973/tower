@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author 梦屿千寻
- * @since 2021-03-31
+ * @since 2021-04-07
  */
 @Service
 public class BetLogServiceImpl extends ServiceImpl<BetLogMapper, BetLog> implements BetLogService {

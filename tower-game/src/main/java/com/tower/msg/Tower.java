@@ -18324,63 +18324,171 @@ public final class Tower {
     com.google.protobuf.ByteString
         getOrderIdBytes();
 
-    // required int32 betMonsterId = 2;
+    // required int32 oneBet = 2;
     /**
-     * <code>required int32 betMonsterId = 2;</code>
+     * <code>required int32 oneBet = 2;</code>
      *
      * <pre>
-     *下注的怪物id
+     *1号下注分数
      * </pre>
      */
-    boolean hasBetMonsterId();
+    boolean hasOneBet();
     /**
-     * <code>required int32 betMonsterId = 2;</code>
+     * <code>required int32 oneBet = 2;</code>
      *
      * <pre>
-     *下注的怪物id
+     *1号下注分数
      * </pre>
      */
-    int getBetMonsterId();
+    int getOneBet();
 
-    // required int32 betCoin = 3;
+    // required int32 twoBet = 3;
     /**
-     * <code>required int32 betCoin = 3;</code>
+     * <code>required int32 twoBet = 3;</code>
      *
      * <pre>
-     *下注的分数
+     *2号下注分数
      * </pre>
      */
-    boolean hasBetCoin();
+    boolean hasTwoBet();
     /**
-     * <code>required int32 betCoin = 3;</code>
+     * <code>required int32 twoBet = 3;</code>
      *
      * <pre>
-     *下注的分数
+     *2号下注分数
      * </pre>
      */
-    int getBetCoin();
+    int getTwoBet();
 
-    // optional int32 resultMonsterId = 4;
+    // required int32 threeBet = 4;
     /**
-     * <code>optional int32 resultMonsterId = 4;</code>
+     * <code>required int32 threeBet = 4;</code>
+     *
+     * <pre>
+     *3号下注分数
+     * </pre>
+     */
+    boolean hasThreeBet();
+    /**
+     * <code>required int32 threeBet = 4;</code>
+     *
+     * <pre>
+     *3号下注分数
+     * </pre>
+     */
+    int getThreeBet();
+
+    // required int32 fourBet = 5;
+    /**
+     * <code>required int32 fourBet = 5;</code>
+     *
+     * <pre>
+     *4号下注分数
+     * </pre>
+     */
+    boolean hasFourBet();
+    /**
+     * <code>required int32 fourBet = 5;</code>
+     *
+     * <pre>
+     *4号下注分数
+     * </pre>
+     */
+    int getFourBet();
+
+    // required int32 fiveBet = 6;
+    /**
+     * <code>required int32 fiveBet = 6;</code>
+     *
+     * <pre>
+     *5号下注分数
+     * </pre>
+     */
+    boolean hasFiveBet();
+    /**
+     * <code>required int32 fiveBet = 6;</code>
+     *
+     * <pre>
+     *5号下注分数
+     * </pre>
+     */
+    int getFiveBet();
+
+    // required int32 sixBet = 7;
+    /**
+     * <code>required int32 sixBet = 7;</code>
+     *
+     * <pre>
+     *6号下注分数
+     * </pre>
+     */
+    boolean hasSixBet();
+    /**
+     * <code>required int32 sixBet = 7;</code>
+     *
+     * <pre>
+     *6号下注分数
+     * </pre>
+     */
+    int getSixBet();
+
+    // required int32 sevenBet = 8;
+    /**
+     * <code>required int32 sevenBet = 8;</code>
+     *
+     * <pre>
+     *7号下注分数
+     * </pre>
+     */
+    boolean hasSevenBet();
+    /**
+     * <code>required int32 sevenBet = 8;</code>
+     *
+     * <pre>
+     *7号下注分数
+     * </pre>
+     */
+    int getSevenBet();
+
+    // required int32 eightBet = 9;
+    /**
+     * <code>required int32 eightBet = 9;</code>
+     *
+     * <pre>
+     *8号下注分数
+     * </pre>
+     */
+    boolean hasEightBet();
+    /**
+     * <code>required int32 eightBet = 9;</code>
+     *
+     * <pre>
+     *8号下注分数
+     * </pre>
+     */
+    int getEightBet();
+
+    // optional int32 resultMonster = 10;
+    /**
+     * <code>optional int32 resultMonster = 10;</code>
      *
      * <pre>
      *开奖的怪物id
      * </pre>
      */
-    boolean hasResultMonsterId();
+    boolean hasResultMonster();
     /**
-     * <code>optional int32 resultMonsterId = 4;</code>
+     * <code>optional int32 resultMonster = 10;</code>
      *
      * <pre>
      *开奖的怪物id
      * </pre>
      */
-    int getResultMonsterId();
+    int getResultMonster();
 
-    // optional int32 resultCoin = 5;
+    // optional int32 resultCoin = 11;
     /**
-     * <code>optional int32 resultCoin = 5;</code>
+     * <code>optional int32 resultCoin = 11;</code>
      *
      * <pre>
      *得分
@@ -18388,7 +18496,7 @@ public final class Tower {
      */
     boolean hasResultCoin();
     /**
-     * <code>optional int32 resultCoin = 5;</code>
+     * <code>optional int32 resultCoin = 11;</code>
      *
      * <pre>
      *得分
@@ -18396,9 +18504,9 @@ public final class Tower {
      */
     int getResultCoin();
 
-    // required int32 status = 6;
+    // required int32 status = 12;
     /**
-     * <code>required int32 status = 6;</code>
+     * <code>required int32 status = 12;</code>
      *
      * <pre>
      *状态（1、未开奖、2、已开奖 3、撤销下注）
@@ -18406,7 +18514,7 @@ public final class Tower {
      */
     boolean hasStatus();
     /**
-     * <code>required int32 status = 6;</code>
+     * <code>required int32 status = 12;</code>
      *
      * <pre>
      *状态（1、未开奖、2、已开奖 3、撤销下注）
@@ -18414,9 +18522,9 @@ public final class Tower {
      */
     int getStatus();
 
-    // required int64 createTime = 7;
+    // required int64 createTime = 13;
     /**
-     * <code>required int64 createTime = 7;</code>
+     * <code>required int64 createTime = 13;</code>
      *
      * <pre>
      *下注时间
@@ -18424,7 +18532,7 @@ public final class Tower {
      */
     boolean hasCreateTime();
     /**
-     * <code>required int64 createTime = 7;</code>
+     * <code>required int64 createTime = 13;</code>
      *
      * <pre>
      *下注时间
@@ -18432,9 +18540,9 @@ public final class Tower {
      */
     long getCreateTime();
 
-    // optional int64 resultTime = 8;
+    // optional int64 resultTime = 14;
     /**
-     * <code>optional int64 resultTime = 8;</code>
+     * <code>optional int64 resultTime = 14;</code>
      *
      * <pre>
      *开奖时间
@@ -18442,7 +18550,7 @@ public final class Tower {
      */
     boolean hasResultTime();
     /**
-     * <code>optional int64 resultTime = 8;</code>
+     * <code>optional int64 resultTime = 14;</code>
      *
      * <pre>
      *开奖时间
@@ -18512,36 +18620,66 @@ public final class Tower {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              betMonsterId_ = input.readInt32();
+              oneBet_ = input.readInt32();
               break;
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              betCoin_ = input.readInt32();
+              twoBet_ = input.readInt32();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              resultMonsterId_ = input.readInt32();
+              threeBet_ = input.readInt32();
               break;
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              resultCoin_ = input.readInt32();
+              fourBet_ = input.readInt32();
               break;
             }
             case 48: {
               bitField0_ |= 0x00000020;
-              status_ = input.readInt32();
+              fiveBet_ = input.readInt32();
               break;
             }
             case 56: {
               bitField0_ |= 0x00000040;
-              createTime_ = input.readInt64();
+              sixBet_ = input.readInt32();
               break;
             }
             case 64: {
               bitField0_ |= 0x00000080;
+              sevenBet_ = input.readInt32();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000100;
+              eightBet_ = input.readInt32();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              resultMonster_ = input.readInt32();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000400;
+              resultCoin_ = input.readInt32();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000800;
+              status_ = input.readInt32();
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00001000;
+              createTime_ = input.readInt64();
+              break;
+            }
+            case 112: {
+              bitField0_ |= 0x00002000;
               resultTime_ = input.readInt64();
               break;
             }
@@ -18640,93 +18778,237 @@ public final class Tower {
       }
     }
 
-    // required int32 betMonsterId = 2;
-    public static final int BETMONSTERID_FIELD_NUMBER = 2;
-    private int betMonsterId_;
+    // required int32 oneBet = 2;
+    public static final int ONEBET_FIELD_NUMBER = 2;
+    private int oneBet_;
     /**
-     * <code>required int32 betMonsterId = 2;</code>
+     * <code>required int32 oneBet = 2;</code>
      *
      * <pre>
-     *下注的怪物id
+     *1号下注分数
      * </pre>
      */
-    public boolean hasBetMonsterId() {
+    public boolean hasOneBet() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 betMonsterId = 2;</code>
+     * <code>required int32 oneBet = 2;</code>
      *
      * <pre>
-     *下注的怪物id
+     *1号下注分数
      * </pre>
      */
-    public int getBetMonsterId() {
-      return betMonsterId_;
+    public int getOneBet() {
+      return oneBet_;
     }
 
-    // required int32 betCoin = 3;
-    public static final int BETCOIN_FIELD_NUMBER = 3;
-    private int betCoin_;
+    // required int32 twoBet = 3;
+    public static final int TWOBET_FIELD_NUMBER = 3;
+    private int twoBet_;
     /**
-     * <code>required int32 betCoin = 3;</code>
+     * <code>required int32 twoBet = 3;</code>
      *
      * <pre>
-     *下注的分数
+     *2号下注分数
      * </pre>
      */
-    public boolean hasBetCoin() {
+    public boolean hasTwoBet() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required int32 betCoin = 3;</code>
+     * <code>required int32 twoBet = 3;</code>
      *
      * <pre>
-     *下注的分数
+     *2号下注分数
      * </pre>
      */
-    public int getBetCoin() {
-      return betCoin_;
+    public int getTwoBet() {
+      return twoBet_;
     }
 
-    // optional int32 resultMonsterId = 4;
-    public static final int RESULTMONSTERID_FIELD_NUMBER = 4;
-    private int resultMonsterId_;
+    // required int32 threeBet = 4;
+    public static final int THREEBET_FIELD_NUMBER = 4;
+    private int threeBet_;
     /**
-     * <code>optional int32 resultMonsterId = 4;</code>
+     * <code>required int32 threeBet = 4;</code>
      *
      * <pre>
-     *开奖的怪物id
+     *3号下注分数
      * </pre>
      */
-    public boolean hasResultMonsterId() {
+    public boolean hasThreeBet() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 resultMonsterId = 4;</code>
+     * <code>required int32 threeBet = 4;</code>
+     *
+     * <pre>
+     *3号下注分数
+     * </pre>
+     */
+    public int getThreeBet() {
+      return threeBet_;
+    }
+
+    // required int32 fourBet = 5;
+    public static final int FOURBET_FIELD_NUMBER = 5;
+    private int fourBet_;
+    /**
+     * <code>required int32 fourBet = 5;</code>
+     *
+     * <pre>
+     *4号下注分数
+     * </pre>
+     */
+    public boolean hasFourBet() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 fourBet = 5;</code>
+     *
+     * <pre>
+     *4号下注分数
+     * </pre>
+     */
+    public int getFourBet() {
+      return fourBet_;
+    }
+
+    // required int32 fiveBet = 6;
+    public static final int FIVEBET_FIELD_NUMBER = 6;
+    private int fiveBet_;
+    /**
+     * <code>required int32 fiveBet = 6;</code>
+     *
+     * <pre>
+     *5号下注分数
+     * </pre>
+     */
+    public boolean hasFiveBet() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required int32 fiveBet = 6;</code>
+     *
+     * <pre>
+     *5号下注分数
+     * </pre>
+     */
+    public int getFiveBet() {
+      return fiveBet_;
+    }
+
+    // required int32 sixBet = 7;
+    public static final int SIXBET_FIELD_NUMBER = 7;
+    private int sixBet_;
+    /**
+     * <code>required int32 sixBet = 7;</code>
+     *
+     * <pre>
+     *6号下注分数
+     * </pre>
+     */
+    public boolean hasSixBet() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required int32 sixBet = 7;</code>
+     *
+     * <pre>
+     *6号下注分数
+     * </pre>
+     */
+    public int getSixBet() {
+      return sixBet_;
+    }
+
+    // required int32 sevenBet = 8;
+    public static final int SEVENBET_FIELD_NUMBER = 8;
+    private int sevenBet_;
+    /**
+     * <code>required int32 sevenBet = 8;</code>
+     *
+     * <pre>
+     *7号下注分数
+     * </pre>
+     */
+    public boolean hasSevenBet() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required int32 sevenBet = 8;</code>
+     *
+     * <pre>
+     *7号下注分数
+     * </pre>
+     */
+    public int getSevenBet() {
+      return sevenBet_;
+    }
+
+    // required int32 eightBet = 9;
+    public static final int EIGHTBET_FIELD_NUMBER = 9;
+    private int eightBet_;
+    /**
+     * <code>required int32 eightBet = 9;</code>
+     *
+     * <pre>
+     *8号下注分数
+     * </pre>
+     */
+    public boolean hasEightBet() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>required int32 eightBet = 9;</code>
+     *
+     * <pre>
+     *8号下注分数
+     * </pre>
+     */
+    public int getEightBet() {
+      return eightBet_;
+    }
+
+    // optional int32 resultMonster = 10;
+    public static final int RESULTMONSTER_FIELD_NUMBER = 10;
+    private int resultMonster_;
+    /**
+     * <code>optional int32 resultMonster = 10;</code>
      *
      * <pre>
      *开奖的怪物id
      * </pre>
      */
-    public int getResultMonsterId() {
-      return resultMonsterId_;
+    public boolean hasResultMonster() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional int32 resultMonster = 10;</code>
+     *
+     * <pre>
+     *开奖的怪物id
+     * </pre>
+     */
+    public int getResultMonster() {
+      return resultMonster_;
     }
 
-    // optional int32 resultCoin = 5;
-    public static final int RESULTCOIN_FIELD_NUMBER = 5;
+    // optional int32 resultCoin = 11;
+    public static final int RESULTCOIN_FIELD_NUMBER = 11;
     private int resultCoin_;
     /**
-     * <code>optional int32 resultCoin = 5;</code>
+     * <code>optional int32 resultCoin = 11;</code>
      *
      * <pre>
      *得分
      * </pre>
      */
     public boolean hasResultCoin() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
-     * <code>optional int32 resultCoin = 5;</code>
+     * <code>optional int32 resultCoin = 11;</code>
      *
      * <pre>
      *得分
@@ -18736,21 +19018,21 @@ public final class Tower {
       return resultCoin_;
     }
 
-    // required int32 status = 6;
-    public static final int STATUS_FIELD_NUMBER = 6;
+    // required int32 status = 12;
+    public static final int STATUS_FIELD_NUMBER = 12;
     private int status_;
     /**
-     * <code>required int32 status = 6;</code>
+     * <code>required int32 status = 12;</code>
      *
      * <pre>
      *状态（1、未开奖、2、已开奖 3、撤销下注）
      * </pre>
      */
     public boolean hasStatus() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
-     * <code>required int32 status = 6;</code>
+     * <code>required int32 status = 12;</code>
      *
      * <pre>
      *状态（1、未开奖、2、已开奖 3、撤销下注）
@@ -18760,21 +19042,21 @@ public final class Tower {
       return status_;
     }
 
-    // required int64 createTime = 7;
-    public static final int CREATETIME_FIELD_NUMBER = 7;
+    // required int64 createTime = 13;
+    public static final int CREATETIME_FIELD_NUMBER = 13;
     private long createTime_;
     /**
-     * <code>required int64 createTime = 7;</code>
+     * <code>required int64 createTime = 13;</code>
      *
      * <pre>
      *下注时间
      * </pre>
      */
     public boolean hasCreateTime() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
-     * <code>required int64 createTime = 7;</code>
+     * <code>required int64 createTime = 13;</code>
      *
      * <pre>
      *下注时间
@@ -18784,21 +19066,21 @@ public final class Tower {
       return createTime_;
     }
 
-    // optional int64 resultTime = 8;
-    public static final int RESULTTIME_FIELD_NUMBER = 8;
+    // optional int64 resultTime = 14;
+    public static final int RESULTTIME_FIELD_NUMBER = 14;
     private long resultTime_;
     /**
-     * <code>optional int64 resultTime = 8;</code>
+     * <code>optional int64 resultTime = 14;</code>
      *
      * <pre>
      *开奖时间
      * </pre>
      */
     public boolean hasResultTime() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
-     * <code>optional int64 resultTime = 8;</code>
+     * <code>optional int64 resultTime = 14;</code>
      *
      * <pre>
      *开奖时间
@@ -18810,9 +19092,15 @@ public final class Tower {
 
     private void initFields() {
       orderId_ = "";
-      betMonsterId_ = 0;
-      betCoin_ = 0;
-      resultMonsterId_ = 0;
+      oneBet_ = 0;
+      twoBet_ = 0;
+      threeBet_ = 0;
+      fourBet_ = 0;
+      fiveBet_ = 0;
+      sixBet_ = 0;
+      sevenBet_ = 0;
+      eightBet_ = 0;
+      resultMonster_ = 0;
       resultCoin_ = 0;
       status_ = 0;
       createTime_ = 0L;
@@ -18827,11 +19115,35 @@ public final class Tower {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasBetMonsterId()) {
+      if (!hasOneBet()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasBetCoin()) {
+      if (!hasTwoBet()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasThreeBet()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFourBet()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFiveBet()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSixBet()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSevenBet()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasEightBet()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -18854,25 +19166,43 @@ public final class Tower {
         output.writeBytes(1, getOrderIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, betMonsterId_);
+        output.writeInt32(2, oneBet_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, betCoin_);
+        output.writeInt32(3, twoBet_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, resultMonsterId_);
+        output.writeInt32(4, threeBet_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, resultCoin_);
+        output.writeInt32(5, fourBet_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, status_);
+        output.writeInt32(6, fiveBet_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt64(7, createTime_);
+        output.writeInt32(7, sixBet_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt64(8, resultTime_);
+        output.writeInt32(8, sevenBet_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeInt32(9, eightBet_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeInt32(10, resultMonster_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeInt32(11, resultCoin_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeInt32(12, status_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeInt64(13, createTime_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeInt64(14, resultTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -18889,31 +19219,55 @@ public final class Tower {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, betMonsterId_);
+          .computeInt32Size(2, oneBet_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, betCoin_);
+          .computeInt32Size(3, twoBet_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, resultMonsterId_);
+          .computeInt32Size(4, threeBet_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, resultCoin_);
+          .computeInt32Size(5, fourBet_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, status_);
+          .computeInt32Size(6, fiveBet_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(7, createTime_);
+          .computeInt32Size(7, sixBet_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(8, resultTime_);
+          .computeInt32Size(8, sevenBet_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, eightBet_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, resultMonster_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(11, resultCoin_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(12, status_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(13, createTime_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(14, resultTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -19037,20 +19391,32 @@ public final class Tower {
         super.clear();
         orderId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        betMonsterId_ = 0;
+        oneBet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        betCoin_ = 0;
+        twoBet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        resultMonsterId_ = 0;
+        threeBet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        resultCoin_ = 0;
+        fourBet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        status_ = 0;
+        fiveBet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        createTime_ = 0L;
+        sixBet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        resultTime_ = 0L;
+        sevenBet_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
+        eightBet_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        resultMonster_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        resultCoin_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        status_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000800);
+        createTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        resultTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
 
@@ -19086,29 +19452,53 @@ public final class Tower {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.betMonsterId_ = betMonsterId_;
+        result.oneBet_ = oneBet_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.betCoin_ = betCoin_;
+        result.twoBet_ = twoBet_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.resultMonsterId_ = resultMonsterId_;
+        result.threeBet_ = threeBet_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.resultCoin_ = resultCoin_;
+        result.fourBet_ = fourBet_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.status_ = status_;
+        result.fiveBet_ = fiveBet_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.createTime_ = createTime_;
+        result.sixBet_ = sixBet_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
+        }
+        result.sevenBet_ = sevenBet_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.eightBet_ = eightBet_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.resultMonster_ = resultMonster_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.resultCoin_ = resultCoin_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.status_ = status_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.createTime_ = createTime_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
         }
         result.resultTime_ = resultTime_;
         result.bitField0_ = to_bitField0_;
@@ -19132,14 +19522,32 @@ public final class Tower {
           orderId_ = other.orderId_;
           onChanged();
         }
-        if (other.hasBetMonsterId()) {
-          setBetMonsterId(other.getBetMonsterId());
+        if (other.hasOneBet()) {
+          setOneBet(other.getOneBet());
         }
-        if (other.hasBetCoin()) {
-          setBetCoin(other.getBetCoin());
+        if (other.hasTwoBet()) {
+          setTwoBet(other.getTwoBet());
         }
-        if (other.hasResultMonsterId()) {
-          setResultMonsterId(other.getResultMonsterId());
+        if (other.hasThreeBet()) {
+          setThreeBet(other.getThreeBet());
+        }
+        if (other.hasFourBet()) {
+          setFourBet(other.getFourBet());
+        }
+        if (other.hasFiveBet()) {
+          setFiveBet(other.getFiveBet());
+        }
+        if (other.hasSixBet()) {
+          setSixBet(other.getSixBet());
+        }
+        if (other.hasSevenBet()) {
+          setSevenBet(other.getSevenBet());
+        }
+        if (other.hasEightBet()) {
+          setEightBet(other.getEightBet());
+        }
+        if (other.hasResultMonster()) {
+          setResultMonster(other.getResultMonster());
         }
         if (other.hasResultCoin()) {
           setResultCoin(other.getResultCoin());
@@ -19162,11 +19570,35 @@ public final class Tower {
           
           return false;
         }
-        if (!hasBetMonsterId()) {
+        if (!hasOneBet()) {
           
           return false;
         }
-        if (!hasBetCoin()) {
+        if (!hasTwoBet()) {
+          
+          return false;
+        }
+        if (!hasThreeBet()) {
+          
+          return false;
+        }
+        if (!hasFourBet()) {
+          
+          return false;
+        }
+        if (!hasFiveBet()) {
+          
+          return false;
+        }
+        if (!hasSixBet()) {
+          
+          return false;
+        }
+        if (!hasSevenBet()) {
+          
+          return false;
+        }
+        if (!hasEightBet()) {
           
           return false;
         }
@@ -19298,167 +19730,461 @@ public final class Tower {
         return this;
       }
 
-      // required int32 betMonsterId = 2;
-      private int betMonsterId_ ;
+      // required int32 oneBet = 2;
+      private int oneBet_ ;
       /**
-       * <code>required int32 betMonsterId = 2;</code>
+       * <code>required int32 oneBet = 2;</code>
        *
        * <pre>
-       *下注的怪物id
+       *1号下注分数
        * </pre>
        */
-      public boolean hasBetMonsterId() {
+      public boolean hasOneBet() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 betMonsterId = 2;</code>
+       * <code>required int32 oneBet = 2;</code>
        *
        * <pre>
-       *下注的怪物id
+       *1号下注分数
        * </pre>
        */
-      public int getBetMonsterId() {
-        return betMonsterId_;
+      public int getOneBet() {
+        return oneBet_;
       }
       /**
-       * <code>required int32 betMonsterId = 2;</code>
+       * <code>required int32 oneBet = 2;</code>
        *
        * <pre>
-       *下注的怪物id
+       *1号下注分数
        * </pre>
        */
-      public Builder setBetMonsterId(int value) {
+      public Builder setOneBet(int value) {
         bitField0_ |= 0x00000002;
-        betMonsterId_ = value;
+        oneBet_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 betMonsterId = 2;</code>
+       * <code>required int32 oneBet = 2;</code>
        *
        * <pre>
-       *下注的怪物id
+       *1号下注分数
        * </pre>
        */
-      public Builder clearBetMonsterId() {
+      public Builder clearOneBet() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        betMonsterId_ = 0;
+        oneBet_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 betCoin = 3;
-      private int betCoin_ ;
+      // required int32 twoBet = 3;
+      private int twoBet_ ;
       /**
-       * <code>required int32 betCoin = 3;</code>
+       * <code>required int32 twoBet = 3;</code>
        *
        * <pre>
-       *下注的分数
+       *2号下注分数
        * </pre>
        */
-      public boolean hasBetCoin() {
+      public boolean hasTwoBet() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required int32 betCoin = 3;</code>
+       * <code>required int32 twoBet = 3;</code>
        *
        * <pre>
-       *下注的分数
+       *2号下注分数
        * </pre>
        */
-      public int getBetCoin() {
-        return betCoin_;
+      public int getTwoBet() {
+        return twoBet_;
       }
       /**
-       * <code>required int32 betCoin = 3;</code>
+       * <code>required int32 twoBet = 3;</code>
        *
        * <pre>
-       *下注的分数
+       *2号下注分数
        * </pre>
        */
-      public Builder setBetCoin(int value) {
+      public Builder setTwoBet(int value) {
         bitField0_ |= 0x00000004;
-        betCoin_ = value;
+        twoBet_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 betCoin = 3;</code>
+       * <code>required int32 twoBet = 3;</code>
        *
        * <pre>
-       *下注的分数
+       *2号下注分数
        * </pre>
        */
-      public Builder clearBetCoin() {
+      public Builder clearTwoBet() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        betCoin_ = 0;
+        twoBet_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 resultMonsterId = 4;
-      private int resultMonsterId_ ;
+      // required int32 threeBet = 4;
+      private int threeBet_ ;
       /**
-       * <code>optional int32 resultMonsterId = 4;</code>
+       * <code>required int32 threeBet = 4;</code>
        *
        * <pre>
-       *开奖的怪物id
+       *3号下注分数
        * </pre>
        */
-      public boolean hasResultMonsterId() {
+      public boolean hasThreeBet() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional int32 resultMonsterId = 4;</code>
+       * <code>required int32 threeBet = 4;</code>
        *
        * <pre>
-       *开奖的怪物id
+       *3号下注分数
        * </pre>
        */
-      public int getResultMonsterId() {
-        return resultMonsterId_;
+      public int getThreeBet() {
+        return threeBet_;
       }
       /**
-       * <code>optional int32 resultMonsterId = 4;</code>
+       * <code>required int32 threeBet = 4;</code>
        *
        * <pre>
-       *开奖的怪物id
+       *3号下注分数
        * </pre>
        */
-      public Builder setResultMonsterId(int value) {
+      public Builder setThreeBet(int value) {
         bitField0_ |= 0x00000008;
-        resultMonsterId_ = value;
+        threeBet_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 resultMonsterId = 4;</code>
+       * <code>required int32 threeBet = 4;</code>
        *
        * <pre>
-       *开奖的怪物id
+       *3号下注分数
        * </pre>
        */
-      public Builder clearResultMonsterId() {
+      public Builder clearThreeBet() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        resultMonsterId_ = 0;
+        threeBet_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 resultCoin = 5;
+      // required int32 fourBet = 5;
+      private int fourBet_ ;
+      /**
+       * <code>required int32 fourBet = 5;</code>
+       *
+       * <pre>
+       *4号下注分数
+       * </pre>
+       */
+      public boolean hasFourBet() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 fourBet = 5;</code>
+       *
+       * <pre>
+       *4号下注分数
+       * </pre>
+       */
+      public int getFourBet() {
+        return fourBet_;
+      }
+      /**
+       * <code>required int32 fourBet = 5;</code>
+       *
+       * <pre>
+       *4号下注分数
+       * </pre>
+       */
+      public Builder setFourBet(int value) {
+        bitField0_ |= 0x00000010;
+        fourBet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 fourBet = 5;</code>
+       *
+       * <pre>
+       *4号下注分数
+       * </pre>
+       */
+      public Builder clearFourBet() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        fourBet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 fiveBet = 6;
+      private int fiveBet_ ;
+      /**
+       * <code>required int32 fiveBet = 6;</code>
+       *
+       * <pre>
+       *5号下注分数
+       * </pre>
+       */
+      public boolean hasFiveBet() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required int32 fiveBet = 6;</code>
+       *
+       * <pre>
+       *5号下注分数
+       * </pre>
+       */
+      public int getFiveBet() {
+        return fiveBet_;
+      }
+      /**
+       * <code>required int32 fiveBet = 6;</code>
+       *
+       * <pre>
+       *5号下注分数
+       * </pre>
+       */
+      public Builder setFiveBet(int value) {
+        bitField0_ |= 0x00000020;
+        fiveBet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 fiveBet = 6;</code>
+       *
+       * <pre>
+       *5号下注分数
+       * </pre>
+       */
+      public Builder clearFiveBet() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        fiveBet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 sixBet = 7;
+      private int sixBet_ ;
+      /**
+       * <code>required int32 sixBet = 7;</code>
+       *
+       * <pre>
+       *6号下注分数
+       * </pre>
+       */
+      public boolean hasSixBet() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required int32 sixBet = 7;</code>
+       *
+       * <pre>
+       *6号下注分数
+       * </pre>
+       */
+      public int getSixBet() {
+        return sixBet_;
+      }
+      /**
+       * <code>required int32 sixBet = 7;</code>
+       *
+       * <pre>
+       *6号下注分数
+       * </pre>
+       */
+      public Builder setSixBet(int value) {
+        bitField0_ |= 0x00000040;
+        sixBet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 sixBet = 7;</code>
+       *
+       * <pre>
+       *6号下注分数
+       * </pre>
+       */
+      public Builder clearSixBet() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        sixBet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 sevenBet = 8;
+      private int sevenBet_ ;
+      /**
+       * <code>required int32 sevenBet = 8;</code>
+       *
+       * <pre>
+       *7号下注分数
+       * </pre>
+       */
+      public boolean hasSevenBet() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required int32 sevenBet = 8;</code>
+       *
+       * <pre>
+       *7号下注分数
+       * </pre>
+       */
+      public int getSevenBet() {
+        return sevenBet_;
+      }
+      /**
+       * <code>required int32 sevenBet = 8;</code>
+       *
+       * <pre>
+       *7号下注分数
+       * </pre>
+       */
+      public Builder setSevenBet(int value) {
+        bitField0_ |= 0x00000080;
+        sevenBet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 sevenBet = 8;</code>
+       *
+       * <pre>
+       *7号下注分数
+       * </pre>
+       */
+      public Builder clearSevenBet() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        sevenBet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required int32 eightBet = 9;
+      private int eightBet_ ;
+      /**
+       * <code>required int32 eightBet = 9;</code>
+       *
+       * <pre>
+       *8号下注分数
+       * </pre>
+       */
+      public boolean hasEightBet() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>required int32 eightBet = 9;</code>
+       *
+       * <pre>
+       *8号下注分数
+       * </pre>
+       */
+      public int getEightBet() {
+        return eightBet_;
+      }
+      /**
+       * <code>required int32 eightBet = 9;</code>
+       *
+       * <pre>
+       *8号下注分数
+       * </pre>
+       */
+      public Builder setEightBet(int value) {
+        bitField0_ |= 0x00000100;
+        eightBet_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 eightBet = 9;</code>
+       *
+       * <pre>
+       *8号下注分数
+       * </pre>
+       */
+      public Builder clearEightBet() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        eightBet_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 resultMonster = 10;
+      private int resultMonster_ ;
+      /**
+       * <code>optional int32 resultMonster = 10;</code>
+       *
+       * <pre>
+       *开奖的怪物id
+       * </pre>
+       */
+      public boolean hasResultMonster() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 resultMonster = 10;</code>
+       *
+       * <pre>
+       *开奖的怪物id
+       * </pre>
+       */
+      public int getResultMonster() {
+        return resultMonster_;
+      }
+      /**
+       * <code>optional int32 resultMonster = 10;</code>
+       *
+       * <pre>
+       *开奖的怪物id
+       * </pre>
+       */
+      public Builder setResultMonster(int value) {
+        bitField0_ |= 0x00000200;
+        resultMonster_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 resultMonster = 10;</code>
+       *
+       * <pre>
+       *开奖的怪物id
+       * </pre>
+       */
+      public Builder clearResultMonster() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        resultMonster_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 resultCoin = 11;
       private int resultCoin_ ;
       /**
-       * <code>optional int32 resultCoin = 5;</code>
+       * <code>optional int32 resultCoin = 11;</code>
        *
        * <pre>
        *得分
        * </pre>
        */
       public boolean hasResultCoin() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>optional int32 resultCoin = 5;</code>
+       * <code>optional int32 resultCoin = 11;</code>
        *
        * <pre>
        *得分
@@ -19468,46 +20194,46 @@ public final class Tower {
         return resultCoin_;
       }
       /**
-       * <code>optional int32 resultCoin = 5;</code>
+       * <code>optional int32 resultCoin = 11;</code>
        *
        * <pre>
        *得分
        * </pre>
        */
       public Builder setResultCoin(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000400;
         resultCoin_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 resultCoin = 5;</code>
+       * <code>optional int32 resultCoin = 11;</code>
        *
        * <pre>
        *得分
        * </pre>
        */
       public Builder clearResultCoin() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000400);
         resultCoin_ = 0;
         onChanged();
         return this;
       }
 
-      // required int32 status = 6;
+      // required int32 status = 12;
       private int status_ ;
       /**
-       * <code>required int32 status = 6;</code>
+       * <code>required int32 status = 12;</code>
        *
        * <pre>
        *状态（1、未开奖、2、已开奖 3、撤销下注）
        * </pre>
        */
       public boolean hasStatus() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
-       * <code>required int32 status = 6;</code>
+       * <code>required int32 status = 12;</code>
        *
        * <pre>
        *状态（1、未开奖、2、已开奖 3、撤销下注）
@@ -19517,46 +20243,46 @@ public final class Tower {
         return status_;
       }
       /**
-       * <code>required int32 status = 6;</code>
+       * <code>required int32 status = 12;</code>
        *
        * <pre>
        *状态（1、未开奖、2、已开奖 3、撤销下注）
        * </pre>
        */
       public Builder setStatus(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000800;
         status_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 status = 6;</code>
+       * <code>required int32 status = 12;</code>
        *
        * <pre>
        *状态（1、未开奖、2、已开奖 3、撤销下注）
        * </pre>
        */
       public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000800);
         status_ = 0;
         onChanged();
         return this;
       }
 
-      // required int64 createTime = 7;
+      // required int64 createTime = 13;
       private long createTime_ ;
       /**
-       * <code>required int64 createTime = 7;</code>
+       * <code>required int64 createTime = 13;</code>
        *
        * <pre>
        *下注时间
        * </pre>
        */
       public boolean hasCreateTime() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>required int64 createTime = 7;</code>
+       * <code>required int64 createTime = 13;</code>
        *
        * <pre>
        *下注时间
@@ -19566,46 +20292,46 @@ public final class Tower {
         return createTime_;
       }
       /**
-       * <code>required int64 createTime = 7;</code>
+       * <code>required int64 createTime = 13;</code>
        *
        * <pre>
        *下注时间
        * </pre>
        */
       public Builder setCreateTime(long value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00001000;
         createTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int64 createTime = 7;</code>
+       * <code>required int64 createTime = 13;</code>
        *
        * <pre>
        *下注时间
        * </pre>
        */
       public Builder clearCreateTime() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00001000);
         createTime_ = 0L;
         onChanged();
         return this;
       }
 
-      // optional int64 resultTime = 8;
+      // optional int64 resultTime = 14;
       private long resultTime_ ;
       /**
-       * <code>optional int64 resultTime = 8;</code>
+       * <code>optional int64 resultTime = 14;</code>
        *
        * <pre>
        *开奖时间
        * </pre>
        */
       public boolean hasResultTime() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       /**
-       * <code>optional int64 resultTime = 8;</code>
+       * <code>optional int64 resultTime = 14;</code>
        *
        * <pre>
        *开奖时间
@@ -19615,27 +20341,27 @@ public final class Tower {
         return resultTime_;
       }
       /**
-       * <code>optional int64 resultTime = 8;</code>
+       * <code>optional int64 resultTime = 14;</code>
        *
        * <pre>
        *开奖时间
        * </pre>
        */
       public Builder setResultTime(long value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00002000;
         resultTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 resultTime = 8;</code>
+       * <code>optional int64 resultTime = 14;</code>
        *
        * <pre>
        *开奖时间
        * </pre>
        */
       public Builder clearResultTime() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00002000);
         resultTime_ = 0L;
         onChanged();
         return this;
@@ -21009,14 +21735,16 @@ public final class Tower {
       "\nbetPageLog\030\004 \001(\0132\017.src.BetPageLog\"T\n\nBe",
       "tPageLog\022\033\n\006betLog\030\001 \003(\0132\013.src.BetLog\022\014\n" +
       "\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\022\r\n\005count\030\004 \001(\005" +
-      "\"\245\001\n\006BetLog\022\017\n\007orderId\030\001 \002(\t\022\024\n\014betMonst" +
-      "erId\030\002 \002(\005\022\017\n\007betCoin\030\003 \002(\005\022\027\n\017resultMon" +
-      "sterId\030\004 \001(\005\022\022\n\nresultCoin\030\005 \001(\005\022\016\n\006stat" +
-      "us\030\006 \002(\005\022\022\n\ncreateTime\030\007 \002(\003\022\022\n\nresultTi" +
-      "me\030\010 \001(\003\"t\n\021DetailedAttackLog\022\017\n\007orderId" +
-      "\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\022\022\n\nattackTime\030" +
-      "\003 \002(\003\022\023\n\013monsterName\030\004 \002(\t\022\022\n\nturretName" +
-      "\030\005 \002(\tB\017\n\rcom.tower.msg"
+      "\"\204\002\n\006BetLog\022\017\n\007orderId\030\001 \002(\t\022\016\n\006oneBet\030\002" +
+      " \002(\005\022\016\n\006twoBet\030\003 \002(\005\022\020\n\010threeBet\030\004 \002(\005\022\017" +
+      "\n\007fourBet\030\005 \002(\005\022\017\n\007fiveBet\030\006 \002(\005\022\016\n\006sixB" +
+      "et\030\007 \002(\005\022\020\n\010sevenBet\030\010 \002(\005\022\020\n\010eightBet\030\t" +
+      " \002(\005\022\025\n\rresultMonster\030\n \001(\005\022\022\n\nresultCoi" +
+      "n\030\013 \001(\005\022\016\n\006status\030\014 \002(\005\022\022\n\ncreateTime\030\r " +
+      "\002(\003\022\022\n\nresultTime\030\016 \001(\003\"t\n\021DetailedAttac" +
+      "kLog\022\017\n\007orderId\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005",
+      "\022\022\n\nattackTime\030\003 \002(\003\022\023\n\013monsterName\030\004 \002(" +
+      "\t\022\022\n\nturretName\030\005 \002(\tB\017\n\rcom.tower.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -21142,7 +21870,7 @@ public final class Tower {
           internal_static_src_BetLog_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_BetLog_descriptor,
-              new java.lang.String[] { "OrderId", "BetMonsterId", "BetCoin", "ResultMonsterId", "ResultCoin", "Status", "CreateTime", "ResultTime", });
+              new java.lang.String[] { "OrderId", "OneBet", "TwoBet", "ThreeBet", "FourBet", "FiveBet", "SixBet", "SevenBet", "EightBet", "ResultMonster", "ResultCoin", "Status", "CreateTime", "ResultTime", });
           internal_static_src_DetailedAttackLog_descriptor =
             getDescriptor().getMessageTypes().get(20);
           internal_static_src_DetailedAttackLog_fieldAccessorTable = new

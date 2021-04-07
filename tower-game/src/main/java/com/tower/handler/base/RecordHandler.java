@@ -81,11 +81,17 @@ public class RecordHandler extends AbsLogicHandler<Tower.RecordReq> implements M
         List<Tower.BetLog> betLogList = new ArrayList<>();
         records.forEach(record -> {
             Tower.BetLog.Builder betLog = Tower.BetLog.newBuilder();
-            betLog.setBetCoin(record.getBetCoin().intValue());
+            betLog.setOneBet(record.getOneBet().intValue());
+            betLog.setTwoBet(record.getTwoBet().intValue());
+            betLog.setThreeBet(record.getThreeBet().intValue());
+            betLog.setFourBet(record.getFourBet().intValue());
+            betLog.setFiveBet(record.getFiveBet().intValue());
+            betLog.setSixBet(record.getSixBet().intValue());
+            betLog.setSevenBet(record.getSevenBet().intValue());
+            betLog.setEightBet(record.getEightBet().intValue());
             betLog.setOrderId(record.getOrderId());
-            betLog.setBetMonsterId(record.getBetMonsterId());
-            if (record.getResultMonsterId() != null) {
-                betLog.setResultMonsterId(record.getResultMonsterId());
+            if (record.getResultMonster() != null) {
+                betLog.setResultMonster(record.getResultMonster());
                 betLog.setResultCoin(record.getResultCoin().intValue());
                 betLog.setResultTime(record.getResultTime().toInstant(ZoneOffset.of("+8")).toEpochMilli());
             }
