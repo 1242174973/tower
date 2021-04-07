@@ -82,9 +82,8 @@ public class AgentController {
                 .ge(Player::getCreateTime, DateUtils.getDate(0))
                 .le(Player::getCreateTime, DateUtils.getDate(1));
         agentDto.setNewNum(playerService.count(playerLambdaQueryWrapper));
-        double money = agentRebateService.selectExpectedReward(player.getId(), DateUtils.getPeriod());
         double share = profitLogService.selectUserProfitByDay(player.getId(), DateUtils.getPeriod(), DateUtils.getDate(1));
-        agentDto.setExpectedReward(BigDecimal.valueOf(money + share));
+        agentDto.setExpectedReward(BigDecimal.valueOf(share));
         ResponseDto<AgentDto> responseDto = new ResponseDto<>();
         responseDto.setContent(agentDto);
         return responseDto;
@@ -502,14 +501,14 @@ public class AgentController {
         double lowerBetCoin = challengeRewardService.getBaseMapper().selectList(challengeRewardLambdaQueryWrapper)
                 .stream().mapToDouble(challengeReward -> challengeReward.getChallenge().doubleValue()).sum();
         //盈亏数据
-        LambdaQueryWrapper<ProfitLog> profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
+/*        LambdaQueryWrapper<ProfitLog> profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         profitLogLambdaQueryWrapper.eq(ProfitLog::getUserId, player.getId()).ge(ProfitLog::getCreateTime, startTime).le(ProfitLog::getCreateTime, stopTime);
         double profit = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper)
                 .stream().mapToDouble(ProfitLog::getProfitCoin).sum();
         profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         profitLogLambdaQueryWrapper.in(ProfitLog::getUserId, ids).ge(ProfitLog::getCreateTime, startTime).le(ProfitLog::getCreateTime, stopTime);
         double lowerProfit = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper)
-                .stream().mapToDouble(ProfitLog::getProfitCoin).sum();
+                .stream().mapToDouble(ProfitLog::getProfitCoin).sum();*/
         //盈亏数据
         LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
         salvageLambdaQueryWrapper.eq(Salvage::getUserId, player.getId()).ge(Salvage::getCreateTime, startTime).le(Salvage::getCreateTime, stopTime);
@@ -542,7 +541,8 @@ public class AgentController {
         //赋值
         statementDto.setMyRebate(rebate).setLowerRebate(lowerRebate)
                 .setMyBetWater(betCoin).setLowerBetWater(lowerBetCoin)
-                .setMyProfit(profit + salvage).setLowerProfit(lowerProfit + lowerSalvage)
+//                .setMyProfit(profit + salvage).setLowerProfit(lowerProfit + lowerSalvage)
+                .setMyProfit(salvage).setLowerProfit(lowerSalvage)
                 .setMyTopUp(topUp).setLowerTopUp(lowerTopUp)
                 .setMyWelfare(welfare).setLowerWelfare(lowerWelfare)
                 .setProfitRebate(profitRebate);

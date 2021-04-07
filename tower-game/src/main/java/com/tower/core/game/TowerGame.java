@@ -43,6 +43,7 @@ public class TowerGame {
 
     @Resource
     private AttackLogService attackLogService;
+
     @Resource
     private MonsterService monsterService;
 
@@ -286,6 +287,7 @@ public class TowerGame {
         }
         int countdown = 10000;
         sendGameOver(countdown);
+        settleBetInfo();
     }
 
     /**
@@ -448,6 +450,9 @@ public class TowerGame {
                     .setChallenge(BigDecimal.valueOf(totalBet))
                     .setStatus(ResultEnum.ALREADY_RESULT.getCode())
                     .setCreateTime(LocalDateTime.now());
+            p.setTotalAward(p.getTotalAward().add(BigDecimal.valueOf(rebateCoin)))
+                    .setCanAward(p.getCanAward().add(BigDecimal.valueOf(rebateCoin)));
+            PlayerUtils.savePlayer(p);
             agentRebateService.save(agentRebate);
         }
         return resultCoin;
