@@ -9,10 +9,14 @@ import com.tower.dto.TransferLogDto;
 import com.tower.dto.page.game.TransferLogPageDto;
 import com.tower.entity.Player;
 import com.tower.entity.TransferLog;
+import com.tower.entity.WelfareLog;
+import com.tower.enums.WelfareModelEnum;
+import com.tower.enums.WelfareTypeEnum;
 import com.tower.exception.BusinessException;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.PlayerService;
 import com.tower.service.TransferLogService;
+import com.tower.service.WelfareLogService;
 import com.tower.utils.BusinessUtil;
 import com.tower.utils.CopyUtil;
 import io.swagger.annotations.Api;
@@ -41,6 +45,9 @@ public class TransferController {
     @Resource
     private TransferLogService transferLogService;
 
+    @Resource
+    private WelfareLogService welfareLogService;
+
     @PostMapping("/transfer")
     @ApiOperation(value = "转账请求", notes = "参数 接收人ID 转账金额")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, noRollbackFor = BusinessException.class)
@@ -57,7 +64,7 @@ public class TransferController {
         try {
             transferLog.setSuccess(1);
             BusinessUtil.assertParam(receptionPlayer != null, "接收玩家找不到");
-            BusinessUtil.assertParam(player.getMoney().doubleValue() > transferLogDto.getCoin().doubleValue(), "玩家分数不足");
+            BusinessUtil.assertParam(player.getMoney().doubleValue() >= transferLogDto.getCoin().doubleValue(), "玩家分数不足");
             player.setMoney(player.getMoney().subtract(transferLogDto.getCoin()));
             receptionPlayer.setMoney(receptionPlayer.getMoney().add(transferLogDto.getCoin()));
             transferLogService.save(transferLog);
@@ -67,6 +74,20 @@ public class TransferController {
             throw ex;
         }
         PlayerUtils.savePlayer(receptionPlayer);
+        WelfareLog welfareLog = new WelfareLog()
+                .setMode(WelfareModelEnum.TRANSFER_WITHHOLD.getCode())
+                .setWelfare(BigDecimal.valueOf(-transferLogDto.getCoin().doubleValue()))
+                .setWelfareType(WelfareTypeEnum.GOLD.getCode())
+                .setUserId(player.getId())
+                .setCreateTime(LocalDateTime.now());
+        welfareLogService.save(welfareLog);
+        welfareLog = new WelfareLog()
+                .setMode(WelfareModelEnum.TRANSFER_AWARD.getCode())
+                .setWelfare(BigDecimal.valueOf(transferLogDto.getCoin().doubleValue()))
+                .setWelfareType(WelfareTypeEnum.GOLD.getCode())
+                .setUserId(transferLogDto.getReceptionId())
+                .setCreateTime(LocalDateTime.now());
+        welfareLogService.save(welfareLog);
         return AccountController.getPlayerDtoResponseDto(player);
     }
 

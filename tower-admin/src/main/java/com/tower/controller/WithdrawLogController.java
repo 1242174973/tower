@@ -47,8 +47,6 @@ public class WithdrawLogController {
     @Resource
     private PlayerFeign playerFeign;
 
-    @Resource
-    private WelfareLogService welfareLogService;
 
     @PostMapping("/list")
     @ApiOperation(value = "获得所有提现审核", notes = "获得所有提现审核请求")
@@ -167,13 +165,6 @@ public class WithdrawLogController {
         withdrawLog.setState(AuditType.ERROR.getCode());
         withdrawLog.setRemit(BigDecimal.ZERO);
         withdrawLogService.saveOrUpdate(withdrawLog);
-        WelfareLog welfareLog = new WelfareLog();
-        welfareLog.setMode(WelfareModelEnum.WITHDRAW_ERROR.getCode());
-        welfareLog.setWelfare(withdrawLog.getWithdrawMoney());
-        welfareLog.setWelfareType(WelfareTypeEnum.GOLD.getCode());
-        welfareLog.setUserId(withdrawLog.getUserId());
-        welfareLog.setCreateTime(LocalDateTime.now());
-        welfareLogService.save(welfareLog);
         Player player = playerFeign.playerInfo(withdrawLog.getUserId());
         player.setMoney(player.getMoney().add(withdrawLog.getWithdrawMoney()));
         playerFeign.save(player);

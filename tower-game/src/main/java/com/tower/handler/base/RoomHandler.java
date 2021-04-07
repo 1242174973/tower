@@ -123,7 +123,7 @@ public class RoomHandler extends AbsLogicHandler<Tower.RoomReq> implements Mid, 
         List<Tower.AttackLog> logList = new ArrayList<>();
         for (AttackLog attackLog : attackLogs) {
             Tower.AttackLog.Builder log = Tower.AttackLog.newBuilder();
-            log.setMonsterId(attackLog.getMonsterId());
+            log.setMonsterId(attackLog.getMonsterId()==null?0:attackLog.getMonsterId());
             log.setOrderId(attackLog.getOrderId());
             logList.add(log.build());
         }

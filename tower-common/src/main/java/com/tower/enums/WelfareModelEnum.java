@@ -6,13 +6,12 @@ package com.tower.enums;
  */
 public enum WelfareModelEnum {
     //金币
-    SIGN_IN(1,"签到"),
-    RESCUE(2,"救援"),
-    CHALLENGE(3,"挑战"),
-    WITHDRAW(4,"提现"),
-    WITHDRAW_ERROR(5,"提现失败"),
-    BET_WIN(6,"投注盈利"),
-    BET_COIN(7,"投注"),
+    SIGN_IN(1, "登录签到"),
+    RESCUE(2, "救援金"),
+    CHALLENGE(3, "投注返利"),
+    REBATE_EXTRACT(4, "返利提现"),
+    TRANSFER_WITHHOLD(5, "转账扣款"),
+    TRANSFER_AWARD(6, "转账奖励"),
     ;
     private int code;
     private String desc;

@@ -8,6 +8,8 @@ import com.tower.dto.page.game.AgentTeamPageDto;
 import com.tower.dto.page.game.ExtracLogPageDto;
 import com.tower.dto.page.game.PromoteDetailsPageDto;
 import com.tower.entity.*;
+import com.tower.enums.WelfareModelEnum;
+import com.tower.enums.WelfareTypeEnum;
 import com.tower.exception.BusinessException;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.*;
@@ -246,6 +248,13 @@ public class AgentController {
                     .setCreateTime(LocalDateTime.now());
             extracLogService.save(extracLog);
             PlayerUtils.savePlayer(player);
+            WelfareLog welfareLog = new WelfareLog()
+                    .setMode(WelfareModelEnum.REBATE_EXTRACT.getCode())
+                    .setWelfare(BigDecimal.valueOf(money))
+                    .setWelfareType(WelfareTypeEnum.GOLD.getCode())
+                    .setUserId(player.getId())
+                    .setCreateTime(LocalDateTime.now());
+            welfareLogService.save(welfareLog);
             ResponseDto<String> responseDto = new ResponseDto<>();
             responseDto.setContent("提取成功");
             return responseDto;

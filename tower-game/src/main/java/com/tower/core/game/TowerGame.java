@@ -11,8 +11,6 @@ import com.tower.core.utils.PlayerUtils;
 import com.tower.entity.*;
 import com.tower.enums.GameCmd;
 import com.tower.enums.ResultEnum;
-import com.tower.enums.WelfareModelEnum;
-import com.tower.enums.WelfareTypeEnum;
 import com.tower.game.MonsterInfo;
 import com.tower.msg.Tower;
 import com.tower.service.*;
@@ -47,9 +45,6 @@ public class TowerGame {
     private AttackLogService attackLogService;
     @Resource
     private MonsterService monsterService;
-
-    @Resource
-    private WelfareLogService welfareLogService;
 
     @Resource
     private BetLogService betLogService;
@@ -270,8 +265,8 @@ public class TowerGame {
      */
     public void upcomingAward() {
         gameStatus = GameStatus.UPCOMING_AWARD;
-        log.info("6秒后出怪");
-        int countdown = 6000;
+        log.info("7秒后出怪");
+        int countdown = 7000;
         executeHashedWheelTimer.newTimeout(this::award, countdown, TimeUnit.MILLISECONDS);
         Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
         gameRes.setCmd(GameCmd.UPCOMING_AWARD.getCode()).setCountdown(countdown);
@@ -507,10 +502,6 @@ public class TowerGame {
             Player playerInfo = PlayerUtils.getPlayer(betLog.getUserId());
             playerInfo.setMoney(playerInfo.getMoney().add(betLog.getResultCoin()));
             PlayerUtils.savePlayer(playerInfo);
-            WelfareLog welfareLog = new WelfareLog().setCreateTime(LocalDateTime.now()).setUserId(playerInfo.getId())
-                    .setWelfareType(WelfareTypeEnum.GOLD.getCode()).setMode(WelfareModelEnum.BET_WIN.getCode())
-                    .setWelfare(betLog.getResultCoin());
-            welfareLogService.save(welfareLog);
         } else {
             betLog.setResultCoin(BigDecimal.ZERO);
         }
@@ -550,6 +541,7 @@ public class TowerGame {
      * @param countdown 倒计时
      */
     public void sendGameOver(int countdown) {
+        attackLogList.add(0, this.attackLog);
         log.info("完成出怪");
         setAward(true);
         initMonsterInfoList();
@@ -580,7 +572,6 @@ public class TowerGame {
             Channel channel = MsgBossHandler.getPlayerIdChannel(roomUserId);
             MsgUtil.sendMsg(channel, msgCtn.build());
         });
-        attackLogList.add(0, this.attackLog);
     }
 
     public List<AttackLog> getPageAttackLog(int page, int size) {

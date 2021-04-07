@@ -44,8 +44,8 @@ public class ProfitController {
     @Resource
     private AgentRebateService agentRebateService;
 
-    @GetMapping("/todaySalvage")
-    @ApiOperation(value = "今日预计援助金", notes = "无需参数")
+    @GetMapping("/profitInfo/{recentDay}")
+    @ApiOperation(value = "盈利数据获取", notes = "参数 最近天数")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<List<ProfitInfoDto>> todaySalvage(Player player,
                                                          @ApiParam(value = "最近天数 0 近三天 1今天 2昨天 ")
@@ -107,6 +107,7 @@ public class ProfitController {
                 .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
 
         ProfitInfoDto profitInfoDto = new ProfitInfoDto();
+        profitInfoDto.setCreateTime(startTime);
         profitInfoDto.setProfit(profit + salvage);
         profitInfoDto.setWater(welfare);
         profitInfoDto.setTopUp(topUp);

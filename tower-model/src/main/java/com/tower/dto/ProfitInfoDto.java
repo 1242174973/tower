@@ -1,7 +1,10 @@
 package com.tower.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 /**
  * @author 梦-屿-千-寻
@@ -24,4 +27,7 @@ public class ProfitInfoDto {
 
     @ApiModelProperty(value = "盈利金额")
     private double profit;
+
+    @ApiModelProperty(value = "创建时间")
+    private String createTime;
 }
