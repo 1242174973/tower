@@ -707,7 +707,7 @@ public class TowerGame {
             Tower.GameOverInfo.Builder gameOverInfo = Tower.GameOverInfo.newBuilder();
             Tower.AttackLog.Builder attackLog = Tower.AttackLog.newBuilder();
             attackLog.setOrderId(this.attackLog.getOrderId());
-            attackLog.setMonsterId(this.attackLog.getMonsterId());
+            attackLog.setMonsterId(this.attackLog.getMonsterId() == null ? 0 : this.attackLog.getMonsterId());
             gameOverInfo.setAttackLog(attackLog);
             gameOverInfo.addAllRecommendId(getRecommendIds());
             gameOverInfo.addAllRecommendMonster(getRecommendMonster());
