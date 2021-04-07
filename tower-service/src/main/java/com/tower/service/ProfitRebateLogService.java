@@ -13,4 +13,5 @@ import com.tower.entity.ProfitRebateLog;
  */
 public interface ProfitRebateLogService extends IService<ProfitRebateLog> {
 
+    double selectUserProfitByDay(int userId, String startTime, String stopTime);
 }

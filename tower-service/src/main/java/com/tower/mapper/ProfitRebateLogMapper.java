@@ -2,6 +2,7 @@ package com.tower.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.tower.entity.ProfitRebateLog;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.tower.entity.ProfitRebateLog;
  */
 public interface ProfitRebateLogMapper extends BaseMapper<ProfitRebateLog> {
 
+    double selectUserProfitByDay(@Param("userId") int userId,@Param("startTime") String startTime,@Param("stopTime") String stopTime);
 }

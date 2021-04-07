@@ -63,6 +63,9 @@ public class AgentController {
     private ProfitLogService profitLogService;
 
     @Resource
+    private ProfitRebateLogService profitRebateLogService;
+
+    @Resource
     private WelfareLogService welfareLogService;
 
     @Resource
@@ -340,7 +343,8 @@ public class AgentController {
             promoteDetailsDto.setShareLower(-share);
             share = shareLogService.selectUserYieldByDay(player.getId(), startTime, stopTime);
             promoteDetailsDto.setSuperShare(share);
-            share = profitLogService.selectUserProfitByDay(player.getId(), startTime, stopTime);
+//            share = profitLogService.selectUserProfitByDay(player.getId(), startTime, stopTime);
+            share=profitRebateLogService.selectUserProfitByDay(player.getId(), startTime, stopTime);
             promoteDetailsDto.setExhibitRebate(share);
             promoteDetailsDto.setTotalAward(promoteDetailsDto.getExhibitRebate()
                     + promoteDetailsDto.getRebate()

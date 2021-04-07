@@ -17,4 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProfitRebateLogServiceImpl extends ServiceImpl<ProfitRebateLogMapper, ProfitRebateLog> implements ProfitRebateLogService {
 
+    @Override
+    public double selectUserProfitByDay(int userId, String startTime, String stopTime) {
+        return baseMapper.selectUserProfitByDay(userId,startTime,stopTime);
+    }
 }

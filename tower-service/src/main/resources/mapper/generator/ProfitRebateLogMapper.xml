@@ -4,15 +4,22 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.tower.entity.ProfitRebateLog">
-        <id column="id" property="id" />
-        <result column="user_id" property="userId" />
-        <result column="rebate_coin" property="rebateCoin" />
-        <result column="create_time" property="createTime" />
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="rebate_coin" property="rebateCoin"/>
+        <result column="create_time" property="createTime"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, user_id, rebate_coin, create_time
     </sql>
+    <select id="selectUserProfitByDay" resultType="java.lang.Double">
+         SELECT SUM(rebate_coin) FROM profit_rebate_log
+        WHERE user_id = #{userId}
+        AND create_time>#{startTime}
+        AND create_time &lt; #{stopTime}
+        GROUP BY user_id
+    </select>
 
 </mapper>
