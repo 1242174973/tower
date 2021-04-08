@@ -2,6 +2,7 @@ package com.tower.core.pipline;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.tower.Hall;
+import com.tower.TowerApplication;
 import com.tower.core.ILogicHandler;
 import com.tower.core.MsgMapping;
 import com.tower.core.constant.GameConst;
@@ -9,6 +10,7 @@ import com.tower.core.constant.Mid;
 import com.tower.core.constant.MidTypeUtil;
 import com.tower.core.thread.LogDefThreadFactory;
 import com.tower.core.utils.MsgUtil;
+import com.tower.exception.BusinessException;
 import com.tower.exception.ServerException;
 import com.tower.msg.Tower;
 import com.tower.utils.MyApplicationContextUti;
@@ -102,6 +104,14 @@ public class MsgBossHandler extends SimpleChannelInboundHandler<WebSocketFrame> 
     private void doIt(ChannelHandlerContext ctx, Tower.MsgCtn msg) {
         Long userId = ctx.channel().attr(GameConst.ATTR_USER_ID).get();
         try {
+            if(TowerApplication.status==1){
+                Tower.ServerErrorRes.Builder errRes = Tower.ServerErrorRes.newBuilder();
+                errRes.setReqMsgId(msg.getReqMsgId());
+                errRes.setErrorMsg("服务器维护");
+                errRes.setErrorCode(GameConst.SysErrorCode.LOGIN_NULL);
+                MsgUtil.sendMsg(ctx.channel(), Mid.MID_SERVER_ERROR_RES, errRes.build());
+                return;
+            }
             ILogicHandler<Object> handler = (ILogicHandler<Object>) msgMapping.findHandle(msg.getType());
             if (handler == null) {
                 log.warn("Unknown Msg Id:{},UID[{}],CH[{}]", msg.getType(), userId, ctx.channel().id());

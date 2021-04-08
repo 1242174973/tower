@@ -1,5 +1,6 @@
 package com.tower.filter;
 
+import com.tower.TowerApplication;
 import com.tower.exception.BusinessException;
 import com.tower.utils.RedisOperator;
 import com.tower.variable.RedisVariable;
@@ -39,6 +40,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         }
         if (!verify) {
             return true;
+        }
+        if(TowerApplication.status==1){
+            throw new BusinessException("服务器维护");
         }
         // 从 http 请求头中取出 token
         String token = request.getHeader("token");

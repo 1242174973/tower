@@ -40,10 +40,28 @@ public class IndexController {
         List<Player> playerList = playerService.getBaseMapper().selectList(new LambdaQueryWrapper<>());
         indexDto.setNewNum(getNewNum(playerList));
         indexDto.setActive(getActiveNum(playerList));
-        indexDto.setNotActive(playerList.size()-indexDto.getActive());
+        indexDto.setNotActive(playerList.size() - indexDto.getActive());
         indexDto.setStatus(feign.getStatus());
         ResponseDto<IndexDto> responseDto = new ResponseDto<>();
         responseDto.setContent(indexDto);
+        return responseDto;
+    }
+
+    @PostMapping("/stop")
+    @ApiOperation(value = "一键维护", notes = "一键维护")
+    public ResponseDto<String> stop() {
+        feign.setStatus(1);
+        ResponseDto<String> responseDto = new ResponseDto<>();
+        responseDto.setMessage("维护成功");
+        return responseDto;
+    }
+
+    @PostMapping("/start")
+    @ApiOperation(value = "一键开启", notes = "一键开启")
+    public ResponseDto<String> start() {
+        feign.setStatus(0);
+        ResponseDto<String> responseDto = new ResponseDto<>();
+        responseDto.setMessage("开启成功");
         return responseDto;
     }
 

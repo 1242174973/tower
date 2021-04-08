@@ -1,16 +1,16 @@
 <template>
     <div>
-<!--        <h1>您好，欢迎进入后台管理</h1>-->
+        <!--        <h1>您好，欢迎进入后台管理</h1>-->
         <div>
             <h3>
                 当前游戏状态：
                 <span v-show="status===0" style="color: green">运行中</span>
                 <span v-show="status===1" style="color: red">维护中</span>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button v-show="status===0" class="btn btn-white btn-default btn-danger bigger ">
+                <button v-show="status===0" v-on:click="stop()" class="btn btn-white btn-default btn-danger bigger ">
                     一键维护
                 </button>
-                <button v-show="status===1" class="btn btn-white btn-default btn-info bigger ">
+                <button v-show="status===1" v-on:click="start()" class="btn btn-white btn-default btn-info bigger ">
                     一键开启
                 </button>
             </h3>
@@ -94,7 +94,7 @@
                 newNum: 50,
                 active: 20,
                 notActive: 30,
-                status:0,
+                status: 0,
             }
         },
         mounted: function () {
@@ -108,6 +108,7 @@
                 {label: "活跃玩家", data: this.active, color: "#2091CF"},
                 {label: "沉默玩家", data: this.notActive, color: "#DA5430"},
             ];
+
             function drawPieChart(placeholder, data, position) {
                 $.plot(placeholder, data, {
                     series: {
@@ -163,7 +164,7 @@
 
         },
         methods: {
-            init(){
+            init() {
                 let _this = this;
                 _this.$ajax.post(process.env.VUE_APP_SERVER + '/index/index').then((response) => {
                     Loading.hide();
@@ -174,6 +175,34 @@
                     _this.status = resp.content.status;
                 })
             },
+            stop() {
+                let  _this=this;
+                Confirm.show("维护后游戏将不能提供服务，确认维护？", function () {
+                    Loading.show();
+                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/index/stop').then((response) => {
+                        Loading.hide();
+                        let resp = response.data;
+                        if (resp.success) {
+                            _this.init();
+                            Toast.success("维护成功！");
+                        }
+                    })
+                });
+            },
+            start() {
+                let  _this=this;
+                Confirm.show("开启游戏提供服务，确认开启？", function () {
+                    Loading.show();
+                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/index/start').then((response) => {
+                        Loading.hide();
+                        let resp = response.data;
+                        if (resp.success) {
+                            _this.init();
+                            Toast.success("开启成功！");
+                        }
+                    })
+                });
+            }
         }
     }
 </script>
