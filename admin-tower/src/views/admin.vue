@@ -279,7 +279,14 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="log-gameLog-sidebar">
+                                <router-link to="/log/gameLog">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    游戏记录
+                                </router-link>
 
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
                     </li>

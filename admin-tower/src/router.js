@@ -21,7 +21,7 @@ import Salvage from "./views/admin/Salvage"
 import AgentRebate from "./views/admin/AgentRebate"
 import AttackLog from "./views/admin/AttackLog"
 import BetLog from "./views/admin/BetLog"
-
+import GameLog from "./views/admin/GameLog"
 
 Vue.use(Router);
 
@@ -84,9 +84,12 @@ export default new Router({
             path: "log/betLog",
             name: "log/betLog",
             component: BetLog,
+        },{
+            path: "log/gameLog",
+            name: "log/gameLog",
+            component: GameLog,
         },
-
-             {
+         {
             path: "welfare/signIn",
             name: "welfare/signIn",
             component: SignIn,
