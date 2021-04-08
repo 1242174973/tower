@@ -303,6 +303,14 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="log-shareLog-sidebar">
+                                <router-link to="/log/shareLog">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    代理分享记录
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
                     </li>

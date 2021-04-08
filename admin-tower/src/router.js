@@ -24,6 +24,9 @@ import BetLog from "./views/admin/BetLog"
 import GameLog from "./views/admin/GameLog"
 import ProfitLog from "./views/admin/ProfitLog"
 import ProfitRebateLog from "./views/admin/ProfitRebateLog"
+import ShareLog from "./views/admin/ShareLog"
+
+
 
 Vue.use(Router);
 
@@ -98,6 +101,10 @@ export default new Router({
             path: "log/profitRebateLog",
             name: "log/profitRebateLog",
             component: ProfitRebateLog,
+        },{
+            path: "log/shareLog",
+            name: "log/shareLog",
+            component: ShareLog,
         },
 
          {
