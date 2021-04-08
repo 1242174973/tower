@@ -228,7 +228,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     福利记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-safeBoxLog-sidebar">
@@ -236,7 +235,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     保险柜存取分记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-transferLog-sidebar">
@@ -244,7 +242,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     玩家转账记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-withdrawLogLog-sidebar">
@@ -252,7 +249,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     玩家提现记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-agentRebate-sidebar">
@@ -260,7 +256,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     下级返利记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-attackLog-sidebar">
@@ -268,7 +263,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     开奖记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-betLog-sidebar">
@@ -276,7 +270,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     下注记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-gameLog-sidebar">
@@ -284,7 +277,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     游戏记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-profitLog-sidebar">
@@ -292,7 +284,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     代理盈利记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-profitRebateLog-sidebar">
@@ -300,7 +291,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     代理盈利结算记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-shareLog-sidebar">
@@ -308,10 +298,16 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     代理分享记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
 
+                            <li class="" id="log-extracLog-sidebar">
+                                <router-link to="/log/extracLog">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    提取记录
+                                </router-link>
+                                <b class="arrow"></b>
+                            </li>
                         </ul>
                     </li>
                     <li class="">

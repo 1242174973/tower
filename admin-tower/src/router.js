@@ -25,7 +25,7 @@ import GameLog from "./views/admin/GameLog"
 import ProfitLog from "./views/admin/ProfitLog"
 import ProfitRebateLog from "./views/admin/ProfitRebateLog"
 import ShareLog from "./views/admin/ShareLog"
-
+import ExtracLog from "./views/admin/ExtracLog"
 
 
 Vue.use(Router);
@@ -77,37 +77,39 @@ export default new Router({
             path: "log/withdrawLogLog",
             name: "log/withdrawLogLog",
             component: WithdrawLogLog,
-        },{
+        }, {
             path: "log/agentRebate",
             name: "log/agentRebate",
             component: AgentRebate,
-        },{
+        }, {
             path: "log/attackLog",
             name: "log/attackLog",
             component: AttackLog,
-        },{
+        }, {
             path: "log/betLog",
             name: "log/betLog",
             component: BetLog,
-        },{
+        }, {
             path: "log/gameLog",
             name: "log/gameLog",
             component: GameLog,
-        },{
+        }, {
             path: "log/profitLog",
             name: "log/profitLog",
             component: ProfitLog,
-        },{
+        }, {
             path: "log/profitRebateLog",
             name: "log/profitRebateLog",
             component: ProfitRebateLog,
-        },{
+        }, {
             path: "log/shareLog",
             name: "log/shareLog",
             component: ShareLog,
-        },
-
-         {
+        }, {
+            path: "log/extracLog",
+            name: "log/extracLog",
+            component: ExtracLog,
+        }, {
             path: "welfare/signIn",
             name: "welfare/signIn",
             component: SignIn,
