@@ -8,7 +8,7 @@ public enum ResultEnum {
     //金币
     NOT_RESULT(1,"未开奖"),
     ALREADY_RESULT(2,"已开奖"),
-    REVOCATION(1,"撤销下注"),
+    REVOCATION(3,"撤销下注"),
     ;
     private int code;
     private String desc;

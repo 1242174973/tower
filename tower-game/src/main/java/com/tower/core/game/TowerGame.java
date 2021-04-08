@@ -448,7 +448,7 @@ public class TowerGame {
                     .setAgentUserId(p.getId())
                     .setUserId(betLog.getUserId())
                     .setChallenge(BigDecimal.valueOf(totalBet))
-                    .setStatus(ResultEnum.ALREADY_RESULT.getCode())
+                    .setStatus(2)
                     .setCreateTime(LocalDateTime.now());
             p.setTotalAward(p.getTotalAward().add(BigDecimal.valueOf(rebateCoin)))
                     .setCanAward(p.getCanAward().add(BigDecimal.valueOf(rebateCoin)));
