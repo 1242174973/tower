@@ -49,6 +49,9 @@ public class Player implements Serializable {
     @ApiModelProperty(value = "密码盐")
     private String salt;
 
+    @ApiModelProperty(value = "是否代理")
+    private Integer isAgent;
+
     @ApiModelProperty(value = "账号（用户名）")
     private String account;
 

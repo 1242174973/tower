@@ -125,6 +125,7 @@ public class AgentController {
         sqlPlayer.setNickName(NameRandomUtil.getRandomName());
         sqlPlayer.setRebate(BigDecimal.valueOf(rebate));
         sqlPlayer.setTax(BigDecimal.ZERO);
+        sqlPlayer.setIsAgent(1);
         sqlPlayer.setTotalAward(BigDecimal.ZERO);
         sqlPlayer.setCanAward(BigDecimal.ZERO);
         playerService.save(sqlPlayer);
@@ -306,6 +307,7 @@ public class AgentController {
         Player yieldPlayer = PlayerUtils.getPlayer(yieldId);
         BusinessUtil.assertParam(yieldPlayer != null, "收益玩家未找到");
         BusinessUtil.assertParam(yieldPlayer.getSuperId().equals(player.getId()), "该收益玩家不是玩家的直系下级");
+        BusinessUtil.assertParam(yieldPlayer.getIsAgent().equals(1), "分享的玩家必须是代理");
         BusinessUtil.assertParam(player.getCanAward().doubleValue() >= money, "分享金额不能大于可提取金额");
         BusinessUtil.assertParam(
                 MD5Utils.getMD5Str(MD5Utils.getMD5Str(safeBoxPassword + player.getSalt())).equals(player.getSafeBoxPassword()),
@@ -344,7 +346,7 @@ public class AgentController {
             share = shareLogService.selectUserYieldByDay(player.getId(), startTime, stopTime);
             promoteDetailsDto.setSuperShare(share);
 //            share = profitLogService.selectUserProfitByDay(player.getId(), startTime, stopTime);
-            share=profitRebateLogService.selectUserProfitByDay(player.getId(), startTime, stopTime);
+            share = profitRebateLogService.selectUserProfitByDay(player.getId(), startTime, stopTime);
             promoteDetailsDto.setExhibitRebate(share);
             promoteDetailsDto.setTotalAward(promoteDetailsDto.getExhibitRebate()
                     + promoteDetailsDto.getRebate()
@@ -401,6 +403,7 @@ public class AgentController {
         Player lowerPlayer = PlayerUtils.getPlayer(userId);
         BusinessUtil.assertParam(lowerPlayer != null, "下级玩家未找到");
         BusinessUtil.assertParam(lowerPlayer.getSuperId().equals(player.getId()), "该玩家不是玩家的直系下级");
+        BusinessUtil.assertParam(lowerPlayer.getIsAgent().equals(1), "设置的玩家必须是代理");
         double oldRebate = lowerPlayer.getRebate().doubleValue();
         lowerPlayer.setRebate(BigDecimal.valueOf(rebate));
         PlayerUtils.savePlayer(lowerPlayer);

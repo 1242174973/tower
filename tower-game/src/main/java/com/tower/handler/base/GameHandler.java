@@ -121,6 +121,8 @@ public class GameHandler extends AbsLogicHandler<Tower.GameReq> implements Mid, 
         ServerUtil.assertParam(betInfo.getMonsterId() >= 1 && betInfo.getMonsterId() <= 8, "下注选项不存在");
         writeLock.lock();
         try {
+            List<Integer> betMonsterIds=towerGame.getBetMonsterIds(userId);
+            ServerUtil.assertParam(betMonsterIds.size()<6||betMonsterIds.contains(betInfo.getMonsterId()),"每期只能下6个怪物");
             ServerUtil.assertParam(towerGame.getGameStatus().equals(GameStatus.GAME_START), "游戏不在下注状态");
             ServerUtil.assertParam(towerGame.canBet(userId, betInfo.getCoin(), betInfo.getMonsterId()), "下注该怪物达到上限");
             Player player = PlayerUtils.getPlayer(userId);

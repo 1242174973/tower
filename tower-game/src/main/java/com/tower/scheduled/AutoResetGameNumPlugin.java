@@ -47,6 +47,7 @@ public class AutoResetGameNumPlugin {
     @Scheduled(cron = "0 0 0 * * ? ")
     public void resetGame() {
         towerGame.setNum(0);
+        towerGame.getAttackLogList().clear();
         if (DateUtils.getDate(0).equals(DateUtils.getPeriod())) {
             log.info("到达一周期,开始结算盈利返利 结算日期:{}", DateUtils.getPeriod());
             LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();

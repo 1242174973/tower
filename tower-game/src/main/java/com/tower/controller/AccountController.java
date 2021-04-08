@@ -90,6 +90,7 @@ public class AccountController {
         player.setSafeBox(BigDecimal.ZERO);
         player.setSpread(UuidUtil.getShortUuid(4));
         player.setSuperId(superId);
+        player.setIsAgent(0);
         player.setPic("https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/80/crop/xy/ai/w/160/h/160/resize/w/160?url=https%3A%2F%2Fimg02.sogoucdn.com%2Fapp%2Fa%2F10010016%2F4e2cfdceac8118da34011cb5c49da00b&appid=201003&sign=676de451cea1a4192b7eede671eae0ce");
         player.setSalt(UuidUtil.getShortUuid(8));
         player.setSignInTime(DateUtils.byDayLocalDateTime(-1));

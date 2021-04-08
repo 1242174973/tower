@@ -40,6 +40,9 @@ public class PlayerDto {
     @ApiModelProperty(value = "可提现奖励")
     private BigDecimal canAward;
 
+    @ApiModelProperty(value = "是否代理")
+    private Integer isAgent;
+
 
     @ApiModelProperty(value = "密码")
     private String password;
