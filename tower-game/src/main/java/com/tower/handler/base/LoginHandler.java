@@ -1,13 +1,17 @@
 package com.tower.handler.base;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tower.core.AbsLogicHandler;
 import com.tower.core.ILogicHandler;
 import com.tower.core.constant.GameConst;
 import com.tower.core.constant.Mid;
 import com.tower.core.pipline.MsgBossHandler;
 import com.tower.core.utils.MsgUtil;
+import com.tower.entity.Notice;
 import com.tower.entity.Player;
+import com.tower.enums.GameCmd;
 import com.tower.msg.Tower;
+import com.tower.service.NoticeService;
 import com.tower.utils.JsonUtils;
 import com.tower.utils.RedisOperator;
 import com.tower.utils.UuidUtil;
@@ -19,6 +23,8 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -31,6 +37,9 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
 
     @Resource
     private RedisOperator redisOperator;
+
+    @Resource
+    private NoticeService noticeService;
 
     @Override
     public int getMid() {
@@ -61,6 +70,29 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
         }
         sendLoginSuccess(ch, player);
         MsgBossHandler.putPlayerIdChannel(player.getId(), ch);
+        sendNotice(ch);
+    }
+
+    /**
+     * 发送公告
+     *
+     * @param ch 连接
+     */
+    private void sendNotice(Channel ch) {
+        List<Notice> notices = noticeService.getBaseMapper().selectList(new LambdaQueryWrapper<>());
+        if (notices.size() > 0) {
+            Notice notice = notices.get(0);
+            Tower.Notice.Builder tower = Tower.Notice.newBuilder();
+            tower.setContent(notice.getContent());
+            tower.setCreateTime(notice.getCreateTime().toInstant(ZoneOffset.of("+8")).toEpochMilli());
+            Tower.GameRes.Builder gameRes= Tower.GameRes.newBuilder();
+            gameRes.setCmd(GameCmd.NOTICE.getCode()).setCountdown(0);
+            Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
+            msgCtn.setDatas(gameRes.build().toByteString());
+            msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
+            msgCtn.setType(Mid.MID_GAME_RES);
+            MsgUtil.sendMsg(ch, msgCtn.build());
+        }
     }
 
     private void sendLoginTop(Channel channel) {

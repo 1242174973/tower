@@ -10,9 +10,10 @@ public enum GameCmd {
     GAME_START(1, "游戏开始"),
     UPCOMING_AWARD(2, "怪物即将进攻"),
     AWARD(3, "怪物进攻"),
-    BET(4,"下注"),
-    REPETITION_BET(5,"重复下注"),
-    BET_INFO(6,"下注信息"),
+    BET(4, "下注"),
+    REPETITION_BET(5, "重复下注"),
+    BET_INFO(6, "下注信息"),
+    NOTICE(7, "公告"),
     ;
     private Integer code;
 
