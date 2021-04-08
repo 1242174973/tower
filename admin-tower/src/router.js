@@ -19,6 +19,9 @@ import TransferLog from "./views/admin/TransferLog"
 import ChallengeReward from "./views/admin/ChallengeReward"
 import Salvage from "./views/admin/Salvage"
 import AgentRebate from "./views/admin/AgentRebate"
+import AttackLog from "./views/admin/AttackLog"
+
+
 
 Vue.use(Router);
 
@@ -73,8 +76,12 @@ export default new Router({
             path: "log/agentRebate",
             name: "log/agentRebate",
             component: AgentRebate,
+        },{
+            path: "log/attackLog",
+            name: "log/attackLog",
+            component: AttackLog,
         },
-            {
+             {
             path: "welfare/signIn",
             name: "welfare/signIn",
             component: SignIn,

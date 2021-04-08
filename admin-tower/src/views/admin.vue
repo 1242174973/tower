@@ -263,6 +263,16 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="log-attackLog-sidebar">
+                                <router-link to="/log/attackLog">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    开奖记录
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
+
+
                         </ul>
                     </li>
                     <li class="">

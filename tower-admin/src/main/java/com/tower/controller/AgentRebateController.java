@@ -20,8 +20,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* @author 梦-屿-千-寻
-*/
+ * @author 梦-屿-千-寻
+ */
 @RestController
 @RequestMapping("/agentRebate")
 @Api(value = "流水返利", tags = "流水返利相关请求")
@@ -38,7 +38,9 @@ public class AgentRebateController {
         LambdaQueryWrapper<AgentRebate> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         if (!StringUtils.isEmpty(pageDto.getSearch())) {
             lambdaQueryWrapper
-                .or(queryWrapper -> queryWrapper.like(AgentRebate::getId, pageDto.getSearch()));
+                    .or(queryWrapper -> queryWrapper.like(AgentRebate::getId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(AgentRebate::getAgentUserId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(AgentRebate::getUserId, pageDto.getSearch()));
         }
         lambdaQueryWrapper.orderByDesc(AgentRebate::getCreateTime);
         Page<AgentRebate> page = new Page<>(pageDto.getPage(), pageDto.getSize());
@@ -54,7 +56,7 @@ public class AgentRebateController {
     @PostMapping("/add")
     @ApiOperation(value = "添加流水返利", notes = "添加流水返利请求")
     public ResponseDto<AgentRebateDto> add(@ApiParam(value = "流水返利信息", required = true)
-        @RequestBody AgentRebateDto agentRebateDto) {
+                                           @RequestBody AgentRebateDto agentRebateDto) {
         requireParam(agentRebateDto);
         AgentRebate agentRebate = CopyUtil.copy(agentRebateDto, AgentRebate.class);
         agentRebate.setCreateTime(LocalDateTime.now());
@@ -69,14 +71,14 @@ public class AgentRebateController {
     @PostMapping("/edit")
     @ApiOperation(value = "修改流水返利", notes = "修改流水返利请求")
     public ResponseDto<AgentRebateDto> edit(@ApiParam(value = "流水返利信息", required = true)
-                                       @RequestBody AgentRebateDto agentRebateDto) {
+                                            @RequestBody AgentRebateDto agentRebateDto) {
         requireParam(agentRebateDto);
         BusinessUtil.require(agentRebateDto.getId(), BusinessExceptionCode.ID);
         AgentRebate agentRebate = agentRebateService.getById(agentRebateDto.getId());
         BusinessUtil.assertParam(agentRebate != null, "流水返利没找到");
-         agentRebateService.saveOrUpdate(agentRebate);
+        agentRebateService.saveOrUpdate(agentRebate);
         ResponseDto<AgentRebateDto> responseDto = new ResponseDto<>();
-        agentRebateDto = CopyUtil.copy(agentRebate,AgentRebateDto.class);
+        agentRebateDto = CopyUtil.copy(agentRebate, AgentRebateDto.class);
         responseDto.setContent(agentRebateDto);
         return responseDto;
     }
@@ -93,10 +95,10 @@ public class AgentRebateController {
 
 
     /**
-    * 校验参数
-    *
-    * @param agentRebateDto 参数
-    */
+     * 校验参数
+     *
+     * @param agentRebateDto 参数
+     */
     private void requireParam(AgentRebateDto agentRebateDto) {
 
     }
