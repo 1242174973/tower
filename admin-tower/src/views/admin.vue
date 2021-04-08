@@ -295,6 +295,14 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="log-profitRebateLog-sidebar">
+                                <router-link to="/log/profitRebateLog">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    代理盈利结算记录
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
                     </li>

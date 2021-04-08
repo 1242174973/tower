@@ -23,7 +23,7 @@ import AttackLog from "./views/admin/AttackLog"
 import BetLog from "./views/admin/BetLog"
 import GameLog from "./views/admin/GameLog"
 import ProfitLog from "./views/admin/ProfitLog"
-
+import ProfitRebateLog from "./views/admin/ProfitRebateLog"
 
 Vue.use(Router);
 
@@ -94,6 +94,10 @@ export default new Router({
             path: "log/profitLog",
             name: "log/profitLog",
             component: ProfitLog,
+        },{
+            path: "log/profitRebateLog",
+            name: "log/profitRebateLog",
+            component: ProfitRebateLog,
         },
 
          {
@@ -109,7 +113,6 @@ export default new Router({
             name: "welfare/salvage",
             component: Salvage,
         },
-
             {
                 path: "admin/user",
                 name: "admin/user",
