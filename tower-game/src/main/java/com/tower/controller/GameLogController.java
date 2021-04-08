@@ -17,10 +17,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,7 +34,7 @@ public class GameLogController {
     @Resource
     private GameLogService gameLogService;
 
-    @GetMapping("/gameLogList")
+    @PostMapping("/gameLogList")
     @ApiOperation(value = "游戏记录", notes = "参数 分页参数")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseDto<GameLogPageDto> agentIndex(Player player, @RequestBody GameLogPageDto gameLogPageDto) {

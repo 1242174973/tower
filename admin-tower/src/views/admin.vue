@@ -271,6 +271,14 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="log-betLog-sidebar">
+                                <router-link to="/log/betLog">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    下注记录
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
 
 
                         </ul>

@@ -67,7 +67,7 @@ public class BetLogDto implements Serializable {
     private BigDecimal resultCoin;
 
     @ApiModelProperty(value = "中奖怪物")
-    private BigDecimal resultMonster;
+    private Integer resultMonster;
 
     @ApiModelProperty(value = "状态（1、未开奖、2、已开奖 3、撤销下注）")
     private Integer status;
