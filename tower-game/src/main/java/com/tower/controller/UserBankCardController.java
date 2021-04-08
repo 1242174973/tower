@@ -108,6 +108,7 @@ public class UserBankCardController {
                                            @PathVariable double money) {
         BusinessUtil.assertParam(player.getMoney().doubleValue() > money, "玩家余额不足" + money);
         LambdaQueryWrapper<UserBankCard> userBankCardLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        userBankCardLambdaQueryWrapper.eq(UserBankCard::getUserId, player.getId());
         UserBankCard userBankCard = userBankCardService.getOne(userBankCardLambdaQueryWrapper);
         BusinessUtil.assertParam(userBankCard != null, "玩家没有绑定银行卡");
         LambdaQueryWrapper<UserWithdrawConfig> lambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -125,7 +126,7 @@ public class UserBankCardController {
                 .setBankCardNum(userBankCard.getBankCardNum())
                 .setCreateTime(LocalDateTime.now())
                 .setWithdrawMoney(BigDecimal.valueOf(money))
-                .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge()/100));
+                .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge() / 100));
         withdrawLogService.save(withdrawLog);
         userWithdrawConfigService.saveOrUpdate(one);
         return AccountController.getPlayerDtoResponseDto(player);

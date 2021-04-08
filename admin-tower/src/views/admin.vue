@@ -314,7 +314,6 @@
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 后台管理 </span>
-
                             <b class="arrow fa fa-angle-down"></b>
                         </a>
 
@@ -324,7 +323,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     后台用户管理
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
 

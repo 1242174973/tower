@@ -42,6 +42,10 @@ public class SafeBoxController {
                                            @ApiParam(value = "分数", required = true)
                                            @PathVariable int coin) {
         BusinessUtil.assertParam(coin != 0, "操作分数不能为零");
+        SafeBoxLog safeBoxLog = new SafeBoxLog();
+        safeBoxLog.setUserId(player.getId());
+        safeBoxLog.setWithdraw(coin);
+        safeBoxLog.setCreateTime(LocalDateTime.now());
         //取分操作
         if (coin > 0) {
             BusinessUtil.assertParam(player.getMoney().doubleValue() >= coin, "玩家分数不够，存分失败");
@@ -53,10 +57,6 @@ public class SafeBoxController {
             player.setMoney(player.getMoney().add(BigDecimal.valueOf(coin)));
             player.setSafeBox(player.getSafeBox().subtract(BigDecimal.valueOf(coin)));
         }
-        SafeBoxLog safeBoxLog = new SafeBoxLog();
-        safeBoxLog.setUserId(player.getId());
-        safeBoxLog.setWithdraw(coin);
-        safeBoxLog.setCreateTime(LocalDateTime.now());
         safeBoxLogService.save(safeBoxLog);
         return AccountController.getPlayerDtoResponseDto(player);
     }
