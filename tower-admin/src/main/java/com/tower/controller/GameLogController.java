@@ -39,7 +39,8 @@ public class GameLogController {
         if (!StringUtils.isEmpty(pageDto.getSearch())) {
             lambdaQueryWrapper
                     .or(queryWrapper -> queryWrapper.like(GameLog::getId, pageDto.getSearch()))
-                    .or(queryWrapper -> queryWrapper.like(GameLog::getOrderId, pageDto.getSearch()));
+                    .or(queryWrapper -> queryWrapper.like(GameLog::getOrderId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(GameLog::getUserId, pageDto.getSearch()));
         }
         lambdaQueryWrapper.orderByDesc(GameLog::getCreateTime);
         Page<GameLog> page = new Page<>(pageDto.getPage(), pageDto.getSize());

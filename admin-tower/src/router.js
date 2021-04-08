@@ -22,6 +22,8 @@ import AgentRebate from "./views/admin/AgentRebate"
 import AttackLog from "./views/admin/AttackLog"
 import BetLog from "./views/admin/BetLog"
 import GameLog from "./views/admin/GameLog"
+import ProfitLog from "./views/admin/ProfitLog"
+
 
 Vue.use(Router);
 
@@ -88,7 +90,12 @@ export default new Router({
             path: "log/gameLog",
             name: "log/gameLog",
             component: GameLog,
+        },{
+            path: "log/profitLog",
+            name: "log/profitLog",
+            component: ProfitLog,
         },
+
          {
             path: "welfare/signIn",
             name: "welfare/signIn",
