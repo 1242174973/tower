@@ -440,8 +440,8 @@ public class AgentController {
         playerList = new ArrayList<>();
         getAllLower(player.getId(), playerList);
         statementDto.setOtherTotalNum(playerList.size() - statementDto.getTotalNum());
-        statementDto.setOtherNewNum(playerList.size() - statementDto.getNewNum());
-        statementDto.setOtherActiveNum(playerList.size() - statementDto.getActiveNum());
+        statementDto.setOtherNewNum(getNewNum(playerList) - statementDto.getNewNum());
+        statementDto.setOtherActiveNum(getActiveNum(playerList) - statementDto.getActiveNum());
         //赋值其他参数
         setStatementDto(statementDto, player, period, playerList);
         ResponseDto<StatementDto> responseDto = new ResponseDto<>();

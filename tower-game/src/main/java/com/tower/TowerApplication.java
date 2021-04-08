@@ -20,6 +20,9 @@ import java.util.List;
 @SpringBootApplication
 @EnableScheduling
 public class TowerApplication {
+
+    public static volatile int status=0;
+
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(TowerApplication.class, args);
         GameServer bean = context.getBean(GameServer.class);

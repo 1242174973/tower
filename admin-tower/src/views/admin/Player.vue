@@ -27,6 +27,7 @@
                 <th>ID</th>
                 <th>账号</th>
                 <th>昵称</th>
+                <th>是否代理</th>
                 <th>vip</th>
                 <th>vip升级经验</th>
                 <th>余额</th>
@@ -45,6 +46,8 @@
                 <td>{{player.id}}</td>
                 <td>{{player.account}}</td>
                 <td>{{player.nickName}}</td>
+                <td v-show="player.isAgent===1">是</td>
+                <td v-show="player.isAgent===0">否</td>
                 <td>{{player.vip}}</td>
                 <td>{{player.experience}}</td>
                 <td>{{player.money}}</td>

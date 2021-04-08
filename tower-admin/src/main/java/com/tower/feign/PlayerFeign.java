@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
  * @author 梦-屿-千-寻
  * @date 2021/3/26 16:32
  */
-@FeignClient("tower-game")
+@FeignClient("tower-game-system")
 @RequestMapping("/feign/player")
 public interface PlayerFeign {
     /**
@@ -26,4 +26,15 @@ public interface PlayerFeign {
      */
     @GetMapping("/playerInfo/{id}")
     Player playerInfo(@PathVariable int id);
+    /**
+     * 根据玩家id获得玩家信息
+     * @return 玩家信息
+     */
+    @GetMapping("/getStatus")
+    int getStatus();
+    /**
+     * 根据玩家id获得玩家信息
+     */
+    @GetMapping("/setStatus/{status}")
+    void setStatus(@PathVariable int status);
 }

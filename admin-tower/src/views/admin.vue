@@ -176,6 +176,14 @@
 
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="withdraw-topUpConfig-sidebar">
+                                <router-link to="/withdraw/topUpConfig">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    充值信息
+                                </router-link>
+
+                                <b class="arrow"></b>
+                            </li>
                             <li class="" id="withdraw-userBankCard-sidebar">
                                 <router-link to="/withdraw/userBankCard">
                                     <i class="menu-icon fa fa-caret-right"></i>
@@ -200,13 +208,11 @@
 
                                 <b class="arrow"></b>
                             </li>
-
-                            <li class="" id="withdraw-topUpConfig-sidebar">
-                                <router-link to="/withdraw/topUpConfig">
+                            <li class="" id="log-withdrawLogLog-sidebar">
+                                <router-link to="/log/withdrawLogLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
-                                    充值信息
+                                    玩家提现记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
 
@@ -241,13 +247,6 @@
                                 <router-link to="/log/transferLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     玩家转账记录
-                                </router-link>
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="" id="log-withdrawLogLog-sidebar">
-                                <router-link to="/log/withdrawLogLog">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    玩家提现记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
