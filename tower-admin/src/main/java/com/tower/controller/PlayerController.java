@@ -19,6 +19,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -59,6 +60,18 @@ public class PlayerController {
         return responseDto;
     }
 
+
+    @PostMapping("/editCoin/{playerId}/{addMoney}")
+    @ApiOperation(value = "修改玩家", notes = "修改玩家请求")
+    public ResponseDto<String> editCoin(@ApiParam(value = "玩家ID", required = true)
+                                        @PathVariable int playerId,
+                                        @PathVariable int addMoney) {
+        Player player = playerService.getById(playerId);
+        BusinessUtil.assertParam(player != null, "玩家没找到");
+        player.setMoney(player.getMoney().add(BigDecimal.valueOf(addMoney)));
+        playerFeign.save(player);
+        return new ResponseDto<>();
+    }
 
     @PostMapping("/edit")
     @ApiOperation(value = "修改玩家", notes = "修改玩家请求")

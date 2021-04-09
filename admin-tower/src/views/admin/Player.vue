@@ -60,6 +60,12 @@
 
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
+                        <button v-on:click="editCoin(player,true)" class="btn btn-xs btn-info">
+                            上分
+                        </button>
+                        <button v-on:click="editCoin(player,false)" class="btn btn-xs btn-info">
+                            下分
+                        </button>
                         <button v-on:click="edit(player)" class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
@@ -154,6 +160,49 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+        <div id="form-modal2" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{title}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">玩家ID</label>
+                                <div class="col-sm-10">
+                                    <label>
+                                        <input v-model="player.id" readonly="readonly" class="form-control">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">余额</label>
+                                <div class="col-sm-10">
+                                    <label>
+                                        <input v-model="player.money" readonly class="form-control">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{title}}分数</label>
+                                <div class="col-sm-10">
+                                    <label>
+                                        <input v-model="addMoney"  class="form-control">
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button v-on:click="editCoinSubmit()" type="button" class="btn btn-primary">{{title}}</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </div>
 </template>
 
@@ -172,6 +221,8 @@
                 vAddCoin: "",
                 search: "",
                 page: "",
+                addMoney: "",
+                isAdd: "",
             }
         },
         mounted: function () {
@@ -180,6 +231,46 @@
             _this.list(1);
         },
         methods: {
+            editCoin(player, add) {
+                this.addMoney = "";
+                if (add) {
+                    //上分
+                    this.title = "上分";
+                    this.isAdd = true;
+                } else {
+                    //下分
+                    this.title = "下分";
+                    this.isAdd = false;
+                }
+                let _this = this;
+                _this.player = $.extend({}, player);
+                $("#form-modal2").modal("show");
+            },
+            editCoinSubmit() {
+                let _this = this;
+                // 保存校验
+                if (1 !== 1
+                    || !Validator.require(_this.player.id, "玩家ID")
+                    || !Validator.require(_this.addMoney, "添加分数")
+                ) {
+                    return;
+                }
+                if (!_this.isAdd) {
+                    _this.addMoney = -_this.addMoney;
+                }
+                Loading.show();
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/player/editCoin/' + _this.player.id + "/" + _this.addMoney).then((response) => {
+                    Loading.hide();
+                    let resp = response.data;
+                    if (resp.success) {
+                        $("#form-modal2").modal("hide");
+                        _this.list(_this.page);
+                        Toast.success("保存成功！");
+                    } else {
+                        Toast.warning(resp.message)
+                    }
+                })
+            },
             /**
              * 列表查询
              */
@@ -204,6 +295,7 @@
              * 点击修改
              */
             edit(player) {
+                this.title = "修改玩家";
                 let _this = this;
                 _this.player = $.extend({}, player);
                 $("#form-modal").modal("show");
