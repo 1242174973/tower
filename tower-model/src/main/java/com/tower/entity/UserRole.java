@@ -1,4 +1,4 @@
-package com.tower.dto;
+package com.tower.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -11,7 +11,6 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * <p>
@@ -24,26 +23,24 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Role对象", description="")
-public class RoleDto implements Serializable {
+@ApiModel(value="UserRole对象", description="")
+public class UserRole implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "角色表")
+    @ApiModelProperty(value = "后台用户角色关联表")
       @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "角色昵称")
-    private String roleName;
+    @ApiModelProperty(value = "后台用户ID")
+    private Integer userId;
 
-    @ApiModelProperty(value = "角色描述")
-    private String roleDescribe;
+    @ApiModelProperty(value = "角色ID")
+    private Integer roleId;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
 
-    private List<Integer> authorityId;
 
-    private boolean roleIdTrue;
 }

@@ -2,11 +2,16 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.dto.RoleDto;
 import com.tower.dto.UserDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.page.UserPageDto;
+import com.tower.entity.Role;
 import com.tower.entity.User;
+import com.tower.entity.UserRole;
 import com.tower.exception.BusinessExceptionCode;
+import com.tower.service.RoleService;
+import com.tower.service.UserRoleService;
 import com.tower.service.UserService;
 import com.tower.utils.*;
 import io.swagger.annotations.Api;
@@ -31,6 +36,12 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private UserRoleService userRoleService;
+
+    @Resource
+    private RoleService roleService;
+
     @PostMapping("/list")
     @ApiOperation(value = "获得所有后台用户", notes = "获得所有后台用户请求")
     public ResponseDto<UserPageDto> list(@RequestBody UserPageDto pageDto) {
@@ -49,6 +60,50 @@ public class UserController {
         pageDto.setTotal((int) page.getTotal());
         ResponseDto<UserPageDto> responseDto = new ResponseDto<>();
         responseDto.setContent(pageDto);
+        return responseDto;
+    }
+
+    /**
+     * 保存，id有值时更新，无值时新增
+     */
+    @PostMapping("/saveRole")
+    public ResponseDto<UserDto> saveRole(@RequestBody UserDto userDto) {
+        // 保存校验
+        ValidatorUtil.require(userDto.getId(), "玩家id");
+        ResponseDto<UserDto> responseDto = new ResponseDto<>();
+        LambdaQueryWrapper<UserRole> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(UserRole::getUserId, userDto.getId());
+        userRoleService.remove(lambdaQueryWrapper);
+        for (int roleId : userDto.getRoleId()) {
+            UserRole roleAuthority = new UserRole()
+                    .setUserId(userDto.getId()).setRoleId(roleId)
+                    .setCreateTime(LocalDateTime.now());
+            userRoleService.save(roleAuthority);
+        }
+        responseDto.setContent(userDto);
+        return responseDto;
+    }
+
+    /**
+     * 列表查询
+     */
+    @PostMapping("/roleAll/{userId}")
+    public ResponseDto<List<RoleDto>> roleAll(@PathVariable int userId) {
+        List<Role> roleList = roleService.list();
+        LambdaQueryWrapper<UserRole> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(UserRole::getUserId, userId);
+        List<UserRole> userRoleList = userRoleService.list(lambdaQueryWrapper);
+        List<RoleDto> roleDtoList = CopyUtil.copyList(roleList, RoleDto.class);
+        for (RoleDto role : roleDtoList) {
+            for (UserRole userRole : userRoleList) {
+                if (userRole.getUserId().equals(userId) &&
+                        userRole.getRoleId().equals(role.getId())) {
+                    role.setRoleIdTrue(true);
+                }
+            }
+        }
+        ResponseDto<List<RoleDto>> responseDto = new ResponseDto<>();
+        responseDto.setContent(roleDtoList);
         return responseDto;
     }
 
@@ -104,8 +159,8 @@ public class UserController {
      * @param userDto 参数
      */
     private void requireParam(UserDto userDto) {
-        BusinessUtil.require(userDto.getLoginName(),BusinessExceptionCode.LOGIN_NAME);
-        BusinessUtil.require(userDto.getName(),BusinessExceptionCode.NAME);
-        BusinessUtil.require(userDto.getPassword(),BusinessExceptionCode.PASSWORD);
+        BusinessUtil.require(userDto.getLoginName(), BusinessExceptionCode.LOGIN_NAME);
+        BusinessUtil.require(userDto.getName(), BusinessExceptionCode.NAME);
+        BusinessUtil.require(userDto.getPassword(), BusinessExceptionCode.PASSWORD);
     }
 }

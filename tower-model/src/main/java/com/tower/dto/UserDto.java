@@ -11,6 +11,7 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author 梦-屿-千-寻
@@ -49,4 +50,6 @@ public class UserDto implements Serializable {
 
     @ApiModelProperty(value = "图片验证码token")
     private String imageCodeToken;
+
+    private List<Integer> roleId;
 }

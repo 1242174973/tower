@@ -32,7 +32,7 @@
                 <th>主键</th>
                 <th>登录名</th>
                 <th>昵称</th>
-                <th>密码</th>
+                <th>密码(加密后)</th>
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
@@ -47,6 +47,9 @@
                 <td>{{user.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
+                        <button v-on:click="role(user)" class="btn btn-xs btn-info">
+                            角色管理
+                        </button>
                         <button v-on:click="edit(user)" class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
@@ -96,6 +99,43 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+        <div id="form-modal2" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">表单</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">昵称</label>
+                                <div class="col-sm-10">
+                                    <input v-model="user.name" readonly class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">角色</label>
+                                <div class="col-sm-10">
+                                    <b v-for="(tGRole,key) in tGRoleAll"><!--v-model="tGRole.id"-->
+                                        <input v-model="tGRole.roleIdTrue" type="checkbox" v-bind:id="tGRole.id"
+                                               v-bind:value="tGRole.id">
+                                        <label v-bind:for="tGRole.id">&ensp;<b>{{tGRole.roleName}}</b></label>&ensp;&ensp;
+                                        <br v-show="(key+1)%2==0">
+                                    </b>
+                                    <!--                                    {{tGRoleAll}}-->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button v-on:click="saveRole()" type="button" class="btn btn-primary">保存</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </div>
 </template>
 
@@ -111,6 +151,10 @@
                 users: [],
                 page: 1,
                 search: "",
+                tGRoleAll: [],
+                userId: "",
+                //拥有的角色
+                tGRoles: [],
             }
         },
         mounted: function () {
@@ -129,7 +173,40 @@
                 _this.user = {};
                 $("#form-modal").modal("show");
             },
-
+            /**
+             * 点击【保存】
+             */
+            saveRole() {
+                let _this = this;
+                // 保存校验
+                if (1 != 1
+                    || !Validator.require(_this.user.loginName, "登陆名")
+                    || !Validator.length(_this.user.loginName, "登陆名", 1, 50)
+                ) {
+                    return;
+                }
+                let map = [];
+                for (let i = 0; i < _this.tGRoleAll.length; i++) {
+                    if (_this.tGRoleAll[i].roleIdTrue) {
+                        map.push(_this.tGRoleAll[i].id)
+                    }
+                }
+                Loading.show();
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/user/saveRole', {
+                    roleId: map,
+                    id: _this.user.id,
+                }).then((response) => {
+                    Loading.hide();
+                    let resp = response.data;
+                    if (resp.success) {
+                        $("#form-modal2").modal("hide");
+                        _this.list(1);
+                        Toast.success("保存成功！");
+                    } else {
+                        Toast.warning(resp.message)
+                    }
+                })
+            },
             /**
              * 点击【编辑】
              */
@@ -138,7 +215,19 @@
                 _this.user = $.extend({}, user);
                 $("#form-modal").modal("show");
             },
-
+            role(tGUser) {
+                let _this = this;
+                _this.user = $.extend({}, tGUser);
+                //拿到user_id ,前往后台获取角色数据
+                _this.userId = tGUser.id;
+                Loading.show();
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/user/roleAll/'+_this.userId).then((response) => {
+                    Loading.hide();
+                    let resp = response.data;
+                    _this.tGRoleAll = resp.content;
+                })
+                $("#form-modal2").modal("show");
+            },
             /**
              * 列表查询
              */
