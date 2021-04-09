@@ -117,6 +117,13 @@
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="game-notice-sidebar">
+                                <router-link to="/game/notice">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    公告管理
+                                </router-link>
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
 

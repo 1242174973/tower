@@ -26,7 +26,7 @@ import ProfitLog from "./views/admin/ProfitLog"
 import ProfitRebateLog from "./views/admin/ProfitRebateLog"
 import ShareLog from "./views/admin/ShareLog"
 import ExtracLog from "./views/admin/ExtracLog"
-
+import Notice from "./views/admin/Notice"
 
 Vue.use(Router);
 
@@ -61,7 +61,12 @@ export default new Router({
             path: "game/monster",
             name: "game/monster",
             component: Monster,
-        }, {
+        },{
+            path: "game/notice",
+            name: "game/notice",
+            component: Notice,
+        },
+            {
             path: "log/welfareLog",
             name: "log/welfareLog",
             component: WelfareLog,
