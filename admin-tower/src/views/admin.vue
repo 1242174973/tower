@@ -331,6 +331,13 @@
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
+                            <li class="" id="admin-authorityPath-sidebar">
+                                <router-link to="/admin/authorityPath">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    权限路径管理
+                                </router-link>
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
                     </li>
