@@ -1,8 +1,7 @@
-package com.tower.dto;
+package com.tower.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -23,26 +22,20 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="AuthorityPath对象", description="")
-public class AuthorityPathDto implements Serializable {
+@ApiModel(value="RoleAuthority对象", description="")
+public class RoleAuthority implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "权限表")
       @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "请求地址")
-    private String path;
+    private Integer roleId;
 
-    @ApiModelProperty(value = "描述")
-    private String describe;
+    private Integer authorityId;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
 
-
-    private boolean roleIdTrue;
 
 }

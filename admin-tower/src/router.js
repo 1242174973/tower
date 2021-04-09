@@ -28,6 +28,8 @@ import ShareLog from "./views/admin/ShareLog"
 import ExtracLog from "./views/admin/ExtracLog"
 import Notice from "./views/admin/Notice"
 import AuthorityPath from "./views/admin/AuthorityPath"
+import Role from "./views/admin/Role"
+
 
 
 Vue.use(Router);
@@ -132,7 +134,11 @@ export default new Router({
                 path: "admin/user",
                 name: "admin/user",
                 component: User,
-            }, {
+            },{
+                path: "admin/role",
+                name: "admin/role",
+                component: Role,
+            },{
                 path: "admin/authorityPath",
                 name: "admin/authorityPath",
                 component: AuthorityPath,
