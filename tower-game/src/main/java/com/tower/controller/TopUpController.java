@@ -64,12 +64,16 @@ public class TopUpController {
         BusinessUtil.require(topUpLogDto.getTopUpId(), BusinessExceptionCode.TOP_UP_ID);
         TopUpConfig topUpConfig = topUpConfigService.getById(topUpLogDto.getTopUpId());
         BusinessUtil.assertParam(topUpConfig != null, "找不到对应的操作信息");
+        BusinessUtil.assertParam(topUpLogDto.getTopUpMoney().doubleValue() >= topUpConfig.getMinTopUp()
+                        && topUpLogDto.getTopUpMoney().doubleValue() <= topUpConfig.getMaxTopUp(),
+                "充值金额在" + topUpConfig.getMinTopUp() + "-" + topUpConfig.getMaxTopUp() + "之间");
         TopUpLog topUpLog = new TopUpLog()
                 .setTopUpMoney(topUpLogDto.getTopUpMoney())
                 .setBankCardName(topUpConfig.getBankCardName())
                 .setBankCardNum(topUpConfig.getBankCardNum())
                 .setUserId(player.getId())
                 .setState(0)
+                .setPayee(topUpLogDto.getPayee())
                 .setOrderId(DateUtils.getNowDate() + (new Random().nextInt(900000) + 100000))
                 .setCreateTime(LocalDateTime.now());
         topUpLogService.save(topUpLog);

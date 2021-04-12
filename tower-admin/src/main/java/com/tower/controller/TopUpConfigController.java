@@ -85,6 +85,8 @@ public class TopUpConfigController {
         topUpConfig.setPayee(topUpConfigDto.getPayee());
         topUpConfig.setSubBranch(topUpConfigDto.getSubBranch());
         topUpConfig.setType(topUpConfigDto.getType());
+        topUpConfig.setMinTopUp(topUpConfigDto.getMinTopUp());
+        topUpConfig.setMaxTopUp(topUpConfigDto.getMaxTopUp());
         topUpConfigService.saveOrUpdate(topUpConfig);
         ResponseDto<TopUpConfigDto> responseDto = new ResponseDto<>();
         topUpConfigDto = CopyUtil.copy(topUpConfig, TopUpConfigDto.class);

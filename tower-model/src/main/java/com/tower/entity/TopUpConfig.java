@@ -50,6 +50,12 @@ public class TopUpConfig implements Serializable {
     @ApiModelProperty(value = "支行")
     private String subBranch;
 
+    @ApiModelProperty(value = "最小充值")
+    private Integer minTopUp;
+
+    @ApiModelProperty(value = "最大充值")
+    private Integer maxTopUp;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;

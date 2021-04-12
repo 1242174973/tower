@@ -36,6 +36,8 @@
                 <th>收款人</th>
                 <th>银行卡号</th>
                 <th>支行</th>
+                <th>最小充值</th>
+                <th>最大充值</th>
                 <th>创建时间</th>
                 <th>操作</th>
             </tr>
@@ -52,6 +54,8 @@
                 <td>{{topUpConfig.payee}}</td>
                 <td>{{topUpConfig.bankCardNum}}</td>
                 <td>{{topUpConfig.subBranch}}</td>
+                <td>{{topUpConfig.minTopUp}}</td>
+                <td>{{topUpConfig.maxTopUp}}</td>
                 <td>{{topUpConfig.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
@@ -80,7 +84,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">充值类型</label>
                                 <div class="col-sm-10">
-                                    <select v-model="topUpConfig.type" >
+                                    <select v-model="topUpConfig.type">
                                         <option value="1">官方</option>
                                         <option value="2">支付宝</option>
                                         <option value="3">银联</option>
@@ -115,6 +119,18 @@
                                 <label class="col-sm-2 control-label">支行</label>
                                 <div class="col-sm-10">
                                     <input v-model="topUpConfig.subBranch" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">最小充值</label>
+                                <div class="col-sm-10">
+                                    <input v-model="topUpConfig.minTopUp" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">最大充值</label>
+                                <div class="col-sm-10">
+                                    <input v-model="topUpConfig.maxTopUp" class="form-control">
                                 </div>
                             </div>
                         </form>
@@ -157,7 +173,7 @@
             add() {
                 let _this = this;
                 _this.topUpConfig = {};
-                _this.topUpConfig.type=1;
+                _this.topUpConfig.type = 1;
                 $("#form-modal").modal("show");
             },
 
@@ -200,6 +216,8 @@
                 if (1 != 1
                     || !Validator.require(_this.topUpConfig.type, "充值类型（1、官方、2支付宝、银联）")
                     || !Validator.require(_this.topUpConfig.model, "转账方式")
+                    || !Validator.require(_this.topUpConfig.minTopUp, "最小充值")
+                    || !Validator.require(_this.topUpConfig.maxTopUp, "最大充值")
                     || !Validator.length(_this.topUpConfig.model, "转账方式", 1, 255)
                     || !Validator.length(_this.topUpConfig.bankCardName, "银行卡名", 1, 255)
                     || !Validator.length(_this.topUpConfig.payee, "收款人", 1, 255)

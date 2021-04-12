@@ -66,16 +66,16 @@
                 <td>{{topUpLog.auditTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <div v-show="withdrawLog.state===0">
-                            <button v-on:click="edit(withdrawLog)" class="btn btn-xs btn-info">
+                        <div v-show="topUpLog.state===0">
+                            <button v-on:click="edit(topUpLog)" class="btn btn-xs btn-info">
                                 审核通过
                             </button>
-                            <button v-on:click="edit(withdrawLog)" class="btn btn-xs btn-info">
+                            <button v-on:click="edit(topUpLog)" class="btn btn-xs btn-info">
                                 审核失败
                             </button>
                         </div>
-                        <div v-show="withdrawLog.state===1">
-                            <button v-on:click="edit(withdrawLog)" class="btn btn-xs btn-info">
+                        <div v-show="topUpLog.state===1">
+                            <button v-on:click="edit(topUpLog)" class="btn btn-xs btn-info">
                                 上分
                             </button>
                         </div>

@@ -4,19 +4,22 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.tower.entity.TopUpConfig">
-        <id column="id" property="id" />
-        <result column="type" property="type" />
-        <result column="model" property="model" />
-        <result column="bank_card_name" property="bankCardName" />
-        <result column="payee" property="payee" />
-        <result column="bank_card_num" property="bankCardNum" />
-        <result column="sub_branch" property="subBranch" />
-        <result column="create_time" property="createTime" />
+        <id column="id" property="id"/>
+        <result column="type" property="type"/>
+        <result column="model" property="model"/>
+        <result column="bank_card_name" property="bankCardName"/>
+        <result column="payee" property="payee"/>
+        <result column="bank_card_num" property="bankCardNum"/>
+        <result column="sub_branch" property="subBranch"/>
+        <result column="min_top_up" property="minTopUp"/>
+        <result column="max_top_up" property="maxTopUp"/>
+        <result column="create_time" property="createTime"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, type, model, bank_card_name, payee, bank_card_num, sub_branch, create_time
+        id, type, model, bank_card_name, payee, bank_card_num, sub_branch,
+        min_top_up,max_top_up, create_time
     </sql>
 
 </mapper>
