@@ -610,6 +610,10 @@ public class AgentController {
                 .boxed().collect(Collectors.toList());
         LowerDetailsDto.LowerDetails lowerDetails = new LowerDetailsDto.LowerDetails();
         LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        if(ids.size()==0){
+            lowerDetails.setCoin(0).setRebate(0).setProfit(0).setWelfare(0).setTopUp(0);
+            return lowerDetails;
+        }
         agentRebateLambdaQueryWrapper.in(AgentRebate::getAgentUserId, ids)
                 .ge(AgentRebate::getCreateTime, startTime)
                 .le(AgentRebate::getCreateTime, stopTime);
@@ -633,7 +637,8 @@ public class AgentController {
                 .le(TopUpLog::getCreateTime, stopTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
                 .stream().mapToDouble(topUpLog -> topUpLog.getCoin().doubleValue()).sum();
-        lowerDetails.setCoin(player.getMoney().doubleValue()).setRebate(rebate).setProfit(profit).setWelfare(welfare).setTopUp(topUp);
+        double sum = playerList.stream().mapToDouble(player1 -> player.getMoney().doubleValue()).sum();
+        lowerDetails.setCoin(sum).setRebate(rebate).setProfit(profit).setWelfare(welfare).setTopUp(topUp);
         return lowerDetails;
     }
 

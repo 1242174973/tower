@@ -76,7 +76,7 @@ public class TopUpController {
         return AccountController.getPlayerDtoResponseDto(player);
     }
 
-    @GetMapping("/topUpLogList")
+    @PostMapping("/topUpLogList")
     @ApiOperation(value = "获取充值记录", notes = "参数 分页参数")
     public ResponseDto<TopUpLogPageDto> topUpLogList(Player player, @RequestBody TopUpLogPageDto topUpLogPageDto) {
         BusinessUtil.assertParam(topUpLogPageDto.getPage() > 0, "页数必须大于0");
