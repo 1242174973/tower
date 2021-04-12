@@ -698,7 +698,7 @@ public class AgentController {
                 .ge(TopUpLog::getCreateTime, startTime)
                 .le(TopUpLog::getCreateTime, stopTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
-                .stream().mapToDouble(topUpLog -> topUpLog.getCoin().doubleValue()).sum();
+                .stream().mapToDouble(topUpLog ->  topUpLog.getCoin()==null?0.0:topUpLog.getCoin().doubleValue()).sum();
         lowerDetails.setCoin(player.getMoney().doubleValue()).setRebate(rebate).setProfit(profit).setWelfare(welfare).setTopUp(topUp);
         return lowerDetails;
     }
