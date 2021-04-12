@@ -1,10 +1,10 @@
 <template>
     <div>
         <p>
-          <!--  <button v-on:click="add()" class="btn btn-white btn-default btn-round">
-                <i class="ace-icon fa fa-edit"></i>
-                新增
-            </button>-->
+            <!--  <button v-on:click="add()" class="btn btn-white btn-default btn-round">
+                  <i class="ace-icon fa fa-edit"></i>
+                  新增
+              </button>-->
             &nbsp;
             <button v-on:click="list(page)" class="btn btn-white btn-default btn-round">
                 <i class="ace-icon fa fa-refresh"></i>
@@ -29,27 +29,28 @@
         <table id="simple-table" class="table  table-bordered table-hover">
             <thead>
             <tr>
-                                        <th>代理盈亏记录</th>
-                        <th>游戏期数</th>
-                        <th>代理id</th>
-                        <th>盈亏分</th>
-                        <th>产生时间</th>
+                <th>代理盈亏记录</th>
+                <th>游戏期数</th>
+                <th>代理id</th>
+                <th>盈亏分</th>
+                <th>产生时间</th>
                 <th>操作</th>
             </tr>
             </thead>
 
             <tbody>
             <tr v-for="profitLog in profitLogs">
-                            <td>{{profitLog.id}}</td>
-                            <td>{{profitLog.orderId}}</td>
-                            <td>{{profitLog.userId}}</td>
-                            <td>{{profitLog.profitCoin}}</td>
-                            <td>{{profitLog.createTime}}</td>
+                <td>{{profitLog.id}}</td>
+                <td v-show="profitLog.orderId!=='0'">{{profitLog.orderId}}</td>
+                <td v-show="profitLog.orderId==='0'">下级充值扣款</td>
+                <td>{{profitLog.userId}}</td>
+                <td>{{profitLog.profitCoin}}</td>
+                <td>{{profitLog.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                  <!--      <button v-on:click="edit(profitLog)" class="btn btn-xs btn-info">
-                            <i class="ace-icon fa fa-pencil bigger-120"></i>
-                        </button>-->
+                        <!--      <button v-on:click="edit(profitLog)" class="btn btn-xs btn-info">
+                                  <i class="ace-icon fa fa-pencil bigger-120"></i>
+                              </button>-->
                         <button v-on:click="del(profitLog.id)" class="btn btn-xs btn-danger">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
@@ -64,35 +65,35 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
+                                aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title">表单</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">游戏期数</label>
-                                            <div class="col-sm-10">
-                                                <input v-model="profitLog.orderId" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">代理id</label>
-                                            <div class="col-sm-10">
-                                                <input v-model="profitLog.userId" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">盈亏分</label>
-                                            <div class="col-sm-10">
-                                                <input v-model="profitLog.profitCoin" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">产生时间</label>
-                                            <div class="col-sm-10">
-                                                <input v-model="profitLog.createTime" class="form-control">
-                                            </div>
-                                        </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">游戏期数</label>
+                                <div class="col-sm-10">
+                                    <input v-model="profitLog.orderId" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">代理id</label>
+                                <div class="col-sm-10">
+                                    <input v-model="profitLog.userId" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">盈亏分</label>
+                                <div class="col-sm-10">
+                                    <input v-model="profitLog.profitCoin" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">产生时间</label>
+                                <div class="col-sm-10">
+                                    <input v-model="profitLog.createTime" class="form-control">
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -113,11 +114,11 @@
         name: "profitLog",
         data: function () {
             return {
-            profitLog: {},
-            profitLogs: [],
-            page: 1,
-            search: "",
-        }
+                profitLog: {},
+                profitLogs: [],
+                page: 1,
+                search: "",
+            }
         },
         mounted: function () {
             let _this = this;
@@ -208,25 +209,25 @@
                         }
                     })
                 }
-        },
+            },
 
-        /**
-         * 点击【删除】
-         */
-        del(id) {
-            let _this = this;
-            Confirm.show("删除代理盈利后不可恢复，确认删除？", function () {
-                Loading.show();
-                _this.$ajax.delete(process.env.VUE_APP_SERVER + '/profitLog/delete/' + id).then((response) => {
-                    Loading.hide();
-                    let resp = response.data;
-                    if (resp.success) {
-                        _this.list(_this.page);
-                        Toast.success("删除成功！");
-                    }
-                })
-            });
+            /**
+             * 点击【删除】
+             */
+            del(id) {
+                let _this = this;
+                Confirm.show("删除代理盈利后不可恢复，确认删除？", function () {
+                    Loading.show();
+                    _this.$ajax.delete(process.env.VUE_APP_SERVER + '/profitLog/delete/' + id).then((response) => {
+                        Loading.hide();
+                        let resp = response.data;
+                        if (resp.success) {
+                            _this.list(_this.page);
+                            Toast.success("删除成功！");
+                        }
+                    })
+                });
+            }
         }
-    }
     }
 </script>

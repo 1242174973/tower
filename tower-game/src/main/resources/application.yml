@@ -7,7 +7,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: tower-game-dev
+    name: tower-game-sys
   #JDBC
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/tower?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull

@@ -50,7 +50,7 @@
                 <td v-show="welfareLog.mode===3">投注返利</td>
                 <td v-show="welfareLog.mode===4">返利提现</td>
                 <td v-show="welfareLog.mode===5">转账扣款</td>
-                <td v-show="welfareLog.mode===5">转账奖励</td>
+                <td v-show="welfareLog.mode===6">转账奖励</td>
                 <td>{{welfareLog.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">

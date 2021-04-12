@@ -35,6 +35,11 @@
                 <th>签到天数</th>
                 <th>总签到天数</th>
                 <th>推广码</th>
+                <th>上级ID</th>
+                <th>返利比例</th>
+                <th>税点</th>
+                <th>总奖励</th>
+                <th>可提现奖励</th>
                 <th>创建时间</th>
                 <th>签到时间</th>
                 <th>操作</th>
@@ -55,6 +60,11 @@
                 <td>{{player.signIn}}</td>
                 <td>{{player.totalSignIn}}</td>
                 <td>{{player.spread}}</td>
+                <td>{{player.superId}}</td>
+                <td>{{player.rebate}}</td>
+                <td>{{player.tax}}</td>
+                <td>{{player.totalAward}}</td>
+                <td>{{player.canAward}}</td>
                 <td>{{player.createTime}}</td>
                 <td>{{player.signInTime}}</td>
 

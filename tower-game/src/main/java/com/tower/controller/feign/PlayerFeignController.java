@@ -39,4 +39,10 @@ public class PlayerFeignController {
     public void setStatus(@PathVariable int status) {
         TowerApplication.status = status;
     }
+
+    @ApiOperation(value = "获得玩家信息", notes = "参数 玩家ID")
+    @GetMapping("/getPlayer/{playerId}")
+    public Player getPlayer(@PathVariable int playerId) {
+        return PlayerUtils.getPlayer(playerId);
+    }
 }

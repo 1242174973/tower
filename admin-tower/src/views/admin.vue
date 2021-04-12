@@ -204,7 +204,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     提现审核
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="log-withdrawLogLog-sidebar">
@@ -219,7 +218,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     充值审核
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                             <li class="" id="withdraw-topUpLogLog-sidebar">
@@ -227,7 +225,6 @@
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     充值审核记录
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
                         </ul>
