@@ -1,0 +1,16 @@
+server:
+  port: 9999
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: tower-admin-sys
+  #JDBC
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/tower?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: jef5re4g6e4

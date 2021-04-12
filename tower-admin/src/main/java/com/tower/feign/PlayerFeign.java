@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
  * @author 梦-屿-千-寻
  * @date 2021/3/26 16:32
  */
-@FeignClient("tower-game-sys")
+@FeignClient("tower-game-dev")
 @RequestMapping("/feign/player")
 public interface PlayerFeign {
     /**
