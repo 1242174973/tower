@@ -65,19 +65,6 @@
                 <td>{{topUpLog.createTime}}</td>
                 <td>{{topUpLog.auditTime}}</td>
                 <td>
-                    <div class="hidden-sm hidden-xs btn-group">
-                        <button v-show="topUpLog.state===0" v-on:click="editOk(topUpLog)"
-                                class="btn btn-xs btn-info">
-                            审核通过
-                        </button>
-                        <button v-show="topUpLog.state===0" v-on:click="editError(topUpLog)"
-                                class="btn btn-xs btn-danger">
-                            审核失败
-                        </button>
-                        <button v-show="topUpLog.state===1" v-on:click="edit(topUpLog)" class="btn btn-xs btn-info">
-                            上分
-                        </button>
-                    </div>
                     <!-- <div class="hidden-sm hidden-xs btn-group">
                          <button v-on:click="edit(topUpLog)" class="btn btn-xs btn-info">
                              <i class="ace-icon fa fa-pencil bigger-120"></i>
@@ -270,7 +257,7 @@
                 let _this = this;
                 _this.page = page;
                 Loading.show();
-                _this.$ajax.post(process.env.VUE_APP_SERVER + '/topUpLog/list', {
+                _this.$ajax.post(process.env.VUE_APP_SERVER + '/topUpLog/listLog', {
                     page: page,
                     size: _this.$refs.pagination.size,
                     search: _this.search,

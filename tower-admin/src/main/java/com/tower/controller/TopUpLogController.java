@@ -6,6 +6,8 @@ import com.tower.dto.TopUpLogDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.page.TopUpLogPageDto;
 import com.tower.entity.TopUpLog;
+import com.tower.entity.User;
+import com.tower.enums.AuditType;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.TopUpLogService;
 import com.tower.utils.*;
@@ -15,6 +17,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import javax.annotation.Resource;
 import java.util.List;
@@ -29,6 +32,39 @@ public class TopUpLogController {
 
     @Resource
     private TopUpLogService topUpLogService;
+
+    @PostMapping("/listLog")
+    @ApiOperation(value = "获得所有充值记录", notes = "获得所有充值记录请求")
+    public ResponseDto<TopUpLogPageDto> listLog(@RequestBody TopUpLogPageDto pageDto) {
+        BusinessUtil.assertParam(pageDto.getPage() > 0, "页数必须大于0");
+        BusinessUtil.assertParam(pageDto.getSize() > 0, "条数必须大于0");
+        LambdaQueryWrapper<TopUpLog> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        if (!StringUtils.isEmpty(pageDto.getSearch())) {
+            lambdaQueryWrapper
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getUserId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getBankCardNum, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getBankCardName, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getPayee, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getOrderId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getRemit, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getAudit, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getAuditId, pageDto.getSearch()))
+                    .or(queryWrapper -> queryWrapper.like(TopUpLog::getId, pageDto.getSearch()));
+        }
+        lambdaQueryWrapper.and(wrapper ->
+                wrapper.or(w -> w.eq(TopUpLog::getState, AuditType.SUCCESS.getCode()))
+                        .or(w -> w.eq(TopUpLog::getState, AuditType.ERROR.getCode()))
+        );
+        lambdaQueryWrapper.orderByDesc(TopUpLog::getCreateTime);
+        Page<TopUpLog> page = new Page<>(pageDto.getPage(), pageDto.getSize());
+        page = topUpLogService.page(page, lambdaQueryWrapper);
+        List<TopUpLogDto> topUpLogDtoList = CopyUtil.copyList(page.getRecords(), TopUpLogDto.class);
+        pageDto.setList(topUpLogDtoList);
+        pageDto.setTotal((int) page.getTotal());
+        ResponseDto<TopUpLogPageDto> responseDto = new ResponseDto<>();
+        responseDto.setContent(pageDto);
+        return responseDto;
+    }
 
     @PostMapping("/list")
     @ApiOperation(value = "获得所有充值记录", notes = "获得所有充值记录请求")
@@ -48,6 +84,10 @@ public class TopUpLogController {
                     .or(queryWrapper -> queryWrapper.like(TopUpLog::getAuditId, pageDto.getSearch()))
                     .or(queryWrapper -> queryWrapper.like(TopUpLog::getId, pageDto.getSearch()));
         }
+        lambdaQueryWrapper.and(wrapper ->
+                wrapper.or(w -> w.eq(TopUpLog::getState, AuditType.AUDIT.getCode()))
+                        .or(w -> w.eq(TopUpLog::getState, AuditType.REMITTANCE.getCode()))
+        );
         lambdaQueryWrapper.orderByDesc(TopUpLog::getCreateTime);
         Page<TopUpLog> page = new Page<>(pageDto.getPage(), pageDto.getSize());
         page = topUpLogService.page(page, lambdaQueryWrapper);
@@ -58,6 +98,39 @@ public class TopUpLogController {
         responseDto.setContent(pageDto);
         return responseDto;
     }
+
+    @PostMapping("/save")
+    @ApiOperation(value = "审核充值记录", notes = "审核充值记录请求")
+    public ResponseDto<String> save(User user, @ApiParam(value = "充值记录信息", required = true)
+    @RequestBody TopUpLogDto topUpLogDto) {
+        TopUpLog topUpLog = topUpLogService.getById(topUpLogDto.getId());
+        BusinessUtil.assertParam(topUpLog != null, "充值信息没找到");
+        BusinessUtil.assertParam(topUpLog.getState().equals(0), "充值信息不在审核状态");
+        topUpLog.setState(topUpLogDto.getState());
+        if (topUpLog.getState().equals(10)) {
+            topUpLog.setCoin(BigDecimal.valueOf(0));
+        }
+        topUpLog.setAudit(topUpLogDto.getAudit());
+        topUpLog.setAuditId(user.getId());
+        topUpLog.setAuditTime(LocalDateTime.now());
+        topUpLog.setRemit(topUpLogDto.getRemit());
+        topUpLogService.updateById(topUpLog);
+        return new ResponseDto<>();
+    }
+
+    @PostMapping("/remittance")
+    @ApiOperation(value = "上分", notes = "上分")
+    public ResponseDto<String> remittance(@ApiParam(value = "上分", required = true)
+                                          @RequestBody TopUpLogDto topUpLogDto) {
+        TopUpLog topUpLog = topUpLogService.getById(topUpLogDto.getId());
+        BusinessUtil.assertParam(topUpLog != null, "充值信息没找到");
+        BusinessUtil.assertParam(topUpLog.getState().equals(1), "充值信息不在审核通过状态");
+        topUpLog.setState(2);
+        topUpLog.setCoin(topUpLogDto.getCoin());
+        topUpLogService.updateById(topUpLog);
+        return new ResponseDto<>();
+    }
+
 
     @PostMapping("/add")
     @ApiOperation(value = "添加充值记录", notes = "添加充值记录请求")
