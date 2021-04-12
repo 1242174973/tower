@@ -14,5 +14,5 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ProfitRebateLogMapper extends BaseMapper<ProfitRebateLog> {
 
-    double selectUserProfitByDay(@Param("userId") int userId,@Param("startTime") String startTime,@Param("stopTime") String stopTime);
+    Double selectUserProfitByDay(@Param("userId") int userId,@Param("startTime") String startTime,@Param("stopTime") String stopTime);
 }
