@@ -95,7 +95,7 @@
                         <b class="arrow"></b>
                     </li>
 
-                    <li v-show="hasResource('/player/list')||hasResource('/monster/list')||hasResource('/notice/list')" class="">
+                    <li v-show="hasResource('/player/list')||hasResource('/editionEtc/list')||hasResource('/monster/list')||hasResource('/notice/list')" class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 游戏管理 </span>
@@ -124,7 +124,7 @@
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li v-show="hasResource('/notice/list')" class="" id="game-editionEtc-sidebar">
+                            <li v-show="hasResource('/editionEtc/list')" class="" id="game-editionEtc-sidebar">
                                 <router-link to="/game/editionEtc">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     版本管理
@@ -135,7 +135,7 @@
                         </ul>
 
 
-                    <li class="">
+                    <li v-show="hasResource('/signIn/list')||hasResource('/salvage/list')||hasResource('/challengeReward/list')" class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 福利管理 </span>
@@ -144,7 +144,7 @@
                         </a>
 
                         <ul class="submenu">
-                            <li class="" id="welfare-signIn-sidebar">
+                            <li v-show="hasResource('/signIn/list')" class="" id="welfare-signIn-sidebar">
                                 <router-link to="/welfare/signIn">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     签到福利
@@ -152,7 +152,7 @@
 
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="welfare-salvage-sidebar">
+                            <li v-show="hasResource('/salvage/list')" class="" id="welfare-salvage-sidebar">
                                 <router-link to="/welfare/salvage">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     救援金福利
@@ -160,7 +160,7 @@
 
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="welfare-challengeReward-sidebar">
+                            <li v-show="hasResource('/challengeReward/list')" class="" id="welfare-challengeReward-sidebar">
                                 <router-link to="/welfare/challengeReward">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     挑战福利

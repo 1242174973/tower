@@ -121,7 +121,7 @@
                                                v-bind:id="tGAuthority.id"
                                                v-bind:value="tGAuthority.id">
                                         <label v-bind:for="tGAuthority.id">&ensp;<b>{{tGAuthority.describe}}&nbsp;&nbsp;&nbsp;</b></label>&ensp;&ensp;
-                                        <br v-show="(key+1)%2==0">
+                                        <br v-show="(key+1)%4==0">
                                     </b>
                                     <!--                                    {{tGRoleAll}}-->
                                 </div>

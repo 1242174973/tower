@@ -54,7 +54,7 @@
                 <td>{{editionEtc.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-on:click="edit(editionEtc)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/editionEtc/edit')" v-on:click="edit(editionEtc)" class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
 <!--                        <button v-on:click="del(editionEtc.id)" class="btn btn-xs btn-danger">-->
@@ -142,6 +142,7 @@
                 editionEtcs: [],
                 page: 1,
                 search: "",
+                Tool:Tool,
             }
         },
         mounted: function () {
