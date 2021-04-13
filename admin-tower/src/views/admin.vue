@@ -253,14 +253,14 @@
                         </a>
 
                         <ul class="submenu">
-                            <li class="" id="log-welfareLog-sidebar">
+                            <li v-show="hasResource('/welfareLog/list')" class="" id="log-welfareLog-sidebar">
                                 <router-link to="/log/welfareLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     福利记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-safeBoxLog-sidebar">
+                            <li v-show="hasResource('/safeBoxLog/list')" class="" id="log-safeBoxLog-sidebar">
                                 <router-link to="/log/safeBoxLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     保险柜存取分记录
