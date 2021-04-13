@@ -19,6 +19,14 @@ public class BusinessUtil {
         }
     }
     /**
+     * 空校验（null or ""）
+     */
+    public static void require(Object str, String message) throws BusinessException {
+        if (StringUtils.isEmpty(str)) {
+            throw new BusinessException(message);
+        }
+    }
+    /**
      * 断言判断，false则抛出异常
      */
     public static void assertParam(boolean param, String message) {

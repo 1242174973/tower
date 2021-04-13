@@ -30,7 +30,7 @@ import Notice from "./views/admin/Notice"
 import AuthorityPath from "./views/admin/AuthorityPath"
 import Role from "./views/admin/Role"
 import TopUpLogLog from "./views/admin/TopUpLogLog"
-
+import EditionEtc from "./views/admin/EditionEtc"
 
 Vue.use(Router);
 
@@ -69,80 +69,83 @@ export default new Router({
             path: "game/notice",
             name: "game/notice",
             component: Notice,
+        }, {
+            path: "game/editionEtc",
+            name: "game/editionEtc",
+            component: EditionEtc,
+        }, {
+            path: "log/welfareLog",
+            name: "log/welfareLog",
+            component: WelfareLog,
+        }, {
+            path: "log/safeBoxLog",
+            name: "log/safeBoxLog",
+            component: SafeBoxLog,
+        }, {
+            path: "log/transferLog",
+            name: "log/transferLog",
+            component: TransferLog,
+        }, {
+            path: "log/withdrawLogLog",
+            name: "log/withdrawLogLog",
+            component: WithdrawLogLog,
+        }, {
+            path: "log/agentRebate",
+            name: "log/agentRebate",
+            component: AgentRebate,
+        }, {
+            path: "log/attackLog",
+            name: "log/attackLog",
+            component: AttackLog,
+        }, {
+            path: "log/betLog",
+            name: "log/betLog",
+            component: BetLog,
+        }, {
+            path: "log/gameLog",
+            name: "log/gameLog",
+            component: GameLog,
+        }, {
+            path: "log/profitLog",
+            name: "log/profitLog",
+            component: ProfitLog,
+        }, {
+            path: "log/profitRebateLog",
+            name: "log/profitRebateLog",
+            component: ProfitRebateLog,
+        }, {
+            path: "log/shareLog",
+            name: "log/shareLog",
+            component: ShareLog,
+        }, {
+            path: "log/extracLog",
+            name: "log/extracLog",
+            component: ExtracLog,
+        }, {
+            path: "welfare/signIn",
+            name: "welfare/signIn",
+            component: SignIn,
+        }, {
+            path: "welfare/challengeReward",
+            name: "welfare/challengeReward",
+            component: ChallengeReward,
+        }, {
+            path: "welfare/salvage",
+            name: "welfare/salvage",
+            component: Salvage,
+        }, {
+            path: "admin/user",
+            name: "admin/user",
+            component: User,
+        }, {
+            path: "admin/role",
+            name: "admin/role",
+            component: Role,
+        }, {
+            path: "admin/authorityPath",
+            name: "admin/authorityPath",
+            component: AuthorityPath,
         },
-            {
-                path: "log/welfareLog",
-                name: "log/welfareLog",
-                component: WelfareLog,
-            }, {
-                path: "log/safeBoxLog",
-                name: "log/safeBoxLog",
-                component: SafeBoxLog,
-            }, {
-                path: "log/transferLog",
-                name: "log/transferLog",
-                component: TransferLog,
-            }, {
-                path: "log/withdrawLogLog",
-                name: "log/withdrawLogLog",
-                component: WithdrawLogLog,
-            }, {
-                path: "log/agentRebate",
-                name: "log/agentRebate",
-                component: AgentRebate,
-            }, {
-                path: "log/attackLog",
-                name: "log/attackLog",
-                component: AttackLog,
-            }, {
-                path: "log/betLog",
-                name: "log/betLog",
-                component: BetLog,
-            }, {
-                path: "log/gameLog",
-                name: "log/gameLog",
-                component: GameLog,
-            }, {
-                path: "log/profitLog",
-                name: "log/profitLog",
-                component: ProfitLog,
-            }, {
-                path: "log/profitRebateLog",
-                name: "log/profitRebateLog",
-                component: ProfitRebateLog,
-            }, {
-                path: "log/shareLog",
-                name: "log/shareLog",
-                component: ShareLog,
-            }, {
-                path: "log/extracLog",
-                name: "log/extracLog",
-                component: ExtracLog,
-            }, {
-                path: "welfare/signIn",
-                name: "welfare/signIn",
-                component: SignIn,
-            }, {
-                path: "welfare/challengeReward",
-                name: "welfare/challengeReward",
-                component: ChallengeReward,
-            }, {
-                path: "welfare/salvage",
-                name: "welfare/salvage",
-                component: Salvage,
-            }, {
-                path: "admin/user",
-                name: "admin/user",
-                component: User,
-            }, {
-                path: "admin/role",
-                name: "admin/role",
-                component: Role,
-            }, {
-                path: "admin/authorityPath",
-                name: "admin/authorityPath",
-                component: AuthorityPath,
-            },
             {
                 path: "withdraw/userWithdrawConfig",
                 name: "withdraw/userWithdrawConfig",

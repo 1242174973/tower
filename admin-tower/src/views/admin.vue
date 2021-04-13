@@ -124,6 +124,13 @@
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
+                            <li v-show="hasResource('/notice/list')" class="" id="game-editionEtc-sidebar">
+                                <router-link to="/game/editionEtc">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    版本管理
+                                </router-link>
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
 
