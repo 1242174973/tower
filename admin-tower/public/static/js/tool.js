@@ -123,12 +123,12 @@ Tool = {
    */
   hasResource: function (id) {
     let _this = this;
-    let resources = _this.getLoginUser().resources;
+    let resources = _this.getLoginUser().authorities;
     if (_this.isEmpty(resources)) {
       return false;
     }
     for (let i = 0; i < resources.length; i++) {
-      if (id === resources[i].id) {
+      if (id === resources[i].path) {
         return true;
       }
     }

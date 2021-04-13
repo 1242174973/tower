@@ -103,7 +103,7 @@
                         </a>
                         <b class="arrow"></b>
                         <ul class="submenu">
-                            <li class="" id="game-player-sidebar">
+                            <li v-show="hasResource('/player/list')" class="" id="game-player-sidebar">
                                 <router-link to="/game/player">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     玩家管理

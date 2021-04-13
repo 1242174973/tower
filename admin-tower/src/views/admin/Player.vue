@@ -70,16 +70,16 @@
 
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-on:click="editCoin(player,true)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/player/editCoin/')" v-on:click="editCoin(player,true)" class="btn btn-xs btn-info">
                             上分
                         </button>
-                        <button v-on:click="editCoin(player,false)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/player/editCoin/')" v-on:click="editCoin(player,false)" class="btn btn-xs btn-info">
                             下分
                         </button>
-                        <button v-on:click="edit(player)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/player/edit')" v-on:click="edit(player)" class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
-                        <button v-on:click="del(player.id)" class="btn btn-xs btn-danger">
+                        <button v-show="Tool.hasResource('/player/delete/')"  v-on:click="del(player.id)" class="btn btn-xs btn-danger">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
                     </div>
@@ -200,7 +200,7 @@
                                 <label class="col-sm-2 control-label">{{title}}分数</label>
                                 <div class="col-sm-10">
                                     <label>
-                                        <input v-model="addMoney"  class="form-control">
+                                        <input v-model="addMoney" class="form-control">
                                     </label>
                                 </div>
                             </div>
@@ -233,6 +233,7 @@
                 page: "",
                 addMoney: "",
                 isAdd: "",
+                Tool: Tool,
             }
         },
         mounted: function () {
