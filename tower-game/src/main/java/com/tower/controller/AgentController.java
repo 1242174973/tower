@@ -149,6 +149,7 @@ public class AgentController {
         page = playerService.page(page, lambdaQueryWrapper);
         String startTime;
         String stopTime;
+        agentTeamPageDto.setTotal((int)page.getTotal());
         switch (agentTeamPageDto.getPeriod()) {
             case 1:
                 //今日
@@ -529,11 +530,11 @@ public class AgentController {
         LambdaQueryWrapper<TopUpLog> topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         topUpLogLambdaQueryWrapper.eq(TopUpLog::getUserId, player.getId()).ge(TopUpLog::getCreateTime, startTime).le(TopUpLog::getCreateTime, stopTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
-                .stream().mapToDouble(topUpLog -> topUpLog.getCoin().doubleValue()).sum();
+                .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
         topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         topUpLogLambdaQueryWrapper.in(TopUpLog::getUserId, ids).ge(TopUpLog::getCreateTime, startTime).le(TopUpLog::getCreateTime, stopTime);
         double lowerTopUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
-                .stream().mapToDouble(topUpLog -> topUpLog.getCoin().doubleValue()).sum();
+                .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
         //福利数据
         LambdaQueryWrapper<WelfareLog> welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         welfareLogLambdaQueryWrapper.eq(WelfareLog::getUserId, player.getId()).ge(WelfareLog::getCreateTime, startTime).le(WelfareLog::getCreateTime, stopTime);
@@ -610,7 +611,7 @@ public class AgentController {
                 .boxed().collect(Collectors.toList());
         LowerDetailsDto.LowerDetails lowerDetails = new LowerDetailsDto.LowerDetails();
         LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        if(ids.size()==0){
+        if (ids.size() == 0) {
             lowerDetails.setCoin(0).setRebate(0).setProfit(0).setWelfare(0).setTopUp(0);
             return lowerDetails;
         }
@@ -698,7 +699,7 @@ public class AgentController {
                 .ge(TopUpLog::getCreateTime, startTime)
                 .le(TopUpLog::getCreateTime, stopTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
-                .stream().mapToDouble(topUpLog ->  topUpLog.getCoin()==null?0.0:topUpLog.getCoin().doubleValue()).sum();
+                .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
         lowerDetails.setCoin(player.getMoney().doubleValue()).setRebate(rebate).setProfit(profit).setWelfare(welfare).setTopUp(topUp);
         return lowerDetails;
     }
