@@ -102,6 +102,7 @@ public class AgentController {
                                         @PathVariable String password,
                                         @ApiParam(value = "比例", required = true)
                                         @PathVariable double rebate) {
+        rebate /= 100;
         BusinessUtil.require(account, BusinessExceptionCode.ACCOUNT);
         BusinessUtil.length(account, BusinessExceptionCode.ACCOUNT, 6, 20);
         BusinessUtil.require(password, BusinessExceptionCode.PASSWORD);
@@ -120,7 +121,7 @@ public class AgentController {
         sqlPlayer.setPic("https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/80/crop/xy/ai/w/160/h/160/resize/w/160?url=https%3A%2F%2Fimg02.sogoucdn.com%2Fapp%2Fa%2F10010016%2F4e2cfdceac8118da34011cb5c49da00b&appid=201003&sign=676de451cea1a4192b7eede671eae0ce");
         sqlPlayer.setSalt(UuidUtil.getShortUuid(8));
         sqlPlayer.setSignInTime(DateUtils.byDayLocalDateTime(-1));
-        sqlPlayer.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(password + player.getSalt())));
+        sqlPlayer.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(password + sqlPlayer.getSalt())));
         sqlPlayer.setAccount(account);
         sqlPlayer.setNickName(NameRandomUtil.getRandomName());
         sqlPlayer.setRebate(BigDecimal.valueOf(rebate));
@@ -149,7 +150,7 @@ public class AgentController {
         page = playerService.page(page, lambdaQueryWrapper);
         String startTime;
         String stopTime;
-        agentTeamPageDto.setTotal((int)page.getTotal());
+        agentTeamPageDto.setTotal((int) page.getTotal());
         switch (agentTeamPageDto.getPeriod()) {
             case 1:
                 //今日
@@ -400,20 +401,21 @@ public class AgentController {
                                                      @PathVariable int userId,
                                                      @ApiParam(value = "返利比例", required = true)
                                                      @PathVariable double rebate) {
-        BusinessUtil.assertParam(player.getRebate().doubleValue() > rebate, "不能设置比自己更高的返利");
+        double finalRebate = rebate / 100;
+        BusinessUtil.assertParam(player.getRebate().doubleValue() > finalRebate, "不能设置比自己更高的返利");
         Player lowerPlayer = PlayerUtils.getPlayer(userId);
         BusinessUtil.assertParam(lowerPlayer != null, "下级玩家未找到");
         BusinessUtil.assertParam(lowerPlayer.getSuperId().equals(player.getId()), "该玩家不是玩家的直系下级");
         BusinessUtil.assertParam(lowerPlayer.getIsAgent().equals(1), "设置的玩家必须是代理");
         double oldRebate = lowerPlayer.getRebate().doubleValue();
-        lowerPlayer.setRebate(BigDecimal.valueOf(rebate));
+        lowerPlayer.setRebate(BigDecimal.valueOf(finalRebate));
         PlayerUtils.savePlayer(lowerPlayer);
-        if (oldRebate > rebate) {
+        if (oldRebate > finalRebate) {
             List<Player> playerList = new ArrayList<>();
             getAllLower(userId, playerList);
             playerList.forEach(p -> {
-                if (p.getRebate().doubleValue() > rebate) {
-                    p.setRebate(BigDecimal.valueOf(rebate));
+                if (p.getRebate().doubleValue() > finalRebate) {
+                    p.setRebate(BigDecimal.valueOf(finalRebate));
                     PlayerUtils.savePlayer(p);
                 }
             });
