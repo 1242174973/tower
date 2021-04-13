@@ -95,7 +95,7 @@
                         <b class="arrow"></b>
                     </li>
 
-                    <li class="">
+                    <li v-show="hasResource('/player/list')||hasResource('/monster/list')||hasResource('/notice/list')" class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 游戏管理 </span>
@@ -110,14 +110,14 @@
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="game-monster-sidebar">
+                            <li v-show="hasResource('/monster/list')" class="" id="game-monster-sidebar">
                                 <router-link to="/game/monster">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     怪物管理
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="game-notice-sidebar">
+                            <li v-show="hasResource('/notice/list')" class="" id="game-notice-sidebar">
                                 <router-link to="/game/notice">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     公告管理

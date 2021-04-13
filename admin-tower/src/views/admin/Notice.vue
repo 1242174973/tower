@@ -1,10 +1,10 @@
 <template>
     <div>
         <p>
-<!--            <button v-on:click="add()" class="btn btn-white btn-default btn-round">-->
-<!--                <i class="ace-icon fa fa-edit"></i>-->
-<!--                新增-->
-<!--            </button>-->
+            <!--            <button v-on:click="add()" class="btn btn-white btn-default btn-round">-->
+            <!--                <i class="ace-icon fa fa-edit"></i>-->
+            <!--                新增-->
+            <!--            </button>-->
             &nbsp;
             <button v-on:click="list(page)" class="btn btn-white btn-default btn-round">
                 <i class="ace-icon fa fa-refresh"></i>
@@ -29,26 +29,26 @@
         <table id="simple-table" class="table  table-bordered table-hover">
             <thead>
             <tr>
-                                        <th>公告</th>
-                        <th>内容</th>
-                        <th>发布时间</th>
+                <th>公告</th>
+                <th>内容</th>
+                <th>发布时间</th>
                 <th>操作</th>
             </tr>
             </thead>
 
             <tbody>
             <tr v-for="notice in notices">
-                            <td>{{notice.id}}</td>
-                            <td>{{notice.content}}</td>
-                            <td>{{notice.createTime}}</td>
+                <td>{{notice.id}}</td>
+                <td>{{notice.content}}</td>
+                <td>{{notice.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-on:click="edit(notice)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/notice/edit')" v-on:click="edit(notice)" class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
-<!--                        <button v-on:click="del(notice.id)" class="btn btn-xs btn-danger">-->
-<!--                            <i class="ace-icon fa fa-trash-o bigger-120"></i>-->
-<!--                        </button>-->
+                        <!--                        <button v-on:click="del(notice.id)" class="btn btn-xs btn-danger">-->
+                        <!--                            <i class="ace-icon fa fa-trash-o bigger-120"></i>-->
+                        <!--                        </button>-->
                     </div>
                 </td>
             </tr>
@@ -60,23 +60,23 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
+                                aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title">表单</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">内容</label>
-                                            <div class="col-sm-10">
-                                                <input v-model="notice.content" class="form-control">
-                                            </div>
-                                        </div>
-<!--                                        <div class="form-group">-->
-<!--                                            <label class="col-sm-2 control-label">发布时间</label>-->
-<!--                                            <div class="col-sm-10">-->
-<!--                                                <input v-model="notice.createTime" class="form-control">-->
-<!--                                            </div>-->
-<!--                                        </div>-->
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">内容</label>
+                                <div class="col-sm-10">
+                                    <input v-model="notice.content" class="form-control">
+                                </div>
+                            </div>
+                            <!--                                        <div class="form-group">-->
+                            <!--                                            <label class="col-sm-2 control-label">发布时间</label>-->
+                            <!--                                            <div class="col-sm-10">-->
+                            <!--                                                <input v-model="notice.createTime" class="form-control">-->
+                            <!--                                            </div>-->
+                            <!--                                        </div>-->
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -97,11 +97,12 @@
         name: "notice",
         data: function () {
             return {
-            notice: {},
-            notices: [],
-            page: 1,
-            search: "",
-        }
+                notice: {},
+                notices: [],
+                page: 1,
+                search: "",
+                Tool: Tool,
+            }
         },
         mounted: function () {
             let _this = this;
@@ -159,7 +160,7 @@
                 if (1 != 1
                     || !Validator.require(_this.notice.content, "内容")
                     || !Validator.length(_this.notice.content, "内容", 1, 255)
-                    // || !Validator.require(_this.notice.createTime, "发布时间")
+                // || !Validator.require(_this.notice.createTime, "发布时间")
                 ) {
                     return;
                 }
@@ -190,25 +191,25 @@
                         }
                     })
                 }
-        },
+            },
 
-        /**
-         * 点击【删除】
-         */
-        del(id) {
-            let _this = this;
-            Confirm.show("删除公告后不可恢复，确认删除？", function () {
-                Loading.show();
-                _this.$ajax.delete(process.env.VUE_APP_SERVER + '/notice/delete/' + id).then((response) => {
-                    Loading.hide();
-                    let resp = response.data;
-                    if (resp.success) {
-                        _this.list(_this.page);
-                        Toast.success("删除成功！");
-                    }
-                })
-            });
+            /**
+             * 点击【删除】
+             */
+            del(id) {
+                let _this = this;
+                Confirm.show("删除公告后不可恢复，确认删除？", function () {
+                    Loading.show();
+                    _this.$ajax.delete(process.env.VUE_APP_SERVER + '/notice/delete/' + id).then((response) => {
+                        Loading.hide();
+                        let resp = response.data;
+                        if (resp.success) {
+                            _this.list(_this.page);
+                            Toast.success("删除成功！");
+                        }
+                    })
+                });
+            }
         }
-    }
     }
 </script>
