@@ -66,15 +66,15 @@
                 <td>{{topUpLog.auditTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-show="topUpLog.state===0" v-on:click="editOk(topUpLog)"
+                        <button v-show="topUpLog.state===0&&Tool.hasResource('/topUpLog/save')" v-on:click="editOk(topUpLog)"
                                 class="btn btn-xs btn-info">
                             审核通过
                         </button>
-                        <button v-show="topUpLog.state===0" v-on:click="editError(topUpLog)"
+                        <button v-show="topUpLog.state===0&&Tool.hasResource('/topUpLog/save')" v-on:click="editError(topUpLog)"
                                 class="btn btn-xs btn-danger">
                             审核失败
                         </button>
-                        <button v-show="topUpLog.state===1" v-on:click="edit(topUpLog)" class="btn btn-xs btn-info">
+                        <button v-show="topUpLog.state===1&&Tool.hasResource('/topUpLog/remittance')" v-on:click="edit(topUpLog)" class="btn btn-xs btn-info">
                             上分
                         </button>
                     </div>
@@ -201,6 +201,7 @@
                 page: 1,
                 search: "",
                 aType: 0,
+                Tool:Tool,
             }
         },
         mounted: function () {

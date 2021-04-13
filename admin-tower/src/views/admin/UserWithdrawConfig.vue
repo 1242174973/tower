@@ -53,7 +53,7 @@
                 <td>{{userWithdrawConfig.serviceCharge}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-on:click="edit(userWithdrawConfig)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/userWithdrawConfig/edit')" v-on:click="edit(userWithdrawConfig)" class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
 <!--                        <button v-on:click="del(userWithdrawConfig.id)" class="btn btn-xs btn-danger">-->
@@ -135,6 +135,7 @@
                 userWithdrawConfigs: [],
                 page: 1,
                 search: "",
+                Tool:Tool,
             }
         },
         mounted: function () {

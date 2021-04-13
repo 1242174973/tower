@@ -159,9 +159,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button v-show="withdrawLog.aType===3" v-on:click="remittance()" type="button" class="btn btn-primary">确认汇款</button>
-                        <button v-show="withdrawLog.aType===1" v-on:click="save()" type="button" class="btn btn-primary">审核通过</button>
-                        <button v-show="withdrawLog.aType===2" v-on:click="save()" type="button" class="btn btn-danger">审核失败</button>
+                        <button v-show="withdrawLog.aType===3&&Tool.hasResource('/withdrawLog/remittance')" v-on:click="remittance()" type="button" class="btn btn-primary">确认汇款</button>
+                        <button v-show="withdrawLog.aType===1&&Tool.hasResource('/withdrawLog/editOk')" v-on:click="save()" type="button" class="btn btn-primary">审核通过</button>
+                        <button v-show="withdrawLog.aType===2&&Tool.hasResource('/withdrawLog/editError')" v-on:click="save()" type="button" class="btn btn-danger">审核失败</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -181,6 +181,7 @@
                 withdrawLogs: [],
                 page: 1,
                 search: "",
+                Tool:Tool,
             }
         },
         mounted: function () {

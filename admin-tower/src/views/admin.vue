@@ -95,7 +95,8 @@
                         <b class="arrow"></b>
                     </li>
 
-                    <li v-show="hasResource('/player/list')||hasResource('/editionEtc/list')||hasResource('/monster/list')||hasResource('/notice/list')" class="">
+                    <li v-show="hasResource('/player/list')||hasResource('/editionEtc/list')||hasResource('/monster/list')||hasResource('/notice/list')"
+                        class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 游戏管理 </span>
@@ -135,7 +136,8 @@
                         </ul>
 
 
-                    <li v-show="hasResource('/signIn/list')||hasResource('/salvage/list')||hasResource('/challengeReward/list')" class="">
+                    <li v-show="hasResource('/signIn/list')||hasResource('/salvage/list')||hasResource('/challengeReward/list')"
+                        class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 福利管理 </span>
@@ -160,7 +162,8 @@
 
                                 <b class="arrow"></b>
                             </li>
-                            <li v-show="hasResource('/challengeReward/list')" class="" id="welfare-challengeReward-sidebar">
+                            <li v-show="hasResource('/challengeReward/list')" class=""
+                                id="welfare-challengeReward-sidebar">
                                 <router-link to="/welfare/challengeReward">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     挑战福利
@@ -173,7 +176,11 @@
                     </li>
 
 
-                    <li class="">
+                    <li v-show="hasResource('/userWithdrawConfig/list')
+                        ||hasResource('/topUpConfig/list')||hasResource('/userBankCard/list')
+                        ||hasResource('/withdrawLog/list')||hasResource('/withdrawLog/listLog')
+                        ||hasResource('/topUpLog/list')||hasResource('/topUpLog/listLog')"
+                        class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 充值提现管理 </span>
@@ -182,23 +189,22 @@
                         </a>
 
                         <ul class="submenu">
-                            <li class="" id="withdraw-userWithdrawConfig-sidebar">
+                            <li v-show="hasResource('/userWithdrawConfig/list')" class=""
+                                id="withdraw-userWithdrawConfig-sidebar">
                                 <router-link to="/withdraw/userWithdrawConfig">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     玩家提现配置
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="withdraw-topUpConfig-sidebar">
+                            <li v-show="hasResource('/topUpConfig/list')" class="" id="withdraw-topUpConfig-sidebar">
                                 <router-link to="/withdraw/topUpConfig">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     充值信息
                                 </router-link>
-
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="withdraw-userBankCard-sidebar">
+                            <li v-show="hasResource('/userBankCard/list')" class="" id="withdraw-userBankCard-sidebar">
                                 <router-link to="/withdraw/userBankCard">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     玩家绑卡信息
@@ -206,28 +212,28 @@
 
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="withdraw-withdrawLog-sidebar">
+                            <li v-show="hasResource('/withdrawLog/list')" class="" id="withdraw-withdrawLog-sidebar">
                                 <router-link to="/withdraw/withdrawLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     提现审核
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-withdrawLogLog-sidebar">
+                            <li v-show="hasResource('/withdrawLog/listLog')" class="" id="log-withdrawLogLog-sidebar">
                                 <router-link to="/log/withdrawLogLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     玩家提现记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="withdraw-topUpLog-sidebar">
+                            <li v-show="hasResource('/topUpLog/list')" class="" id="withdraw-topUpLog-sidebar">
                                 <router-link to="/withdraw/topUpLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     充值审核
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="withdraw-topUpLogLog-sidebar">
+                            <li v-show="hasResource('/topUpLog/listLog')" class="" id="withdraw-topUpLogLog-sidebar">
                                 <router-link to="/withdraw/topUpLogLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     充值审核记录
