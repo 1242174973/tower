@@ -14,6 +14,7 @@ import com.tower.msg.Tower;
 import com.tower.service.PlayerService;
 import com.tower.service.UserWithdrawConfigService;
 import com.tower.service.my.MyChallengeRewardService;
+import com.tower.service.my.MySalvageService;
 import com.tower.utils.*;
 import com.tower.variable.RedisVariable;
 import io.netty.channel.Channel;
@@ -53,6 +54,10 @@ public class AccountController {
 
     @Resource
     private MyChallengeRewardService challengeRewardService;
+
+    @Resource
+    private MySalvageService salvageService;
+
 
     @PostMapping("/register")
     @ApiOperation(value = "用户注册", notes = "需要参数 昵称 图片验证码  图片验证码token  用户名  密码  推广码")
@@ -110,6 +115,7 @@ public class AccountController {
                 setTodayWithdrawSize(6);
         userWithdrawConfigService.save(userWithdrawConfig);
         challengeRewardService.insertToday(userId);
+        salvageService.insertToday(userId);
         return playerDtoResponseDto;
     }
 

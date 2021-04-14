@@ -14,6 +14,8 @@ import com.tower.exception.BusinessException;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.service.*;
 import com.tower.service.my.MyAgentRebateService;
+import com.tower.service.my.MyChallengeRewardService;
+import com.tower.service.my.MySalvageService;
 import com.tower.utils.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -47,11 +49,6 @@ public class AgentController {
     @Resource
     private PlayerService playerService;
 
-    @Resource
-    private ChallengeRewardService challengeRewardService;
-
-    @Resource
-    private SalvageService salvageService;
 
     @Resource
     private ExtracLogService extracLogService;
@@ -61,6 +58,13 @@ public class AgentController {
 
     @Resource
     private ProfitLogService profitLogService;
+
+
+    @Resource
+    private MyChallengeRewardService challengeRewardService;
+
+    @Resource
+    private MySalvageService salvageService;
 
     @Resource
     private ProfitRebateLogService profitRebateLogService;
@@ -107,7 +111,7 @@ public class AgentController {
         BusinessUtil.length(account, BusinessExceptionCode.ACCOUNT, 6, 20);
         BusinessUtil.require(password, BusinessExceptionCode.PASSWORD);
         BusinessUtil.length(password, BusinessExceptionCode.PASSWORD, 6, 20);
-        BusinessUtil.assertParam(player.getRebate().doubleValue() > rebate, "不能设置比自己更高的返利");
+        BusinessUtil.assertParam(player.getRebate().doubleValue() >= rebate, "不能设置比自己更高的返利");
         LambdaQueryWrapper<Player> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.or(wrapper -> wrapper.eq(Player::getAccount, account));
         Player sqlPlayer = playerService.getOne(queryWrapper);
@@ -130,6 +134,8 @@ public class AgentController {
         sqlPlayer.setTotalAward(BigDecimal.ZERO);
         sqlPlayer.setCanAward(BigDecimal.ZERO);
         playerService.save(sqlPlayer);
+        challengeRewardService.insertToday(sqlPlayer.getId());
+        salvageService.insertToday(sqlPlayer.getId());
         ResponseDto<String> responseDto = new ResponseDto<>();
         responseDto.setContent("添加成功");
         return responseDto;
@@ -402,7 +408,7 @@ public class AgentController {
                                                      @ApiParam(value = "返利比例", required = true)
                                                      @PathVariable double rebate) {
         double finalRebate = rebate / 100;
-        BusinessUtil.assertParam(player.getRebate().doubleValue() > finalRebate, "不能设置比自己更高的返利");
+        BusinessUtil.assertParam(player.getRebate().doubleValue() >= finalRebate, "不能设置比自己更高的返利");
         Player lowerPlayer = PlayerUtils.getPlayer(userId);
         BusinessUtil.assertParam(lowerPlayer != null, "下级玩家未找到");
         BusinessUtil.assertParam(lowerPlayer.getSuperId().equals(player.getId()), "该玩家不是玩家的直系下级");
