@@ -69,7 +69,7 @@ public class ProfitController {
     }
 
     private ProfitInfoDto getProfitInfoDto(Player player, int recentDay) {
-        String startTime = DateUtils.getDate(-recentDay+1);
+        String startTime = DateUtils.getDate(-recentDay + 1);
         String endTime = DateUtils.getDate(-recentDay + 2);
 
         //盈利数据
@@ -86,7 +86,7 @@ public class ProfitController {
         LambdaQueryWrapper<TopUpLog> topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         topUpLogLambdaQueryWrapper.eq(TopUpLog::getUserId, player.getId()).ge(TopUpLog::getCreateTime, startTime).le(TopUpLog::getCreateTime, endTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
-                .stream().mapToDouble(topUpLog -> topUpLog.getCoin().doubleValue()).sum();
+                .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
 
         //福利数据
         LambdaQueryWrapper<WelfareLog> welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();

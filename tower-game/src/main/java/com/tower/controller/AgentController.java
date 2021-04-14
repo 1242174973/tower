@@ -348,7 +348,7 @@ public class AgentController {
         BusinessUtil.assertParam(promoteDetailsPageDto.getSize() > 0, "条数必须大于0");
 
         List<PromoteDetailsDto> promoteDetailsDtoList = new ArrayList<>();
-        int day = -((promoteDetailsPageDto.getPage()-1) * promoteDetailsPageDto.getSize());
+        int day = -((promoteDetailsPageDto.getPage() - 1) * promoteDetailsPageDto.getSize());
         for (int i = 0; i < promoteDetailsPageDto.getSize(); i++) {
             String startTime = DateUtils.getDate(-i - day);
             String stopTime = DateUtils.getDate(-i - day + 1);
@@ -660,7 +660,7 @@ public class AgentController {
                 .ge(TopUpLog::getCreateTime, startTime)
                 .le(TopUpLog::getCreateTime, stopTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
-                .stream().mapToDouble(topUpLog -> topUpLog.getCoin().doubleValue()).sum();
+                .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
         double sum = playerList.stream().mapToDouble(player1 -> player.getMoney().doubleValue()).sum();
         lowerDetails.setCoin(sum).setRebate(rebate).setProfit(profit).setWelfare(welfare).setTopUp(topUp);
         return lowerDetails;
