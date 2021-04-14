@@ -47,7 +47,7 @@
                 <td>{{user.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-show="Tool.hasResource('/user/roleAll/')" v-on:click="role(user)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/user/roleAll/')&&Tool.hasResource('/user/saveRole')" v-on:click="role(user)" class="btn btn-xs btn-info">
                             角色管理
                         </button>
                         <button v-show="Tool.hasResource('/user/edit')" v-on:click="edit(user)" class="btn btn-xs btn-info">

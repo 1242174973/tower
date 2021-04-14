@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>
-            <button v-on:click="add()" class="btn btn-white btn-default btn-round">
+            <button v-show="Tool.hasResource('/role/add')"  v-on:click="add()" class="btn btn-white btn-default btn-round">
                 <i class="ace-icon fa fa-edit"></i>
                 新增
             </button>
@@ -45,13 +45,13 @@
                 <td>{{role.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-on:click="authority(role)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/role/authorityAll/')&&Tool.hasResource('/role/saveAuthority')" v-on:click="authority(role)" class="btn btn-xs btn-info">
                             权限管理
                         </button>
-                        <button v-on:click="edit(role)" class="btn btn-xs btn-info">
+                        <button  v-show="Tool.hasResource('/role/edit')"  v-on:click="edit(role)" class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
-                        <button v-on:click="del(role.id)" class="btn btn-xs btn-danger">
+                        <button  v-show="Tool.hasResource('/role/delete/')"  v-on:click="del(role.id)" class="btn btn-xs btn-danger">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
                     </div>
