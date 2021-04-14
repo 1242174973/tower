@@ -348,7 +348,7 @@ public class AgentController {
         BusinessUtil.assertParam(promoteDetailsPageDto.getSize() > 0, "条数必须大于0");
 
         List<PromoteDetailsDto> promoteDetailsDtoList = new ArrayList<>();
-        int day = -(promoteDetailsPageDto.getPage() * promoteDetailsPageDto.getSize());
+        int day = -((promoteDetailsPageDto.getPage()-1) * promoteDetailsPageDto.getSize());
         for (int i = 0; i < promoteDetailsPageDto.getSize(); i++) {
             String startTime = DateUtils.getDate(-i - day);
             String stopTime = DateUtils.getDate(-i - day + 1);
