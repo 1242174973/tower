@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -98,6 +99,7 @@ public class PlayerController {
         BusinessUtil.require(playerDto.getSignIn(), BusinessExceptionCode.SIGN_IN);
         BusinessUtil.require(playerDto.getTotalSignIn(), BusinessExceptionCode.TOTAL_SIGN_IN);
         BusinessUtil.require(playerDto.getTax(), BusinessExceptionCode.TAX);
+        BusinessUtil.require(playerDto.getRebate(), BusinessExceptionCode.REBATE);
         Player player = playerService.getById(playerDto.getId());
         BusinessUtil.assertParam(player != null, "玩家没找到");
         player.setVip(playerDto.getVip());
@@ -107,10 +109,32 @@ public class PlayerController {
         player.setSignIn(playerDto.getSignIn());
         player.setTotalSignIn(playerDto.getTotalSignIn());
         player.setTax(playerDto.getTax());
+        Player player1 = playerFeign.getPlayer(player.getSuperId());
+        BusinessUtil.assertParam(playerDto.getRebate().doubleValue() <= player1.getRebate().doubleValue(), "不能设置比上级更高的返利");
+        List<Player> playerList = new ArrayList<>();
+        getAllLower(playerDto.getId(), playerList);
+        playerList.forEach(p -> {
+            if (p.getRebate().doubleValue() > playerDto.getRebate().doubleValue()) {
+                p.setRebate(playerDto.getRebate());
+                playerFeign.save(p);
+            }
+        });
+        player.setRebate(playerDto.getRebate());
         playerFeign.save(player);
         return new ResponseDto<>();
     }
-
+    /**
+     * 获得所有下级
+     *
+     * @param userId 玩家id
+     */
+    private void getAllLower(int userId, List<Player> players) {
+        LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(Player::getSuperId, userId);
+        List<Player> playerList = playerService.getBaseMapper().selectList(lambdaQueryWrapper);
+        players.addAll(playerList);
+        playerList.forEach(player -> getAllLower(player.getId(), players));
+    }
     @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "删除玩家", notes = "删除玩家请求")
     public ResponseDto<String> delete(@ApiParam(value = "玩家ID", required = true)

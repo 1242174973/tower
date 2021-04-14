@@ -70,19 +70,24 @@
 
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-show="Tool.hasResource('/player/editCoin/')" v-on:click="editCoin(player,true)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/player/editCoin/')" v-on:click="editCoin(player,true)"
+                                class="btn btn-xs btn-info">
                             上分
                         </button>
-                        <button v-show="Tool.hasResource('/player/editCoin/')" v-on:click="editCoin(player,false)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/player/editCoin/')" v-on:click="editCoin(player,false)"
+                                class="btn btn-xs btn-info">
                             下分
                         </button>
-                        <button v-show="Tool.hasResource('/editPassword/')"  v-on:click="editPassword(player)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/editPassword/')" v-on:click="editPassword(player)"
+                                class="btn btn-xs btn-info">
                             修改密码
                         </button>
-                        <button v-show="Tool.hasResource('/player/edit')" v-on:click="edit(player)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/player/edit')" v-on:click="edit(player)"
+                                class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
-                        <button v-show="Tool.hasResource('/player/delete/')"  v-on:click="del(player.id)" class="btn btn-xs btn-danger">
+                        <button v-show="Tool.hasResource('/player/delete/')" v-on:click="del(player.id)"
+                                class="btn btn-xs btn-danger">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
                     </div>
@@ -169,6 +174,14 @@
                                 <div class="col-sm-10">
                                     <label>
                                         <input v-model="player.tax" class="form-control">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">返利</label>
+                                <div class="col-sm-10">
+                                    <label>
+                                        <input v-model="player.rebate" class="form-control">
                                     </label>
                                 </div>
                             </div>
@@ -263,7 +276,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button v-on:click="editPasswordSubmit()" type="button" class="btn btn-primary">{{title}}</button>
+                        <button v-on:click="editPasswordSubmit()" type="button" class="btn btn-primary">{{title}}
+                        </button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -289,7 +303,7 @@
                 addMoney: "",
                 isAdd: "",
                 Tool: Tool,
-                password:"",
+                password: "",
             }
         },
         mounted: function () {
@@ -313,10 +327,10 @@
                 _this.player = $.extend({}, player);
                 $("#form-modal2").modal("show");
             },
-            editPassword(player){
+            editPassword(player) {
                 this.title = "修改密码";
                 let _this = this;
-                _this.password="";
+                _this.password = "";
                 _this.player = $.extend({}, player);
                 $("#form-modal3").modal("show");
             },
@@ -345,7 +359,7 @@
                     }
                 })
             },
-            editPasswordSubmit(){
+            editPasswordSubmit() {
                 let _this = this;
                 // 保存校验
                 if (1 !== 1
@@ -410,7 +424,8 @@
                     || !Validator.requireValue(_this.player.safeBox < 0, "保险柜余额不能小于0")
                     || !Validator.requireValue(_this.player.signIn < 0, "签到不能小于0")
                     || !Validator.requireValue(_this.player.totalSignIn < 0, "总签到不能小于0")
-                    || !Validator.requireValue(_this.player.tax < 0||_this.player.tax >100, "返点不能小于0也不能大于100")
+                    || !Validator.requireValue(_this.player.tax < 0 || _this.player.tax > 100, "返点不能小于0也不能大于100")
+                    || !Validator.requireValue(_this.player.rebate < 0 || _this.player.rebate > 100, "返利不能小于0也不能大于100")
                 ) {
                     return;
                 }
