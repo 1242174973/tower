@@ -134,6 +134,13 @@ public class AgentController {
         sqlPlayer.setTotalAward(BigDecimal.ZERO);
         sqlPlayer.setCanAward(BigDecimal.ZERO);
         playerService.save(sqlPlayer);
+        UserWithdrawConfig userWithdrawConfig = new UserWithdrawConfig();
+        userWithdrawConfig.setUserId(sqlPlayer.getId()).
+                setCreateTime(LocalDateTime.now()).
+                setTotalWithdrawMoney(300000.00).
+                setTodayWithdrawMoney(300000.00).
+                setTotalWithdrawSize(6).
+                setTodayWithdrawSize(6);
         challengeRewardService.insertToday(sqlPlayer.getId());
         salvageService.insertToday(sqlPlayer.getId());
         ResponseDto<String> responseDto = new ResponseDto<>();

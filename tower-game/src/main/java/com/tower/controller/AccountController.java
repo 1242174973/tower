@@ -109,8 +109,8 @@ public class AccountController {
         UserWithdrawConfig userWithdrawConfig = new UserWithdrawConfig();
         userWithdrawConfig.setUserId(userId).
                 setCreateTime(LocalDateTime.now()).
-                setTotalWithdrawMoney(1000.00).
-                setTodayWithdrawMoney(1000.00).
+                setTotalWithdrawMoney(300000.00).
+                setTodayWithdrawMoney(300000.00).
                 setTotalWithdrawSize(6).
                 setTodayWithdrawSize(6);
         userWithdrawConfigService.save(userWithdrawConfig);
