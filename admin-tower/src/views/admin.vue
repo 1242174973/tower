@@ -244,7 +244,17 @@
                     </li>
 
 
-                    <li class="">
+                    <li v-show="hasResource('/welfareLog/list')
+                    ||hasResource('/safeBoxLog/list')
+                    ||hasResource('/transferLog/list')
+                    ||hasResource('/agentRebate/list')
+                    ||hasResource('/attackLog/list')
+                    ||hasResource('/betLog/list')
+                    ||hasResource('/gameLog/list')
+                    ||hasResource('/profitLog/list')
+                    ||hasResource('/profitRebateLog/list')
+                    ||hasResource('/shareLog/list')
+                    ||hasResource('/extracLog/list')" class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 记录管理 </span>
@@ -267,56 +277,56 @@
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-transferLog-sidebar">
+                            <li v-show="hasResource('/transferLog/list')" class="" id="log-transferLog-sidebar">
                                 <router-link to="/log/transferLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     玩家转账记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-agentRebate-sidebar">
+                            <li v-show="hasResource('/agentRebate/list')" class="" id="log-agentRebate-sidebar">
                                 <router-link to="/log/agentRebate">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     下级返利记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-attackLog-sidebar">
+                            <li v-show="hasResource('/attackLog/list')" class="" id="log-attackLog-sidebar">
                                 <router-link to="/log/attackLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     开奖记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-betLog-sidebar">
+                            <li v-show="hasResource('/betLog/list')" class="" id="log-betLog-sidebar">
                                 <router-link to="/log/betLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     下注记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-gameLog-sidebar">
+                            <li v-show="hasResource('/gameLog/list')" class="" id="log-gameLog-sidebar">
                                 <router-link to="/log/gameLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     游戏记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-profitLog-sidebar">
+                            <li v-show="hasResource('/profitLog/list')" class="" id="log-profitLog-sidebar">
                                 <router-link to="/log/profitLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     代理盈利记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-profitRebateLog-sidebar">
+                            <li v-show="hasResource('/profitRebateLog/list')" class="" id="log-profitRebateLog-sidebar">
                                 <router-link to="/log/profitRebateLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
-                                    代理盈利结算记录
+                                    十日结算记录
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="log-shareLog-sidebar">
+                            <li v-show="hasResource('/shareLog/list')" class="" id="log-shareLog-sidebar">
                                 <router-link to="/log/shareLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     代理分享记录
@@ -324,7 +334,7 @@
                                 <b class="arrow"></b>
                             </li>
 
-                            <li class="" id="log-extracLog-sidebar">
+                            <li v-show="hasResource('/extracLog/list')" class="" id="log-extracLog-sidebar">
                                 <router-link to="/log/extracLog">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     提取记录

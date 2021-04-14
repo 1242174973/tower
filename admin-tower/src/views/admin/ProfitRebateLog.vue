@@ -48,7 +48,7 @@
                         <!--                        <button v-on:click="edit(profitRebateLog)" class="btn btn-xs btn-info">-->
                         <!--                            <i class="ace-icon fa fa-pencil bigger-120"></i>-->
                         <!--                        </button>-->
-                        <button v-on:click="del(profitRebateLog.id)" class="btn btn-xs btn-danger">
+                        <button v-show="Tool.hasResource('/profitRebateLog/delete/')" v-on:click="del(profitRebateLog.id)" class="btn btn-xs btn-danger">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
                     </div>
@@ -109,6 +109,7 @@
                 profitRebateLogs: [],
                 page: 1,
                 search: "",
+                Tool:Tool,
             }
         },
         mounted: function () {

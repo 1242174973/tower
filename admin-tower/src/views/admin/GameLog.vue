@@ -54,7 +54,7 @@
                         <!--                        <button v-on:click="edit(gameLog)" class="btn btn-xs btn-info">-->
                         <!--                            <i class="ace-icon fa fa-pencil bigger-120"></i>-->
                         <!--                        </button>-->
-                        <button v-on:click="del(gameLog.id)" class="btn btn-xs btn-danger">
+                        <button v-show="Tool.hasResource('/gameLog/delete/')" v-on:click="del(gameLog.id)" class="btn btn-xs btn-danger">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
                     </div>
@@ -133,6 +133,7 @@
                 gameLogs: [],
                 page: 1,
                 search: "",
+                Tool:Tool,
             }
         },
         mounted: function () {
