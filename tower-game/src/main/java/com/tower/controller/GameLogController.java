@@ -47,6 +47,8 @@ public class GameLogController {
         if (gameLogPageDto.getRecentDay() <= 0) {
             startTime = DateUtils.getDate(-2);
             endTime = DateUtils.getDate(1);
+            System.out.println(startTime);
+            System.out.println(endTime);
         }
         //查询N天前的数据
         else {

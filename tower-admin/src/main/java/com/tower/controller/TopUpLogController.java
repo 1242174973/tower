@@ -2,6 +2,7 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.config.VipConfig;
 import com.tower.dto.TopUpLogDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.UserDto;
@@ -158,9 +159,28 @@ public class TopUpLogController {
                 playerFeign.save(superPlayer);
             }
         }
+        player.setExperience(player.getExperience() + topUpLogDto.getCoin().intValue());
+        upVip(player);
         playerFeign.save(player);
         topUpLogService.updateById(topUpLog);
         return new ResponseDto<>();
+    }
+
+    /**
+     * 提升VIP等级
+     *
+     * @param player 玩家
+     */
+    private void upVip(Player player) {
+        VipConfig vipConfig = new VipConfig();
+        Integer integer = vipConfig.getMap().get(player.getVip() + 1);
+        if (integer != null) {
+            if (player.getExperience() >= integer) {
+                player.setExperience(player.getExperience() - integer);
+                player.setVip(player.getVip() + 1);
+                upVip(player);
+            }
+        }
     }
 
 
