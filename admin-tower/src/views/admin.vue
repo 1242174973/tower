@@ -351,7 +351,7 @@
                         </a>
 
                         <ul class="submenu">
-                            <li class="" id="admin-user-sidebar">
+                            <li v-show="hasResource('/user/list')" class="" id="admin-user-sidebar">
                                 <router-link to="/admin/user">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     后台用户管理
