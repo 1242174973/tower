@@ -45,16 +45,16 @@ public class GameLogController {
         String endTime;
         //查询最近3天的数据
         if (gameLogPageDto.getRecentDay() <= 0) {
-            startTime = DateUtils.getDate(-2);
+            startTime = DateUtils.getDate(-1);
             endTime = DateUtils.getDate(1);
-            System.out.println(startTime);
-            System.out.println(endTime);
         }
         //查询N天前的数据
         else {
-            startTime = DateUtils.getDate(-gameLogPageDto.getRecentDay());
-            endTime = DateUtils.getDate(-gameLogPageDto.getRecentDay() + 1);
+            startTime = DateUtils.getDate(-gameLogPageDto.getRecentDay()+1);
+            endTime = DateUtils.getDate(-gameLogPageDto.getRecentDay() + 2);
         }
+        System.out.println(startTime);
+        System.out.println(endTime);
         LambdaQueryWrapper<GameLog> logLambdaQueryWrapper=new LambdaQueryWrapper<>();
         logLambdaQueryWrapper.eq(GameLog::getUserId,player.getId())
                 .ge(GameLog::getCreateTime, startTime)

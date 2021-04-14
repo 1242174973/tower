@@ -121,13 +121,13 @@ public class WelfareController {
         String endTime;
         //查询最近3天的数据
         if (welFareLogPageDto.getRecentDay() <= 0) {
-            startTime = DateUtils.getDate(-2);
+            startTime = DateUtils.getDate(-1);
             endTime = DateUtils.getDate(1);
         }
         //查询N天前的数据
         else {
-            startTime = DateUtils.getDate(-welFareLogPageDto.getRecentDay());
-            endTime = DateUtils.getDate(-welFareLogPageDto.getRecentDay() + 1);
+            startTime = DateUtils.getDate(-welFareLogPageDto.getRecentDay()+1);
+            endTime = DateUtils.getDate(-welFareLogPageDto.getRecentDay() + 2);
         }
         lambdaQueryWrapper.ge(WelfareLog::getCreateTime, startTime);
         lambdaQueryWrapper.le(WelfareLog::getCreateTime, endTime);

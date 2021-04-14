@@ -69,8 +69,8 @@ public class ProfitController {
     }
 
     private ProfitInfoDto getProfitInfoDto(Player player, int recentDay) {
-        String startTime = DateUtils.getDate(-recentDay);
-        String endTime = DateUtils.getDate(-recentDay + 1);
+        String startTime = DateUtils.getDate(-recentDay+1);
+        String endTime = DateUtils.getDate(-recentDay + 2);
 
         //盈利数据
         LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
