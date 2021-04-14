@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>
-            <button v-on:click="add()" class="btn btn-white btn-default btn-round">
+            <button v-show="Tool.hasResource('/authorityPath/add')" v-on:click="add()" class="btn btn-white btn-default btn-round">
                 <i class="ace-icon fa fa-edit"></i>
                 新增
             </button>
@@ -29,26 +29,26 @@
         <table id="simple-table" class="table  table-bordered table-hover">
             <thead>
             <tr>
-                                        <th>权限表</th>
-                        <th>请求地址</th>
-                        <th>描述</th>
-                        <th>创建时间</th>
+                <th>权限表</th>
+                <th>请求地址</th>
+                <th>描述</th>
+                <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
 
             <tbody>
             <tr v-for="authorityPath in authorityPaths">
-                            <td>{{authorityPath.id}}</td>
-                            <td>{{authorityPath.path}}</td>
-                            <td>{{authorityPath.describe}}</td>
-                            <td>{{authorityPath.createTime}}</td>
+                <td>{{authorityPath.id}}</td>
+                <td>{{authorityPath.path}}</td>
+                <td>{{authorityPath.describe}}</td>
+                <td>{{authorityPath.createTime}}</td>
                 <td>
                     <div class="hidden-sm hidden-xs btn-group">
-                        <button v-on:click="edit(authorityPath)" class="btn btn-xs btn-info">
+                        <button v-show="Tool.hasResource('/authorityPath/edit')" v-on:click="edit(authorityPath)" class="btn btn-xs btn-info">
                             <i class="ace-icon fa fa-pencil bigger-120"></i>
                         </button>
-                        <button v-on:click="del(authorityPath.id)" class="btn btn-xs btn-danger">
+                        <button v-show="Tool.hasResource('/authorityPath/delete/')" v-on:click="del(authorityPath.id)" class="btn btn-xs btn-danger">
                             <i class="ace-icon fa fa-trash-o bigger-120"></i>
                         </button>
                     </div>
@@ -62,29 +62,29 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
+                                aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title">表单</h4>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">请求地址</label>
-                                            <div class="col-sm-10">
-                                                <input v-model="authorityPath.path" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">描述</label>
-                                            <div class="col-sm-10">
-                                                <input v-model="authorityPath.describe" class="form-control">
-                                            </div>
-                                        </div>
-                                   <!--     <div class="form-group">
-                                            <label class="col-sm-2 control-label">创建时间</label>
-                                            <div class="col-sm-10">
-                                                <input v-model="authorityPath.createTime" class="form-control">
-                                            </div>
-                                        </div>-->
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">请求地址</label>
+                                <div class="col-sm-10">
+                                    <input v-model="authorityPath.path" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">描述</label>
+                                <div class="col-sm-10">
+                                    <input v-model="authorityPath.describe" class="form-control">
+                                </div>
+                            </div>
+                            <!--     <div class="form-group">
+                                     <label class="col-sm-2 control-label">创建时间</label>
+                                     <div class="col-sm-10">
+                                         <input v-model="authorityPath.createTime" class="form-control">
+                                     </div>
+                                 </div>-->
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -105,11 +105,12 @@
         name: "authorityPath",
         data: function () {
             return {
-            authorityPath: {},
-            authorityPaths: [],
-            page: 1,
-            search: "",
-        }
+                authorityPath: {},
+                authorityPaths: [],
+                page: 1,
+                search: "",
+                Tool:Tool,
+            }
         },
         mounted: function () {
             let _this = this;
@@ -197,25 +198,25 @@
                         }
                     })
                 }
-        },
+            },
 
-        /**
-         * 点击【删除】
-         */
-        del(id) {
-            let _this = this;
-            Confirm.show("删除权限路径后不可恢复，确认删除？", function () {
-                Loading.show();
-                _this.$ajax.delete(process.env.VUE_APP_SERVER + '/authorityPath/delete/' + id).then((response) => {
-                    Loading.hide();
-                    let resp = response.data;
-                    if (resp.success) {
-                        _this.list(_this.page);
-                        Toast.success("删除成功！");
-                    }
-                })
-            });
+            /**
+             * 点击【删除】
+             */
+            del(id) {
+                let _this = this;
+                Confirm.show("删除权限路径后不可恢复，确认删除？", function () {
+                    Loading.show();
+                    _this.$ajax.delete(process.env.VUE_APP_SERVER + '/authorityPath/delete/' + id).then((response) => {
+                        Loading.hide();
+                        let resp = response.data;
+                        if (resp.success) {
+                            _this.list(_this.page);
+                            Toast.success("删除成功！");
+                        }
+                    })
+                });
+            }
         }
-    }
     }
 </script>

@@ -343,7 +343,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="">
+                    <li v-show="hasResource('/user/list')||hasResource('/role/list')||hasResource('/authorityPath/list')"
+                        class="">
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list"></i>
                             <span class="menu-text"> 后台管理 </span>
@@ -365,7 +366,7 @@
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li class="" id="admin-authorityPath-sidebar">
+                            <li v-show="hasResource('/authorityPath/list')" class="" id="admin-authorityPath-sidebar">
                                 <router-link to="/admin/authorityPath">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     权限路径管理
