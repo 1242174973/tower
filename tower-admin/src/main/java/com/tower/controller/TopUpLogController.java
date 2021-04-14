@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.dto.TopUpLogDto;
 import com.tower.dto.ResponseDto;
+import com.tower.dto.UserDto;
 import com.tower.dto.page.TopUpLogPageDto;
 import com.tower.entity.Player;
 import com.tower.entity.ProfitLog;
@@ -113,7 +114,7 @@ public class TopUpLogController {
 
     @PostMapping("/save")
     @ApiOperation(value = "审核充值记录", notes = "审核充值记录请求")
-    public ResponseDto<String> save(User user, @ApiParam(value = "充值记录信息", required = true)
+    public ResponseDto<String> save(UserDto user, @ApiParam(value = "充值记录信息", required = true)
     @RequestBody TopUpLogDto topUpLogDto) {
         TopUpLog topUpLog = topUpLogService.getById(topUpLogDto.getId());
         BusinessUtil.assertParam(topUpLog != null, "充值信息没找到");

@@ -71,7 +71,7 @@ public class LoginController {
         userDto.setName(mysqlUser.getName());
         userDto.setId(mysqlUser.getId());
         setAuth(userDto);
-        redisOperator.set(token, JsonUtils.objectToJson(mysqlUser), 3600 * 24 * 30);
+        redisOperator.set(token, JsonUtils.objectToJson(userDto), 3600 * 24 * 30);
         responseDto.setContent(userDto);
         return responseDto;
     }

@@ -1,5 +1,6 @@
 package com.tower.filter;
 
+import com.tower.dto.UserDto;
 import com.tower.entity.Player;
 import com.tower.entity.User;
 import com.tower.utils.JsonUtils;
@@ -30,7 +31,7 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         Class<?> clazz = parameter.getParameterType();
-        return clazz == User.class;
+        return clazz == UserDto.class;
     }
 
     @Override
@@ -38,10 +39,10 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
         HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
         String token = request.getHeader("token");
         // 然后根据token获取用户登录信息
-        User user = null;
+        UserDto user = null;
         if (token != null) {
             // 这边拿到的 token  前往redis获得用户信息返回
-            user = JsonUtils.jsonToPojo(redisOperator.get(token), User.class);
+            user = JsonUtils.jsonToPojo(redisOperator.get(token), UserDto.class);
         }
         return user;
     }

@@ -3,6 +3,7 @@ package com.tower.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tower.dto.PlayerDto;
+import com.tower.dto.UserDto;
 import com.tower.dto.WithdrawLogDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.page.WithdrawLogPageDto;
@@ -131,7 +132,7 @@ public class WithdrawLogController {
 
     @PostMapping("/editOk")
     @ApiOperation(value = "修改提现审核", notes = "修改提现审核请求")
-    public ResponseDto<WithdrawLogDto> editOk(User user,
+    public ResponseDto<WithdrawLogDto> editOk(UserDto user,
                                               @ApiParam(value = "提现审核信息", required = true)
                                               @RequestBody WithdrawLogDto withdrawLogDto) {
         requireParam(withdrawLogDto);
@@ -152,7 +153,7 @@ public class WithdrawLogController {
     @PostMapping("/editError")
     @ApiOperation(value = "审核失败", notes = "审核失败请求")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public ResponseDto<WithdrawLogDto> editError(User user,
+    public ResponseDto<WithdrawLogDto> editError(UserDto user,
                                                  @ApiParam(value = "提现审核信息", required = true)
                                                  @RequestBody WithdrawLogDto withdrawLogDto) {
         requireParam(withdrawLogDto);

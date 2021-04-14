@@ -1,8 +1,11 @@
 package com.tower.filter;
 
+import com.tower.dto.UserDto;
+import com.tower.entity.AuthorityPath;
 import com.tower.exception.BusinessException;
 import com.tower.exception.BusinessExceptionCode;
 import com.tower.utils.BusinessUtil;
+import com.tower.utils.JsonUtils;
 import com.tower.utils.RedisOperator;
 import com.tower.variable.RedisVariable;
 import org.slf4j.Logger;
@@ -15,6 +18,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @Author: 梦-屿-千-寻
@@ -42,25 +46,30 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         String object = redisOperator.get(token);
         BusinessUtil.assertParam(object != null, "请重新登录");
         // 这边拿到的 用户信息 判断权限
-        //TODO 判断权限
+        UserDto user = JsonUtils.jsonToPojo(object, UserDto.class);
+        String requestUri = request.getRequestURI();
+        if (!canAuthority(user.getAuthorities(), requestUri)) {
+            LOG.info("权限不够，请求被拦截");
+            return false;
+        }
         LOG.info("已登录：{}", object);
         return true;
     }
 
-    /*private boolean canAuthority(List<TGAuthority> tgAuthorities, String requestURI) {
-        if(tgAuthorities==null||tgAuthorities.size()<=0){
+    private boolean canAuthority(List<AuthorityPath> tgAuthorities, String requestUri) {
+        if (tgAuthorities == null || tgAuthorities.size() <= 0) {
             return false;
         }
-        for (TGAuthority tgAuthority : tgAuthorities) {
-            if(requestURI.equals(tgAuthority.getPath())){
+        for (AuthorityPath tgAuthority : tgAuthorities) {
+            if (requestUri.equals(tgAuthority.getPath())) {
                 return true;
             }
-            if(tgAuthority.getPath()!=""&&requestURI.contains(tgAuthority.getPath()+"/")){
+            if (!"".equals(tgAuthority.getPath()) && requestUri.contains(tgAuthority.getPath())) {
                 return true;
             }
         }
         return false;
-    }*/
+    }
 
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
