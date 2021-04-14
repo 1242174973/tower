@@ -97,6 +97,7 @@ public class PlayerController {
         BusinessUtil.require(playerDto.getSafeBox(), BusinessExceptionCode.SAFE_BOX);
         BusinessUtil.require(playerDto.getSignIn(), BusinessExceptionCode.SIGN_IN);
         BusinessUtil.require(playerDto.getTotalSignIn(), BusinessExceptionCode.TOTAL_SIGN_IN);
+        BusinessUtil.require(playerDto.getTax(), BusinessExceptionCode.TAX);
         Player player = playerService.getById(playerDto.getId());
         BusinessUtil.assertParam(player != null, "玩家没找到");
         player.setVip(playerDto.getVip());
@@ -105,6 +106,7 @@ public class PlayerController {
         player.setSafeBox(playerDto.getSafeBox());
         player.setSignIn(playerDto.getSignIn());
         player.setTotalSignIn(playerDto.getTotalSignIn());
+        player.setTax(playerDto.getTax());
         playerFeign.save(player);
         return new ResponseDto<>();
     }

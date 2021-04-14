@@ -1,5 +1,6 @@
 package com.tower.core.utils;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tower.core.constant.Mid;
 import com.tower.core.pipline.MsgBossHandler;
 import com.tower.dto.PlayerDto;
@@ -71,5 +72,21 @@ public class PlayerUtils {
             player = playerService.getById(id);
         }
         return player;
+    }
+
+    /**
+     * 查询不会重复的邀请码
+     * @return 邀请码
+     */
+    public static String getShortUuid() {
+        String shortUuid = UuidUtil.getShortUuid(4);
+        PlayerService playerService = MyApplicationContextUti.getBean(PlayerService.class);
+        LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(Player::getSpread, shortUuid);
+        Player one = playerService.getOne(lambdaQueryWrapper);
+        if (one != null) {
+            return getShortUuid();
+        }
+        return shortUuid;
     }
 }

@@ -54,6 +54,7 @@ public enum BusinessExceptionCode {
     RECEPTION_ID("接收人"),
     COIN("分数"),
     USER_ID("玩家id"),
+    TAX("返点比例"),
     ;
     /**
      * 描述

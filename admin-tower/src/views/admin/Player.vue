@@ -164,6 +164,14 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">返点</label>
+                                <div class="col-sm-10">
+                                    <label>
+                                        <input v-model="player.tax" class="form-control">
+                                    </label>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -402,6 +410,7 @@
                     || !Validator.requireValue(_this.player.safeBox < 0, "保险柜余额不能小于0")
                     || !Validator.requireValue(_this.player.signIn < 0, "签到不能小于0")
                     || !Validator.requireValue(_this.player.totalSignIn < 0, "总签到不能小于0")
+                    || !Validator.requireValue(_this.player.tax < 0||_this.player.tax >100, "返点不能小于0也不能大于100")
                 ) {
                     return;
                 }
