@@ -503,61 +503,69 @@ public class AgentController {
         agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId()).ge(AgentRebate::getCreateTime, startTime).le(AgentRebate::getCreateTime, stopTime);
         double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
                 .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
-        agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        agentRebateLambdaQueryWrapper.in(AgentRebate::getAgentUserId, ids).ge(AgentRebate::getCreateTime, startTime).le(AgentRebate::getCreateTime, stopTime);
-        double lowerRebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
-                .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
         //流水数据
         LambdaQueryWrapper<ChallengeReward> challengeRewardLambdaQueryWrapper = new LambdaQueryWrapper<>();
         challengeRewardLambdaQueryWrapper.eq(ChallengeReward::getUserId, player.getId()).ge(ChallengeReward::getCreateTime, startTime).le(ChallengeReward::getCreateTime, stopTime);
         double betCoin = challengeRewardService.getBaseMapper().selectList(challengeRewardLambdaQueryWrapper)
                 .stream().mapToDouble(challengeReward -> challengeReward.getChallenge().doubleValue()).sum();
-        challengeRewardLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        challengeRewardLambdaQueryWrapper.in(ChallengeReward::getUserId, ids).ge(ChallengeReward::getCreateTime, startTime).le(ChallengeReward::getCreateTime, stopTime);
-        double lowerBetCoin = challengeRewardService.getBaseMapper().selectList(challengeRewardLambdaQueryWrapper)
-                .stream().mapToDouble(challengeReward -> challengeReward.getChallenge().doubleValue()).sum();
-        //盈亏数据
-/*        LambdaQueryWrapper<ProfitLog> profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        profitLogLambdaQueryWrapper.eq(ProfitLog::getUserId, player.getId()).ge(ProfitLog::getCreateTime, startTime).le(ProfitLog::getCreateTime, stopTime);
-        double profit = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper)
-                .stream().mapToDouble(ProfitLog::getProfitCoin).sum();
-        profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        profitLogLambdaQueryWrapper.in(ProfitLog::getUserId, ids).ge(ProfitLog::getCreateTime, startTime).le(ProfitLog::getCreateTime, stopTime);
-        double lowerProfit = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper)
-                .stream().mapToDouble(ProfitLog::getProfitCoin).sum();*/
         //盈亏数据
         LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
         salvageLambdaQueryWrapper.eq(Salvage::getUserId, player.getId()).ge(Salvage::getCreateTime, startTime).le(Salvage::getCreateTime, stopTime);
         double salvage = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
-                .stream().mapToDouble(Salvage::getProfit).sum();
-        salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        salvageLambdaQueryWrapper.in(Salvage::getUserId, ids).ge(Salvage::getCreateTime, startTime).le(Salvage::getCreateTime, stopTime);
-        double lowerSalvage = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
                 .stream().mapToDouble(Salvage::getProfit).sum();
         //充值数据
         LambdaQueryWrapper<TopUpLog> topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         topUpLogLambdaQueryWrapper.eq(TopUpLog::getUserId, player.getId()).ge(TopUpLog::getCreateTime, startTime).le(TopUpLog::getCreateTime, stopTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
                 .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
-        topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        topUpLogLambdaQueryWrapper.in(TopUpLog::getUserId, ids).ge(TopUpLog::getCreateTime, startTime).le(TopUpLog::getCreateTime, stopTime);
-        double lowerTopUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
-                .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
         //福利数据
         LambdaQueryWrapper<WelfareLog> welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         welfareLogLambdaQueryWrapper.eq(WelfareLog::getUserId, player.getId()).ge(WelfareLog::getCreateTime, startTime).le(WelfareLog::getCreateTime, stopTime);
         double welfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
                 .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
-        welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        welfareLogLambdaQueryWrapper.in(WelfareLog::getUserId, ids).ge(WelfareLog::getCreateTime, startTime).le(WelfareLog::getCreateTime, stopTime);
-        double lowerWelfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
-                .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
+        double lowerRebate;
+        double lowerBetCoin;
+        double lowerSalvage;
+        double lowerTopUp;
+        double lowerWelfare;
+        if (ids.size() <= 0) {
+            lowerRebate = 0;
+            lowerBetCoin = 0;
+            lowerSalvage = 0;
+            lowerTopUp = 0;
+            lowerWelfare = 0;
+        } else {
+            //返利数据
+            agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            agentRebateLambdaQueryWrapper.in(AgentRebate::getAgentUserId, ids).ge(AgentRebate::getCreateTime, startTime).le(AgentRebate::getCreateTime, stopTime);
+            lowerRebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
+                    .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
+            //流水数据
+            challengeRewardLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            challengeRewardLambdaQueryWrapper.in(ChallengeReward::getUserId, ids).ge(ChallengeReward::getCreateTime, startTime).le(ChallengeReward::getCreateTime, stopTime);
+            lowerBetCoin = challengeRewardService.getBaseMapper().selectList(challengeRewardLambdaQueryWrapper)
+                    .stream().mapToDouble(challengeReward -> challengeReward.getChallenge().doubleValue()).sum();
+            //盈利数据
+            salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            salvageLambdaQueryWrapper.in(Salvage::getUserId, ids).ge(Salvage::getCreateTime, startTime).le(Salvage::getCreateTime, stopTime);
+            lowerSalvage = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
+                    .stream().mapToDouble(Salvage::getProfit).sum();
+            //充值数据
+            topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            topUpLogLambdaQueryWrapper.in(TopUpLog::getUserId, ids).ge(TopUpLog::getCreateTime, startTime).le(TopUpLog::getCreateTime, stopTime);
+            lowerTopUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
+                    .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
+            //福利数据
+            welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            welfareLogLambdaQueryWrapper.in(WelfareLog::getUserId, ids).ge(WelfareLog::getCreateTime, startTime).le(WelfareLog::getCreateTime, stopTime);
+            lowerWelfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
+                    .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
+        }
         //上周期盈亏返利
         double profitRebate = getProfitRebate(player.getId());
         //赋值
         statementDto.setMyRebate(rebate).setLowerRebate(lowerRebate)
                 .setMyBetWater(betCoin).setLowerBetWater(lowerBetCoin)
-//                .setMyProfit(profit + salvage).setLowerProfit(lowerProfit + lowerSalvage)
                 .setMyProfit(salvage).setLowerProfit(lowerSalvage)
                 .setMyTopUp(topUp).setLowerTopUp(lowerTopUp)
                 .setMyWelfare(welfare).setLowerWelfare(lowerWelfare)

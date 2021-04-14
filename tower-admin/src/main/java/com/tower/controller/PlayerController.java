@@ -62,7 +62,7 @@ public class PlayerController {
 
 
     @PostMapping("/editCoin/{playerId}/{addMoney}")
-    @ApiOperation(value = "修改玩家", notes = "修改玩家请求")
+    @ApiOperation(value = "修改玩家密码", notes = "修改玩家请求")
     public ResponseDto<String> editCoin(@ApiParam(value = "玩家ID", required = true)
                                         @PathVariable int playerId,
                                         @PathVariable int addMoney) {
@@ -72,6 +72,19 @@ public class PlayerController {
         playerFeign.save(player);
         return new ResponseDto<>();
     }
+
+    @PostMapping("/editPassword/{playerId}/{password}")
+    @ApiOperation(value = "修改玩家密码", notes = "修改玩家请求")
+    public ResponseDto<String> v(@ApiParam(value = "玩家ID", required = true)
+                                 @PathVariable int playerId,
+                                 @PathVariable String password) {
+        Player player = playerService.getById(playerId);
+        BusinessUtil.assertParam(player != null, "玩家没找到");
+        player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(password + player.getSalt())));
+        playerFeign.save(player);
+        return new ResponseDto<>();
+    }
+
 
     @PostMapping("/edit")
     @ApiOperation(value = "修改玩家", notes = "修改玩家请求")
