@@ -7,17 +7,17 @@
                 <span v-show="status===0" style="color: green">运行中</span>
                 <span v-show="status===1" style="color: red">维护中</span>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button v-show="status===0" v-on:click="stop()" class="btn btn-white btn-default btn-danger bigger ">
+                <button v-show="status===0&&Tool.hasResource('/index/stop')" v-on:click="stop()" class="btn btn-white btn-default btn-danger bigger ">
                     一键维护
                 </button>
-                <button v-show="status===1" v-on:click="start()" class="btn btn-white btn-default btn-info bigger ">
+                <button v-show="status===1&&Tool.hasResource('/index/start')" v-on:click="start()" class="btn btn-white btn-default btn-info bigger ">
                     一键开启
                 </button>
             </h3>
         </div>
 
 
-        <div class="col-sm-5">
+        <div v-show="Tool.hasResource('/index/index')" class="col-sm-5">
             <div class="widget-box">
                 <div class="widget-header widget-header-flat widget-header-small">
                     <h5 class="widget-title">
@@ -95,6 +95,7 @@
                 active: 20,
                 notActive: 30,
                 status: 0,
+                Tool:Tool,
             }
         },
         mounted: function () {
