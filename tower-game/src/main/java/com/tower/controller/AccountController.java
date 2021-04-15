@@ -105,7 +105,7 @@ public class AccountController {
         player.setTotalAward(BigDecimal.ZERO);
         player.setCanAward(BigDecimal.ZERO);
         player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(player.getPassword() + player.getSalt())));
-        ResponseDto<PlayerDto> playerDtoResponseDto = getPlayerDtoResponseDto(player);
+        ResponseDto<PlayerDto> playerDtoResponseDto = PlayerUtils.getPlayerDtoResponseDto(player);
         int userId = playerDtoResponseDto.getContent().getId();
         UserWithdrawConfig userWithdrawConfig = new UserWithdrawConfig();
         userWithdrawConfig.setUserId(userId).
@@ -137,7 +137,7 @@ public class AccountController {
         BusinessUtil.assertParam(
                 player.getPassword().equals(MD5Utils.getMD5Str(MD5Utils.getMD5Str(password + player.getSalt()))),
                 "密码不正确");
-        return getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 
     @PostMapping("/login/{token}")
@@ -149,7 +149,7 @@ public class AccountController {
         // 这边拿到的 token  前往redis获得用户信息返回
         Player player = JsonUtils.jsonToPojo(redisOperator.hget(RedisVariable.USER_INFO, token), Player.class);
         BusinessUtil.assertParam(player != null, "Token 已失效，请重新登录");
-        return getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 
     @GetMapping("/randomName")
@@ -174,54 +174,6 @@ public class AccountController {
         return responseDto;
     }
 
-    /**
-     * 根据player对象获得返回体
-     *
-     * @param player 玩家
-     * @return 返回体
-     */
-    public static ResponseDto<PlayerDto> getPlayerDtoResponseDto(Player player) {
-        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
-        PlayerService playerService = MyApplicationContextUti.getBean(PlayerService.class);
-        playerService.saveOrUpdate(player);
-        PlayerDto userDto = CopyUtil.copy(player, PlayerDto.class);
-        String token = getToken(player.getId());
-        redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
-        userDto.setToken(token);
-        ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
-        responseDto.setContent(userDto);
-        Channel channel = MsgBossHandler.getPlayerIdChannel(player.getId());
-        if (channel != null) {
-            Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
-            msgCtn.setType(Mid.PLAYER_INFO_RES);
-            msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
-            Tower.UserInfoRes.Builder userInfoRes = Tower.UserInfoRes.newBuilder();
-            userInfoRes.setAccount(player.getAccount());
-            userInfoRes.setId(player.getId());
-            userInfoRes.setNickname(player.getNickName());
-            userInfoRes.setMoney(player.getMoney().doubleValue());
-            userInfoRes.setSafeBox(player.getSafeBox().doubleValue());
-            msgCtn.setDatas(userInfoRes.build().toByteString());
-            MsgUtil.sendMsg(channel, msgCtn.build().toByteArray());
-        }
-        return responseDto;
-    }
 
-    /**
-     * 获得token
-     *
-     * @param userId userId
-     * @return token
-     */
-    private static String getToken(int userId) {
-        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
-        String token = redisOperator.hget(RedisVariable.USER_TOKEN, userId);
-        if (token != null) {
-            return token;
-        }
-        token = UuidUtil.getShortUuid();
-        redisOperator.hset(RedisVariable.USER_TOKEN, userId, token);
-        return token;
-    }
 }
 

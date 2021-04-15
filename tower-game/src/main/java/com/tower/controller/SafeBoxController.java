@@ -2,6 +2,7 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.SafeBoxLogDto;
@@ -58,7 +59,7 @@ public class SafeBoxController {
             player.setSafeBox(player.getSafeBox().subtract(BigDecimal.valueOf(coin)));
         }
         safeBoxLogService.save(safeBoxLog);
-        return AccountController.getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 
     @PostMapping("/withdrawList")

@@ -1,6 +1,7 @@
 package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
 import com.tower.entity.Player;
@@ -27,8 +28,6 @@ import javax.annotation.Resource;
 @RequestMapping("/player")
 @Api(value = "用户请求", tags = "用户相关请求")
 public class PlayerController {
-    @Resource
-    private RedisOperator redisOperator;
 
     @Resource
     private PlayerService playerService;
@@ -48,8 +47,9 @@ public class PlayerController {
                 MD5Utils.getMD5Str(MD5Utils.getMD5Str(oldPassword + player.getSalt())).equals(player.getPassword()),
                 "旧密码不正确");
         player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(newPassword + player.getSalt())));
-        playerService.updateById(player);
-        return AccountController.getPlayerDtoResponseDto(player);
+        PlayerUtils.savePlayer(player);
+        PlayerUtils.setNewToken(player.getId());
+        return PlayerUtils.getPlayerDtoResponseDtoNotSave(player);
     }
 
     @ApiOperation(value = "设置保险柜新密码", notes = "根据旧密码设置保险柜新密码 参数 旧密码 新密码")
@@ -69,8 +69,7 @@ public class PlayerController {
                     "旧密码不正确");
         }
         player.setSafeBoxPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(newPassword + player.getSalt())));
-        playerService.updateById(player);
-        return AccountController.getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 
     @ApiOperation(value = "设置新昵称", notes = "设置新昵称 参数 新昵称")
@@ -90,7 +89,6 @@ public class PlayerController {
         BusinessUtil.require(nickName, BusinessExceptionCode.NICK_NAME);
         BusinessUtil.length(nickName, BusinessExceptionCode.NICK_NAME, 1, 20);
         player.setNickName(nickName);
-        playerService.updateById(player);
-        return AccountController.getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 }

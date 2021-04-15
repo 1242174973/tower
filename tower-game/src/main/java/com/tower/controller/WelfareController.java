@@ -3,6 +3,7 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.*;
 import com.tower.dto.page.game.WelFareLogPageDto;
 import com.tower.entity.Player;
@@ -100,7 +101,7 @@ public class WelfareController {
         welfareLog.setUserId(player.getId());
         welfareLog.setCreateTime(LocalDateTime.now());
         welfareLogService.save(welfareLog);
-        return AccountController.getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 
     @PostMapping("/welfareLogList")

@@ -2,6 +2,7 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.*;
 import com.tower.dto.page.WithdrawLogPageDto;
 import com.tower.entity.*;
@@ -107,7 +108,7 @@ public class UserBankCardController {
                                            @ApiParam(value = "提现金额", required = true)
                                            @PathVariable double money) {
         BusinessUtil.assertParam(money >= 100 && money < 49999, "提现金额在100-49999");
-        BusinessUtil.assertParam(player.getMoney().doubleValue() > money, "玩家余额不足" + money);
+        BusinessUtil.assertParam(player.getMoney().doubleValue() > money, "玩家余额不足" + String.valueOf(money));
         LambdaQueryWrapper<UserBankCard> userBankCardLambdaQueryWrapper = new LambdaQueryWrapper<>();
         userBankCardLambdaQueryWrapper.eq(UserBankCard::getUserId, player.getId());
         UserBankCard userBankCard = userBankCardService.getOne(userBankCardLambdaQueryWrapper);
@@ -130,7 +131,7 @@ public class UserBankCardController {
                 .setServiceCharge(BigDecimal.valueOf(money * one.getServiceCharge() / 100));
         withdrawLogService.save(withdrawLog);
         userWithdrawConfigService.saveOrUpdate(one);
-        return AccountController.getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 
     @PostMapping("/userWithdrawList")

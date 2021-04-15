@@ -3,6 +3,7 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
 import com.tower.dto.TopUpConfigDto;
@@ -77,7 +78,7 @@ public class TopUpController {
                 .setOrderId(DateUtils.getNowDate() + (new Random().nextInt(900000) + 100000))
                 .setCreateTime(LocalDateTime.now());
         topUpLogService.save(topUpLog);
-        return AccountController.getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 
     @PostMapping("/topUpLogList")

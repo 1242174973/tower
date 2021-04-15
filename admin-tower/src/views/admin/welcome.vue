@@ -7,11 +7,17 @@
                 <span v-show="status===0" style="color: green">运行中</span>
                 <span v-show="status===1" style="color: red">维护中</span>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button v-show="status===0&&Tool.hasResource('/index/stop')" v-on:click="stop()" class="btn btn-white btn-default btn-danger bigger ">
+                <button v-show="status===0&&Tool.hasResource('/index/stop')" v-on:click="stop()"
+                        class="btn btn-white btn-default btn-danger bigger ">
                     一键维护
                 </button>
-                <button v-show="status===1&&Tool.hasResource('/index/start')" v-on:click="start()" class="btn btn-white btn-default btn-info bigger ">
+                <button v-show="status===1&&Tool.hasResource('/index/start')" v-on:click="start()"
+                        class="btn btn-white btn-default btn-info bigger ">
                     一键开启
+                </button>
+                <button v-show="Tool.hasResource('/index/start')" v-on:click="removeAll()"
+                        class="btn btn-white btn-default btn-info bigger ">
+                    一键清空数据
                 </button>
             </h3>
         </div>
@@ -95,7 +101,7 @@
                 active: 20,
                 notActive: 30,
                 status: 0,
-                Tool:Tool,
+                Tool: Tool,
             }
         },
         mounted: function () {
@@ -177,7 +183,7 @@
                 })
             },
             stop() {
-                let  _this=this;
+                let _this = this;
                 Confirm.show("维护后游戏将不能提供服务，确认维护？", function () {
                     Loading.show();
                     _this.$ajax.post(process.env.VUE_APP_SERVER + '/index/stop').then((response) => {
@@ -191,7 +197,7 @@
                 });
             },
             start() {
-                let  _this=this;
+                let _this = this;
                 Confirm.show("开启游戏提供服务，确认开启？", function () {
                     Loading.show();
                     _this.$ajax.post(process.env.VUE_APP_SERVER + '/index/start').then((response) => {
@@ -203,7 +209,21 @@
                         }
                     })
                 });
-            }
+            },
+            removeAll(){
+                let _this = this;
+                Confirm.show("清除数据后无法恢复，确认清除？", function () {
+                    Loading.show();
+                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/index/start').then((response) => {
+                        Loading.hide();
+                        let resp = response.data;
+                        if (resp.success) {
+                            _this.init();
+                            Toast.success("开启成功！");
+                        }
+                    })
+                });
+            },
         }
     }
 </script>

@@ -88,7 +88,7 @@ public class TransferController {
                 .setUserId(transferLogDto.getReceptionId())
                 .setCreateTime(LocalDateTime.now());
         welfareLogService.save(welfareLog);
-        return AccountController.getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 
     @PostMapping("/transferLog")

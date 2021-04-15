@@ -2,6 +2,7 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.tower.core.utils.PlayerUtils;
 import com.tower.dto.*;
 import com.tower.dto.page.game.ChallengeRewardPageDto;
 import com.tower.dto.page.game.SalvagePageDto;
@@ -122,6 +123,6 @@ public class SalvageController {
         List<Integer> rewardIds = salvages.stream().map(Salvage::getId).collect(Collectors.toList());
         salvageService.getSalvage(rewardIds);
         player.setMoney(player.getMoney().add(BigDecimal.valueOf(sum)));
-        return AccountController.getPlayerDtoResponseDto(player);
+        return PlayerUtils.getPlayerDtoResponseDto(player);
     }
 }

@@ -53,8 +53,6 @@ public class GameLogController {
             startTime = DateUtils.getDate(-gameLogPageDto.getRecentDay()+1);
             endTime = DateUtils.getDate(-gameLogPageDto.getRecentDay() + 2);
         }
-        System.out.println(startTime);
-        System.out.println(endTime);
         LambdaQueryWrapper<GameLog> logLambdaQueryWrapper=new LambdaQueryWrapper<>();
         logLambdaQueryWrapper.eq(GameLog::getUserId,player.getId())
                 .ge(GameLog::getCreateTime, startTime)

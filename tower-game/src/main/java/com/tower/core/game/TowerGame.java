@@ -585,10 +585,10 @@ public class TowerGame {
         int end = (page + 1) * size;
         return attackLogList.stream().filter(attackLog -> {
             String replace = attackLog.getOrderId().replace(DateUtils.getYearAndMonthAndDay(), "");
-            try{
+            try {
                 int num = Integer.parseInt(replace);
                 return num >= start && num < end;
-            }catch (Exception e){
+            } catch (Exception e) {
                 return false;
             }
         }).collect(Collectors.toList());
@@ -727,7 +727,7 @@ public class TowerGame {
         Tower.GameRes.Builder gameRes = Tower.GameRes.newBuilder();
         gameRes.setCmd(GameCmd.BET.getCode());
         gameRes.setBetInfo(builder.build());
-        sendToId(gameRes,userId);
+        sendToId(gameRes, userId);
     }
 
     /**
@@ -846,32 +846,32 @@ public class TowerGame {
 
     public List<Integer> getBetMonsterIds(int userId) {
         BetLog betLog = getBetLog(userId);
-        List<Integer> list=new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         if (betLog == null) {
             return list;
         }
-        if(betLog.getOneBet().doubleValue()>0){
+        if (betLog.getOneBet().doubleValue() > 0) {
             list.add(1);
         }
-        if(betLog.getTwoBet().doubleValue()>0){
+        if (betLog.getTwoBet().doubleValue() > 0) {
             list.add(2);
         }
-        if(betLog.getThreeBet().doubleValue()>0){
+        if (betLog.getThreeBet().doubleValue() > 0) {
             list.add(3);
         }
-        if(betLog.getFourBet().doubleValue()>0){
+        if (betLog.getFourBet().doubleValue() > 0) {
             list.add(4);
         }
-        if(betLog.getFiveBet().doubleValue()>0){
+        if (betLog.getFiveBet().doubleValue() > 0) {
             list.add(5);
         }
-        if(betLog.getSixBet().doubleValue()>0){
+        if (betLog.getSixBet().doubleValue() > 0) {
             list.add(6);
         }
-        if(betLog.getSevenBet().doubleValue()>0){
+        if (betLog.getSevenBet().doubleValue() > 0) {
             list.add(7);
         }
-        if(betLog.getEightBet().doubleValue()>0){
+        if (betLog.getEightBet().doubleValue() > 0) {
             list.add(8);
         }
         return list;

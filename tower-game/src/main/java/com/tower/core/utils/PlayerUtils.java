@@ -47,12 +47,41 @@ public class PlayerUtils {
     }
 
     /**
+     * 根据player对象获得返回体
+     *
+     * @param player 玩家
+     * @return 返回体
+     */
+    public static ResponseDto<PlayerDto> getPlayerDtoResponseDto(Player player) {
+        PlayerUtils.savePlayer(player);
+        PlayerDto userDto = CopyUtil.copy(player, PlayerDto.class);
+        String token = PlayerUtils.getToken(player.getId());
+        userDto.setToken(token);
+        ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
+        responseDto.setContent(userDto);
+        return responseDto;
+    }
+    /**
+     * 根据player对象获得返回体
+     *
+     * @param player 玩家
+     * @return 返回体
+     */
+    public static ResponseDto<PlayerDto> getPlayerDtoResponseDtoNotSave(Player player) {
+        PlayerDto userDto = CopyUtil.copy(player, PlayerDto.class);
+        String token = PlayerUtils.getToken(player.getId());
+        userDto.setToken(token);
+        ResponseDto<PlayerDto> responseDto = new ResponseDto<>();
+        responseDto.setContent(userDto);
+        return responseDto;
+    }
+    /**
      * 获得token
      *
      * @param userId userId
      * @return token
      */
-    private static String getToken(int userId) {
+    public static String getToken(int userId) {
         RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
         String token = redisOperator.hget(RedisVariable.USER_TOKEN, userId);
         if (token != null) {
@@ -61,6 +90,16 @@ public class PlayerUtils {
         token = UuidUtil.getShortUuid();
         redisOperator.hset(RedisVariable.USER_TOKEN, userId, token);
         return token;
+    }
+    /**
+     * 获得token
+     *
+     * @param userId userId
+     */
+    public static void setNewToken(int userId) {
+        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
+        String token = UuidUtil.getShortUuid();
+        redisOperator.hset(RedisVariable.USER_TOKEN, userId, token);
     }
 
     public static Player getPlayer(int id) {
