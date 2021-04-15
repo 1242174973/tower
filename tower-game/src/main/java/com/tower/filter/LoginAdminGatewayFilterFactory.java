@@ -52,6 +52,7 @@ public class LoginAdminGatewayFilterFactory extends WebMvcConfigurationSupport {
                         "/account/**",
                         "/feign/**",
                         "/editionEtc/**",
+                        "/customer/**",
                         "/file/imageUpload",
                         "/kaptcha/image-code/**",
                         "/v2/api-docs");
