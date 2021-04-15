@@ -41,6 +41,9 @@ public class ProfitLogDto implements Serializable {
     @ApiModelProperty(value = "盈亏分")
     private Double profitCoin;
 
+    @ApiModelProperty(value = "状态（0未结算、1已结算）")
+    private Integer status;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "产生时间")
     private LocalDateTime createTime;

@@ -5,11 +5,14 @@ import com.tower.TowerApplication;
 import com.tower.core.utils.PlayerUtils;
 import com.tower.entity.*;
 import com.tower.service.*;
+import com.tower.service.my.MyChallengeRewardService;
+import com.tower.service.my.MySalvageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author 梦-屿-千-寻
@@ -25,7 +28,7 @@ public class PlayerFeignController {
     @Resource
     private BetLogService betLogService;
     @Resource
-    private ChallengeRewardService challengeRewardService;
+    private MyChallengeRewardService challengeRewardService;
     @Resource
     private ExtracLogService extracLogService;
     @Resource
@@ -37,7 +40,7 @@ public class PlayerFeignController {
     @Resource
     private SafeBoxLogService safeBoxLogService;
     @Resource
-    private SalvageService salvageService;
+    private MySalvageService salvageService;
     @Resource
     private ShareLogService shareLogService;
     @Resource
@@ -103,6 +106,11 @@ public class PlayerFeignController {
         welfareLogService.remove(new LambdaQueryWrapper<WelfareLog>().gt(WelfareLog::getId, 0));
         withdrawLogService.remove(new LambdaQueryWrapper<WithdrawLog>().gt(WithdrawLog::getId, 0));
         playerService.resetAward();
+        List<Player> players = playerService.list();
+        for (Player player : players) {
+            challengeRewardService.insertToday(player.getId());
+            salvageService.insertToday(player.getId());
+        }
     }
 
 }

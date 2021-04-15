@@ -61,19 +61,38 @@ public class DateUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(getLastPeriod());
-        System.out.println(getDate(1));
-        System.out.println(getDate(0));
-//        System.out.println(getDate(-1));
-//        System.out.println(DateUtils.byDayLocalDateTime(0).toInstant(ZoneOffset.of("+8")).toEpochMilli());
+        LocalDateTime now = LocalDateTime.now();
+        now = now.plusDays(5);
+        System.out.println(getPeriod(now));
+        System.out.println(getLastPeriod(now));
+        System.out.println(now.toString());
     }
 
+    /**
+     * 获得上上周期
+     *
+     * @return 上上周期时间
+     */
+    public static String getLastPeriod() {
+        return "2021-04-14";
+//        return getLastPeriod(LocalDateTime.now());
+    }
+    /**
+     * 获得上周期
+     *
+     * @return 上周期时间
+     */
     public static String getPeriod() {
-        LocalDateTime now = LocalDateTime.now();
+        return "2021-04-16";
+//        return getPeriod(LocalDateTime.now());
+    }
+
+    public static String getPeriod(LocalDateTime now) {
+        int ten = 10;
         StringJoiner sj = new StringJoiner("-");
         sj.add(String.valueOf(now.getYear()));
-        sj.add(now.getMonthValue() < 10 ? "0" + now.getMonthValue() : String.valueOf(now.getMonthValue()));
-        if (now.getDayOfMonth() <= 10) {
+        sj.add(now.getMonthValue() < ten ? "0" + now.getMonthValue() : String.valueOf(now.getMonthValue()));
+        if (now.getDayOfMonth() <= ten) {
             sj.add("01");
         } else if (now.getDayOfMonth() <= 20) {
             sj.add("11");
@@ -83,8 +102,7 @@ public class DateUtils {
         return sj.toString();
     }
 
-    public static String getLastPeriod() {
-        LocalDateTime now = LocalDateTime.now();
+    public static String getLastPeriod(LocalDateTime now) {
         String day;
         String month = now.getMonthValue() < 10 ? "0" + now.getMonthValue() : String.valueOf(now.getMonthValue());
         if (now.getDayOfMonth() - 10 <= 10 && now.getDayOfMonth() - 10 > 0) {
@@ -99,5 +117,11 @@ public class DateUtils {
         sj.add(String.valueOf(now.getYear()));
         sj.add(month).add(day);
         return sj.toString();
+    }
+
+    public static boolean isDay(int day) {
+        LocalDateTime now = LocalDateTime.now();
+        int dayOfMonth = now.getDayOfMonth();
+        return day == dayOfMonth;
     }
 }

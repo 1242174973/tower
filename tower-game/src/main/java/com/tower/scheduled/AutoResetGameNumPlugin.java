@@ -44,21 +44,31 @@ public class AutoResetGameNumPlugin {
      * 每天凌晨1点执行一次    重置所有提现次数   "0 0 0 * * ? ";//每天凌晨0:00:00执行一次,?用于无指定日期
      * //@Scheduled(cron = "*\/5 * * * * ?")
      */
-    @Scheduled(cron = "0 0 0 * * ? ")
+//    @Scheduled(cron = "0 0 0 * * ? ")
+    @Scheduled(cron = "* */10 * * * ?")
     public void resetGame() {
         towerGame.setNum(0);
         towerGame.getAttackLogList().clear();
-        if (DateUtils.getDate(0).equals(DateUtils.getPeriod())) {
+        if (DateUtils.isDay(1) || DateUtils.isDay(11) || DateUtils.isDay(21) || 1 == 1) {
             log.info("到达一周期,开始结算盈利返利 结算日期:{}", DateUtils.getPeriod());
             LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-            List<Player> players = playerService.getBaseMapper().selectList(lambdaQueryWrapper);
+            List<Player> players = playerService.list(lambdaQueryWrapper);
             for (Player player : players) {
                 LambdaQueryWrapper<ProfitLog> profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-                profitLogLambdaQueryWrapper.eq(ProfitLog::getUserId, player.getId()).ge(ProfitLog::getCreateTime, DateUtils.getLastPeriod())
+                profitLogLambdaQueryWrapper
+                        .eq(ProfitLog::getStatus, 0)
+                        .eq(ProfitLog::getUserId, player.getId()).ge(ProfitLog::getCreateTime, DateUtils.getLastPeriod())
                         .le(ProfitLog::getCreateTime, DateUtils.getPeriod());
-                double profit = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper)
-                        .stream().mapToDouble(ProfitLog::getProfitCoin).sum();
+                List<ProfitLog> profitLogs = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper);
+                for (ProfitLog profitLog : profitLogs) {
+                    profitLog.setStatus(1);
+                    profitLogService.updateById(profitLog);
+                }
+                double profit = profitLogs.stream().mapToDouble(ProfitLog::getProfitCoin).sum();
                 log.info("玩家:{}，结算盈利返利，返利金额为:{}", player.getId(), profit);
+                if (profit <= 0) {
+                    return;
+                }
                 player.setCanAward(player.getCanAward().add(BigDecimal.valueOf(profit)))
                         .setTotalAward(player.getTotalAward().add(BigDecimal.valueOf(profit)));
                 PlayerUtils.savePlayer(player);
@@ -74,6 +84,9 @@ public class AutoResetGameNumPlugin {
 
     public static void main(String[] args) {
         System.out.println(DateUtils.getDate(0));
+        System.out.println(DateUtils.getLastPeriod());
         System.out.println(DateUtils.getPeriod());
+        System.out.println(DateUtils.isDay(15));
+        System.out.println(DateUtils.isDay(16));
     }
 }
