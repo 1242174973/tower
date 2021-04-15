@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -105,11 +106,13 @@ public class PlayerFeignController {
         transferLogService.remove(new LambdaQueryWrapper<TransferLog>().gt(TransferLog::getId, 0));
         welfareLogService.remove(new LambdaQueryWrapper<WelfareLog>().gt(WelfareLog::getId, 0));
         withdrawLogService.remove(new LambdaQueryWrapper<WithdrawLog>().gt(WithdrawLog::getId, 0));
-        playerService.resetAward();
         List<Player> players = playerService.list();
         for (Player player : players) {
             challengeRewardService.insertToday(player.getId());
             salvageService.insertToday(player.getId());
+            player.setTotalAward(BigDecimal.ZERO);
+            player.setCanAward(BigDecimal.ZERO);
+            PlayerUtils.savePlayer(player);
         }
     }
 

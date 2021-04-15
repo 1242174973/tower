@@ -47,8 +47,8 @@ public class AutoResetGameNumPlugin {
 //    @Scheduled(cron = "0 0 0 * * ? ")
     @Scheduled(cron = "* */10 * * * ?")
     public void resetGame() {
-        towerGame.setNum(0);
-        towerGame.getAttackLogList().clear();
+//        towerGame.setNum(0);
+//        towerGame.getAttackLogList().clear();
         if (DateUtils.isDay(1) || DateUtils.isDay(11) || DateUtils.isDay(21) || 1 == 1) {
             log.info("到达一周期,开始结算盈利返利 结算日期:{}", DateUtils.getPeriod());
             LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -57,8 +57,9 @@ public class AutoResetGameNumPlugin {
                 LambdaQueryWrapper<ProfitLog> profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
                 profitLogLambdaQueryWrapper
                         .eq(ProfitLog::getStatus, 0)
-                        .eq(ProfitLog::getUserId, player.getId()).ge(ProfitLog::getCreateTime, DateUtils.getLastPeriod())
-                        .le(ProfitLog::getCreateTime, DateUtils.getPeriod());
+                        .eq(ProfitLog::getUserId, player.getId())
+                        .ge(ProfitLog::getCreateTime, DateUtils.getLastPeriod())
+                        .le(ProfitLog::getCreateTime,  DateUtils.getDate(1));
                 List<ProfitLog> profitLogs = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper);
                 for (ProfitLog profitLog : profitLogs) {
                     profitLog.setStatus(1);

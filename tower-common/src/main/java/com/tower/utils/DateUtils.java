@@ -74,8 +74,7 @@ public class DateUtils {
      * @return 上上周期时间
      */
     public static String getLastPeriod() {
-        return "2021-04-14";
-//        return getLastPeriod(LocalDateTime.now());
+        return getLastPeriod(LocalDateTime.now());
     }
     /**
      * 获得上周期
@@ -83,8 +82,7 @@ public class DateUtils {
      * @return 上周期时间
      */
     public static String getPeriod() {
-        return "2021-04-16";
-//        return getPeriod(LocalDateTime.now());
+        return getPeriod(LocalDateTime.now());
     }
 
     public static String getPeriod(LocalDateTime now) {

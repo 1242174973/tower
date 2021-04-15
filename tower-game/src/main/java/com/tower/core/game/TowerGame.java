@@ -142,13 +142,14 @@ public class TowerGame {
         Page<AttackLog> page = new Page<>(1, 1);
         page = attackLogService.page(page, logLambdaQueryWrapper);
         attackLogList = attackLogService.getBaseMapper().selectList(logLambdaQueryWrapper);
-        if (page.getRecords().size() <= 0) {
-            setNum(0);
-        } else {
-            AttackLog attackLog = page.getRecords().get(0);
-            String replace = attackLog.getOrderId().replace(DateUtils.getYearAndMonthAndDay(), "");
-            setNum(Integer.parseInt(replace));
-        }
+//        if (page.getRecords().size() <= 0) {
+//            setNum(0);
+//        } else {
+//            AttackLog attackLog = page.getRecords().get(0);
+//            String replace = attackLog.getOrderId().replace(DateUtils.getYearAndMonthAndDay(), "");
+//            setNum(Integer.parseInt(replace));
+//        }
+        setNum((int)page.getTotal());
         initMonsterInfoList();
         initRecommendIds();
         setAward(true);
