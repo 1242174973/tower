@@ -586,10 +586,11 @@ public class AgentController {
      * @return 上周期返利
      */
     private double getProfitRebate(int id) {
-        String startTime = getStartTime(20);
-        String stopTime = getStopTime(20);
+        String startTime = DateUtils.getLastPeriod();
+        String stopTime = DateUtils.getDate(1);
         LambdaQueryWrapper<ProfitLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
         logLambdaQueryWrapper.eq(ProfitLog::getUserId, id)
+                .eq(ProfitLog::getStatus,1)
                 .ge(ProfitLog::getCreateTime, startTime)
                 .le(ProfitLog::getCreateTime, stopTime);
         return profitLogService.getBaseMapper().selectList(logLambdaQueryWrapper)

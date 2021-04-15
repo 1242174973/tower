@@ -66,6 +66,7 @@ public class DateUtils {
         System.out.println(getPeriod(now));
         System.out.println(getLastPeriod(now));
         System.out.println(now.toString());
+        System.out.println(getDate(1));
     }
 
     /**

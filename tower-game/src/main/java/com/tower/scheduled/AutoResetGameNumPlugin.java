@@ -51,8 +51,7 @@ public class AutoResetGameNumPlugin {
 //        towerGame.getAttackLogList().clear();
         if (DateUtils.isDay(1) || DateUtils.isDay(11) || DateUtils.isDay(21) || 1 == 1) {
             log.info("到达一周期,开始结算盈利返利 结算日期:{}", DateUtils.getPeriod());
-            LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-            List<Player> players = playerService.list(lambdaQueryWrapper);
+            List<Player> players = playerService.list();
             for (Player player : players) {
                 LambdaQueryWrapper<ProfitLog> profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
                 profitLogLambdaQueryWrapper
@@ -68,7 +67,7 @@ public class AutoResetGameNumPlugin {
                 double profit = profitLogs.stream().mapToDouble(ProfitLog::getProfitCoin).sum();
                 log.info("玩家:{}，结算盈利返利，返利金额为:{}", player.getId(), profit);
                 if (profit <= 0) {
-                    return;
+                    continue;
                 }
                 player.setCanAward(player.getCanAward().add(BigDecimal.valueOf(profit)))
                         .setTotalAward(player.getTotalAward().add(BigDecimal.valueOf(profit)));
