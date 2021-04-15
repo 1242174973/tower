@@ -31,6 +31,8 @@ import AuthorityPath from "./views/admin/AuthorityPath"
 import Role from "./views/admin/Role"
 import TopUpLogLog from "./views/admin/TopUpLogLog"
 import EditionEtc from "./views/admin/EditionEtc"
+import CustomerService from "./views/admin/CustomerService"
+
 
 Vue.use(Router);
 
@@ -74,6 +76,11 @@ export default new Router({
             name: "game/editionEtc",
             component: EditionEtc,
         }, {
+            path: "game/customerService",
+            name: "game/customerService",
+            component: CustomerService,
+        },
+            {
             path: "log/welfareLog",
             name: "log/welfareLog",
             component: WelfareLog,

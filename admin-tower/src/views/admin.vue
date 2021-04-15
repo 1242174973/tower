@@ -132,6 +132,13 @@
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
+                            <li v-show="hasResource('/customerService/list')" class="" id="game-customerService-sidebar">
+                                <router-link to="/game/customerService">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    客服管理
+                                </router-link>
+                                <b class="arrow"></b>
+                            </li>
 
                         </ul>
 
