@@ -15,7 +15,7 @@
                         class="btn btn-white btn-default btn-info bigger ">
                     一键开启
                 </button>
-                <button v-show="Tool.hasResource('/index/start')" v-on:click="removeAll()"
+                <button v-show="Tool.hasResource('/index/removeAll')" v-on:click="removeAll()"
                         class="btn btn-white btn-default btn-info bigger ">
                     一键清空数据
                 </button>
@@ -214,12 +214,12 @@
                 let _this = this;
                 Confirm.show("清除数据后无法恢复，确认清除？", function () {
                     Loading.show();
-                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/index/start').then((response) => {
+                    _this.$ajax.post(process.env.VUE_APP_SERVER + '/index/removeAll').then((response) => {
                         Loading.hide();
                         let resp = response.data;
                         if (resp.success) {
                             _this.init();
-                            Toast.success("开启成功！");
+                            Toast.success("清除成功！");
                         }
                     })
                 });

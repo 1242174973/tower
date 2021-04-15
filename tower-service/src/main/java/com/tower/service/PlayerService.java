@@ -13,4 +13,5 @@ import com.tower.entity.Player;
  */
 public interface PlayerService extends IService<Player> {
 
+    void resetAward();
 }

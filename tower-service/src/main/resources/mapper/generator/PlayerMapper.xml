@@ -30,5 +30,8 @@
     <sql id="Base_Column_List">
         id, nick_name, password, rebate, tax, total_award, can_award, salt,is_agent, account, pic, vip, money, safe_box, safe_box_password, sign_in, total_sign_in, spread, super_id, create_time
     </sql>
+    <update id="resetAward">
+        UPDATE player SET total_award=0,can_award=0
+    </update>
 
 </mapper>

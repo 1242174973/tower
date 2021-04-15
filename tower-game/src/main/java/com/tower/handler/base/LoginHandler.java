@@ -53,6 +53,11 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
             Tower.LoginRes.Builder builder = Tower.LoginRes.newBuilder();
             builder.setSuc(false);
             builder.setMsg("token不能为空");
+            Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
+            msgCtn.setDatas(builder.build().toByteString());
+            msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
+            msgCtn.setType(Mid.MID_LOGIN_RES);
+            MsgUtil.sendMsg(ch,msgCtn.build());
             return;
         }
         // 这边拿到的 token  前往redis获得用户信息返回
@@ -61,6 +66,11 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
             Tower.LoginRes.Builder builder = Tower.LoginRes.newBuilder();
             builder.setSuc(false);
             builder.setMsg("登录失败，token以失效");
+            Tower.MsgCtn.Builder msgCtn = Tower.MsgCtn.newBuilder();
+            msgCtn.setDatas(builder.build().toByteString());
+            msgCtn.setReqMsgId(RandomUtils.nextInt(0, Integer.MAX_VALUE));
+            msgCtn.setType(Mid.MID_LOGIN_RES);
+            MsgUtil.sendMsg(ch,msgCtn.build());
             return;
         }
         ch.attr(GameConst.ATTR_USER_ID).set(player.getId().longValue());

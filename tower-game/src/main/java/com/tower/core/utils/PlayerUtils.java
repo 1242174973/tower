@@ -61,6 +61,7 @@ public class PlayerUtils {
         responseDto.setContent(userDto);
         return responseDto;
     }
+
     /**
      * 根据player对象获得返回体
      *
@@ -75,6 +76,7 @@ public class PlayerUtils {
         responseDto.setContent(userDto);
         return responseDto;
     }
+
     /**
      * 获得token
      *
@@ -91,15 +93,18 @@ public class PlayerUtils {
         redisOperator.hset(RedisVariable.USER_TOKEN, userId, token);
         return token;
     }
+
     /**
      * 获得token
-     *
-     * @param userId userId
      */
-    public static void setNewToken(int userId) {
+    public static void setNewToken(Player player) {
         RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
-        String token = UuidUtil.getShortUuid();
-        redisOperator.hset(RedisVariable.USER_TOKEN, userId, token);
+        String token = redisOperator.hget(RedisVariable.USER_TOKEN, player.getId());
+        redisOperator.hdel(RedisVariable.USER_TOKEN, String.valueOf(player.getId()));
+        redisOperator.hdel(RedisVariable.USER_INFO, token);
+        token = UuidUtil.getShortUuid();
+        redisOperator.hset(RedisVariable.USER_TOKEN, player.getId(), token);
+        redisOperator.hset(RedisVariable.USER_INFO, token, JsonUtils.objectToJson(player));
     }
 
     public static Player getPlayer(int id) {
@@ -115,6 +120,7 @@ public class PlayerUtils {
 
     /**
      * 查询不会重复的邀请码
+     *
      * @return 邀请码
      */
     public static String getShortUuid() {

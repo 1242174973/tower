@@ -17,4 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlayerServiceImpl extends ServiceImpl<PlayerMapper, Player> implements PlayerService {
 
+    @Override
+    public void resetAward() {
+        baseMapper.resetAward();
+    }
 }

@@ -65,6 +65,15 @@ public class IndexController {
         return responseDto;
     }
 
+    @PostMapping("/removeAll")
+    @ApiOperation(value = "一键清除数据", notes = "一键清除数据")
+    public ResponseDto<String> removeAll() {
+        feign.removeAll("qwe123456");
+        ResponseDto<String> responseDto = new ResponseDto<>();
+        responseDto.setMessage("清除成功");
+        return responseDto;
+    }
+
     /**
      * 查询活跃的玩家
      *

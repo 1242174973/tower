@@ -48,7 +48,7 @@ public class PlayerController {
                 "旧密码不正确");
         player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(newPassword + player.getSalt())));
         PlayerUtils.savePlayer(player);
-        PlayerUtils.setNewToken(player.getId());
+        PlayerUtils.setNewToken(player);
         return PlayerUtils.getPlayerDtoResponseDtoNotSave(player);
     }
 

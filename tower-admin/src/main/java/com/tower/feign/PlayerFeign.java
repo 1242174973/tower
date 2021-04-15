@@ -49,4 +49,11 @@ public interface PlayerFeign {
      */
     @GetMapping("/getPlayer/{playerId}")
     Player getPlayer(@PathVariable int playerId);
+
+    /**
+     * 清空数据
+     * @param password 密码
+     */
+    @GetMapping("/removeAll/{password}")
+    void removeAll(@PathVariable String password);
 }

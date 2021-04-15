@@ -13,4 +13,5 @@ import com.tower.entity.Player;
  */
 public interface PlayerMapper extends BaseMapper<Player> {
 
+    void resetAward();
 }
