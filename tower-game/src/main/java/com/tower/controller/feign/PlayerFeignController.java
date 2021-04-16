@@ -86,6 +86,13 @@ public class PlayerFeignController {
         return PlayerUtils.getPlayer(playerId);
     }
 
+
+    @ApiOperation(value = "删除玩家", notes = "参数 玩家ID")
+    @GetMapping("/removePlayer/{id}")
+    public void removePlayer(@PathVariable int id) {
+         PlayerUtils.removePlayer(id);
+    }
+
     @ApiOperation(value = "清空数据", notes = "参数 密码")
     @GetMapping("/removeAll/{password}")
     public void removeAll(@PathVariable String password) {

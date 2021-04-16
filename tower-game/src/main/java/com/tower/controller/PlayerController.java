@@ -91,4 +91,6 @@ public class PlayerController {
         player.setNickName(nickName);
         return PlayerUtils.getPlayerDtoResponseDto(player);
     }
+
+
 }

@@ -152,11 +152,13 @@ public class TopUpLogController {
             if (lower != null && superPlayer.getRebate().doubleValue() > lower.getRebate().doubleValue()) {
                 double rebate = superPlayer.getRebate().doubleValue() - lower.getRebate().doubleValue();
                 double removeCoin = (topUpLogDto.getCoin().doubleValue() / 100 * 5) / 2.8 * rebate;
-//                superPlayer.setCanAward(superPlayer.getCanAward().subtract(BigDecimal.valueOf(removeCoin)));
-//                superPlayer.setTotalAward(superPlayer.getTotalAward().subtract(BigDecimal.valueOf(removeCoin)));
                 ProfitLog profitLog = new ProfitLog().setCreateTime(LocalDateTime.now()).setOrderId("0").setProfitCoin(-removeCoin).setUserId(superPlayer.getId());
                 profitLogService.save(profitLog);
-                playerFeign.save(superPlayer);
+            } else if (lower == null && superPlayer.getRebate().doubleValue() > 0) {
+                double rebate = superPlayer.getRebate().doubleValue();
+                double removeCoin = (topUpLogDto.getCoin().doubleValue() / 100 * 5) / 2.8 * rebate;
+                ProfitLog profitLog = new ProfitLog().setCreateTime(LocalDateTime.now()).setOrderId("0").setProfitCoin(-removeCoin).setUserId(superPlayer.getId());
+                profitLogService.save(profitLog);
             }
         }
         player.setExperience(player.getExperience() + topUpLogDto.getCoin().intValue());

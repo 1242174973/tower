@@ -43,7 +43,8 @@ public interface PlayerFeign {
     void setStatus(@PathVariable int status);
 
     /**
-     *  根据玩家id获得玩家信息
+     * 根据玩家id获得玩家信息
+     *
      * @param playerId 玩家id
      * @return 返回玩家
      */
@@ -52,8 +53,14 @@ public interface PlayerFeign {
 
     /**
      * 清空数据
+     *
      * @param password 密码
      */
     @GetMapping("/removeAll/{password}")
     void removeAll(@PathVariable String password);
+
+    /** 清空数据
+     */
+    @GetMapping("/removePlayer/{id}")
+    void removePlayer(@PathVariable int id);
 }

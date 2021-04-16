@@ -123,6 +123,7 @@ public class PlayerController {
         playerFeign.save(player);
         return new ResponseDto<>();
     }
+
     /**
      * 获得所有下级
      *
@@ -135,11 +136,14 @@ public class PlayerController {
         players.addAll(playerList);
         playerList.forEach(player -> getAllLower(player.getId(), players));
     }
+
     @DeleteMapping("/delete/{id}")
     @ApiOperation(value = "删除玩家", notes = "删除玩家请求")
     public ResponseDto<String> delete(@ApiParam(value = "玩家ID", required = true)
                                       @PathVariable int id) {
-        playerService.removeById(id);
+        Player player = playerFeign.getPlayer(id);
+        BusinessUtil.assertParam(!player.getIsAgent().equals(1), "不能删除代理");
+        playerFeign.removePlayer(id);
         ResponseDto<String> responseDto = new ResponseDto<>();
         responseDto.setContent("删除成功");
         return responseDto;

@@ -134,4 +134,16 @@ public class PlayerUtils {
         }
         return shortUuid;
     }
+
+    public static void removePlayer(int id) {
+        RedisOperator redisOperator = MyApplicationContextUti.getBean(RedisOperator.class);
+        String token = redisOperator.hget(RedisVariable.USER_TOKEN, id);
+        redisOperator.hdel(RedisVariable.USER_TOKEN, String.valueOf(id));
+        redisOperator.hdel(RedisVariable.USER_INFO, token);
+        PlayerService playerService = MyApplicationContextUti.getBean(PlayerService.class);
+        playerService.removeById(id);
+        MsgBossHandler.getRoomUserIds().remove(id);
+        Channel playerIdChannel = MsgBossHandler.getPlayerIdChannel(id);
+        playerIdChannel.close();
+    }
 }
