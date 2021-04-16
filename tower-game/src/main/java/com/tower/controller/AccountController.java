@@ -88,6 +88,7 @@ public class AccountController {
         LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Player::getSpread, playerDto.getSpread());
         player = playerService.getOne(lambdaQueryWrapper);
+        player = getAgentPlayer(player);
         BusinessUtil.assertParam(player != null, "推广码不存在");
         int superId = player.getId();
         player = CopyUtil.copy(playerDto, Player.class);
@@ -118,6 +119,16 @@ public class AccountController {
         challengeRewardService.insertToday(userId);
         salvageService.insertToday(userId);
         return playerDtoResponseDto;
+    }
+
+    private Player getAgentPlayer(Player player) {
+        if (player == null) {
+            return null;
+        }
+        if (player.getIsAgent().equals(1)) {
+            return player;
+        }
+        return getAgentPlayer(playerService.getById(player.getSuperId()));
     }
 
     @PostMapping("/login/{account}/{password}")

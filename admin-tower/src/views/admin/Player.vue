@@ -373,7 +373,7 @@
                     Loading.hide();
                     let resp = response.data;
                     if (resp.success) {
-                        $("#form-modal2").modal("hide");
+                        $("#form-modal3").modal("hide");
                         _this.list(_this.page);
                         Toast.success("保存成功！");
                     } else {
@@ -455,6 +455,8 @@
                         if (resp.success) {
                             _this.list(_this.page);
                             Toast.success("删除成功！");
+                        }else{
+                            Toast.error(resp.message);
                         }
                     })
                 });

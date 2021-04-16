@@ -2,6 +2,7 @@ package com.tower.core.utils;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tower.core.constant.Mid;
+import com.tower.core.game.TowerGame;
 import com.tower.core.pipline.MsgBossHandler;
 import com.tower.dto.PlayerDto;
 import com.tower.dto.ResponseDto;
@@ -12,6 +13,8 @@ import com.tower.utils.*;
 import com.tower.variable.RedisVariable;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.RandomUtils;
+
+import java.util.stream.Collectors;
 
 /**
  * @author 梦-屿-千-寻
@@ -145,5 +148,9 @@ public class PlayerUtils {
         MsgBossHandler.getRoomUserIds().remove(id);
         Channel playerIdChannel = MsgBossHandler.getPlayerIdChannel(id);
         playerIdChannel.close();
+        TowerGame towerGame = MyApplicationContextUti.getBean(TowerGame.class);
+        towerGame.getBetLogList().removeAll(towerGame.getBetLogList()
+                .stream().filter(betLog -> betLog.getUserId().equals(id))
+                .collect(Collectors.toList()));
     }
 }
