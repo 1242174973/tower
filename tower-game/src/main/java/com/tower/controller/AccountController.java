@@ -103,6 +103,8 @@ public class AccountController {
         player.setSignInTime(DateUtils.byDayLocalDateTime(-1));
         player.setRebate(BigDecimal.ZERO);
         player.setTax(BigDecimal.ZERO);
+        player.setVip(0);
+        player.setExperience(0);
         player.setTotalAward(BigDecimal.ZERO);
         player.setCanAward(BigDecimal.ZERO);
         player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(player.getPassword() + player.getSalt())));

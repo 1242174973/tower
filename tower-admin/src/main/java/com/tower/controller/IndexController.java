@@ -2,13 +2,19 @@ package com.tower.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tower.dto.IndexDto;
+import com.tower.dto.MessageDto;
 import com.tower.dto.ResponseDto;
 import com.tower.entity.Player;
+import com.tower.entity.TopUpLog;
+import com.tower.entity.WithdrawLog;
 import com.tower.feign.PlayerFeign;
 import com.tower.service.PlayerService;
+import com.tower.service.TopUpLogService;
+import com.tower.service.WithdrawLogService;
 import com.tower.utils.DateUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +35,13 @@ public class IndexController {
 
     @Resource
     private PlayerService playerService;
+
+
+    @Resource
+    private TopUpLogService topUpLogService;
+
+    @Resource
+    private WithdrawLogService withdrawLogService;
 
     @Resource
     private PlayerFeign feign;
@@ -62,6 +75,17 @@ public class IndexController {
         feign.setStatus(0);
         ResponseDto<String> responseDto = new ResponseDto<>();
         responseDto.setMessage("开启成功");
+        return responseDto;
+    }
+
+    @GetMapping("/getMessage")
+    @ApiOperation(value = "一键清除数据", notes = "一键清除数据")
+    public ResponseDto<MessageDto> getMessage() {
+        MessageDto messageDto = new MessageDto();
+        messageDto.setTopUp(topUpLogService.count(new LambdaQueryWrapper<TopUpLog>().eq(TopUpLog::getState, 0)));
+        messageDto.setWithdraw(withdrawLogService.count(new LambdaQueryWrapper<WithdrawLog>().eq(WithdrawLog::getState, 0)));
+        ResponseDto<MessageDto> responseDto = new ResponseDto<>();
+        responseDto.setContent(messageDto);
         return responseDto;
     }
 

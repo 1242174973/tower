@@ -3,13 +3,10 @@ package com.tower.scheduled;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tower.core.game.TowerGame;
 import com.tower.core.utils.PlayerUtils;
-import com.tower.entity.Player;
-import com.tower.entity.ProfitLog;
-import com.tower.entity.ProfitRebateLog;
-import com.tower.service.PlayerService;
-import com.tower.service.ProfitLogService;
-import com.tower.service.ProfitRebateLogService;
+import com.tower.entity.*;
+import com.tower.service.*;
 import com.tower.service.my.MyChallengeRewardService;
+import com.tower.service.my.MySalvageService;
 import com.tower.utils.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -40,15 +37,62 @@ public class AutoResetGameNumPlugin {
     @Resource
     private PlayerService playerService;
 
+    @Resource
+    private AgentRebateService agentRebateService;
+    @Resource
+    private BetLogService betLogService;
+    @Resource
+    private MyChallengeRewardService challengeRewardService;
+    @Resource
+    private ExtracLogService extracLogService;
+    @Resource
+    private GameLogService gameLogService;
+    @Resource
+    private SafeBoxLogService safeBoxLogService;
+    @Resource
+    private MySalvageService salvageService;
+    @Resource
+    private ShareLogService shareLogService;
+    @Resource
+    private TopUpLogService topUpLogService;
+    @Resource
+    private TransferLogService transferLogService;
+    @Resource
+    private WelfareLogService welfareLogService;
+    @Resource
+    private WithdrawLogService withdrawLogService;
+
+
+    @Scheduled(cron = "0 0 0 * * ? ")
+    public void resetGameNum() {
+        towerGame.setNum(0);
+        towerGame.getAttackLogList().clear();
+        removeLastMonthLog();
+    }
+
+    public void removeLastMonthLog(){
+        String day=DateUtils.getLastMonthDay();
+        agentRebateService.remove(new LambdaQueryWrapper<AgentRebate>().gt(AgentRebate::getCreateTime, day));
+        betLogService.remove(new LambdaQueryWrapper<BetLog>().gt(BetLog::getCreateTime, day));
+        challengeRewardService.remove(new LambdaQueryWrapper<ChallengeReward>().gt(ChallengeReward::getCreateTime, day));
+        extracLogService.remove(new LambdaQueryWrapper<ExtracLog>().gt(ExtracLog::getCreateTime, day));
+        gameLogService.remove(new LambdaQueryWrapper<GameLog>().gt(GameLog::getCreateTime, day));
+        profitLogService.remove(new LambdaQueryWrapper<ProfitLog>().gt(ProfitLog::getCreateTime, day));
+        profitRebateLogService.remove(new LambdaQueryWrapper<ProfitRebateLog>().gt(ProfitRebateLog::getCreateTime, day));
+        safeBoxLogService.remove(new LambdaQueryWrapper<SafeBoxLog>().gt(SafeBoxLog::getCreateTime, day));
+        salvageService.remove(new LambdaQueryWrapper<Salvage>().gt(Salvage::getCreateTime, day));
+        shareLogService.remove(new LambdaQueryWrapper<ShareLog>().gt(ShareLog::getCreateTime, day));
+        topUpLogService.remove(new LambdaQueryWrapper<TopUpLog>().gt(TopUpLog::getCreateTime, day));
+        transferLogService.remove(new LambdaQueryWrapper<TransferLog>().gt(TransferLog::getCreateTime, day));
+        welfareLogService.remove(new LambdaQueryWrapper<WelfareLog>().gt(WelfareLog::getCreateTime, day));
+        withdrawLogService.remove(new LambdaQueryWrapper<WithdrawLog>().gt(WithdrawLog::getCreateTime, day));
+    }
     /**
      * 每天凌晨1点执行一次    重置所有提现次数   "0 0 0 * * ? ";//每天凌晨0:00:00执行一次,?用于无指定日期
      * //@Scheduled(cron = "*\/5 * * * * ?")
      */
-//    @Scheduled(cron = "0 0 0 * * ? ")
     @Scheduled(cron = "* */10 * * * ?")
     public void resetGame() {
-//        towerGame.setNum(0);
-//        towerGame.getAttackLogList().clear();
         if (DateUtils.isDay(1) || DateUtils.isDay(11) || DateUtils.isDay(21) || 1 == 1) {
             log.info("到达一周期,开始结算盈利返利 结算日期:{}", DateUtils.getPeriod());
             List<Player> players = playerService.list();

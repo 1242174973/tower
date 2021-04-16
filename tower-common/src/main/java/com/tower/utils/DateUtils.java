@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.StringJoiner;
@@ -62,11 +63,8 @@ public class DateUtils {
 
     public static void main(String[] args) {
         LocalDateTime now = LocalDateTime.now();
-        now = now.plusDays(5);
-        System.out.println(getPeriod(now));
-        System.out.println(getLastPeriod(now));
-        System.out.println(now.toString());
-        System.out.println(getDate(1));
+        now = now.plusMonths(-1);
+        System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
     }
 
     /**
@@ -77,6 +75,7 @@ public class DateUtils {
     public static String getLastPeriod() {
         return getLastPeriod(LocalDateTime.now());
     }
+
     /**
      * 获得上周期
      *
@@ -122,5 +121,11 @@ public class DateUtils {
         LocalDateTime now = LocalDateTime.now();
         int dayOfMonth = now.getDayOfMonth();
         return day == dayOfMonth;
+    }
+
+    public static String getLastMonthDay() {
+        LocalDateTime now = LocalDateTime.now();
+        now = now.plusMonths(-1);
+        return now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 }

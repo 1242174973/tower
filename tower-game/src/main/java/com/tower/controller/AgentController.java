@@ -59,6 +59,8 @@ public class AgentController {
     @Resource
     private ProfitLogService profitLogService;
 
+    @Resource
+    private UserWithdrawConfigService userWithdrawConfigService;
 
     @Resource
     private MyChallengeRewardService challengeRewardService;
@@ -127,6 +129,8 @@ public class AgentController {
         sqlPlayer.setSignInTime(DateUtils.byDayLocalDateTime(-1));
         sqlPlayer.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(password + sqlPlayer.getSalt())));
         sqlPlayer.setAccount(account);
+        sqlPlayer.setVip(0);
+        sqlPlayer.setExperience(0);
         sqlPlayer.setNickName(NameRandomUtil.getRandomName());
         sqlPlayer.setRebate(BigDecimal.valueOf(rebate));
         sqlPlayer.setTax(BigDecimal.ZERO);
@@ -141,6 +145,7 @@ public class AgentController {
                 setTodayWithdrawMoney(300000.00).
                 setTotalWithdrawSize(6).
                 setTodayWithdrawSize(6);
+        userWithdrawConfigService.saveOrUpdate(userWithdrawConfig);
         challengeRewardService.insertToday(sqlPlayer.getId());
         salvageService.insertToday(sqlPlayer.getId());
         ResponseDto<String> responseDto = new ResponseDto<>();
@@ -590,7 +595,7 @@ public class AgentController {
         String stopTime = DateUtils.getDate(1);
         LambdaQueryWrapper<ProfitLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
         logLambdaQueryWrapper.eq(ProfitLog::getUserId, id)
-                .eq(ProfitLog::getStatus,1)
+                .eq(ProfitLog::getStatus, 1)
                 .ge(ProfitLog::getCreateTime, startTime)
                 .le(ProfitLog::getCreateTime, stopTime);
         return profitLogService.getBaseMapper().selectList(logLambdaQueryWrapper)

@@ -22,8 +22,51 @@
                     </a>
                 </div>
 
+
                 <div class="navbar-buttons navbar-header pull-right" role="navigation">
                     <ul class="nav ace-nav">
+
+
+                        <li class="purple dropdown-modal">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                                <span class="badge badge-important">{{topUp+withdraw}}</span>
+                            </a>
+
+                            <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                                <li class="dropdown-header">
+                                    <i class="ace-icon fa fa-exclamation-triangle"></i>
+                                    {{topUp+withdraw}} 条消息
+                                </li>
+
+                                <li class="dropdown-content">
+                                    <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                                        <li>
+                                            <router-link to="/withdraw/topUpLog">
+                                                <div class="clearfix">
+													<span class="pull-left">
+														充值消息
+													</span>
+                                                    <span class="pull-right badge badge-info">+{{topUp}}</span>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                        <li>
+                                            <router-link to="/withdraw/withdrawLog">
+                                                <div class="clearfix">
+													<span class="pull-left">
+														提现消息
+													</span>
+                                                    <span class="pull-right badge badge-success">+{{withdraw}}</span>
+                                                </div>
+                                            </router-link>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+
                         <li class="light-blue dropdown-modal">
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                                 <img class="nav-user-photo" src="../../public/ace/assets/images/avatars/user.jpg"
@@ -132,7 +175,8 @@
                                 </router-link>
                                 <b class="arrow"></b>
                             </li>
-                            <li v-show="hasResource('/customerService/list')" class="" id="game-customerService-sidebar">
+                            <li v-show="hasResource('/customerService/list')" class=""
+                                id="game-customerService-sidebar">
                                 <router-link to="/game/customerService">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     客服管理
@@ -433,6 +477,7 @@
                 </div>
             </div>
 
+
             <div id="update-password" class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -487,7 +532,9 @@
                 loginUser: {},
                 oldPassword: "",
                 newPassword: "",
-                newPassword2: ""
+                newPassword2: "",
+                withdraw: 0,
+                topUp: 0,
             }
         },
         mounted: function () {
@@ -505,6 +552,26 @@
             if (!_this.hasResourceRouter(_this.$route.name)) {
                 // _this.$router.push("/login");
             }
+            setInterval(() => {
+                _this.$ajax.get(process.env.VUE_APP_SERVER + '/index/getMessage').then((response) => {
+                    Loading.hide();
+                    let resp = response.data;
+                    if (resp.success) {
+                        let size = 0;
+                        if (_this.withdraw < resp.content.withdraw) {
+                            size += (resp.content.withdraw - _this.withdraw);
+                        }
+                        if (_this.topUp < resp.content.topUp) {
+                            size += (resp.content.topUp - _this.topUp);
+                        }
+                        _this.withdraw = resp.content.withdraw;
+                        _this.topUp = resp.content.topUp;
+                        if (size > 0) {
+                            Toast.success("你有" + size + "条消息需要处理");
+                        }
+                    }
+                });
+            }, 500);
         },
         watch: {
             $route: {
