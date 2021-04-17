@@ -43,7 +43,7 @@ public class MyChallengeRewardServiceImpl extends ServiceImpl<MyChallengeRewardM
         LambdaQueryWrapper<ChallengeReward> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(ChallengeReward::getUserId, id)
                 .ge(ChallengeReward::getCreateTime, DateUtils.getDate(0))
-                .le(ChallengeReward::getCreateTime, DateUtils.getDate(1));
+                .lt(ChallengeReward::getCreateTime, DateUtils.getDate(1));
         ChallengeReward challengeReward = getOne(queryWrapper);
         if (challengeReward == null) {
             challengeReward = new ChallengeReward().setCreateTime(LocalDateTime.now()).setUserId(id)

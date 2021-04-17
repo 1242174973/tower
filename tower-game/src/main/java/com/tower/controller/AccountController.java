@@ -87,27 +87,28 @@ public class AccountController {
         BusinessUtil.assertParam(player == null, "用户已存在");
         LambdaQueryWrapper<Player> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Player::getSpread, playerDto.getSpread());
-        player = playerService.getOne(lambdaQueryWrapper);
-        player = getAgentPlayer(player);
+        player = getAgentPlayer(playerService.getOne(lambdaQueryWrapper));
         BusinessUtil.assertParam(player != null, "推广码不存在");
         int superId = player.getId();
-        player = CopyUtil.copy(playerDto, Player.class);
-        player.setCreateTime(LocalDateTime.now());
-        player.setMoney(BigDecimal.ZERO);
-        player.setSafeBox(BigDecimal.ZERO);
-        player.setSpread(PlayerUtils.getShortUuid());
-        player.setSuperId(superId);
-        player.setIsAgent(0);
-        player.setPic("https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/80/crop/xy/ai/w/160/h/160/resize/w/160?url=https%3A%2F%2Fimg02.sogoucdn.com%2Fapp%2Fa%2F10010016%2F4e2cfdceac8118da34011cb5c49da00b&appid=201003&sign=676de451cea1a4192b7eede671eae0ce");
-        player.setSalt(UuidUtil.getShortUuid(8));
-        player.setSignInTime(DateUtils.byDayLocalDateTime(-1));
-        player.setRebate(BigDecimal.ZERO);
-        player.setTax(BigDecimal.ZERO);
-        player.setVip(0);
-        player.setExperience(0);
-        player.setTotalAward(BigDecimal.ZERO);
-        player.setCanAward(BigDecimal.ZERO);
-        player.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(player.getPassword() + player.getSalt())));
+        player = CopyUtil.copy(playerDto, Player.class)
+                .setCreateTime(LocalDateTime.now())
+                .setMoney(BigDecimal.ZERO)
+                .setSafeBox(BigDecimal.ZERO)
+                .setSpread(PlayerUtils.getShortUuid())
+                .setSuperId(superId)
+                .setIsAgent(0)
+                .setSignIn(0)
+                .setTotalSignIn(0)
+                .setPic("https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/80/crop/xy/ai/w/160/h/160/resize/w/160?url=https%3A%2F%2Fimg02.sogoucdn.com%2Fapp%2Fa%2F10010016%2F4e2cfdceac8118da34011cb5c49da00b&appid=201003&sign=676de451cea1a4192b7eede671eae0ce")
+                .setSalt(UuidUtil.getShortUuid(8))
+                .setSignInTime(DateUtils.byDayLocalDateTime(-1))
+                .setRebate(BigDecimal.ZERO)
+                .setTax(BigDecimal.ZERO)
+                .setVip(0)
+                .setExperience(0)
+                .setTotalAward(BigDecimal.ZERO)
+                .setCanAward(BigDecimal.ZERO)
+                .setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(player.getPassword() + player.getSalt())));
         ResponseDto<PlayerDto> playerDtoResponseDto = PlayerUtils.getPlayerDtoResponseDto(player);
         int userId = playerDtoResponseDto.getContent().getId();
         UserWithdrawConfig userWithdrawConfig = new UserWithdrawConfig();

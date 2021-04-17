@@ -55,14 +55,14 @@ public class SalvageController {
         LambdaQueryWrapper<Salvage> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Salvage::getUserId, player.getId())
                 .ge(Salvage::getCreateTime, DateUtils.getDate(0))
-                .le(Salvage::getCreateTime, DateUtils.getDate(1));
+                .lt(Salvage::getCreateTime, DateUtils.getDate(1));
         Salvage salvage = salvageService.getOne(lambdaQueryWrapper);
         BusinessUtil.assertParam(salvage != null, "找不到今日援助奖励信息");
         SalvageDto salvageDto = CopyUtil.copy(salvage, SalvageDto.class);
         lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Salvage::getUserId, player.getId())
                 .ge(Salvage::getCreateTime, DateUtils.getDate(0))
-                .le(Salvage::getCreateTime, DateUtils.getDate(1));
+                .lt(Salvage::getCreateTime, DateUtils.getDate(1));
         salvage = salvageService.getOne(lambdaQueryWrapper);
         if (salvage != null) {
             salvageDto.setYesterdaySalvage(salvage.getSalvage());
@@ -93,7 +93,7 @@ public class SalvageController {
         }
         endTime = year + "-" + month + "-" + "01";
         lambdaQueryWrapper.ge(Salvage::getCreateTime, startTime);
-        lambdaQueryWrapper.le(Salvage::getCreateTime, endTime);
+        lambdaQueryWrapper.lt(Salvage::getCreateTime, endTime);
         page = salvageService.page(page, lambdaQueryWrapper);
         salvagePageDto.setTotal((int) page.getTotal());
         List<SalvageDto> salvageDtoList = CopyUtil.copyList(page.getRecords(), SalvageDto.class);

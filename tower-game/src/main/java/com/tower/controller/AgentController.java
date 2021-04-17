@@ -89,7 +89,7 @@ public class AgentController {
         LambdaQueryWrapper<Player> playerLambdaQueryWrapper = new LambdaQueryWrapper<>();
         playerLambdaQueryWrapper.eq(Player::getSuperId, player.getId())
                 .ge(Player::getCreateTime, DateUtils.getDate(0))
-                .le(Player::getCreateTime, DateUtils.getDate(1));
+                .lt(Player::getCreateTime, DateUtils.getDate(1));
         agentDto.setNewNum(playerService.count(playerLambdaQueryWrapper));
         double share = profitLogService.selectUserProfitByDay(player.getId(), DateUtils.getPeriod(), DateUtils.getDate(1));
         agentDto.setExpectedReward(BigDecimal.valueOf(share));
@@ -129,6 +129,8 @@ public class AgentController {
         sqlPlayer.setSignInTime(DateUtils.byDayLocalDateTime(-1));
         sqlPlayer.setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(password + sqlPlayer.getSalt())));
         sqlPlayer.setAccount(account);
+        sqlPlayer.setSignIn(0);
+        sqlPlayer.setTotalSignIn(0);
         sqlPlayer.setVip(0);
         sqlPlayer.setExperience(0);
         sqlPlayer.setNickName(NameRandomUtil.getRandomName());
@@ -206,14 +208,14 @@ public class AgentController {
             int[] ints = playerList.stream().mapToInt(Player::getId).toArray();
             List<Integer> ids = Arrays.stream(ints).boxed().collect(Collectors.toList());
             LambdaQueryWrapper<ChallengeReward> challengeRewardLambdaQueryWrapper = new LambdaQueryWrapper<>();
-            challengeRewardLambdaQueryWrapper.in(ChallengeReward::getUserId, ids).ge(ChallengeReward::getCreateTime, startTime).le(ChallengeReward::getCreateTime, stopTime);
+            challengeRewardLambdaQueryWrapper.in(ChallengeReward::getUserId, ids).ge(ChallengeReward::getCreateTime, startTime).lt(ChallengeReward::getCreateTime, stopTime);
             double sum = challengeRewardService.getBaseMapper().selectList(challengeRewardLambdaQueryWrapper).stream()
                     .mapToDouble(challengeReward -> challengeReward.getChallenge().doubleValue())
                     .sum();
             LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
             salvageLambdaQueryWrapper.in(Salvage::getUserId, ids)
                     .ge(Salvage::getCreateTime, startTime)
-                    .le(Salvage::getCreateTime, stopTime);
+                    .lt(Salvage::getCreateTime, stopTime);
             double profit = salvageService.getBaseMapper()
                     .selectList(salvageLambdaQueryWrapper)
                     .stream()
@@ -223,7 +225,7 @@ public class AgentController {
             agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId())
                     .in(AgentRebate::getUserId, ids)
                     .ge(AgentRebate::getCreateTime, startTime)
-                    .le(AgentRebate::getCreateTime, stopTime);
+                    .lt(AgentRebate::getCreateTime, stopTime);
             double agentRebateMoney = agentRebateService.getBaseMapper()
                     .selectList(agentRebateLambdaQueryWrapper)
                     .stream()
@@ -512,27 +514,27 @@ public class AgentController {
                 .boxed().collect(Collectors.toList());
         //返利数据
         LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId()).ge(AgentRebate::getCreateTime, startTime).le(AgentRebate::getCreateTime, stopTime);
+        agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId()).ge(AgentRebate::getCreateTime, startTime).lt(AgentRebate::getCreateTime, stopTime);
         double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
                 .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
         //流水数据
         LambdaQueryWrapper<ChallengeReward> challengeRewardLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        challengeRewardLambdaQueryWrapper.eq(ChallengeReward::getUserId, player.getId()).ge(ChallengeReward::getCreateTime, startTime).le(ChallengeReward::getCreateTime, stopTime);
+        challengeRewardLambdaQueryWrapper.eq(ChallengeReward::getUserId, player.getId()).ge(ChallengeReward::getCreateTime, startTime).lt(ChallengeReward::getCreateTime, stopTime);
         double betCoin = challengeRewardService.getBaseMapper().selectList(challengeRewardLambdaQueryWrapper)
                 .stream().mapToDouble(challengeReward -> challengeReward.getChallenge().doubleValue()).sum();
         //盈亏数据
         LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        salvageLambdaQueryWrapper.eq(Salvage::getUserId, player.getId()).ge(Salvage::getCreateTime, startTime).le(Salvage::getCreateTime, stopTime);
+        salvageLambdaQueryWrapper.eq(Salvage::getUserId, player.getId()).ge(Salvage::getCreateTime, startTime).lt(Salvage::getCreateTime, stopTime);
         double salvage = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
                 .stream().mapToDouble(Salvage::getProfit).sum();
         //充值数据
         LambdaQueryWrapper<TopUpLog> topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        topUpLogLambdaQueryWrapper.eq(TopUpLog::getUserId, player.getId()).ge(TopUpLog::getCreateTime, startTime).le(TopUpLog::getCreateTime, stopTime);
+        topUpLogLambdaQueryWrapper.eq(TopUpLog::getUserId, player.getId()).ge(TopUpLog::getCreateTime, startTime).lt(TopUpLog::getCreateTime, stopTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
                 .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
         //福利数据
         LambdaQueryWrapper<WelfareLog> welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        welfareLogLambdaQueryWrapper.eq(WelfareLog::getUserId, player.getId()).ge(WelfareLog::getCreateTime, startTime).le(WelfareLog::getCreateTime, stopTime);
+        welfareLogLambdaQueryWrapper.eq(WelfareLog::getUserId, player.getId()).ge(WelfareLog::getCreateTime, startTime).lt(WelfareLog::getCreateTime, stopTime);
         double welfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
                 .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
         double lowerRebate;
@@ -549,27 +551,27 @@ public class AgentController {
         } else {
             //返利数据
             agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
-            agentRebateLambdaQueryWrapper.in(AgentRebate::getAgentUserId, ids).ge(AgentRebate::getCreateTime, startTime).le(AgentRebate::getCreateTime, stopTime);
+            agentRebateLambdaQueryWrapper.in(AgentRebate::getAgentUserId, ids).ge(AgentRebate::getCreateTime, startTime).lt(AgentRebate::getCreateTime, stopTime);
             lowerRebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
                     .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
             //流水数据
             challengeRewardLambdaQueryWrapper = new LambdaQueryWrapper<>();
-            challengeRewardLambdaQueryWrapper.in(ChallengeReward::getUserId, ids).ge(ChallengeReward::getCreateTime, startTime).le(ChallengeReward::getCreateTime, stopTime);
+            challengeRewardLambdaQueryWrapper.in(ChallengeReward::getUserId, ids).ge(ChallengeReward::getCreateTime, startTime).lt(ChallengeReward::getCreateTime, stopTime);
             lowerBetCoin = challengeRewardService.getBaseMapper().selectList(challengeRewardLambdaQueryWrapper)
                     .stream().mapToDouble(challengeReward -> challengeReward.getChallenge().doubleValue()).sum();
             //盈利数据
             salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
-            salvageLambdaQueryWrapper.in(Salvage::getUserId, ids).ge(Salvage::getCreateTime, startTime).le(Salvage::getCreateTime, stopTime);
+            salvageLambdaQueryWrapper.in(Salvage::getUserId, ids).ge(Salvage::getCreateTime, startTime).lt(Salvage::getCreateTime, stopTime);
             lowerSalvage = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
                     .stream().mapToDouble(Salvage::getProfit).sum();
             //充值数据
             topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-            topUpLogLambdaQueryWrapper.in(TopUpLog::getUserId, ids).ge(TopUpLog::getCreateTime, startTime).le(TopUpLog::getCreateTime, stopTime);
+            topUpLogLambdaQueryWrapper.in(TopUpLog::getUserId, ids).ge(TopUpLog::getCreateTime, startTime).lt(TopUpLog::getCreateTime, stopTime);
             lowerTopUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
                     .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
             //福利数据
             welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-            welfareLogLambdaQueryWrapper.in(WelfareLog::getUserId, ids).ge(WelfareLog::getCreateTime, startTime).le(WelfareLog::getCreateTime, stopTime);
+            welfareLogLambdaQueryWrapper.in(WelfareLog::getUserId, ids).ge(WelfareLog::getCreateTime, startTime).lt(WelfareLog::getCreateTime, stopTime);
             lowerWelfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
                     .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
         }
@@ -597,7 +599,7 @@ public class AgentController {
         logLambdaQueryWrapper.eq(ProfitLog::getUserId, id)
                 .eq(ProfitLog::getStatus, 1)
                 .ge(ProfitLog::getCreateTime, startTime)
-                .le(ProfitLog::getCreateTime, stopTime);
+                .lt(ProfitLog::getCreateTime, stopTime);
         return profitLogService.getBaseMapper().selectList(logLambdaQueryWrapper)
                 .stream().mapToDouble(ProfitLog::getProfitCoin).sum();
     }
@@ -646,25 +648,25 @@ public class AgentController {
         }
         agentRebateLambdaQueryWrapper.in(AgentRebate::getAgentUserId, ids)
                 .ge(AgentRebate::getCreateTime, startTime)
-                .le(AgentRebate::getCreateTime, stopTime);
+                .lt(AgentRebate::getCreateTime, stopTime);
         double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
                 .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
         LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
         salvageLambdaQueryWrapper.in(Salvage::getUserId, ids)
                 .ge(Salvage::getCreateTime, startTime)
-                .le(Salvage::getCreateTime, stopTime);
+                .lt(Salvage::getCreateTime, stopTime);
         double profit = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
                 .stream().mapToDouble(Salvage::getProfit).sum();
         LambdaQueryWrapper<WelfareLog> welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         welfareLogLambdaQueryWrapper.in(WelfareLog::getUserId, ids)
                 .ge(WelfareLog::getCreateTime, startTime)
-                .le(WelfareLog::getCreateTime, stopTime);
+                .lt(WelfareLog::getCreateTime, stopTime);
         double welfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
                 .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
         LambdaQueryWrapper<TopUpLog> topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         topUpLogLambdaQueryWrapper.in(TopUpLog::getUserId, ids)
                 .ge(TopUpLog::getCreateTime, startTime)
-                .le(TopUpLog::getCreateTime, stopTime);
+                .lt(TopUpLog::getCreateTime, stopTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
                 .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
         double sum = playerList.stream().mapToDouble(player1 -> player.getMoney().doubleValue()).sum();
@@ -708,25 +710,25 @@ public class AgentController {
         LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
         agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId())
                 .ge(AgentRebate::getCreateTime, startTime)
-                .le(AgentRebate::getCreateTime, stopTime);
+                .lt(AgentRebate::getCreateTime, stopTime);
         double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
                 .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
         LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
         salvageLambdaQueryWrapper.eq(Salvage::getUserId, player.getId())
                 .ge(Salvage::getCreateTime, startTime)
-                .le(Salvage::getCreateTime, stopTime);
+                .lt(Salvage::getCreateTime, stopTime);
         double profit = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
                 .stream().mapToDouble(Salvage::getProfit).sum();
         LambdaQueryWrapper<WelfareLog> welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         welfareLogLambdaQueryWrapper.eq(WelfareLog::getUserId, player.getId())
                 .ge(WelfareLog::getCreateTime, startTime)
-                .le(WelfareLog::getCreateTime, stopTime);
+                .lt(WelfareLog::getCreateTime, stopTime);
         double welfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
                 .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
         LambdaQueryWrapper<TopUpLog> topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
         topUpLogLambdaQueryWrapper.eq(TopUpLog::getUserId, player.getId())
                 .ge(TopUpLog::getCreateTime, startTime)
-                .le(TopUpLog::getCreateTime, stopTime);
+                .lt(TopUpLog::getCreateTime, stopTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
                 .stream().mapToDouble(topUpLog -> topUpLog.getCoin() == null ? 0.0 : topUpLog.getCoin().doubleValue()).sum();
         lowerDetails.setCoin(player.getMoney().doubleValue()).setRebate(rebate).setProfit(profit).setWelfare(welfare).setTopUp(topUp);

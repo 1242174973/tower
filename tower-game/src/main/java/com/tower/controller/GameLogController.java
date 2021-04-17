@@ -56,7 +56,7 @@ public class GameLogController {
         LambdaQueryWrapper<GameLog> logLambdaQueryWrapper=new LambdaQueryWrapper<>();
         logLambdaQueryWrapper.eq(GameLog::getUserId,player.getId())
                 .ge(GameLog::getCreateTime, startTime)
-                .le(GameLog::getCreateTime, endTime);
+                .lt(GameLog::getCreateTime, endTime);
         page = gameLogService.page(page, logLambdaQueryWrapper);
         List<GameLogDto> gameLogDtoList = CopyUtil.copyList(page.getRecords(), GameLogDto.class);
         gameLogPageDto.setList(gameLogDtoList);

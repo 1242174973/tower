@@ -3511,6 +3511,24 @@ public final class Tower {
      * </pre>
      */
     double getSafeBox();
+
+    // optional int32 vip = 6;
+    /**
+     * <code>optional int32 vip = 6;</code>
+     *
+     * <pre>
+     *vip
+     * </pre>
+     */
+    boolean hasVip();
+    /**
+     * <code>optional int32 vip = 6;</code>
+     *
+     * <pre>
+     *vip
+     * </pre>
+     */
+    int getVip();
   }
   /**
    * Protobuf type {@code src.UserInfoRes}
@@ -3590,6 +3608,11 @@ public final class Tower {
             case 41: {
               bitField0_ |= 0x00000010;
               safeBox_ = input.readDouble();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              vip_ = input.readInt32();
               break;
             }
           }
@@ -3814,12 +3837,37 @@ public final class Tower {
       return safeBox_;
     }
 
+    // optional int32 vip = 6;
+    public static final int VIP_FIELD_NUMBER = 6;
+    private int vip_;
+    /**
+     * <code>optional int32 vip = 6;</code>
+     *
+     * <pre>
+     *vip
+     * </pre>
+     */
+    public boolean hasVip() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 vip = 6;</code>
+     *
+     * <pre>
+     *vip
+     * </pre>
+     */
+    public int getVip() {
+      return vip_;
+    }
+
     private void initFields() {
       id_ = 0;
       nickname_ = "";
       account_ = "";
       money_ = 0D;
       safeBox_ = 0D;
+      vip_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3847,6 +3895,9 @@ public final class Tower {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeDouble(5, safeBox_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, vip_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3876,6 +3927,10 @@ public final class Tower {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(5, safeBox_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, vip_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4007,6 +4062,8 @@ public final class Tower {
         bitField0_ = (bitField0_ & ~0x00000008);
         safeBox_ = 0D;
         bitField0_ = (bitField0_ & ~0x00000010);
+        vip_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -4055,6 +4112,10 @@ public final class Tower {
           to_bitField0_ |= 0x00000010;
         }
         result.safeBox_ = safeBox_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.vip_ = vip_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4089,6 +4150,9 @@ public final class Tower {
         }
         if (other.hasSafeBox()) {
           setSafeBox(other.getSafeBox());
+        }
+        if (other.hasVip()) {
+          setVip(other.getVip());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4456,6 +4520,55 @@ public final class Tower {
       public Builder clearSafeBox() {
         bitField0_ = (bitField0_ & ~0x00000010);
         safeBox_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 vip = 6;
+      private int vip_ ;
+      /**
+       * <code>optional int32 vip = 6;</code>
+       *
+       * <pre>
+       *vip
+       * </pre>
+       */
+      public boolean hasVip() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 vip = 6;</code>
+       *
+       * <pre>
+       *vip
+       * </pre>
+       */
+      public int getVip() {
+        return vip_;
+      }
+      /**
+       * <code>optional int32 vip = 6;</code>
+       *
+       * <pre>
+       *vip
+       * </pre>
+       */
+      public Builder setVip(int value) {
+        bitField0_ |= 0x00000020;
+        vip_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 vip = 6;</code>
+       *
+       * <pre>
+       *vip
+       * </pre>
+       */
+      public Builder clearVip() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        vip_ = 0;
         onChanged();
         return this;
       }
@@ -22598,52 +22711,53 @@ public final class Tower {
       "_time\030\001 \001(\003\022\023\n\013server_time\030\002 \001(\003\"\031\n\010Logi" +
       "nReq\022\r\n\005token\030\001 \002(\t\"H\n\010LoginRes\022\013\n\003suc\030\001" +
       " \002(\010\022\013\n\003msg\030\002 \001(\t\022\"\n\010userInfo\030\003 \001(\0132\020.sr" +
-      "c.UserInfoRes\"\\\n\013UserInfoRes\022\n\n\002id\030\001 \001(\005" +
+      "c.UserInfoRes\"i\n\013UserInfoRes\022\n\n\002id\030\001 \001(\005" +
       "\022\020\n\010nickname\030\002 \001(\t\022\017\n\007account\030\003 \001(\t\022\r\n\005m",
-      "oney\030\004 \001(\001\022\017\n\007safeBox\030\005 \001(\001\"\026\n\007RoomReq\022\013" +
-      "\n\003cmd\030\001 \002(\005\"\310\001\n\007RoomRes\022\013\n\003cmd\030\001 \002(\005\022\013\n\003" +
-      "suc\030\002 \002(\010\022\013\n\003msg\030\003 \001(\t\022%\n\013monsterInfo\030\004 " +
-      "\003(\0132\020.src.MonsterInfo\022)\n\rattackPageLog\030\005" +
-      " \001(\0132\022.src.AttackPageLog\022/\n\020recommendMon" +
-      "ster\030\006 \003(\0132\025.src.RecommendMonster\022\023\n\013rec" +
-      "ommendId\030\007 \003(\005\"y\n\013MonsterInfo\022\021\n\tmonster" +
-      "Id\030\001 \002(\005\022\023\n\013monsterName\030\002 \002(\t\022\021\n\tappearN" +
-      "um\030\003 \002(\005\022\r\n\005rates\030\004 \002(\005\022\016\n\006maxBet\030\005 \002(\005\022" +
-      "\020\n\010multiple\030\006 \002(\005\"N\n\rAttackPageLog\022!\n\tat",
-      "tackLog\030\001 \003(\0132\016.src.AttackLog\022\014\n\004page\030\002 " +
-      "\002(\005\022\014\n\004size\030\003 \002(\005\"/\n\tAttackLog\022\017\n\007orderI" +
-      "d\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\"H\n\020RecommendM" +
-      "onster\022\021\n\tmonsterId\030\001 \002(\005\022\r\n\005rates\030\002 \002(\005" +
-      "\022\022\n\ncontinuous\030\003 \002(\005\"5\n\007GameReq\022\013\n\003cmd\030\001" +
-      " \002(\005\022\035\n\007betInfo\030\002 \001(\0132\014.src.BetInfo\"\256\001\n\007" +
-      "GameRes\022\013\n\003cmd\030\001 \002(\005\022\021\n\tcountdown\030\002 \001(\005\022" +
-      "\'\n\014gameOverInfo\030\003 \001(\0132\021.src.GameOverInfo" +
-      "\022\035\n\007betInfo\030\004 \001(\0132\014.src.BetInfo\022\036\n\010betIn" +
-      "fos\030\005 \003(\0132\014.src.BetInfo\022\033\n\006notice\030\006 \001(\0132",
-      "\013.src.Notice\"-\n\006Notice\022\017\n\007content\030\001 \001(\t\022" +
-      "\022\n\ncreateTime\030\002 \001(\003\":\n\007BetInfo\022\016\n\006userId" +
-      "\030\001 \001(\005\022\021\n\tmonsterId\030\002 \002(\005\022\014\n\004coin\030\003 \002(\005\"" +
-      "\210\001\n\014GameOverInfo\022!\n\tattackLog\030\001 \002(\0132\016.sr" +
-      "c.AttackLog\022/\n\020recommendMonster\030\002 \003(\0132\025." +
-      "src.RecommendMonster\022\023\n\013recommendId\030\003 \003(" +
-      "\005\022\017\n\007winCoin\030\004 \001(\005\"4\n\tRecordReq\022\013\n\003cmd\030\001" +
-      " \002(\005\022\014\n\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\"\233\001\n\tRec" +
-      "ordRes\022\013\n\003cmd\030\001 \002(\005\022)\n\rattackPageLog\030\002 \001" +
-      "(\0132\022.src.AttackPageLog\0221\n\021detailedAttack",
-      "Log\030\003 \003(\0132\026.src.DetailedAttackLog\022#\n\nbet" +
-      "PageLog\030\004 \001(\0132\017.src.BetPageLog\"T\n\nBetPag" +
-      "eLog\022\033\n\006betLog\030\001 \003(\0132\013.src.BetLog\022\014\n\004pag" +
-      "e\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\"\204\002\n" +
-      "\006BetLog\022\017\n\007orderId\030\001 \002(\t\022\016\n\006oneBet\030\002 \002(\005" +
-      "\022\016\n\006twoBet\030\003 \002(\005\022\020\n\010threeBet\030\004 \002(\005\022\017\n\007fo" +
-      "urBet\030\005 \002(\005\022\017\n\007fiveBet\030\006 \002(\005\022\016\n\006sixBet\030\007" +
-      " \002(\005\022\020\n\010sevenBet\030\010 \002(\005\022\020\n\010eightBet\030\t \002(\005" +
-      "\022\025\n\rresultMonster\030\n \001(\005\022\022\n\nresultCoin\030\013 " +
-      "\001(\005\022\016\n\006status\030\014 \002(\005\022\022\n\ncreateTime\030\r \002(\003\022",
-      "\022\n\nresultTime\030\016 \001(\003\"t\n\021DetailedAttackLog" +
-      "\022\017\n\007orderId\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\022\022\n\n" +
-      "attackTime\030\003 \002(\003\022\023\n\013monsterName\030\004 \002(\t\022\022\n" +
-      "\nturretName\030\005 \002(\tB\017\n\rcom.tower.msg"
+      "oney\030\004 \001(\001\022\017\n\007safeBox\030\005 \001(\001\022\013\n\003vip\030\006 \001(\005" +
+      "\"\026\n\007RoomReq\022\013\n\003cmd\030\001 \002(\005\"\310\001\n\007RoomRes\022\013\n\003" +
+      "cmd\030\001 \002(\005\022\013\n\003suc\030\002 \002(\010\022\013\n\003msg\030\003 \001(\t\022%\n\013m" +
+      "onsterInfo\030\004 \003(\0132\020.src.MonsterInfo\022)\n\rat" +
+      "tackPageLog\030\005 \001(\0132\022.src.AttackPageLog\022/\n" +
+      "\020recommendMonster\030\006 \003(\0132\025.src.RecommendM" +
+      "onster\022\023\n\013recommendId\030\007 \003(\005\"y\n\013MonsterIn" +
+      "fo\022\021\n\tmonsterId\030\001 \002(\005\022\023\n\013monsterName\030\002 \002" +
+      "(\t\022\021\n\tappearNum\030\003 \002(\005\022\r\n\005rates\030\004 \002(\005\022\016\n\006" +
+      "maxBet\030\005 \002(\005\022\020\n\010multiple\030\006 \002(\005\"N\n\rAttack",
+      "PageLog\022!\n\tattackLog\030\001 \003(\0132\016.src.AttackL" +
+      "og\022\014\n\004page\030\002 \002(\005\022\014\n\004size\030\003 \002(\005\"/\n\tAttack" +
+      "Log\022\017\n\007orderId\030\001 \002(\t\022\021\n\tmonsterId\030\002 \002(\005\"" +
+      "H\n\020RecommendMonster\022\021\n\tmonsterId\030\001 \002(\005\022\r" +
+      "\n\005rates\030\002 \002(\005\022\022\n\ncontinuous\030\003 \002(\005\"5\n\007Gam" +
+      "eReq\022\013\n\003cmd\030\001 \002(\005\022\035\n\007betInfo\030\002 \001(\0132\014.src" +
+      ".BetInfo\"\256\001\n\007GameRes\022\013\n\003cmd\030\001 \002(\005\022\021\n\tcou" +
+      "ntdown\030\002 \001(\005\022\'\n\014gameOverInfo\030\003 \001(\0132\021.src" +
+      ".GameOverInfo\022\035\n\007betInfo\030\004 \001(\0132\014.src.Bet" +
+      "Info\022\036\n\010betInfos\030\005 \003(\0132\014.src.BetInfo\022\033\n\006",
+      "notice\030\006 \001(\0132\013.src.Notice\"-\n\006Notice\022\017\n\007c" +
+      "ontent\030\001 \001(\t\022\022\n\ncreateTime\030\002 \001(\003\":\n\007BetI" +
+      "nfo\022\016\n\006userId\030\001 \001(\005\022\021\n\tmonsterId\030\002 \002(\005\022\014" +
+      "\n\004coin\030\003 \002(\005\"\210\001\n\014GameOverInfo\022!\n\tattackL" +
+      "og\030\001 \002(\0132\016.src.AttackLog\022/\n\020recommendMon" +
+      "ster\030\002 \003(\0132\025.src.RecommendMonster\022\023\n\013rec" +
+      "ommendId\030\003 \003(\005\022\017\n\007winCoin\030\004 \001(\005\"4\n\tRecor" +
+      "dReq\022\013\n\003cmd\030\001 \002(\005\022\014\n\004page\030\002 \001(\005\022\014\n\004size\030" +
+      "\003 \001(\005\"\233\001\n\tRecordRes\022\013\n\003cmd\030\001 \002(\005\022)\n\ratta" +
+      "ckPageLog\030\002 \001(\0132\022.src.AttackPageLog\0221\n\021d",
+      "etailedAttackLog\030\003 \003(\0132\026.src.DetailedAtt" +
+      "ackLog\022#\n\nbetPageLog\030\004 \001(\0132\017.src.BetPage" +
+      "Log\"T\n\nBetPageLog\022\033\n\006betLog\030\001 \003(\0132\013.src." +
+      "BetLog\022\014\n\004page\030\002 \001(\005\022\014\n\004size\030\003 \001(\005\022\r\n\005co" +
+      "unt\030\004 \001(\005\"\204\002\n\006BetLog\022\017\n\007orderId\030\001 \002(\t\022\016\n" +
+      "\006oneBet\030\002 \002(\005\022\016\n\006twoBet\030\003 \002(\005\022\020\n\010threeBe" +
+      "t\030\004 \002(\005\022\017\n\007fourBet\030\005 \002(\005\022\017\n\007fiveBet\030\006 \002(" +
+      "\005\022\016\n\006sixBet\030\007 \002(\005\022\020\n\010sevenBet\030\010 \002(\005\022\020\n\010e" +
+      "ightBet\030\t \002(\005\022\025\n\rresultMonster\030\n \001(\005\022\022\n\n" +
+      "resultCoin\030\013 \001(\005\022\016\n\006status\030\014 \002(\005\022\022\n\ncrea",
+      "teTime\030\r \002(\003\022\022\n\nresultTime\030\016 \001(\003\"t\n\021Deta" +
+      "iledAttackLog\022\017\n\007orderId\030\001 \002(\t\022\021\n\tmonste" +
+      "rId\030\002 \002(\005\022\022\n\nattackTime\030\003 \002(\003\022\023\n\013monster" +
+      "Name\030\004 \002(\t\022\022\n\nturretName\030\005 \002(\tB\017\n\rcom.to" +
+      "wer.msg"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -22685,7 +22799,7 @@ public final class Tower {
           internal_static_src_UserInfoRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_src_UserInfoRes_descriptor,
-              new java.lang.String[] { "Id", "Nickname", "Account", "Money", "SafeBox", });
+              new java.lang.String[] { "Id", "Nickname", "Account", "Money", "SafeBox", "Vip", });
           internal_static_src_RoomReq_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_src_RoomReq_fieldAccessorTable = new

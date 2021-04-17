@@ -12,6 +12,8 @@ import com.tower.service.PlayerService;
 import com.tower.service.TopUpLogService;
 import com.tower.service.WithdrawLogService;
 import com.tower.utils.DateUtils;
+import com.tower.utils.JsonUtils;
+import com.tower.utils.RedisOperator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +44,10 @@ public class IndexController {
 
     @Resource
     private WithdrawLogService withdrawLogService;
+
+
+    @Resource
+    private RedisOperator redisOperator;
 
     @Resource
     private PlayerFeign feign;
@@ -79,11 +85,18 @@ public class IndexController {
     }
 
     @GetMapping("/getMessage")
-    @ApiOperation(value = "一键清除数据", notes = "一键清除数据")
+    @ApiOperation(value = "获取充值数据", notes = "获取充值数据")
     public ResponseDto<MessageDto> getMessage() {
-        MessageDto messageDto = new MessageDto();
-        messageDto.setTopUp(topUpLogService.count(new LambdaQueryWrapper<TopUpLog>().eq(TopUpLog::getState, 0)));
-        messageDto.setWithdraw(withdrawLogService.count(new LambdaQueryWrapper<WithdrawLog>().eq(WithdrawLog::getState, 0)));
+        String messageDtoStr = redisOperator.get("MESSAGE_DTO");
+        MessageDto messageDto;
+        if (messageDtoStr != null) {
+            messageDto = JsonUtils.jsonToPojo(messageDtoStr, MessageDto.class);
+        } else {
+            messageDto = new MessageDto();
+            messageDto.setTopUp(topUpLogService.count(new LambdaQueryWrapper<TopUpLog>().eq(TopUpLog::getState, 0)));
+            messageDto.setWithdraw(withdrawLogService.count(new LambdaQueryWrapper<WithdrawLog>().eq(WithdrawLog::getState, 0)));
+            redisOperator.set("MESSAGE_DTO", JsonUtils.objectToJson(messageDto), 1);
+        }
         ResponseDto<MessageDto> responseDto = new ResponseDto<>();
         responseDto.setContent(messageDto);
         return responseDto;

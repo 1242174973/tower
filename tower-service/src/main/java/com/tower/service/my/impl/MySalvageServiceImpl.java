@@ -43,7 +43,7 @@ public class MySalvageServiceImpl extends ServiceImpl<MySalvageMapper, Salvage> 
         LambdaQueryWrapper<Salvage> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Salvage::getUserId, id)
                 .ge(Salvage::getCreateTime, DateUtils.getDate(0))
-                .le(Salvage::getCreateTime, DateUtils.getDate(1));
+                .lt(Salvage::getCreateTime, DateUtils.getDate(1));
         Salvage salvage = getOne(queryWrapper);
         if (salvage == null) {
             salvage = new Salvage().setCreateTime(LocalDateTime.now()).setUserId(id)

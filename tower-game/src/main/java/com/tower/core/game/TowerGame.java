@@ -369,7 +369,7 @@ public class TowerGame {
         LambdaQueryWrapper<Salvage> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Salvage::getUserId, betLog.getUserId())
                 .ge(Salvage::getCreateTime, DateUtils.getDate(0))
-                .le(Salvage::getCreateTime, DateUtils.getDate(1));
+                .lt(Salvage::getCreateTime, DateUtils.getDate(1));
         Salvage salvage = salvageService.getOne(queryWrapper);
         Player player = PlayerUtils.getPlayer(betLog.getUserId());
         if (player == null || salvage == null) {
@@ -388,7 +388,7 @@ public class TowerGame {
         LambdaQueryWrapper<ChallengeReward> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(ChallengeReward::getUserId, betLog.getUserId())
                 .ge(ChallengeReward::getCreateTime, DateUtils.getDate(0))
-                .le(ChallengeReward::getCreateTime, DateUtils.getDate(1));
+                .lt(ChallengeReward::getCreateTime, DateUtils.getDate(1));
         ChallengeReward challengeReward = challengeRewardService.getOne(queryWrapper);
         Player player = PlayerUtils.getPlayer(betLog.getUserId());
         if (player == null || challengeReward == null) {

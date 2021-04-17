@@ -27,7 +27,7 @@
                     <ul class="nav ace-nav">
 
 
-                        <li class="purple dropdown-modal">
+                        <li v-show="hasResource('/index/getMessage')" class="purple dropdown-modal">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <i class="ace-icon fa fa-bell icon-animated-bell"></i>
                                 <span class="badge badge-important">{{topUp+withdraw}}</span>
@@ -535,6 +535,7 @@
                 newPassword2: "",
                 withdraw: 0,
                 topUp: 0,
+                Tool:Tool,
             }
         },
         mounted: function () {
@@ -552,26 +553,28 @@
             if (!_this.hasResourceRouter(_this.$route.name)) {
                 // _this.$router.push("/login");
             }
-            setInterval(() => {
-                _this.$ajax.get(process.env.VUE_APP_SERVER + '/index/getMessage').then((response) => {
-                    Loading.hide();
-                    let resp = response.data;
-                    if (resp.success) {
-                        let size = 0;
-                        if (_this.withdraw < resp.content.withdraw) {
-                            size += (resp.content.withdraw - _this.withdraw);
+            if (Tool.hasResource('/index/getMessage')) {
+                setInterval(() => {
+                    _this.$ajax.get(process.env.VUE_APP_SERVER + '/index/getMessage').then((response) => {
+                        Loading.hide();
+                        let resp = response.data;
+                        if (resp.success) {
+                            let size = 0;
+                            if (_this.withdraw < resp.content.withdraw) {
+                                size += (resp.content.withdraw - _this.withdraw);
+                            }
+                            if (_this.topUp < resp.content.topUp) {
+                                size += (resp.content.topUp - _this.topUp);
+                            }
+                            _this.withdraw = resp.content.withdraw;
+                            _this.topUp = resp.content.topUp;
+                            if (size > 0) {
+                                Toast.success("你有" + size + "条新消息需要处理");
+                            }
                         }
-                        if (_this.topUp < resp.content.topUp) {
-                            size += (resp.content.topUp - _this.topUp);
-                        }
-                        _this.withdraw = resp.content.withdraw;
-                        _this.topUp = resp.content.topUp;
-                        if (size > 0) {
-                            Toast.success("你有" + size + "条消息需要处理");
-                        }
-                    }
-                });
-            }, 500);
+                    });
+                }, 1000);
+            }
         },
         watch: {
             $route: {

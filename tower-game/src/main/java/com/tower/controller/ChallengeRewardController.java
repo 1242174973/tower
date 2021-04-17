@@ -54,7 +54,7 @@ public class ChallengeRewardController {
         LambdaQueryWrapper<ChallengeReward> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(ChallengeReward::getUserId, player.getId())
                 .ge(ChallengeReward::getCreateTime, DateUtils.getDate(0))
-                .le(ChallengeReward::getCreateTime, DateUtils.getDate(1));
+                .lt(ChallengeReward::getCreateTime, DateUtils.getDate(1));
         ChallengeReward challengeReward = challengeRewardService.getOne(lambdaQueryWrapper);
         BusinessUtil.assertParam(challengeReward != null, "找不到今日挑战奖励");
         ChallengeRewardDto challengeRewardDto = CopyUtil.copy(challengeReward, ChallengeRewardDto.class);
@@ -85,7 +85,7 @@ public class ChallengeRewardController {
         }
         endTime = year + "-" + month + "-" + "01";
         lambdaQueryWrapper.ge(ChallengeReward::getCreateTime, startTime);
-        lambdaQueryWrapper.le(ChallengeReward::getCreateTime, endTime);
+        lambdaQueryWrapper.lt(ChallengeReward::getCreateTime, endTime);
         page = challengeRewardService.page(page, lambdaQueryWrapper);
         challengeRewardPageDto.setTotal((int) page.getTotal());
         List<ChallengeRewardDto> challengeRewardDtoList = CopyUtil.copyList(page.getRecords(), ChallengeRewardDto.class);

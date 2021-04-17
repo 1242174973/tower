@@ -131,7 +131,7 @@ public class WelfareController {
             endTime = DateUtils.getDate(-welFareLogPageDto.getRecentDay() + 2);
         }
         lambdaQueryWrapper.ge(WelfareLog::getCreateTime, startTime);
-        lambdaQueryWrapper.le(WelfareLog::getCreateTime, endTime);
+        lambdaQueryWrapper.lt(WelfareLog::getCreateTime, endTime);
         page = welfareLogService.page(page, lambdaQueryWrapper);
         welFareLogPageDto.setTotal((int) page.getTotal());
         List<WelfareLogDto> welfareLogDtoList = CopyUtil.copyList(page.getRecords(), WelfareLogDto.class);

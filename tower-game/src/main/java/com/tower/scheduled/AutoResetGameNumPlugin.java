@@ -102,7 +102,7 @@ public class AutoResetGameNumPlugin {
                         .eq(ProfitLog::getStatus, 0)
                         .eq(ProfitLog::getUserId, player.getId())
                         .ge(ProfitLog::getCreateTime, DateUtils.getLastPeriod())
-                        .le(ProfitLog::getCreateTime,  DateUtils.getDate(1));
+                        .lt(ProfitLog::getCreateTime,  DateUtils.getDate(1));
                 List<ProfitLog> profitLogs = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper);
                 for (ProfitLog profitLog : profitLogs) {
                     profitLog.setStatus(1);

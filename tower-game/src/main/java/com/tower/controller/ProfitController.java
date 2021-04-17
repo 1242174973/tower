@@ -74,42 +74,38 @@ public class ProfitController {
 
         //盈利数据
         LambdaQueryWrapper<Salvage> salvageLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        salvageLambdaQueryWrapper.eq(Salvage::getUserId, player.getId()).ge(Salvage::getCreateTime, startTime).le(Salvage::getCreateTime, endTime);
+        salvageLambdaQueryWrapper.eq(Salvage::getUserId, player.getId()).ge(Salvage::getCreateTime, startTime).lt(Salvage::getCreateTime, endTime);
         double salvage = salvageService.getBaseMapper().selectList(salvageLambdaQueryWrapper)
                 .stream().mapToDouble(Salvage::getProfit).sum();
-        LambdaQueryWrapper<ProfitLog> profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        profitLogLambdaQueryWrapper.eq(ProfitLog::getUserId, player.getId()).ge(ProfitLog::getCreateTime, startTime).le(ProfitLog::getCreateTime, endTime);
-        double profit = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper)
-                .stream().mapToDouble(ProfitLog::getProfitCoin).sum();
 
         //充值数据
         LambdaQueryWrapper<TopUpLog> topUpLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        topUpLogLambdaQueryWrapper.eq(TopUpLog::getUserId, player.getId()).ge(TopUpLog::getCreateTime, startTime).le(TopUpLog::getCreateTime, endTime);
+        topUpLogLambdaQueryWrapper.eq(TopUpLog::getUserId, player.getId()).ge(TopUpLog::getCreateTime, startTime).lt(TopUpLog::getCreateTime, endTime);
         double topUp = topUpLogService.getBaseMapper().selectList(topUpLogLambdaQueryWrapper)
                 .stream().mapToDouble(topUpLog -> topUpLog.getCoin()==null?0.0:topUpLog.getCoin().doubleValue()).sum();
 
         //福利数据
         LambdaQueryWrapper<WelfareLog> welfareLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        welfareLogLambdaQueryWrapper.eq(WelfareLog::getUserId, player.getId()).ge(WelfareLog::getCreateTime, startTime).le(WelfareLog::getCreateTime, endTime);
+        welfareLogLambdaQueryWrapper.eq(WelfareLog::getUserId, player.getId()).ge(WelfareLog::getCreateTime, startTime).lt(WelfareLog::getCreateTime, endTime);
         double welfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
                 .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
 
         //流水数据
         LambdaQueryWrapper<ChallengeReward> challengeRewardLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        challengeRewardLambdaQueryWrapper.eq(ChallengeReward::getUserId, player.getId()).ge(ChallengeReward::getCreateTime, startTime).le(ChallengeReward::getCreateTime, endTime);
+        challengeRewardLambdaQueryWrapper.eq(ChallengeReward::getUserId, player.getId()).ge(ChallengeReward::getCreateTime, startTime).lt(ChallengeReward::getCreateTime, endTime);
         double betCoin = challengeRewardService.getBaseMapper().selectList(challengeRewardLambdaQueryWrapper)
                 .stream().mapToDouble(challengeReward -> challengeReward.getChallenge().doubleValue()).sum();
 
         //返利数据
         LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId()).ge(AgentRebate::getCreateTime, startTime).le(AgentRebate::getCreateTime, endTime);
+        agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId()).ge(AgentRebate::getCreateTime, startTime).lt(AgentRebate::getCreateTime, endTime);
         double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
                 .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
 
         ProfitInfoDto profitInfoDto = new ProfitInfoDto();
         profitInfoDto.setCreateTime(startTime);
-        profitInfoDto.setProfit(profit + salvage);
-        profitInfoDto.setWater(welfare);
+        profitInfoDto.setProfit(salvage);
+        profitInfoDto.setWelfare(welfare);
         profitInfoDto.setTopUp(topUp);
         profitInfoDto.setWater(betCoin);
         profitInfoDto.setRebate(rebate);

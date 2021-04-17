@@ -136,6 +136,7 @@ public class LoginHandler extends AbsLogicHandler<Tower.LoginReq> implements Mid
         userInfoRes.setNickname(player.getNickName());
         userInfoRes.setMoney(player.getMoney().doubleValue());
         userInfoRes.setSafeBox(player.getSafeBox().doubleValue());
+        userInfoRes.setVip(player.getVip());
         builder.setUserInfo(userInfoRes);
         msgCtn.setDatas(builder.build().toByteString());
         MsgUtil.sendMsg(ch, msgCtn.build().toByteArray());
