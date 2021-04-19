@@ -1,5 +1,6 @@
 package com.tower.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -22,6 +23,10 @@ public class Swagger2 {
 //    http://localhost:8088/swagger-ui.html     原路径
 //    http://localhost:8088/doc.html            原路径
 
+
+    @Value("${swagger2.enable}")
+    private Boolean enable;
+
     /**
      * 配置swagger2核心配置 docket
      */
@@ -30,6 +35,7 @@ public class Swagger2 {
         // 指定api类型为swagger2
         return new Docket(DocumentationType.SWAGGER_2)
                 // 用于定义api文档汇总信息
+                .enable(enable)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors
