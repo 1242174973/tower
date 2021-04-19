@@ -72,20 +72,20 @@ public class AutoResetGameNumPlugin {
 
     public void removeLastMonthLog(){
         String day=DateUtils.getLastMonthDay();
-        agentRebateService.remove(new LambdaQueryWrapper<AgentRebate>().gt(AgentRebate::getCreateTime, day));
-        betLogService.remove(new LambdaQueryWrapper<BetLog>().gt(BetLog::getCreateTime, day));
-        challengeRewardService.remove(new LambdaQueryWrapper<ChallengeReward>().gt(ChallengeReward::getCreateTime, day));
-        extracLogService.remove(new LambdaQueryWrapper<ExtracLog>().gt(ExtracLog::getCreateTime, day));
-        gameLogService.remove(new LambdaQueryWrapper<GameLog>().gt(GameLog::getCreateTime, day));
-        profitLogService.remove(new LambdaQueryWrapper<ProfitLog>().gt(ProfitLog::getCreateTime, day));
-        profitRebateLogService.remove(new LambdaQueryWrapper<ProfitRebateLog>().gt(ProfitRebateLog::getCreateTime, day));
-        safeBoxLogService.remove(new LambdaQueryWrapper<SafeBoxLog>().gt(SafeBoxLog::getCreateTime, day));
-        salvageService.remove(new LambdaQueryWrapper<Salvage>().gt(Salvage::getCreateTime, day));
-        shareLogService.remove(new LambdaQueryWrapper<ShareLog>().gt(ShareLog::getCreateTime, day));
-        topUpLogService.remove(new LambdaQueryWrapper<TopUpLog>().gt(TopUpLog::getCreateTime, day));
-        transferLogService.remove(new LambdaQueryWrapper<TransferLog>().gt(TransferLog::getCreateTime, day));
-        welfareLogService.remove(new LambdaQueryWrapper<WelfareLog>().gt(WelfareLog::getCreateTime, day));
-        withdrawLogService.remove(new LambdaQueryWrapper<WithdrawLog>().gt(WithdrawLog::getCreateTime, day));
+        agentRebateService.remove(new LambdaQueryWrapper<AgentRebate>().lt(AgentRebate::getCreateTime, day));
+        betLogService.remove(new LambdaQueryWrapper<BetLog>().lt(BetLog::getCreateTime, day));
+        challengeRewardService.remove(new LambdaQueryWrapper<ChallengeReward>().lt(ChallengeReward::getCreateTime, day));
+        extracLogService.remove(new LambdaQueryWrapper<ExtracLog>().lt(ExtracLog::getCreateTime, day));
+        gameLogService.remove(new LambdaQueryWrapper<GameLog>().lt(GameLog::getCreateTime, day));
+        profitLogService.remove(new LambdaQueryWrapper<ProfitLog>().lt(ProfitLog::getCreateTime, day));
+        profitRebateLogService.remove(new LambdaQueryWrapper<ProfitRebateLog>().lt(ProfitRebateLog::getCreateTime, day));
+        safeBoxLogService.remove(new LambdaQueryWrapper<SafeBoxLog>().lt(SafeBoxLog::getCreateTime, day));
+        salvageService.remove(new LambdaQueryWrapper<Salvage>().lt(Salvage::getCreateTime, day));
+        shareLogService.remove(new LambdaQueryWrapper<ShareLog>().lt(ShareLog::getCreateTime, day));
+        topUpLogService.remove(new LambdaQueryWrapper<TopUpLog>().lt(TopUpLog::getCreateTime, day));
+        transferLogService.remove(new LambdaQueryWrapper<TransferLog>().lt(TransferLog::getCreateTime, day));
+        welfareLogService.remove(new LambdaQueryWrapper<WelfareLog>().lt(WelfareLog::getCreateTime, day));
+        withdrawLogService.remove(new LambdaQueryWrapper<WithdrawLog>().lt(WithdrawLog::getCreateTime, day));
     }
     /**
      * 每天凌晨1点执行一次    重置所有提现次数   "0 0 0 * * ? ";//每天凌晨0:00:00执行一次,?用于无指定日期

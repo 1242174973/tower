@@ -110,7 +110,10 @@ public class PlayerController {
         player.setTotalSignIn(playerDto.getTotalSignIn());
         player.setTax(playerDto.getTax());
         Player player1 = playerFeign.getPlayer(player.getSuperId());
-        BusinessUtil.assertParam(playerDto.getRebate().doubleValue() <= player1.getRebate().doubleValue(), "不能设置比上级更高的返利");
+        if(player1!=null){
+            BusinessUtil.assertParam(playerDto.getRebate().doubleValue() <= player1.getRebate().doubleValue(), "不能设置比上级更高的返利");
+        }
+        BusinessUtil.assertParam(playerDto.getRebate().doubleValue() <= 3.0, "不能设置超过3.0");
         List<Player> playerList = new ArrayList<>();
         getAllLower(playerDto.getId(), playerList);
         playerList.forEach(p -> {

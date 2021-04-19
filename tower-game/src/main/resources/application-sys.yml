@@ -24,3 +24,5 @@ netty:
   port: 10101
 game:
   verify: true
+swagger2:
+  enable: true

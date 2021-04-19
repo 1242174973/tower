@@ -1,8 +1,8 @@
 server:
   port: 9999
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 spring:
   main:
     allow-bean-definition-overriding: true
@@ -14,3 +14,5 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: jef5re4g6e4
+swagger2:
+  enable: false
