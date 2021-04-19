@@ -103,14 +103,14 @@ public class AutoResetGameNumPlugin {
                         .eq(ProfitLog::getUserId, player.getId())
                         .ge(ProfitLog::getCreateTime, DateUtils.getLastPeriod())
                         .lt(ProfitLog::getCreateTime,  DateUtils.getDate(1));
-                List<ProfitLog> profitLogs = profitLogService.getBaseMapper().selectList(profitLogLambdaQueryWrapper);
+                List<ProfitLog> profitLogs = profitLogService.list(profitLogLambdaQueryWrapper);
                 for (ProfitLog profitLog : profitLogs) {
                     profitLog.setStatus(1);
                     profitLogService.updateById(profitLog);
                 }
                 double profit = profitLogs.stream().mapToDouble(ProfitLog::getProfitCoin).sum();
                 log.info("玩家:{}，结算盈利返利，返利金额为:{}", player.getId(), profit);
-                if (profit <= 0) {
+                if (profit == 0) {
                     continue;
                 }
                 player.setCanAward(player.getCanAward().add(BigDecimal.valueOf(profit)))
