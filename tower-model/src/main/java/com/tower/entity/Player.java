@@ -76,6 +76,9 @@ public class Player implements Serializable {
     @ApiModelProperty(value = "总奖励")
     private BigDecimal totalAward;
 
+    @ApiModelProperty(value = "预计奖励")
+    private BigDecimal expectedAward;
+
     @ApiModelProperty(value = "可提现奖励")
     private BigDecimal canAward;
 

@@ -77,6 +77,7 @@ public class AgentController {
     @Resource
     private TopUpLogService topUpLogService;
 
+
     @GetMapping("/agentIndex")
     @ApiOperation(value = "代理首页", notes = "无需参数")
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
@@ -86,12 +87,9 @@ public class AgentController {
         agentDto.setTotalAward(player.getTotalAward());
         agentDto.setTax(player.getTax());
         agentDto.setRebate(player.getRebate());
-        LambdaQueryWrapper<Player> playerLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        playerLambdaQueryWrapper.eq(Player::getSuperId, player.getId())
-                .ge(Player::getCreateTime, DateUtils.getDate(0))
-                .lt(Player::getCreateTime, DateUtils.getDate(1));
-        agentDto.setNewNum(playerService.count(playerLambdaQueryWrapper));
-        double share = profitLogService.selectUserProfitByDay(player.getId(), DateUtils.getPeriod(), DateUtils.getDate(1));
+        double share=player.getExpectedAward().doubleValue()>0
+                ?player.getExpectedAward().multiply(player.getTax()).doubleValue()
+                :player.getExpectedAward().doubleValue();
         agentDto.setExpectedReward(BigDecimal.valueOf(share));
         ResponseDto<AgentDto> responseDto = new ResponseDto<>();
         responseDto.setContent(agentDto);
@@ -281,6 +279,8 @@ public class AgentController {
                     .setCreateTime(LocalDateTime.now());
             welfareLogService.save(welfareLog);
             ResponseDto<String> responseDto = new ResponseDto<>();
+            player.setTotalAward(player.getTotalAward().add(BigDecimal.valueOf(money)));
+            PlayerUtils.savePlayer(player);
             responseDto.setContent("提取成功");
             return responseDto;
         } catch (BusinessException e) {
@@ -467,6 +467,11 @@ public class AgentController {
         statementDto.setOtherActiveNum(getActiveNum(playerList) - statementDto.getActiveNum());
         //赋值其他参数
         setStatementDto(statementDto, player, period, playerList);
+
+        double share=player.getExpectedAward().doubleValue()>0
+                ?player.getExpectedAward().multiply(player.getTax()).doubleValue()
+                :player.getExpectedAward().doubleValue();
+        statementDto.setTotalProfit( statementDto.getMyRebate() + share);
         ResponseDto<StatementDto> responseDto = new ResponseDto<>();
         responseDto.setContent(statementDto);
         responseDto.setMessage("查询成功");

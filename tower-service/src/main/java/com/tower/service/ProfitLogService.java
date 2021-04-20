@@ -21,4 +21,13 @@ public interface ProfitLogService extends IService<ProfitLog> {
      * @return 盈亏返利
      */
     double selectUserProfitByDay(int userId, String startTime, String stopTime);
+    /**
+     * 查询盈亏返利
+     *
+     * @param userId    玩家id
+     * @param startTime 开始时间
+     * @param stopTime  结束时间
+     * @return 盈亏返利
+     */
+    double selectUserProfitByDayAllStatus(int userId, String startTime, String stopTime);
 }

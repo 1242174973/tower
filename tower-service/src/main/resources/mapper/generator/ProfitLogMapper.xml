@@ -24,5 +24,12 @@
         AND create_time &lt; #{stopTime}
         GROUP BY user_id
     </select>
+    <select id="selectUserProfitByDayAllStatus" resultType="java.lang.Double">
+        SELECT SUM(profit_coin) FROM profit_log
+        WHERE user_id = #{userId}
+        AND create_time>#{startTime}
+        AND create_time &lt; #{stopTime}
+        GROUP BY user_id
+    </select>
 
 </mapper>

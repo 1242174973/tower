@@ -69,4 +69,8 @@ public class StatementDto {
 
     @ApiModelProperty(value = "周期")
     private int period;
+
+    @ApiModelProperty(value = "本周期团队盈亏总和")
+    private double totalProfit;
+
 }

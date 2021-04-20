@@ -338,13 +338,12 @@ public class TowerGame {
                     saveSalvage(betLog, totalBet);
                     double rebateCoin = rebate(betLog, playerList, totalBet);
                     double winCoin = totalBet - betLog.getResultCoin().doubleValue() - rebateCoin;
-                    if (winCoin > 0) {
+                    /*if (winCoin > 0) {
                         tax(playerList, winCoin, playerWinCoinMap);
-                    } else {
-                        winCoin = totalBet - betLog.getResultCoin().doubleValue();
-                        tax(playerList, winCoin, playerWinCoinMap);
-                        removeRebate(betLog, playerList);
-                    }
+                    } else if (winCoin < 0) {
+                        taxRemoveCoin(playerList, winCoin, playerWinCoinMap, betLog);
+                    }*/
+                    taxRemoveCoin(playerList, winCoin, playerWinCoinMap, betLog);
                 }
                 playerWinCoinMap.forEach((key, value) -> {
                     ProfitLog profitLog = new ProfitLog()
@@ -353,6 +352,9 @@ public class TowerGame {
                             .setOrderId(currBetList.get(0).getOrderId())
                             .setCreateTime(LocalDateTime.now());
                     profitLogService.save(profitLog);
+                    Player player = PlayerUtils.getPlayer(key);
+                    player.setExpectedAward(player.getExpectedAward().add(BigDecimal.valueOf(value)));
+                    PlayerUtils.savePlayer(player);
                 });
                 playerBetWinCoinMap.forEach((key, value) -> {
                     GameLog gameLog = new GameLog()
@@ -381,24 +383,12 @@ public class TowerGame {
                 + betLog.getSixBet().doubleValue()
                 + betLog.getSevenBet().doubleValue()
                 + betLog.getEightBet().doubleValue();
-        List<Player> collect = playerList.stream()
-                .filter(player -> player.getId().equals(betLog.getUserId()))
-                .collect(Collectors.toList());
-        if (collect.size() <= 0) {
+        Player player = getAgentPlayer(betLog, playerList);
+        if (player == null) {
             return;
         }
-        Player player = collect.get(0);
-        while (true) {
-            if (player == null) {
-                return;
-            }
-            if (player.getSuperId().equals(1)) {
-                break;
-            }
-            player = getSuper(player, playerList);
-        }
         double rebateCoin = totalBet * player.getRebate().doubleValue() / 100;
-        rebateCoin=-rebateCoin;
+        rebateCoin = -rebateCoin;
         AgentRebate agentRebate = new AgentRebate()
                 .setRebate(BigDecimal.valueOf(rebateCoin))
                 .setAgentUserId(player.getId())
@@ -406,12 +396,31 @@ public class TowerGame {
                 .setChallenge(BigDecimal.valueOf(totalBet))
                 .setStatus(2)
                 .setCreateTime(LocalDateTime.now());
-        player.setTotalAward(player.getTotalAward().add(BigDecimal.valueOf(rebateCoin)))
-                .setCanAward(player.getCanAward().add(BigDecimal.valueOf(rebateCoin)));
+//        player.setTotalAward(player.getTotalAward().add(BigDecimal.valueOf(rebateCoin)));
+        player.setCanAward(player.getCanAward().add(BigDecimal.valueOf(rebateCoin)));
         PlayerUtils.savePlayer(player);
         agentRebateService.save(agentRebate);
     }
 
+    public Player getAgentPlayer(BetLog betLog, List<Player> playerList) {
+        List<Player> collect = playerList.stream()
+                .filter(player -> player.getId().equals(betLog.getUserId()))
+                .collect(Collectors.toList());
+        if (collect.size() <= 0) {
+            return null;
+        }
+        Player player = collect.get(0);
+        while (true) {
+            if (player == null) {
+                return null;
+            }
+            if (player.getSuperId().equals(1)) {
+                break;
+            }
+            player = getSuper(player, playerList);
+        }
+        return player;
+    }
 
     /**
      * 保存救助金记录
@@ -475,6 +484,20 @@ public class TowerGame {
         }
     }
 
+    /**
+     * 进行代理输赢记录保存
+     *
+     * @param playerWinCoinMap 玩家盈利信息
+     * @param playerList       玩家列表
+     * @param winCoin          输赢分
+     */
+    private void taxRemoveCoin(List<Player> playerList, double winCoin, Map<Integer, Double> playerWinCoinMap, BetLog betLog) {
+        Player player = getAgentPlayer(betLog, playerList);
+        if (player == null) {
+            return;
+        }
+        playerWinCoinMap.merge(player.getId(), winCoin, Double::sum);
+    }
 
     /**
      * 返利给玩家
@@ -504,8 +527,8 @@ public class TowerGame {
                     .setChallenge(BigDecimal.valueOf(totalBet))
                     .setStatus(2)
                     .setCreateTime(LocalDateTime.now());
-            p.setTotalAward(p.getTotalAward().add(BigDecimal.valueOf(rebateCoin)))
-                    .setCanAward(p.getCanAward().add(BigDecimal.valueOf(rebateCoin)));
+//            p.setTotalAward(p.getTotalAward().add(BigDecimal.valueOf(rebateCoin)));
+            p.setCanAward(p.getCanAward().add(BigDecimal.valueOf(rebateCoin)));
             PlayerUtils.savePlayer(p);
             agentRebateService.save(agentRebate);
         }

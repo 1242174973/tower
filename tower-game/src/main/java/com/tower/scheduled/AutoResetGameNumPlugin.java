@@ -87,30 +87,22 @@ public class AutoResetGameNumPlugin {
      * 每天凌晨1点执行一次    重置所有提现次数   "0 0 0 * * ? ";//每天凌晨0:00:00执行一次,?用于无指定日期
      * //@Scheduled(cron = "*\/5 * * * * ?")
      */
-    @Scheduled(cron = "* */5 * * * ?")
+    @Scheduled(cron = "* */20 * * * ?")
     public void resetGame() {
         if (DateUtils.isDay(1) || DateUtils.isDay(11) || DateUtils.isDay(21) || 1 == 1) {
             log.info("到达一周期,开始结算盈利返利 结算日期:{}", DateUtils.getPeriod());
             List<Player> players = playerService.list();
             for (Player player : players) {
-                LambdaQueryWrapper<ProfitLog> profitLogLambdaQueryWrapper = new LambdaQueryWrapper<>();
-                profitLogLambdaQueryWrapper
-                        .eq(ProfitLog::getStatus, 0)
-                        .eq(ProfitLog::getUserId, player.getId())
-                        .ge(ProfitLog::getCreateTime, DateUtils.getLastPeriod())
-                        .lt(ProfitLog::getCreateTime,  DateUtils.getDate(1));
-                List<ProfitLog> profitLogs = profitLogService.list(profitLogLambdaQueryWrapper);
-                for (ProfitLog profitLog : profitLogs) {
-                    profitLog.setStatus(1);
-                    profitLogService.updateById(profitLog);
-                }
-                double profit = profitLogs.stream().mapToDouble(ProfitLog::getProfitCoin).sum();
+                double profit=player.getExpectedAward().doubleValue()>0
+                        ?player.getExpectedAward().multiply(player.getTax()).doubleValue()
+                        :player.getExpectedAward().doubleValue();
                 log.info("玩家:{}，结算盈利返利，返利金额为:{}", player.getId(), profit);
+                player.setExpectedAward(BigDecimal.ZERO);
+                PlayerUtils.savePlayer(player);
                 if (profit == 0) {
                     continue;
                 }
-                player.setCanAward(player.getCanAward().add(BigDecimal.valueOf(profit)))
-                        .setTotalAward(player.getTotalAward().add(BigDecimal.valueOf(profit)));
+                player.setCanAward(player.getCanAward().add(BigDecimal.valueOf(profit)));
                 PlayerUtils.savePlayer(player);
                 ProfitRebateLog rebateLog = new ProfitRebateLog()
                         .setRebateCoin(profit)

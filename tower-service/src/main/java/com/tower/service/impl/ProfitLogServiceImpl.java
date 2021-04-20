@@ -22,4 +22,9 @@ public class ProfitLogServiceImpl extends ServiceImpl<ProfitLogMapper, ProfitLog
         Double v = baseMapper.selectUserProfitByDay(userId, startTime, stopTime);
         return v == null ? 0 : v;
     }
+    @Override
+    public double selectUserProfitByDayAllStatus(int userId, String startTime, String stopTime) {
+        Double v = baseMapper.selectUserProfitByDayAllStatus(userId, startTime, stopTime);
+        return v == null ? 0 : v;
+    }
 }

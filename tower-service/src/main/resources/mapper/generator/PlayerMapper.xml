@@ -11,6 +11,7 @@
         <result column="tax" property="tax"/>
         <result column="total_award" property="totalAward"/>
         <result column="can_award" property="canAward"/>
+        <result column="expected_award" property="expectedAward"/>
         <result column="salt" property="salt"/>
         <result column="is_agent" property="isAgent"/>
         <result column="account" property="account"/>
@@ -28,7 +29,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, nick_name, password, rebate, tax, total_award, can_award, salt,is_agent, account, pic, vip, money, safe_box, safe_box_password, sign_in, total_sign_in, spread, super_id, create_time
+        id, nick_name, password, rebate, tax, total_award, can_award, expected_award, salt,is_agent, account, pic, vip, money, safe_box, safe_box_password, sign_in, total_sign_in, spread, super_id, create_time
     </sql>
     <update id="resetAward">
         UPDATE player SET total_award=0,can_award=0
