@@ -87,8 +87,13 @@ public class AgentController {
         agentDto.setTotalAward(player.getTotalAward());
         agentDto.setTax(player.getTax());
         agentDto.setRebate(player.getRebate());
+        LambdaQueryWrapper<Player> playerLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        playerLambdaQueryWrapper.eq(Player::getSuperId, player.getId())
+                .ge(Player::getCreateTime, DateUtils.getDate(0))
+                .lt(Player::getCreateTime, DateUtils.getDate(1));
+        agentDto.setNewNum(playerService.count(playerLambdaQueryWrapper));
         double share=player.getExpectedAward().doubleValue()>0
-                ?player.getExpectedAward().multiply(player.getTax()).doubleValue()
+                ?player.getExpectedAward().doubleValue()*player.getTax().doubleValue()/100
                 :player.getExpectedAward().doubleValue();
         agentDto.setExpectedReward(BigDecimal.valueOf(share));
         ResponseDto<AgentDto> responseDto = new ResponseDto<>();
@@ -469,7 +474,7 @@ public class AgentController {
         setStatementDto(statementDto, player, period, playerList);
 
         double share=player.getExpectedAward().doubleValue()>0
-                ?player.getExpectedAward().multiply(player.getTax()).doubleValue()
+                ?player.getExpectedAward().doubleValue()*player.getTax().doubleValue()/100
                 :player.getExpectedAward().doubleValue();
         statementDto.setTotalProfit( statementDto.getMyRebate() + share);
         ResponseDto<StatementDto> responseDto = new ResponseDto<>();

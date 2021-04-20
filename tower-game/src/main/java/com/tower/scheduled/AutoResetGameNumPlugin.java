@@ -94,7 +94,7 @@ public class AutoResetGameNumPlugin {
             List<Player> players = playerService.list();
             for (Player player : players) {
                 double profit=player.getExpectedAward().doubleValue()>0
-                        ?player.getExpectedAward().multiply(player.getTax()).doubleValue()
+                        ?player.getExpectedAward().doubleValue()*player.getTax().doubleValue()/100
                         :player.getExpectedAward().doubleValue();
                 log.info("玩家:{}，结算盈利返利，返利金额为:{}", player.getId(), profit);
                 player.setExpectedAward(BigDecimal.ZERO);
