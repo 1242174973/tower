@@ -40,6 +40,9 @@ public class PlayerDto {
     @ApiModelProperty(value = "预计奖励")
     private BigDecimal expectedAward;
 
+    @ApiModelProperty(value = "返利奖励")
+    private BigDecimal rebateAward;
+
     @ApiModelProperty(value = "可提现奖励")
     private BigDecimal canAward;
 

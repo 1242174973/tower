@@ -319,6 +319,7 @@ public class TowerGame {
             MsgBossHandler.EXECUTE_BET_LOG_SAVE.execute(() -> {
                 Map<Integer, Double> playerWinCoinMap = new HashMap<>(16);
                 Map<Integer, Double> playerBetWinCoinMap = new HashMap<>(64);
+                Map<Integer, Double> playerRebateCoinMap = new HashMap<>(64);
                 for (BetLog betLog : currBetList) {
                     updateBetLog(now, one, betLog);
                     double totalBet = betLog.getOneBet().doubleValue()
@@ -337,13 +338,9 @@ public class TowerGame {
                     saveChallengeReward(betLog, totalBet);
                     saveSalvage(betLog, totalBet);
                     double rebateCoin = rebate(betLog, playerList, totalBet);
-                    double winCoin = totalBet - betLog.getResultCoin().doubleValue() - rebateCoin;
-                    /*if (winCoin > 0) {
-                        tax(playerList, winCoin, playerWinCoinMap);
-                    } else if (winCoin < 0) {
-                        taxRemoveCoin(playerList, winCoin, playerWinCoinMap, betLog);
-                    }*/
+                    double winCoin = totalBet - betLog.getResultCoin().doubleValue();
                     taxRemoveCoin(playerList, winCoin, playerWinCoinMap, betLog);
+                    taxRemoveCoin(playerList, rebateCoin, playerRebateCoinMap, betLog);
                 }
                 playerWinCoinMap.forEach((key, value) -> {
                     ProfitLog profitLog = new ProfitLog()
@@ -354,6 +351,11 @@ public class TowerGame {
                     profitLogService.save(profitLog);
                     Player player = PlayerUtils.getPlayer(key);
                     player.setExpectedAward(player.getExpectedAward().add(BigDecimal.valueOf(value)));
+                    PlayerUtils.savePlayer(player);
+                });
+                playerRebateCoinMap.forEach((key, value) -> {
+                    Player player = PlayerUtils.getPlayer(key);
+                    player.setRebateAward(player.getRebateAward().subtract(BigDecimal.valueOf(value)));
                     PlayerUtils.savePlayer(player);
                 });
                 playerBetWinCoinMap.forEach((key, value) -> {

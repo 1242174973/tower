@@ -14,9 +14,6 @@ import org.springframework.stereotype.Component;
  * 3. 环绕通知：在方法调用之前和之后，都分别可以执行的通知
  * 4. 异常通知：如果在方法调用过程中发生异常，则通知
  * 5. 最终通知：在方法调用之后执行
- */
-
-/**
  * @author 梦-屿-千-寻
  * @date2021/1/16 16:16
  */
@@ -45,11 +42,11 @@ public class ServiceLogAspect {
      * 第四处 * 代表类名，*代表所有类
      * 第五处 *(..) *代表类中的方法名，(..)表示方法中的任何参数
      *
-     * @param joinPoint
-     * @return
-     * @throws Throwable
+     * @param joinPoint xx
+     * @return xx
+     * @throws Throwable xx
      */
-    @Around("execution(* com.jun.controller..*(..))")
+    @Around("execution(* com.tower.controller..*(..))")
     public Object recordTimeLog(ProceedingJoinPoint joinPoint) throws Throwable {
         LOGGER.info("====== 开始执行 {}.{} ======",
                 joinPoint.getTarget().getClass(),

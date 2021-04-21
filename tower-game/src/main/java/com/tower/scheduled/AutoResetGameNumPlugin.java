@@ -66,8 +66,8 @@ public class AutoResetGameNumPlugin {
         removeLastMonthLog();
     }
 
-    public void removeLastMonthLog(){
-        String day=DateUtils.getLastMonthDay();
+    public void removeLastMonthLog() {
+        String day = DateUtils.getLastMonthDay();
         agentRebateService.remove(new LambdaQueryWrapper<AgentRebate>().lt(AgentRebate::getCreateTime, day));
         betLogService.remove(new LambdaQueryWrapper<BetLog>().lt(BetLog::getCreateTime, day));
         challengeRewardService.remove(new LambdaQueryWrapper<ChallengeReward>().lt(ChallengeReward::getCreateTime, day));
@@ -83,6 +83,7 @@ public class AutoResetGameNumPlugin {
         welfareLogService.remove(new LambdaQueryWrapper<WelfareLog>().lt(WelfareLog::getCreateTime, day));
         withdrawLogService.remove(new LambdaQueryWrapper<WithdrawLog>().lt(WithdrawLog::getCreateTime, day));
     }
+
     /**
      * 每天凌晨1点执行一次    重置所有提现次数   "0 0 0 * * ? ";//每天凌晨0:00:00执行一次,?用于无指定日期
      * //@Scheduled(cron = "*\/5 * * * * ?")
@@ -93,11 +94,13 @@ public class AutoResetGameNumPlugin {
             log.info("到达一周期,开始结算盈利返利 结算日期:{}", DateUtils.getPeriod());
             List<Player> players = playerService.list();
             for (Player player : players) {
-                double profit=player.getExpectedAward().doubleValue()>0
-                        ?player.getExpectedAward().doubleValue()*player.getTax().doubleValue()/100
-                        :player.getExpectedAward().doubleValue();
+                double profit = player.getExpectedAward().doubleValue() > 0
+                        ? player.getExpectedAward().doubleValue()* player.getTax().doubleValue() / 100
+                        : player.getExpectedAward().doubleValue() ;
+                profit+=player.getRebateAward().doubleValue();
                 log.info("玩家:{}，结算盈利返利，返利金额为:{}", player.getId(), profit);
                 player.setExpectedAward(BigDecimal.ZERO);
+                player.setRebateAward(BigDecimal.ZERO);
                 PlayerUtils.savePlayer(player);
                 if (profit == 0) {
                     continue;

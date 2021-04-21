@@ -95,6 +95,7 @@ public class AgentController {
         double share=player.getExpectedAward().doubleValue()>0
                 ?player.getExpectedAward().doubleValue()*player.getTax().doubleValue()/100
                 :player.getExpectedAward().doubleValue();
+        share+=player.getRebateAward().doubleValue();
         agentDto.setExpectedReward(BigDecimal.valueOf(share));
         ResponseDto<AgentDto> responseDto = new ResponseDto<>();
         responseDto.setContent(agentDto);
@@ -476,6 +477,7 @@ public class AgentController {
         double share=player.getExpectedAward().doubleValue()>0
                 ?player.getExpectedAward().doubleValue()*player.getTax().doubleValue()/100
                 :player.getExpectedAward().doubleValue();
+        share+=player.getRebateAward().doubleValue();
         statementDto.setTotalProfit( statementDto.getMyRebate() + share);
         ResponseDto<StatementDto> responseDto = new ResponseDto<>();
         responseDto.setContent(statementDto);
