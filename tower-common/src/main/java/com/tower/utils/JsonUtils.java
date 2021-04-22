@@ -13,32 +13,29 @@ import java.util.List;
 
 /**
  * @author imooc
- * @Title: JsonUtils.java
- * @Package com.imooc.utils
- * @Description: json转换类
  * Copyright: Copyright (c)
- * Company: www.imooc.com
  */
 @Component
 public class JsonUtils {
 
-    private static   ObjectMapper MAPPER=new ObjectMapper();
-    static{
-        JavaTimeModule module=new JavaTimeModule();
-        module.addDeserializer(LocalDateTime.class,new LocalDateTimeDeserializer());
-        module.addSerializer(LocalDateTime.class,new LocalDateTimeSerializer());
+    private static ObjectMapper MAPPER = new ObjectMapper();
+
+    static {
+        JavaTimeModule module = new JavaTimeModule();
+        module.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());
+        module.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());
         MAPPER.registerModule(module);
     }
+
     /**
      * 将对象转换成json字符串。
      *
-     * @param data
-     * @return
+     * @param data xx
+     * @return xx
      */
     public static String objectToJson(Object data) {
         try {
-            String string = MAPPER.writeValueAsString(data);
-            return string;
+            return MAPPER.writeValueAsString(data);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -50,7 +47,7 @@ public class JsonUtils {
      *
      * @param jsonData json数据
      * @param beanType 对象中的object类型
-     * @return
+     * @return xx
      */
     public static <T> T jsonToPojo(String jsonData, Class<T> beanType) {
         if (jsonData == null) {
@@ -67,9 +64,9 @@ public class JsonUtils {
     /**
      * 将json数据转换成pojo对象list
      *
-     * @param jsonData
-     * @param beanType
-     * @return
+     * @param jsonData xx
+     * @param beanType xx
+     * @return xx
      */
     public static <T> List<T> jsonToList(String jsonData, Class<T> beanType) {
         JavaType javaType = MAPPER.getTypeFactory().constructParametricType(List.class, beanType);
@@ -78,7 +75,6 @@ public class JsonUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
