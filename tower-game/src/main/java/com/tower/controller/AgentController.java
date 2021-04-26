@@ -92,10 +92,13 @@ public class AgentController {
                 .ge(Player::getCreateTime, DateUtils.getDate(0))
                 .lt(Player::getCreateTime, DateUtils.getDate(1));
         agentDto.setNewNum(playerService.count(playerLambdaQueryWrapper));
-        double share=player.getExpectedAward().doubleValue()>0
-                ?player.getExpectedAward().doubleValue()*player.getTax().doubleValue()/100
-                :player.getExpectedAward().doubleValue();
-        share+=player.getRebateAward().doubleValue();
+        double share = 0.0;
+        if (player.getExpectedAward() != null) {
+            share = player.getExpectedAward().doubleValue() > 0
+                    ? player.getExpectedAward().doubleValue() * player.getTax().doubleValue() / 100
+                    : player.getExpectedAward().doubleValue();
+        }
+        share += player.getRebateAward().doubleValue();
         agentDto.setExpectedReward(BigDecimal.valueOf(share));
         ResponseDto<AgentDto> responseDto = new ResponseDto<>();
         responseDto.setContent(agentDto);
@@ -474,11 +477,11 @@ public class AgentController {
         //赋值其他参数
         setStatementDto(statementDto, player, period, playerList);
 
-        double share=player.getExpectedAward().doubleValue()>0
-                ?player.getExpectedAward().doubleValue()*player.getTax().doubleValue()/100
-                :player.getExpectedAward().doubleValue();
-        share+=player.getRebateAward().doubleValue();
-        statementDto.setTotalProfit( statementDto.getMyRebate() + share);
+        double share = player.getExpectedAward().doubleValue() > 0
+                ? player.getExpectedAward().doubleValue() * player.getTax().doubleValue() / 100
+                : player.getExpectedAward().doubleValue();
+        share += player.getRebateAward().doubleValue();
+        statementDto.setTotalProfit(statementDto.getMyRebate() + share);
         ResponseDto<StatementDto> responseDto = new ResponseDto<>();
         responseDto.setContent(statementDto);
         responseDto.setMessage("查询成功");
@@ -526,7 +529,8 @@ public class AgentController {
                 .boxed().collect(Collectors.toList());
         //返利数据
         LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId()).ge(AgentRebate::getCreateTime, startTime).lt(AgentRebate::getCreateTime, stopTime);
+        agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, player.getId()).eq(AgentRebate::getUserId, player.getId())
+                .ge(AgentRebate::getCreateTime, startTime).lt(AgentRebate::getCreateTime, stopTime);
         double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
                 .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
         //流水数据
@@ -549,21 +553,18 @@ public class AgentController {
         welfareLogLambdaQueryWrapper.eq(WelfareLog::getUserId, player.getId()).ge(WelfareLog::getCreateTime, startTime).lt(WelfareLog::getCreateTime, stopTime);
         double welfare = welfareLogService.getBaseMapper().selectList(welfareLogLambdaQueryWrapper)
                 .stream().mapToDouble(welfareLog -> welfareLog.getWelfare().doubleValue()).sum();
-        double lowerRebate;
-        double lowerBetCoin;
-        double lowerSalvage;
-        double lowerTopUp;
-        double lowerWelfare;
-        if (ids.size() <= 0) {
-            lowerRebate = 0;
-            lowerBetCoin = 0;
-            lowerSalvage = 0;
-            lowerTopUp = 0;
-            lowerWelfare = 0;
-        } else {
+        double lowerRebate = 0;
+        double lowerBetCoin = 0;
+        double lowerSalvage = 0;
+        double lowerTopUp = 0;
+        double lowerWelfare = 0;
+        if (ids.size() > 0) {
             //返利数据
-            agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
-            agentRebateLambdaQueryWrapper.in(AgentRebate::getAgentUserId, ids).ge(AgentRebate::getCreateTime, startTime).lt(AgentRebate::getCreateTime, stopTime);
+            agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<AgentRebate>()
+                    .eq(AgentRebate::getAgentUserId, player.getId())
+                    .in(AgentRebate::getUserId, ids)
+                    .ge(AgentRebate::getCreateTime, startTime)
+                    .lt(AgentRebate::getCreateTime, stopTime);
             lowerRebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
                     .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
             //流水数据
@@ -612,8 +613,13 @@ public class AgentController {
                 .eq(ProfitLog::getStatus, 1)
                 .ge(ProfitLog::getCreateTime, startTime)
                 .lt(ProfitLog::getCreateTime, stopTime);
-        return profitLogService.getBaseMapper().selectList(logLambdaQueryWrapper)
+        double profit = profitLogService.getBaseMapper().selectList(logLambdaQueryWrapper)
                 .stream().mapToDouble(ProfitLog::getProfitCoin).sum();
+        LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, id).ge(AgentRebate::getCreateTime, startTime).lt(AgentRebate::getCreateTime, stopTime);
+        double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
+                .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
+        return profit + rebate;
     }
 
     /**

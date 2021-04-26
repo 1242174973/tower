@@ -119,6 +119,8 @@ public class PlayerFeignController {
             salvageService.insertToday(player.getId());
             player.setTotalAward(BigDecimal.ZERO);
             player.setCanAward(BigDecimal.ZERO);
+            player.setExpectedAward(BigDecimal.ZERO);
+            player.setRebateAward(BigDecimal.ZERO);
             PlayerUtils.savePlayer(player);
         }
     }

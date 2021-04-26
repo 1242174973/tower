@@ -338,9 +338,9 @@ public class TowerGame {
                     saveChallengeReward(betLog, totalBet);
                     saveSalvage(betLog, totalBet);
                     double rebateCoin = rebate(betLog, playerList, totalBet);
-                    double winCoin = totalBet - betLog.getResultCoin().doubleValue();
+                    double winCoin = totalBet - betLog.getResultCoin().doubleValue()-rebateCoin;
                     taxRemoveCoin(playerList, winCoin, playerWinCoinMap, betLog);
-                    taxRemoveCoin(playerList, rebateCoin, playerRebateCoinMap, betLog);
+//                    taxRemoveCoin(playerList, rebateCoin, playerRebateCoinMap, betLog);
                 }
                 playerWinCoinMap.forEach((key, value) -> {
                     ProfitLog profitLog = new ProfitLog()
