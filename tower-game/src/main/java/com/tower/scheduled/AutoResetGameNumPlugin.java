@@ -94,10 +94,13 @@ public class AutoResetGameNumPlugin {
             log.info("到达一周期,开始结算盈利返利 结算日期:{}", DateUtils.getPeriod());
             List<Player> players = playerService.list();
             for (Player player : players) {
-                double profit = player.getExpectedAward().doubleValue() > 0
-                        ? player.getExpectedAward().doubleValue()* player.getTax().doubleValue() / 100
-                        : player.getExpectedAward().doubleValue() ;
-                profit+=player.getRebateAward().doubleValue();
+                double profit = 0.0;
+                if (player.getExpectedAward() != null) {
+                    profit = player.getExpectedAward().doubleValue() > 0
+                            ? player.getExpectedAward().doubleValue() * player.getTax().doubleValue() / 100
+                            : player.getExpectedAward().doubleValue();
+                }
+                profit += player.getRebateAward().doubleValue();
                 log.info("玩家:{}，结算盈利返利，返利金额为:{}", player.getId(), profit);
                 player.setExpectedAward(BigDecimal.ZERO);
                 player.setRebateAward(BigDecimal.ZERO);

@@ -477,11 +477,26 @@ public class AgentController {
         //赋值其他参数
         setStatementDto(statementDto, player, period, playerList);
 
-        double share = player.getExpectedAward().doubleValue() > 0
-                ? player.getExpectedAward().doubleValue() * player.getTax().doubleValue() / 100
-                : player.getExpectedAward().doubleValue();
-        share += player.getRebateAward().doubleValue();
-        statementDto.setTotalProfit(statementDto.getMyRebate() + share);
+
+     /*   double myProfit = -statementDto.getMyProfit();
+        if (myProfit - statementDto.getMyRebate() > 0) {
+            if (player.getTax().doubleValue() <= 0) {
+                myProfit = 0;
+            } else {
+                myProfit = (myProfit - statementDto.getMyRebate()) * player.getTax().doubleValue() / 100;
+                myProfit += statementDto.getMyRebate();
+            }
+        } else {
+            myProfit = (myProfit + statementDto.getMyRebate()) * (100 - player.getTax().doubleValue()) / 100;
+        }
+        double lr = 0;
+        double lp = -statementDto.getLowerProfit();
+        if (player.getTax().doubleValue() != 0) {
+            lr = lp > 0 ? lp * player.getTax().doubleValue() / 100 : lp;
+        }
+        double totalProfit = myProfit + lr + statementDto.getLowerRebate();*/
+        double totalProfit=statementDto.getLowerProfit()+statementDto.getMyProfit();
+        statementDto.setTotalProfit(totalProfit);
         ResponseDto<StatementDto> responseDto = new ResponseDto<>();
         responseDto.setContent(statementDto);
         responseDto.setMessage("查询成功");
@@ -608,18 +623,14 @@ public class AgentController {
     private double getProfitRebate(int id) {
         String startTime = DateUtils.getLastPeriod();
         String stopTime = DateUtils.getDate(1);
-        LambdaQueryWrapper<ProfitLog> logLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        logLambdaQueryWrapper.eq(ProfitLog::getUserId, id)
-                .eq(ProfitLog::getStatus, 1)
-                .ge(ProfitLog::getCreateTime, startTime)
-                .lt(ProfitLog::getCreateTime, stopTime);
-        double profit = profitLogService.getBaseMapper().selectList(logLambdaQueryWrapper)
-                .stream().mapToDouble(ProfitLog::getProfitCoin).sum();
-        LambdaQueryWrapper<AgentRebate> agentRebateLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        agentRebateLambdaQueryWrapper.eq(AgentRebate::getAgentUserId, id).ge(AgentRebate::getCreateTime, startTime).lt(AgentRebate::getCreateTime, stopTime);
-        double rebate = agentRebateService.getBaseMapper().selectList(agentRebateLambdaQueryWrapper)
-                .stream().mapToDouble(agentRebate -> agentRebate.getRebate().doubleValue()).sum();
-        return profit + rebate;
+        return extracLogService.list(new LambdaQueryWrapper<ExtracLog>()
+                .eq(ExtracLog::getExtracId, id)
+                .eq(ExtracLog::getSuccess, 1)
+                .ge(ExtracLog::getCreateTime, startTime)
+                .lt(ExtracLog::getCreateTime, stopTime))
+                .stream()
+                .mapToDouble(extracLog -> extracLog.getExtracCoin().doubleValue())
+                .sum();
     }
 
     /**
