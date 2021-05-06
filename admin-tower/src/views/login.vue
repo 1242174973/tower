@@ -91,8 +91,7 @@
             return {
                 user: {},
                 remember: true, // 默认勾选记住我
-                imageCodeToken: "",
-                // Tool: Tool,
+                imageCodeToken: ""
             }
         },
         mounted: function () {
