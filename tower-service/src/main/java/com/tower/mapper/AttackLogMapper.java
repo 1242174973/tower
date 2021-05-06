@@ -8,7 +8,7 @@ import com.tower.entity.AttackLog;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-30
  */
 public interface AttackLogMapper extends BaseMapper<AttackLog> {

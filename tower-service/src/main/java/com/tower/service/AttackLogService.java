@@ -8,7 +8,7 @@ import com.tower.entity.AttackLog;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-30
  */
 public interface AttackLogService extends IService<AttackLog> {

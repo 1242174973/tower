@@ -8,7 +8,7 @@ import com.tower.entity.WithdrawLog;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-19
  */
 public interface WithdrawLogService extends IService<WithdrawLog> {

@@ -8,7 +8,7 @@ import com.tower.entity.Salvage;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-25
  */
 public interface SalvageMapper extends BaseMapper<Salvage> {

@@ -8,7 +8,7 @@ import com.tower.entity.UserRole;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-09
  */
 public interface UserRoleMapper extends BaseMapper<UserRole> {

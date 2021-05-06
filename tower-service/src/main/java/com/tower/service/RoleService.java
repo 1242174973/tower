@@ -8,7 +8,7 @@ import com.tower.entity.Role;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-09
  */
 public interface RoleService extends IService<Role> {

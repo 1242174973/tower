@@ -1,7 +1,7 @@
 package com.tower.enums;
 
 /**
- * @author 梦-屿-千-寻
+ * @author xxxx
  * @date 2021/3/26 10:42
  */
 public enum AuditType {

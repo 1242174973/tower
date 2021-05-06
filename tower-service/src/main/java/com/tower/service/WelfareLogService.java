@@ -8,7 +8,7 @@ import com.tower.entity.WelfareLog;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-18
  */
 public interface WelfareLogService extends IService<WelfareLog> {

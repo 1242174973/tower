@@ -6,7 +6,7 @@ import com.tower.exception.ServerException;
 import io.netty.channel.Channel;
 
 /**
- * @author 梦-屿-千-寻
+ * @author xxxx
  * @date2021/3/17 10:18
  */
 public interface ILogicHandler<T> {

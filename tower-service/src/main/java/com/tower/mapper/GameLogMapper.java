@@ -8,7 +8,7 @@ import com.tower.entity.GameLog;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-06
  */
 public interface GameLogMapper extends BaseMapper<GameLog> {

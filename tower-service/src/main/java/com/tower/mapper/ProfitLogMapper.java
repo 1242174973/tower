@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-05
  */
 public interface ProfitLogMapper extends BaseMapper<ProfitLog> {

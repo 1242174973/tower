@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Set;
 
 /**
- * @author 梦-屿-千-寻
+ * @author xxxx
  * @date2021/3/17 9:47
  */
 public class ThreadSafeRandom {

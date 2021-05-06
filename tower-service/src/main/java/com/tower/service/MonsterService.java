@@ -8,7 +8,7 @@ import com.tower.entity.Monster;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-17
  */
 public interface MonsterService extends IService<Monster> {

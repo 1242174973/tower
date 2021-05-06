@@ -13,7 +13,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @author 梦-屿-千-寻
+ * @author xxxx
  * @date2021/1/16 16:42
  */
 @Configuration

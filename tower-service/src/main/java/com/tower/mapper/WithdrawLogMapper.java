@@ -8,7 +8,7 @@ import com.tower.entity.WithdrawLog;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-19
  */
 public interface WithdrawLogMapper extends BaseMapper<WithdrawLog> {

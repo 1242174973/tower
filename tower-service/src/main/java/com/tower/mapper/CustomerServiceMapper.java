@@ -8,7 +8,7 @@ import com.tower.entity.CustomerService;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-15
  */
 public interface CustomerServiceMapper extends BaseMapper<CustomerService> {

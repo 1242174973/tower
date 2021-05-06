@@ -8,7 +8,7 @@ import com.tower.entity.Player;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-16
  */
 public interface PlayerService extends IService<Player> {

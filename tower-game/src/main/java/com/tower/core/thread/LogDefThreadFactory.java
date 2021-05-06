@@ -4,7 +4,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
 /**
- * @author 梦-屿-千-寻
+ * @author xxxx
  * @date2021/3/17 10:57
  */
 public class LogDefThreadFactory implements ThreadFactory {

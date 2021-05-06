@@ -8,7 +8,7 @@ import com.tower.entity.SignIn;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-18
  */
 public interface SignInService extends IService<SignIn> {

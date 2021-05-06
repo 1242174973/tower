@@ -8,7 +8,7 @@ import com.tower.entity.SignIn;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-18
  */
 public interface SignInMapper extends BaseMapper<SignIn> {

@@ -8,7 +8,7 @@ import com.tower.entity.UserRole;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-09
  */
 public interface UserRoleService extends IService<UserRole> {

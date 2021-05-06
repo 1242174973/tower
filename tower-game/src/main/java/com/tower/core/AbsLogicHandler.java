@@ -14,7 +14,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
- * @author 梦-屿-千-寻
+ * @author xxxx
  * @date2021/3/17 15:17
  */
 public abstract class AbsLogicHandler<T extends MessageLite> {

@@ -8,7 +8,7 @@ import com.tower.entity.Player;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-16
  */
 public interface PlayerMapper extends BaseMapper<Player> {

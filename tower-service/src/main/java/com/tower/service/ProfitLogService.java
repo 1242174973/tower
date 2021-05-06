@@ -8,7 +8,7 @@ import com.tower.entity.ProfitLog;
  * 服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-05
  */
 public interface ProfitLogService extends IService<ProfitLog> {

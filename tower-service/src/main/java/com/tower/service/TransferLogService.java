@@ -8,7 +8,7 @@ import com.tower.entity.TransferLog;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-24
  */
 public interface TransferLogService extends IService<TransferLog> {

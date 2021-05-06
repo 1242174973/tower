@@ -8,7 +8,7 @@ import com.tower.entity.Monster;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-17
  */
 public interface MonsterMapper extends BaseMapper<Monster> {

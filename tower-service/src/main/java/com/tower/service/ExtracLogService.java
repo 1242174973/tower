@@ -8,7 +8,7 @@ import com.tower.entity.ExtracLog;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-02
  */
 public interface ExtracLogService extends IService<ExtracLog> {

@@ -8,7 +8,7 @@ import com.tower.entity.BetLog;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-07
  */
 public interface BetLogMapper extends BaseMapper<BetLog> {

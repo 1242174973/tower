@@ -8,7 +8,7 @@ import com.tower.entity.EditionEtc;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-12
  */
 public interface EditionEtcService extends IService<EditionEtc> {

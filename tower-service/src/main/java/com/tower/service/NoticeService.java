@@ -8,7 +8,7 @@ import com.tower.entity.Notice;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-08
  */
 public interface NoticeService extends IService<Notice> {

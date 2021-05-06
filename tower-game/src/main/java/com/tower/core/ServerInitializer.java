@@ -15,7 +15,7 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 
 /**
- * @author 梦-屿-千-寻
+ * @author xxxx
  * 定时心跳处理 p.addLast(new IdleStateHandler(20, 0, 4, TimeUnit.SECONDS));
  * @date2021/3/17 10:32
  */

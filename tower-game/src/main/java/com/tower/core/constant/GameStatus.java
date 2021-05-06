@@ -1,7 +1,7 @@
 package com.tower.core.constant;
 
 /**
- * @author 梦-屿-千-寻
+ * @author xxxx
  * @date 2021/3/30 14:33
  */
 public enum GameStatus {

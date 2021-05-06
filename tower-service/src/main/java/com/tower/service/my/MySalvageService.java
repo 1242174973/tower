@@ -10,7 +10,7 @@ import java.util.List;
  *  服务类
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-03-25
  */
 public interface MySalvageService extends IService<Salvage> {

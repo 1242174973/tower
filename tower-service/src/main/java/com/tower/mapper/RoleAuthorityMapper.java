@@ -8,7 +8,7 @@ import com.tower.entity.RoleAuthority;
  *  Mapper 接口
  * </p>
  *
- * @author 梦屿千寻
+ * @author xxxx
  * @since 2021-04-09
  */
 public interface RoleAuthorityMapper extends BaseMapper<RoleAuthority> {
