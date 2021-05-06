@@ -570,6 +570,8 @@
                             _this.topUp = resp.content.topUp;
                             if (size > 0) {
                                 Toast.success("你有" + size + "条新消息需要处理");
+                                const audio = new Audio('/static/mp3/notify.mp3');
+                                audio.play();
                             }
                         }
                     });

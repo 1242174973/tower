@@ -60,6 +60,8 @@ public class TopUpController {
     @PostMapping("/topUp")
     @ApiOperation(value = "充值", notes = "参数 充值信息ID 汇款人 充值金额")
     public ResponseDto<PlayerDto> topUp(Player player, @RequestBody TopUpLogDto topUpLogDto) {
+        List<TopUpLog> list = topUpLogService.list(new LambdaQueryWrapper<TopUpLog>().eq(TopUpLog::getState, 0));
+        BusinessUtil.assertParam(list == null || list.size() <= 0, "你有一个订单正在处理，请稍后再试");
         BusinessUtil.assertParam(topUpLogDto.getPayee() != null, "汇款人不能为空");
         BusinessUtil.require(topUpLogDto.getTopUpMoney(), BusinessExceptionCode.TOP_UP_MONEY);
         BusinessUtil.require(topUpLogDto.getTopUpId(), BusinessExceptionCode.TOP_UP_ID);
