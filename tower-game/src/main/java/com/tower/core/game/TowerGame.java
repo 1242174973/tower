@@ -337,6 +337,13 @@ public class TowerGame {
                     getAllSuper(player, playerList);
                     saveChallengeReward(betLog, totalBet);
                     saveSalvage(betLog, totalBet);
+                    if (player.getPresent() > totalBet) {
+                        player.setPresent((int) (player.getPresent() - totalBet));
+                        PlayerUtils.savePlayer(player);
+                    } else if (player.getPresent() > 0) {
+                        player.setPresent(0);
+                        PlayerUtils.savePlayer(player);
+                    }
                     double rebateCoin = rebate(betLog, playerList, totalBet);
                     double winCoin = totalBet - betLog.getResultCoin().doubleValue() - rebateCoin;
                     taxRemoveCoin(playerList, winCoin, playerWinCoinMap, betLog);
@@ -458,14 +465,6 @@ public class TowerGame {
         if (player == null || challengeReward == null) {
             return;
         }
-        if (player.getPresent() > totalBet) {
-            player.setPresent((int) (player.getPresent() - totalBet));
-            PlayerUtils.savePlayer(player);
-        } else if (player.getPresent() > 0) {
-            player.setPresent(0);
-            PlayerUtils.savePlayer(player);
-        }
-
         challengeReward.setChallenge(challengeReward.getChallenge().add(BigDecimal.valueOf(totalBet)));
         challengeRewardService.saveOrUpdate(challengeReward);
     }
