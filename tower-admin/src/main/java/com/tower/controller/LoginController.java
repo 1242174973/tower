@@ -128,7 +128,7 @@ public class LoginController {
      * 修改密码
      */
     @PostMapping("/updatePassword/{oldPassword}/{newPassword}")
-    public ResponseDto updatePassword(@PathVariable String oldPassword, @PathVariable String newPassword, User user) {
+    public ResponseDto updatePassword(@PathVariable String oldPassword, @PathVariable String newPassword, UserDto user) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(User::getLoginName, user.getLoginName());
         User mysqlUser = userService.getOne(lambdaQueryWrapper);
