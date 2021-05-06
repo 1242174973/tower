@@ -88,9 +88,9 @@ public class AutoResetGameNumPlugin {
      * 每天凌晨1点执行一次    重置所有提现次数   "0 0 0 * * ? ";//每天凌晨0:00:00执行一次,?用于无指定日期
      * //@Scheduled(cron = "*\/5 * * * * ?")
      */
-    @Scheduled(cron = "* */20 * * * ?")
+    @Scheduled(cron = "0 0 0 * * ?")
     public void resetGame() {
-        if (DateUtils.isDay(1) || DateUtils.isDay(11) || DateUtils.isDay(21) || 1 == 1) {
+        if (DateUtils.isDay(1) || DateUtils.isDay(11) || DateUtils.isDay(21)) {
             log.info("到达一周期,开始结算盈利返利 结算日期:{}", DateUtils.getPeriod());
             List<Player> players = playerService.list();
             for (Player player : players) {

@@ -89,6 +89,9 @@ public class PlayerDto {
     @ApiModelProperty(value = "vip升级经验")
     private Integer experience;
 
+    @ApiModelProperty(value = "提现值")
+    private Integer present;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty(value = "签到时间")
     private LocalDateTime signInTime;

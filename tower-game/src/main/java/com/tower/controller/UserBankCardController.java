@@ -107,8 +107,9 @@ public class UserBankCardController {
     public ResponseDto<PlayerDto> withdraw(Player player,
                                            @ApiParam(value = "提现金额", required = true)
                                            @PathVariable double money) {
+        BusinessUtil.assertParam(player.getPresent()<=0, "还需投注"+player.getPresent()+"才能提现");
         BusinessUtil.assertParam(money >= 100 && money < 49999, "提现金额在100-49999");
-        BusinessUtil.assertParam(player.getMoney().doubleValue() > money, "玩家余额不足" + String.valueOf(money));
+        BusinessUtil.assertParam(player.getMoney().doubleValue() > money, "玩家余额不足" + money);
         LambdaQueryWrapper<UserBankCard> userBankCardLambdaQueryWrapper = new LambdaQueryWrapper<>();
         userBankCardLambdaQueryWrapper.eq(UserBankCard::getUserId, player.getId());
         UserBankCard userBankCard = userBankCardService.getOne(userBankCardLambdaQueryWrapper);

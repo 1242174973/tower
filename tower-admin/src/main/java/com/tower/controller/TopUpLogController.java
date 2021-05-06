@@ -148,20 +148,16 @@ public class TopUpLogController {
         List<Player> playerList = new ArrayList<>();
         getAllSuper(player, playerList);
         for (Player superPlayer : playerList) {
-            Player lower = getLower(superPlayer, playerList);
-            if (lower != null && superPlayer.getRebate().doubleValue() > lower.getRebate().doubleValue()) {
-                double rebate = superPlayer.getRebate().doubleValue() - lower.getRebate().doubleValue();
-                double removeCoin = (topUpLogDto.getCoin().doubleValue() / 100 * 5) / 2.8 * rebate;
+            if (superPlayer.getSuperId().equals(1)) {
+                double removeCoin = (topUpLogDto.getCoin().doubleValue() / 100 * 5);
                 ProfitLog profitLog = new ProfitLog().setCreateTime(LocalDateTime.now()).setOrderId("0").setProfitCoin(-removeCoin).setUserId(superPlayer.getId());
                 profitLogService.save(profitLog);
-            } else if (lower == null && superPlayer.getRebate().doubleValue() > 0) {
-                double rebate = superPlayer.getRebate().doubleValue();
-                double removeCoin = (topUpLogDto.getCoin().doubleValue() / 100 * 5) / 2.8 * rebate;
-                ProfitLog profitLog = new ProfitLog().setCreateTime(LocalDateTime.now()).setOrderId("0").setProfitCoin(-removeCoin).setUserId(superPlayer.getId());
-                profitLogService.save(profitLog);
+                superPlayer.setRebateAward(superPlayer.getRebateAward().subtract(BigDecimal.valueOf(removeCoin)));
+                playerFeign.save(superPlayer);
             }
         }
         player.setExperience(player.getExperience() + topUpLogDto.getCoin().intValue());
+        player.setPresent(player.getPresent() + topUpLogDto.getCoin().intValue());
         upVip(player);
         playerFeign.save(player);
         topUpLogService.updateById(topUpLog);
