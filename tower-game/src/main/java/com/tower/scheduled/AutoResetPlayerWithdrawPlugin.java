@@ -1,15 +1,11 @@
 package com.tower.scheduled;
 
-import com.tower.service.PlayerService;
 import com.tower.service.my.MyPlayerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
 /**
  * @author xxxx
