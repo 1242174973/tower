@@ -108,6 +108,7 @@ public class AccountController {
                 .setExperience(0)
                 .setTotalAward(BigDecimal.ZERO)
                 .setCanAward(BigDecimal.ZERO)
+                .setPresent(0)
                 .setPassword(MD5Utils.getMD5Str(MD5Utils.getMD5Str(player.getPassword() + player.getSalt())));
         ResponseDto<PlayerDto> playerDtoResponseDto = PlayerUtils.getPlayerDtoResponseDto(player);
         int userId = playerDtoResponseDto.getContent().getId();

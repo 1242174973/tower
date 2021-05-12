@@ -144,6 +144,7 @@ public class AgentController {
         sqlPlayer.setRebate(BigDecimal.valueOf(rebate));
         sqlPlayer.setTax(BigDecimal.ZERO);
         sqlPlayer.setIsAgent(1);
+        sqlPlayer.setPresent(0);
         sqlPlayer.setTotalAward(BigDecimal.ZERO);
         sqlPlayer.setCanAward(BigDecimal.ZERO);
         playerService.save(sqlPlayer);
@@ -495,7 +496,7 @@ public class AgentController {
             lr = lp > 0 ? lp * player.getTax().doubleValue() / 100 : lp;
         }
         double totalProfit = myProfit + lr + statementDto.getLowerRebate();*/
-        double totalProfit=statementDto.getLowerProfit()+statementDto.getMyProfit();
+        double totalProfit = statementDto.getLowerProfit() + statementDto.getMyProfit();
         statementDto.setTotalProfit(totalProfit);
         ResponseDto<StatementDto> responseDto = new ResponseDto<>();
         responseDto.setContent(statementDto);
