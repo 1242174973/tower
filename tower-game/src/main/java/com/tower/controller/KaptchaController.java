@@ -19,6 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 
+/**
+ * @author Administrator
+ */
 @RestController
 @RequestMapping("/kaptcha")
 @Api(value = "验证码", tags = "图片验证码相关请求")

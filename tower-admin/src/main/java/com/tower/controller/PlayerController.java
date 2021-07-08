@@ -144,8 +144,8 @@ public class PlayerController {
     @ApiOperation(value = "删除玩家", notes = "删除玩家请求")
     public ResponseDto<String> delete(@ApiParam(value = "玩家ID", required = true)
                                       @PathVariable int id) {
-        Player player = playerFeign.getPlayer(id);
-        BusinessUtil.assertParam(!player.getIsAgent().equals(1), "不能删除代理");
+        /*Player player = playerFeign.getPlayer(id);
+        BusinessUtil.assertParam(!player.getIsAgent().equals(1), "不能删除代理");*/
         playerFeign.removePlayer(id);
         ResponseDto<String> responseDto = new ResponseDto<>();
         responseDto.setContent("删除成功");
